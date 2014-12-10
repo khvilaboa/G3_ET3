@@ -109,6 +109,11 @@
 			$("#div-repeatPassword").addClass("has-success");
 		}
 	}
+	
+	function ayudaPass(){
+	
+	$.notify("Las contraseñas deben tener un número ,una letra y entre 6 y 15 caracteres", "info");
+	}
 
 </script>
 <body>
@@ -151,6 +156,7 @@
 									<div style="margin-bottom: 25px" class="input-group" id="div-password">
 										<span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
 										<input id="register-password" type="password" class="form-control" name="password" placeholder="Contrase&ntilde;a">
+										<span class="input-group-addon" onClick="ayudaPass()" style="CURSOR: pointer"><i class="glyphicon glyphicon-eye-open"></i></span>
 									</div>
 									
 									<div style="margin-bottom: 25px" class="input-group" id="div-repeatPassword">
