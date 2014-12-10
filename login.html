@@ -45,11 +45,12 @@
 		var boton_aceptar = document.getElementById("btn-login");
 		
 		//Comprobaciones de "email", no se puede registrar nadie sin email, ademas el formato del email debe ser valido
-		if (regexp.test(email)!=0 &&(password.length > 6)&& (password.length < 15)){
-		boton_aceptar.removeAttribute("disabled"); 
-		
-		$.notify("¿Está seguro de que desea recordar su contraseña?", "warn");
-	}	
+		if ((regexp.test(email)!=0 )&&(password.length >= 6)&& (password.length < 15)){
+			boton_aceptar.removeAttribute("disabled","disabled"); 
+		}
+		else{
+			boton_aceptar.setAttribute("disabled","disabled"); 
+		}
 	
 	}
 </script>
@@ -72,12 +73,12 @@
                                     
 									<div style="margin-bottom: 25px" class="input-group">
 										<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-										<input id="login-username" type="text" class="form-control" onBlur="validar()" name="username" value="" placeholder="usuario@ejemplo.com">                                        
+										<input id="login-username" type="text" class="form-control" onKeyUp="validar()" name="username" value="" placeholder="usuario@ejemplo.com">                                        
 									</div>
 										
 									<div style="margin-bottom: 25px" class="input-group">
 										<span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-										<input id="login-password" type="password" class="form-control" onBlur="validar()" name="password" placeholder="Contrase&ntilde;a">
+										<input id="login-password" type="password" class="form-control" onKeyUp="validar()" name="password" placeholder="Contrase&ntilde;a">
 									</div>
 											
 									<!--<div class="input-group">
