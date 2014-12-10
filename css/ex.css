@@ -1,0 +1,19 @@
+
+.ex-content {
+	height: 100% !important;
+}
+
+.ex-title {
+	color:#555 !important;
+}
+
+.ex-panel-header {
+    background:#ddd !important;
+	color:#222 !important;
+}
+
+.ex-button {
+	background:#ddd;
+	color:#222;
+	border-color:#888
+}
