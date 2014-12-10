@@ -16,6 +16,9 @@
 
     <!-- Custom CSS -->
     <link href="../css/sb-admin.css" rel="stylesheet">
+	
+	<!-- EseiXestion Style -->
+    <link href="../css/ex.css" rel="stylesheet" type="text/css">
 
     <!-- Custom Fonts -->
     <link href="../font-awesome-4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
@@ -64,10 +67,10 @@
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav side-nav">
                     <li>
-                        <a href="adminListaAsignaturas.html"><i class="fa fa-fw fa-folder-open"></i> Asignaturas</a>
+                        <a href="listaAsignaturas.html"><i class="fa fa-fw fa-folder-open"></i> Asignaturas</a>
                     </li>
                     <li>
-                        <a href="adminListaDeUsuarios.html"><i class="fa fa-fw fa-users"></i> Usuarios</a>
+                        <a href="listaUsuarios.html"><i class="fa fa-fw fa-users"></i> Usuarios</a>
                     </li>
                     <li>
                         <a href="../login.html"><i class="fa fa-fw fa-power-off"></i> Cerrar sesi&oacute;n</a>
@@ -85,38 +88,49 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <h1 class="page-header"> Lista de usuarios </h1>
-                        <br><br><br><br><br><br><br>
 						
-						<table class="table table-hover">
+						<div class="panel panel-default">
+						 <div class="panel-heading ex-panel-header">Usuarios</div>
+						 
+						 <div class="table-responsive">
+							<table class="table table-hover">
 							<thead>
 								<tr>
-									<TH WIDTH="110px">Dni</TH>
-									<TH WIDTH="110px">Nombre</TH>
-									<TH WIDTH="110px">Apellidos</TH>
-									<TH WIDTH="110px">Email</TH>				
+									<TH width="110px">Dni</TH>
+									<TH width="110px">Nombre</TH>
+									<TH width="110px">Apellidos</TH>
+									<TH width="110px">Email</TH>				
 								</tr>
 							</thead>							
 							<tbody>
 								<tr>
-								<td>44444445P</td>
-								<td>Pablo</td>
-								<td>Gonz&aacute;lez</td>
-								<td>Peiboll@gmail.com</td>
+									<td><a href="usuario.html">44444445P</a></td>
+									<td>Pablo</td>
+									<td>Gonz&aacute;lez</td>
+									<td>Peiboll@gmail.com</td>
 								</tr>
 								<tr>
-								<td>45644444P</td>
-								<td>José</td>
-								<td>Garc&iacute;a</td>
-								<td>juanga@gmail.com</td>
+									<td><a href="usuario.html">45644444P</a></td>
+									<td>José</td>
+									<td>Garc&iacute;a</td>
+									<td>juanga@gmail.com</td>
 								</tr>
 							</tbody>
 						</table>
+						</div>
+					</div>
+					
+                      
+						
+						
 	
 						
-						<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+						
 						<div class="pull-right">
-							<a href="adminCrearModificarUsuarios.html" class="btn btn-primary center-block">Crear Usuario</a>  							
-						</div> 						
+							<a href="usuario.html" class="btn ex-button">Crear Usuario</a>  							
+						</div> 	
+
+						<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
                     </div>
                 </div>
                 <!-- /.row -->
