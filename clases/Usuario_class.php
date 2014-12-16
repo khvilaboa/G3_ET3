@@ -126,13 +126,13 @@ class usuario {
 			$_SESSION['userPass'] = $row['passwordUsuario'];
 
             if ($row["tipoUsuario"] == 'Alumno') {
-                header("Location:../alumno/listaAsignaturas");
+                header("Location:../alumno/listaAsignaturas.html");
             }
             if ($row["tipoUsuario"] == 'Profesor') {
-                header("Location:../profesor/listaAsignaturas");
+                header("Location:../profesor/listaAsignaturas.html");
             }
             if ($row["tipoUsuario"] == 'Administrador') {
-                header("Location:../admin/listaAsignaturas");
+                header("Location:../admin/listaAsignaturas.html");
             }
         } else {
             header("Location:../index.php");
