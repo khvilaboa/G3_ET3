@@ -188,7 +188,6 @@ class asignatura
 		
 	public static function verAsigProf($dni) {
 		Conectarse();
-		//Falta en restringirlo al profesor que este conectado
 		$sql = "SELECT `nomAsignatura` FROM `asignatura`, proimparteasi, usuario WHERE proimparteasi.codAsignatura = asignatura.codAsignatura 
 			AND proimparteasi.emailUsuario = usuario.emailUsuario AND usuario.dniUsuario = '".$dni."'";
 		$resultado = mysql_query($sql);
@@ -199,6 +198,35 @@ class asignatura
 		}
     }
 
+	public static function verAluPreins($asig) {
+		Conectarse();
+		$sql = "SELECT dniUsuario, nombreUsuario, apellidoUsuario FROM usuario, asignatura, aluinscritoasi  
+			WHERE usuario.emailUsuario=aluinscritoasi.emailUsuario AND asignatura.codAsignatura=aluinscritoasi.codAsignatura 
+			AND aluinscritoasi.aceptado='F' AND asignatura.nomAsignatura='".$asig."'"; 
+		$resultado = mysql_query($sql);
+		while ($row = mysql_fetch_array($resultado))
+		{
+			echo "<tr><td>".$row['dniUsuario']."</td>";
+			echo "<td>".$row['apellidoUsuario'].", ".$row['nombreUsuario']."</td>";
+			echo " <td><input type='checkbox' name='dniUsuario' value='".$row['dniUsuario']."'>  <br><br></td></tr>";
+		}
+    }
+	
+	public static function verAluIns($asig) {
+		Conectarse();
+		$sql = "SELECT dniUsuario, nombreUsuario, apellidoUsuario FROM usuario, asignatura, aluinscritoasi  
+				WHERE usuario.emailUsuario=aluinscritoasi.emailUsuario AND asignatura.codAsignatura=aluinscritoasi.codAsignatura 
+				AND aluinscritoasi.aceptado='T' AND asignatura.nomAsignatura='".$_GET['nombreAsig']."'"; 
+		$resultado = mysql_query($sql);
+		
+		while ($row = mysql_fetch_array($resultado))
+		{
+			echo "<tr><td>".$row['dniUsuario']."</td>";
+			echo "<td>".$row['apellidoUsuario'].", ".$row['nombreUsuario']."</td>";
+			echo " <td><input type='checkbox' name='dniUsuario' value='".$row['dniUsuario']."'>  <br><br></td></tr>";
+		}
+    }
+	
 	function consultarConProfesor()
 	{
 		//Buscamos las asignaturas cuyo nombre de parezca a $nombre

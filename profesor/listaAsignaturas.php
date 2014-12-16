@@ -53,7 +53,7 @@
             <!-- Top Menu Items -->
             <ul class="nav navbar-right top-nav">
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> John Smith <b class="caret"></b></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> <?php echo $_SESSION['userName'] ?> <b class="caret"></b></a>
                     <ul class="dropdown-menu">
                         <li>
                             <a href="perfil.html"><i class="fa fa-fw fa-user"></i> Perfil</a>

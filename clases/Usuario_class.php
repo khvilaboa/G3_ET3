@@ -1,7 +1,6 @@
 <?php
 
 include_once "../conexion.php";
-Conectarse();
 
 class usuario {
 
