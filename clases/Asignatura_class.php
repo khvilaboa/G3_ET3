@@ -1,10 +1,8 @@
 <?php
 include_once "../conexion.php";
-<<<<<<< HEAD
 session_start();
-=======
+
 Conectarse(); 
->>>>>>> origin/master
 
 class asignatura
 {
@@ -167,11 +165,7 @@ class asignatura
 	//Buscamos en la Bd los trabajos de esta asignatura
 	function Get_Trabajos()
 	{
-<<<<<<< HEAD
-		$sql = "select * from Trabajo where codAsignatura= '".$this->codAsig;
-=======
 		$sql = "select * from Trabajo where codAsignatura= '".$this->codAsig."'";
->>>>>>> origin/master
 		$resultado = mysql_query($sql);
 		return $resultado;
 	}
@@ -184,16 +178,13 @@ class asignatura
 			while ($trabajos = mysql_fetch_array($result))
 			{
 				echo $Asignatura['codTrabajo'];
-<<<<<<< HEAD
-				echo "------".$Asignatura['nombreTrabajo'];
-=======
+
 				echo $Asignatura['nombreTrabajo'];
->>>>>>> origin/master
+
 			}
 		}
 	}
 	
-<<<<<<< HEAD
 		
 	public static function verAsigProf($dni) {
 		Conectarse();
@@ -207,7 +198,7 @@ class asignatura
 			echo "<a class='list-group-item' href=asignatura.php?nombreAsig=".$row['nomAsignatura'].">".$row['nomAsignatura']."</a>";
 		}
     }
-=======
+
 	function consultarConProfesor()
 	{
 		//Buscamos las asignaturas cuyo nombre de parezca a $nombre
@@ -225,6 +216,4 @@ class asignatura
 		return $resultado;
 	}
 
-	
->>>>>>> origin/master
 }
