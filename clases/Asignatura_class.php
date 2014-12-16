@@ -1,6 +1,10 @@
 <?php
 include_once "../conexion.php";
+<<<<<<< HEAD
 session_start();
+=======
+Conectarse(); 
+>>>>>>> origin/master
 
 class asignatura
 {
@@ -163,7 +167,11 @@ class asignatura
 	//Buscamos en la Bd los trabajos de esta asignatura
 	function Get_Trabajos()
 	{
+<<<<<<< HEAD
 		$sql = "select * from Trabajo where codAsignatura= '".$this->codAsig;
+=======
+		$sql = "select * from Trabajo where codAsignatura= '".$this->codAsig."'";
+>>>>>>> origin/master
 		$resultado = mysql_query($sql);
 		return $resultado;
 	}
@@ -176,11 +184,16 @@ class asignatura
 			while ($trabajos = mysql_fetch_array($result))
 			{
 				echo $Asignatura['codTrabajo'];
+<<<<<<< HEAD
 				echo "------".$Asignatura['nombreTrabajo'];
+=======
+				echo $Asignatura['nombreTrabajo'];
+>>>>>>> origin/master
 			}
 		}
 	}
 	
+<<<<<<< HEAD
 		
 	public static function verAsigProf($dni) {
 		Conectarse();
@@ -194,4 +207,24 @@ class asignatura
 			echo "<a class='list-group-item' href=asignatura.php?nombreAsig=".$row['nomAsignatura'].">".$row['nomAsignatura']."</a>";
 		}
     }
+=======
+	function consultarConProfesor()
+	{
+		//Buscamos las asignaturas cuyo nombre de parezca a $nombre
+		$sql = "select distinct nomAsignatura, gradoAsignatura, cursoAsignatura, nombreUsuario, apellidoUsuario from asignatura A, proimparteasi P ,usuario U where A.codAsignatura=P.codAsignatura and P.emailUsuario=U.emailUsuario";
+		$resultado = mysql_query($sql);
+		return $resultado;
+	}
+	
+	function consultarSinProfesor()
+	{
+		//Buscamos las asignaturas cuyo nombre de parezca a $nombre
+		//$sql = "select distinct nomAsignatura, gradoAsignatura, cursoAsignatura from asignatura A, proimparteasi P where A.codAsignatura!=P.codAsignatura OR (select count(*) from proimparteasi)=0 ";
+		$sql="select nomAsignatura, gradoAsignatura, cursoAsignatura from asignatura A where (A.codAsignatura not in (select codAsignatura from proimparteasi))";
+		$resultado = mysql_query($sql);
+		return $resultado;
+	}
+
+	
+>>>>>>> origin/master
 }
