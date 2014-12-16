@@ -1,5 +1,6 @@
-
 <?php
+include_once "../conexion.php";
+session_start();
 
 class asignatura
 {
@@ -162,7 +163,7 @@ class asignatura
 	//Buscamos en la Bd los trabajos de esta asignatura
 	function Get_Trabajos()
 	{
-		$sql = "select * from Trabajo where codAsignatura= '".$this->codAsig"'";
+		$sql = "select * from Trabajo where codAsignatura= '".$this->codAsig;
 		$resultado = mysql_query($sql);
 		return $resultado;
 	}
@@ -175,8 +176,22 @@ class asignatura
 			while ($trabajos = mysql_fetch_array($result))
 			{
 				echo $Asignatura['codTrabajo'];
-				echo "------".$Asignatura['nombreTrabajo'];";
+				echo "------".$Asignatura['nombreTrabajo'];
 			}
 		}
 	}
+	
+		
+	public static function verAsigProf($dni) {
+		Conectarse();
+		//Falta en restringirlo al profesor que este conectado
+		$sql = "SELECT `nomAsignatura` FROM `asignatura`, proimparteasi, usuario WHERE proimparteasi.codAsignatura = asignatura.codAsignatura 
+			AND proimparteasi.emailUsuario = usuario.emailUsuario AND usuario.dniUsuario = '".$dni."'";
+		$resultado = mysql_query($sql);
+		echo mysql_error();
+		while ($row = mysql_fetch_array($resultado))
+		{
+			echo "<a class='list-group-item' href=asignatura.php?nombreAsig=".$row['nomAsignatura'].">".$row['nomAsignatura']."</a>";
+		}
+    }
 }

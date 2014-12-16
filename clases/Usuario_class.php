@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 include_once "../conexion.php";
 
 class usuario {
@@ -112,6 +112,7 @@ class usuario {
     }
 
     public static function validar($email, $pass) {
+	
         $link = Conectarse();
         $sql = "select * from Usuario where emailUsuario = '" . $email . "'";
         $resultado = mysql_query($sql);
@@ -121,6 +122,8 @@ class usuario {
             $_SESSION['userLogin'] = $email;
             $_SESSION['userName'] = $row['nombreUsuario'];
             $_SESSION['userTipo'] = $row['tipoUsuario'];
+		    $_SESSION['userDni'] = $row['dniUsuario'];
+
             if ($row["tipoUsuario"] == 'Alumno') {
                 header("Location:../alumno/listaAsignaturas");
             }
