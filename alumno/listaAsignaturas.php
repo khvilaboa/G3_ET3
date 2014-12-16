@@ -1,4 +1,6 @@
 <!DOCTYPE html>
+
+<? session_start()?>
 <html lang="en">
 
 <head>
@@ -46,7 +48,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.html">ESEIXesti&oacute;n - Alumno</a>
+                <a class="navbar-brand" href="#">ESEIXesti&oacute;n - Alumno</a>
             </div>
             <!-- Top Menu Items -->
             <ul class="nav navbar-right top-nav">
@@ -95,28 +97,43 @@
 						 <div class="panel-heading ex-panel-header">Lista de asignaturas</div>
 						 <div class="table-responsive">
 						 <table class="table table-striped table-bordered table-hover">
-							<thead>
+							
 								<tr>
 									<th>Nombre</th>
-									<th>Descripci&oacute;n</th>
+									
 								</tr>
-							</thead>
-							<tbody>
-								<tr>
-								   <td><a href="listaTrabajos.html">Interfaces de usuario</a></td>
-								   <td>Asignatura de interfaces de usuario</td>
-								</tr>
+							
 								
-								<tr>
-								   <td><a href="listaTrabajos.html">Centro de datos</a></td>
-								   <td>Asignatura de centro de datos</td>
-								</tr>
+							
 								
-								<tr>
-								   <td><a href="listaTrabajos.html">Base de datos</a></td>
-								   <td>Asignatura de base de datos</td>
-								</tr>
-							<tbody>
+								   <?php							   
+									include "../conexion.php";
+									
+									
+									$link = Conectarse();
+									
+									$login =  $_SESSION['userLogin'];
+									
+									
+									$sql= "Select A.nomAsignatura from AluInscritoAsi Ai, Asignatura A where Ai.codAsignatura=A.codAsignatura AND Ai.emailUsuario='".$login."'";
+								   
+								   
+								   
+									$resultado = mysql_query($sql);
+								
+									while ($row = mysql_fetch_array($resultado))
+										{
+											echo "<TR>";
+											echo "<TD>".$row['nomAsignatura']."</TD>";
+											echo "</TR>";
+										}
+									
+								   
+								   ?>
+								
+								
+								
+							
 						</table>
 					</div>	
 					</div>
