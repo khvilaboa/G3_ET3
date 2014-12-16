@@ -107,7 +107,7 @@ class usuario {
     //funcion Consultar: hace una búsqueda en la tabla usuario con
     //los datos del nombre y email. Si van vacios devuelve todos
     function consultar($nombre, $email) {
-        $sql = "select * from Usuario where (nombreUsuario LIKE '%" . $nombre . "%') AND (emailUsuario LIKE '%" . $email . "%')";
+        $sql = "select * from Usuario where (nombreUsuario LIKE '%" . $nombre . "%') AND (emailUsuario LIKE '%" . $email . "%'))";
         $resultado = mysql_query($sql);
         return $resultado;
     }
@@ -124,6 +124,7 @@ class usuario {
             $_SESSION['userName'] = $row['nombreUsuario'];
             $_SESSION['userTipo'] = $row['tipoUsuario'];
 		    $_SESSION['userDni'] = $row['dniUsuario'];
+			$_SESSION['userPass'] = $row['passwordUsuario'];
 
             if ($row["tipoUsuario"] == 'Alumno') {
                 header("Location:../alumno/listaAsignaturas");
@@ -175,7 +176,7 @@ class usuario {
         $sql = "select * from Usuario where emailUsuario = '" . $this->email . "'";
         $resultado = mysql_query($sql);
         if (mysql_num_rows($resultado) == 1) {
-            $sql = "UPDATE Usuario SET emailUsuario = '" . $this->email . "',nombreUsuario= '" . $this->nombre . "',apellidoUsuario = '" . $this->apellidos . "',passwordUsuario = '" . $this->pass . "',dniUsuario = '" . $this->dni . "' WHERE emailUsuario = '" . $this->email . "'";
+            $sql = "UPDATE Usuario SET nombreUsuario= '" . $this->nombre . "',apellidoUsuario = '" . $this->apellidos . "',passwordUsuario = '" . $this->pass . "',dniUsuario = '" . $this->dni . "' WHERE emailUsuario = '" . $this->email . "'";
             mysql_query($sql);
             echo "El usuario fue modificado con éxito";
         } else

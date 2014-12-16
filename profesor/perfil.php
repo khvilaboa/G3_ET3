@@ -1,3 +1,9 @@
+<?php
+session_start();
+include_once('../conexion.php');
+Conectarse();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -90,39 +96,40 @@
 						<div class="panel panel-default">
 							<div class="panel-heading ex-panel-header">Gesti&oacute;n de perfil</div>
 							<div class="panel-body">
-							   <form class="form-horizontal" role="form">
+							   <form class="form-horizontal" role="form" METHOD="GET" action="controladorPerfil.php">
 										
 								  <div class="form-group">
 									 <label for="passwdAct" class="col-lg-2 control-label">Contrase&ntilde;a actual</label>
 										<div class="col-lg-10">
-										   <input type="password" class="form-control" id="passwdAct" placeholder="Contrase&ntilde;a actual">
+										   <input type="password" class="form-control" name="passwdAct" placeholder="Contrase&ntilde;a actual">
 										</div>
 								  </div>
 							   
 								  <div class="form-group">
 									 <label for="passwdNew" class="col-lg-2 control-label">Nueva contrase&ntilde;a</label>
 										<div class="col-lg-10">
-										   <input type="password" class="form-control" id="passwdNew" placeholder="Nueva contrase&ntilde;a">
+										   <input type="password" class="form-control" name="passwdNew" placeholder="Nueva contrase&ntilde;a">
 										</div>
 								  </div>
 								  
 								  <div class="form-group">
 									 <label for="passwdRep" class="col-lg-2 control-label">Repetir contrase&ntilde;a</label>
 										<div class="col-lg-10">
-										   <input type="password" class="form-control" id="passwdRep" placeholder="Repetir contrase&ntilde;a">
+										   <input type="password" class="form-control" name="passwdRep" placeholder="Repetir contrase&ntilde;a">
 										</div>
 								  </div>
 								  
 								  <div class="form-group">
 									 <label class="col-lg-2 control-label">Email</label>
 										<div class="col-lg-10">
-											<input type="email" class="form-control" id="inputEmail" placeholder="Introduce tu email">
+											<input type="email" class="form-control" id="inputEmail" value="<?php echo $_SESSION['userLogin'];?>">
 										</div>
 								  </div>
 								  
 								  <div class="pull-right"> 
-									<button type="button" class="btn ex-button">Modificar Perfil</button>
+									<button class="btn ex-button" type="submit">Modificar Perfil</button>
 								  </div>
+								  
 							   </form>
 							   
 							  
@@ -133,7 +140,7 @@
                     </div>
                 </div>
                 <!-- /.row -->
-
+				
             </div>
             <!-- /.container-fluid -->
 
