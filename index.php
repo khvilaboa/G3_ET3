@@ -1,12 +1,4 @@
 <!DOCTYPE html>
-<?php
-include('./MultiLanguage/FuncionIdioma.php');
-session_start();
-
-$_SESSION['idioma']='ENG';
-
-$textos = idioma(0,$_SESSION['idioma']);
-?>
 <html lang="en">
 
     <head>
@@ -81,12 +73,12 @@ $textos = idioma(0,$_SESSION['idioma']);
 
                                     <div style="margin-bottom: 25px" class="input-group">
                                         <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                                        <input id="login-username" type="text" class="form-control" onKeyUp="validar()" name="username" value="" placeholder="<?php echo $textos[1];//usuario@ejemplo.com?>">                                        
+                                        <input id="login-username" type="text" class="form-control" onKeyUp="validar()" name="username" value="" placeholder="usuario@ejemplo.com">                                        
                                     </div>
 
                                     <div style="margin-bottom: 25px" class="input-group">
                                         <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-                                        <input id="login-password" type="password" class="form-control" onKeyUp="validar()" name="password" placeholder="<?php echo $textos[2];//Contrase&ntilde;a?>">
+                                        <input id="login-password" type="password" class="form-control" onKeyUp="validar()" name="password" placeholder="Contrase&ntilde;a">
                                     </div>
 
                                     <!--<div class="input-group">
@@ -101,10 +93,10 @@ $textos = idioma(0,$_SESSION['idioma']);
 
                                         <div class="col-md-12">
 
-                                            <input id="login-remember" type="checkbox" name="remember" value="1" onclick="rememberPassword()"> <?php echo $textos[3];//Recordar?>
+                                            <input id="login-remember" type="checkbox" name="remember" value="1" onclick="rememberPassword()"> Recordar
 
                                             <div class="pull-right" id="div-login">
-                                                <a id="btn-login" onclick="document.forms['loginform'].submit()" disabled='disabled' class="btn btn-success"><?php echo $textos[4];//Entrar?>  </a>
+                                                <a id="btn-login" onclick="document.forms['loginform'].submit()" disabled='disabled' class="btn btn-success">Entrar  </a>
                                             </div>
                                         </div>
                                     </div>
@@ -114,26 +106,16 @@ $textos = idioma(0,$_SESSION['idioma']);
                                     <div class="form-group">
                                         <div class="col-md-12 control">
                                             <div style="border-top: 1px solid#888; padding-top:15px; font-size:85%" >
-                                                <?php echo $textos[5];//¿No tienes cuenta??> 
+                                                No tienes cuenta? 
                                                 <a href="registro.php" onClick="$('#loginbox').hide();
                                                         $('#signupbox').show()">
-                                                    <?php echo $textos[6];//Reg&iacute;strate aqu&iacute;?>
+                                                    Reg&iacute;strate aqu&iacute;
                                                 </a>
                                             </div>
                                         </div>
                                     </div>    
                                 </form>
-								<!--<form action="./MultiLanguage/CambioIdioma.php" method="post"> 
-						</form>	
-					<form action="./MultiLanguage/CambioIdioma.php" method="post"> 				
-    <select name="idioma" onChange='this.form.submit()'>
-            <option value=""><_?php echo $textos[7];//Seleccione su idioma?></option>
-            <option value="ENG">English</option>
-            <option value="ESP">Español</option>
-            <option value="GAL">Galego</option>
-			<option value="DEU">Deutsch</option>
-    </select>
-	</form> -->
+
                             </div>
                         </div>
                     </div>

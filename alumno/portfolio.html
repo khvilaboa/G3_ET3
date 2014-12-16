@@ -1,12 +1,4 @@
 <!DOCTYPE html>
-<?php
-include('../MultiLanguage/FuncionIdioma.php');
-session_start();
-
-//$_SESSION['idioma']='ENG';
-
-$textos = idioma(8,$_SESSION['idioma']);
-?>
 <html lang="en">
 
 <head>
@@ -54,7 +46,7 @@ $textos = idioma(8,$_SESSION['idioma']);
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.php">ESEIXesti&oacute;n - <?php echo $textos[11];//Alumno?></a>
+                <a class="navbar-brand" href="index.html">ESEIXesti&oacute;n - Alumno</a>
             </div>
             <!-- Top Menu Items -->
             <ul class="nav navbar-right top-nav">
@@ -62,11 +54,11 @@ $textos = idioma(8,$_SESSION['idioma']);
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> John Smith <b class="caret"></b></a>
                     <ul class="dropdown-menu">
                         <li>
-                            <a href="perfil.php"><i class="fa fa-fw fa-user"></i> <?php echo $textos[2]; //Perfil?></a>
+                            <a href="perfil.html"><i class="fa fa-fw fa-user"></i> Perfil</a>
                         </li>
                         <li class="divider"></li>
                         <li>
-                            <a href="#"><i class="fa fa-fw fa-power-off"></i> <?php echo $textos[3];//Cerrar sesi&oacute;n?></a>
+                            <a href="#"><i class="fa fa-fw fa-power-off"></i> Cerrar sesi&oacute;n</a>
                         </li>
                     </ul>
                 </li>
@@ -75,16 +67,16 @@ $textos = idioma(8,$_SESSION['idioma']);
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav side-nav">
 					<li>
-                        <a href="listaAsignaturas.php"><i class="fa fa-fw fa-dashboard"></i> <?php echo $textos[4];//Asignaturas?></a>
+                        <a href="listaAsignaturas.html"><i class="fa fa-fw fa-dashboard"></i> Asignaturas</a>
                     </li>
                     <li>
-                        <a href="preinscripcion.php"><i class="fa fa-fw fa-dashboard"></i> <?php echo $textos[5];//Preinscripci&oacute;n?></a>
+                        <a href="preinscripcion.html"><i class="fa fa-fw fa-dashboard"></i> Preinscripci&oacute;n</a>
                     </li>
                     <li>
-                        <a href="portfolio.php"><i class="fa fa-fw fa-bar-chart-o"></i> <?php echo $textos[6];//Portfolio?></a>
+                        <a href="portfolio.html"><i class="fa fa-fw fa-bar-chart-o"></i> Portfolio</a>
                     </li>
                     <li>
-                        <a href="#"><i class="fa fa-fw fa-power-off"></i> <?php echo $textos[3];//Cerrar sesi&oacute;n?></a>
+                        <a href="#"><i class="fa fa-fw fa-power-off"></i> Cerrar sesi&oacute;n</a>
                     </li>
                 </ul>
             </div>
@@ -98,54 +90,62 @@ $textos = idioma(8,$_SESSION['idioma']);
                 <!-- Page Heading -->
                 <div class="row">
                     <div class="col-lg-12">
-                        <h1 class="page-header ex-title"> <?php echo $textos[7];//Listado de trabajos de?> [Asignatura X] </h1>
-                         <div class="panel panel-default">
-						 <div class="panel-heading ex-panel-header"><?php echo $textos[8];//Lista de trabajos?></div>
-						 
+                        <h1 class="page-header ex-title"> Portfolio </h1>
+						<div class="panel panel-default">
+                         
+						 <div class="panel-heading ex-panel-header" style="background:rgba(1,0,0,1);color:#999">Lista de trabajos</div>
 						 <div class="table-responsive">
 						 <table class="table table-striped table-bordered table-hover">
 							<thead>
 								<tr>
-									<th><?php echo $textos[9];//T&iacute;tulo?></th>
-									<th><?php echo $textos[10];//Fecha l&iacute;mite?></th>
+									<th>P&uacute;blico</th>
+									<th>T&iacute;tulo</th>
+									<th>Entrega</th>
+									<th>Nota</th>
+									<th>Comentarios</th>
 								</tr>
 							</thead>
 							<tbody>
+							<form class="form-horizontal" role="form">
 								<tr>
-								   <td><a href="entrega.php">Trabajo 1</a></td>
-								   <td>26/12/2014</td>						
+								   <td><input type="checkbox" name="publico1" value="publico1" checked> </td>
+								   <td>Entrega 1</td>								  
+								   <td>Archivo entrega 1</td>
+								   <td>8</td>
+								   <td>Comentarios de la entrega 1</td>
 								</tr>
 								
 								<tr>
-								   <td><a href="entrega.php">Trabajo 2</a></td>
-								   <td>07/01/2015</td>	
+								   <td><input type="checkbox" name="publico2" value="publico2"> </td>
+								   <td>Entrega 2</td>								  
+								   <td>Archivo entrega 2</td>
+								   <td>7</td>
+								   <td>Comentarios de la entrega 2</td>
 								</tr>
 								
 								<tr>
-								   <td><a href="entrega.php">Trabajo 3</a></td>
-								   <td>17/12/2014</td>
+								   <td><input type="checkbox" name="publico1" value="publico1"> </td>
+								   <td>Entrega 3</td>								  
+								   <td>Archivo entrega 3</td>
+								   <td>6</td>
+								   <td>Comentarios de la entrega 3</td>
 								</tr>
 							<tbody>
 						</table>
-						</div>
+							
 					</div>
+					</div>
+					
+					<input type="checkbox" name="notas" value="notas"> Mostrar notas <br><br>
+							<input type="checkbox" name="publicar" value="publicar"> Publicar<br><br>
+							<p>URL: </p><input type="text" class="form-control" id="url" placeholder="Introduce la url"><br>
 						
 						<div class="pull-right">
-							<a href="listaAsignaturas.php" class="btn ex-button"><?php echo $textos[12];//Volver?></a>
-						</div><br><br>
-						
+						<a href="#" class="btn ex-button">Guardar</a>
+						</div>
+					</form>
+					<br><br>
                     </div>
-					<form action="../MultiLanguage/CambioIdioma.php" method="post"> 
-						</form>	
-					<form action="../MultiLanguage/CambioIdioma.php" method="post"> 				
-    <select name="idioma" onChange='this.form.submit()'>
-            <option value=""><?php echo $textos[1];//Seleccione su idioma?></option>
-            <option value="ENG">English</option>
-            <option value="ESP">Español</option>
-            <option value="GAL">Galego</option>
-			<option value="DEU">Deutsch</option>
-    </select>
-	</form>
                 </div>
                 <!-- /.row -->
 
