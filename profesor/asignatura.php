@@ -1,5 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
+<?php
+include('../MultiLanguage/FuncionIdioma.php');
+session_start();
+
+//$_SESSION['idioma']='ESP';
+
+$textos = idioma(12,$_SESSION['idioma']);
+?>
+
 
 <head>
 
@@ -31,7 +38,6 @@
     <![endif]-->
 
 </head>
-
 <body>
 
     <div id="wrapper">
@@ -46,19 +52,19 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.html">ESEIXesti&oacute;n</a>
+                <a class="navbar-brand" href="index.php"><?php echo $textos[2];//ESEIXesti&oacute;n - Profesor?></a>
             </div>
             <!-- Top Menu Items -->
             <ul class="nav navbar-right top-nav">
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> Admin <b class="caret"></b></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> John Smith <b class="caret"></b></a>
                     <ul class="dropdown-menu">
                         <li>
-                            <a href="#"><i class="fa fa-fw fa-user"></i> Perfil</a>
+                            <a href="perfil.php"><i class="fa fa-fw fa-user"></i> <?php echo $textos[3]; //Perfil?></a>
                         </li>
                         <li class="divider"></li>
                         <li>
-                            <a href="#"><i class="fa fa-fw fa-power-off"></i> Cerrar sesi&oacute;n</a>
+                            <a href="#"><i class="fa fa-fw fa-power-off"></i> <?php echo $textos[4];//Cerrar sesi&oacute;n?></a>
                         </li>
                     </ul>
                 </li>
@@ -67,13 +73,13 @@
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav side-nav">
                     <li>
-                        <a href="listaAsignaturas.html"><i class="fa fa-fw fa-folder-open"></i> Asignaturas</a>
+                        <a href="perfil.php"><i class="fa fa-fw fa-dashboard"></i> <?php echo $textos[3]; //Perfil?></a>
                     </li>
                     <li>
-                        <a href="listaUsuarios.html"><i class="fa fa-fw fa-users"></i> Usuarios</a>
+                        <a href="listaAsignaturas.php"><i class="fa fa-fw fa-bar-chart-o"></i><?php echo $textos[5]; //Asignaturas?> </a>
                     </li>
                     <li>
-                        <a href="../login.html"><i class="fa fa-fw fa-power-off"></i> Cerrar sesi&oacute;n</a>
+                        <a href="#"><i class="fa fa-fw fa-power-off"></i> <?php echo $textos[4];//Cerrar sesi&oacute;n?></a>
                     </li>
                 </ul>
             </div>
@@ -87,38 +93,10 @@
                 <!-- Page Heading -->
                 <div class="row">
                     <div class="col-lg-12">
-                        <h1 class="page-header"> Crear/Modificar Asignaturas </h1>
-                        
+                        <h1 class="page-header ex-title">Asignatura X</h1>
+						
 						<div class="panel panel-default">
-						<div class="panel-heading ex-panel-header">Datos de la asignatura</div>
-						<div class="panel panel-body">
-								<form class="form-horizontal" role="form">
-								
-									<div class="form-group">
-										<label for="name" class="col-sm-2 control-label">Nombre:</label>
-										<div class="col-sm-10">
-											<input id="name" type="text" class="form-control">
-										</div>
-									</div>
-									<div class="form-group">
-										<label for="grade" class="col-sm-2 control-label">Grado:</label>
-										<div class="col-sm-10">
-											<input id="grade" type="text" class="form-control">
-										</div>
-									</div>
-									<div class="form-group">
-										<label for="course" class="col-sm-2 control-label">Curso:</label>
-										<div class="col-sm-10">
-											<input id="course" type="text" class="form-control">
-										</div>
-									</div>
-									<div class="pull-right">
-										<a href="#" class="btn ex-button">Modificar</a>  							
-									</div>
-							</div></div>		
-									
-									<div class="panel panel-default">
-							<div class="panel-heading ex-panel-header">Profesores de la asignatura</div>
+							<div class="panel-heading ex-panel-header"><?php echo $textos[6]; //Alumnos de la asignatura?> </div>
 														
 							<li class="list-group-item">
 							<div class="row">
@@ -128,7 +106,7 @@
 								<thead>
 									<tr>
 									<th>DNI</th>
-										<th>Nombre</th>
+										<th><?php echo $textos[7]; //Nombre?> </th>
 										<th>	</th>
 									</tr>
 								</thead>
@@ -167,7 +145,7 @@
 									<thead>
 										<tr>
 											<th>DNI</th>
-											<th>Nombre</th>
+											<th><?php echo $textos[7]; //Nombre?> </th>
 											<th>	</th>
 										</tr>
 									</thead>
@@ -193,17 +171,17 @@
 							<li class="list-group-item">
 								
 								<div class="form-group">
-								<label for="filterText" class="col-md-1 control-label">Filtro: </label>
+								<label for="filterText" class="col-md-1 control-label"><?php echo $textos[8]; //Filtro:?></label>
 									<div class="col-md-7">
-										<input type="name" class="form-control" id="filterText" placeholder="Filtro de b&uacute;squeda">
+										<input type="name" class="form-control" id="filterText" placeholder="<?php echo $textos[9]; //Filtro de b&uacute;squeda?>">
 									</div>
 								
 								<div class="col-md-3">
 								<select name="ad" class="form-control">
 									<option selected> ---</option>
-									<option value="1.htm">Nombre</option>
+									<option value="1.htm"><?php echo $textos[7]; //Nombre?></option>
 									<option value="2.htm">Dni</option>
-									<option value="3.htm">Apellidos</option>
+									<option value="3.htm"><?php echo $textos[10]; //Apellidos?></option>
 								</select>
 								
 								</div>
@@ -214,24 +192,67 @@
 						</div>
 						
 						
+						<div class="panel panel-default">
+							<div class="panel-heading ex-panel-header"><?php echo $textos[11]; //Trabajos de la asignatura?></div>
+
+							<li class="list-group-item">
+							<table class="table table-striped table-bordered table-hover">
+								<thead>
+									<tr>
+										<th><?php echo $textos[12]; //Trabajo?></th>
+										<th><?php echo $textos[13]; //Fecha l&iacute;mite?></th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+									   <td><a href="trabajo.php">Trabajo de IU</a></td>
+									   <td>11/11/11</td>
+									   
+									</tr>
+									
+									<tr>
+									   <td><a href="trabajo.php">Trabajo de CDA</a></td>
+									   <td>12/12/12</td>
+			
+									</tr>
+									
+									<tr>
+									   <td><a href="trabajo.php">Trabajo de BDII</a></td>
+									   <td>10/10/10</td>
+									   
+									</tr>
+								<tbody>
+							</table>
+							
+							<div class="pull-right">
+								<a href="trabajo.php" class="btn ex-button"><?php echo $textos[14]; //Crear trabajo?></a>
+							</div><br><br>
+							</li>
+						</div>
+						
+						<div class="pull-right">
+							<a href="listaAsignaturas.php" class="btn ex-button"><?php echo $textos[15]; //Volver?></a>
+						</div>
+						
 						
 					</div>
-																			
-					<div class="pull-right">
-						<a href="listaAsignaturas.html" class="btn ex-button">Volver</a>  							
-					</div>    
-
-<br><br><br><br><br><br><br><br><br><br>		
-					</div>
+					<form action="../MultiLanguage/CambioIdioma.php" method="post"> 
+						</form>	
+					<form action="../MultiLanguage/CambioIdioma.php" method="post"> 				
+    <select name="idioma" onChange='this.form.submit()'>
+            <option value=""><?php echo $textos[1];//Seleccione su idioma?></option>
+            <option value="ENG">English</option>
+            <option value="ESP">Español</option>
+            <option value="GAL">Galego</option>
+			<option value="DEU">Deutsch</option>
+    </select>
+	</form>
                 </div>
-                <!-- /.row -->
-
+				<!-- /.row -->
             </div>
-            <!-- /.container-fluid -->
-
+			<!-- /.container-fluid -->
         </div>
-        <!-- /#page-wrapper -->
-
+		<!-- /#page-wrapper -->
     </div>
     <!-- /#wrapper -->
 

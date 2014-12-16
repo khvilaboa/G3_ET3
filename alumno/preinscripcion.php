@@ -1,5 +1,14 @@
 <!DOCTYPE html>
+<?php
+include('../MultiLanguage/FuncionIdioma.php');
+session_start();
+
+//$_SESSION['idioma']='ENG';
+
+$textos = idioma(11,$_SESSION['idioma']);
+?>
 <html lang="en">
+
 <head>
 
     <meta charset="utf-8">
@@ -30,6 +39,7 @@
     <![endif]-->
 
 </head>
+
 <body>
 
     <div id="wrapper">
@@ -44,7 +54,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.html">ESEIXesti&oacute;n - Alumno</a>
+                <a class="navbar-brand" href="index.php">ESEIXesti&oacute;n - <?php echo $textos[11];//Alumno?></a>
             </div>
             <!-- Top Menu Items -->
             <ul class="nav navbar-right top-nav">
@@ -52,11 +62,11 @@
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> John Smith <b class="caret"></b></a>
                     <ul class="dropdown-menu">
                         <li>
-                            <a href="perfil.html"><i class="fa fa-fw fa-user"></i> Perfil</a>
+                            <a href="perfil.php"><i class="fa fa-fw fa-user"></i> <?php echo $textos[2]; //Perfil?></a>
                         </li>
                         <li class="divider"></li>
                         <li>
-                            <a href="#"><i class="fa fa-fw fa-power-off"></i> Cerrar sesi&oacute;n</a>
+                            <a href="#"><i class="fa fa-fw fa-power-off"></i> <?php echo $textos[3];//Cerrar sesi&oacute;n?></a>
                         </li>
                     </ul>
                 </li>
@@ -65,16 +75,16 @@
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav side-nav">
 					<li>
-                        <a href="listaAsignaturas.html"><i class="fa fa-fw fa-dashboard"></i> Asignaturas</a>
+                        <a href="listaAsignaturas.php"><i class="fa fa-fw fa-dashboard"></i> <?php echo $textos[4];//Asignaturas?></a>
                     </li>
                     <li>
-                        <a href="preinscripcion.html"><i class="fa fa-fw fa-dashboard"></i> Preinscripci&oacute;n</a>
+                        <a href="preinscripcion.php"><i class="fa fa-fw fa-dashboard"></i> <?php echo $textos[5];//Preinscripci&oacute;n?></a>
                     </li>
                     <li>
-                        <a href="portfolio.html"><i class="fa fa-fw fa-bar-chart-o"></i> Portfolio</a>
+                        <a href="portfolio.php"><i class="fa fa-fw fa-bar-chart-o"></i> <?php echo $textos[6];//Portfolio?></a>
                     </li>
                     <li>
-                        <a href="#"><i class="fa fa-fw fa-power-off"></i> Cerrar sesi&oacute;n</a>
+                        <a href="#"><i class="fa fa-fw fa-power-off"></i> <?php echo $textos[3];//Cerrar sesi&oacute;n?></a>
                     </li>
                 </ul>
             </div>
@@ -88,53 +98,52 @@
                 <!-- Page Heading -->
                 <div class="row">
                     <div class="col-lg-12">
-					
-                        <h1 class="page-header ex-title"> Gesti&oacute;n de perfil </h1>
+                        <h1 class="page-header"> <?php echo $textos[7];//Preinscripciones?> </h1>
 						<div class="panel panel-default">
-							<div class="panel-heading ex-panel-header">Gesti&oacute;n de perfil</div>
-							<div class="panel-body">
-							   <form class="form-horizontal" role="form">
-										
-								  <div class="form-group">
-									 <label for="passwdAct" class="col-lg-2 control-label">Contrase&ntilde;a actual</label>
-										<div class="col-lg-10">
-										   <input type="password" class="form-control" id="passwdAct" placeholder="Contrase&ntilde;a actual">
-										</div>
-								  </div>
-							   
-								  <div class="form-group">
-									 <label for="passwdNew" class="col-lg-2 control-label">Nueva contrase&ntilde;a</label>
-										<div class="col-lg-10">
-										   <input type="password" class="form-control" id="passwdNew" placeholder="Nueva contrase&ntilde;a">
-										</div>
-								  </div>
-								  
-								  <div class="form-group">
-									 <label for="passwdRep" class="col-lg-2 control-label">Repetir contrase&ntilde;a</label>
-										<div class="col-lg-10">
-										   <input type="password" class="form-control" id="passwdRep" placeholder="Repetir contrase&ntilde;a">
-										</div>
-								  </div>
-								  
-								  <div class="form-group">
-									 <label class="col-lg-2 control-label">Email</label>
-										<div class="col-lg-10">
-											<input type="email" class="form-control" id="inputEmail" placeholder="Introduce tu email">
-										</div>
-								  </div>
-								  
-								  <div class="pull-right"> 
-									<button type="button" class="btn ex-button">Modificar Perfil</button>
-								  </div>
-							   </form>
-							   
-							  
-						  </div>
-					    </div> 
-						
-                  </div>
-                    </div>
-                </div>
+						 <div class="panel-heading ex-panel-header"><?php echo $textos[8];//Lista de asignaturas?></div>
+						 <div class="table-responsive">
+						 <table class="table table-striped table-bordered table-hover">
+							<thead>
+								<tr>
+									<th><?php echo $textos[9];//Nombre?></th>
+									<th><?php echo $textos[10];//Descripci&oacute;n?></th>
+									<th><?php echo $textos[12];//Preinscripci&oacute;n?></th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+								   <td>Interfaces de usuario</td>
+								   <td>Asignatura de interfaces de usuario</td>
+								   <td><a class="btn">Preinscribirse</a></td>
+								</tr>
+								
+								<tr>
+								   <td>Centro de datos</td>
+								   <td>Asignatura de centro de datos</td>
+								   <td><a class="btn">Preinscribirse</a></td>
+								</tr>
+								
+								<tr>
+								   <td>Base de datos</td>
+								   <td>Asignatura de base de datos</td>
+								   <td><a class="btn">Preinscribirse</a></td>
+								</tr>
+							<tbody>
+						</table>
+					</div>	
+					</div>
+					<form action="../MultiLanguage/CambioIdioma.php" method="post"> 
+						</form>	
+					<form action="../MultiLanguage/CambioIdioma.php" method="post"> 				
+    <select name="idioma" onChange='this.form.submit()'>
+            <option value=""><?php echo $textos[1];//Seleccione su idioma?></option>
+            <option value="ENG">English</option>
+            <option value="ESP">Español</option>
+            <option value="GAL">Galego</option>
+			<option value="DEU">Deutsch</option>
+    </select>
+	</form>
+				</div>		
                 <!-- /.row -->
 
             </div>

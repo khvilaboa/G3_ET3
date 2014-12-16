@@ -1,5 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
+<?php
+include('../MultiLanguage/FuncionIdioma.php');
+session_start();
+
+//$_SESSION['idioma']='ESP';
+
+$textos = idioma(13,$_SESSION['idioma']);
+?>
+
 <head>
 
     <meta charset="utf-8">
@@ -15,10 +22,10 @@
 
     <!-- Custom CSS -->
     <link href="../css/sb-admin.css" rel="stylesheet">
-	
+
 	<!-- EseiXestion Style -->
     <link href="../css/ex.css" rel="stylesheet" type="text/css">
-
+	
     <!-- Custom Fonts -->
     <link href="../font-awesome-4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
@@ -44,7 +51,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.html">ESEIXesti&oacute;n - Profesor</a>
+                <a class="navbar-brand" href="index.php"><?php echo $textos[2];//ESEIXesti&oacute;n - Profesor?></a>
             </div>
             <!-- Top Menu Items -->
             <ul class="nav navbar-right top-nav">
@@ -52,11 +59,11 @@
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> John Smith <b class="caret"></b></a>
                     <ul class="dropdown-menu">
                         <li>
-                            <a href="perfil.html"><i class="fa fa-fw fa-user"></i> Perfil</a>
+                            <a href="perfil.php"><i class="fa fa-fw fa-user"></i> <?php echo $textos[3]; //Perfil?></a>
                         </li>
                         <li class="divider"></li>
                         <li>
-                            <a href="#"><i class="fa fa-fw fa-power-off"></i> Cerrar sesi&oacute;n</a>
+                            <a href="#"><i class="fa fa-fw fa-power-off"></i> <?php echo $textos[4];//Cerrar sesi&oacute;n?></a>
                         </li>
                     </ul>
                 </li>
@@ -65,13 +72,13 @@
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav side-nav">
                     <li>
-                        <a href="perfil.html"><i class="fa fa-fw fa-dashboard"></i> Perfil</a>
+                        <a href="perfil.php"><i class="fa fa-fw fa-dashboard"></i><?php echo $textos[3]; //Perfil?></a>
                     </li>
                     <li>
-                        <a href="listaAsignaturas.html"><i class="fa fa-fw fa-bar-chart-o"></i> Asignaturas</a>
+                        <a href="listaAsignaturas.php"><i class="fa fa-fw fa-bar-chart-o"></i> <?php echo $textos[5]; //Asignaturas?></a>
                     </li>
                     <li>
-                        <a href="#"><i class="fa fa-fw fa-power-off"></i> Cerrar sesi&oacute;n</a>
+                        <a href="#"><i class="fa fa-fw fa-power-off"></i><?php echo $textos[4];//Cerrar sesi&oacute;n?></a>
                     </li>
                 </ul>
             </div>
@@ -85,52 +92,55 @@
                 <!-- Page Heading -->
                 <div class="row">
                     <div class="col-lg-12">
-					
-                        <h1 class="page-header ex-title"> Gesti&oacute;n de perfil </h1>
-						<div class="panel panel-default">
-							<div class="panel-heading ex-panel-header">Gesti&oacute;n de perfil</div>
-							<div class="panel-body">
-							   <form class="form-horizontal" role="form">
-										
-								  <div class="form-group">
-									 <label for="passwdAct" class="col-lg-2 control-label">Contrase&ntilde;a actual</label>
-										<div class="col-lg-10">
-										   <input type="password" class="form-control" id="passwdAct" placeholder="Contrase&ntilde;a actual">
-										</div>
-								  </div>
-							   
-								  <div class="form-group">
-									 <label for="passwdNew" class="col-lg-2 control-label">Nueva contrase&ntilde;a</label>
-										<div class="col-lg-10">
-										   <input type="password" class="form-control" id="passwdNew" placeholder="Nueva contrase&ntilde;a">
-										</div>
-								  </div>
-								  
-								  <div class="form-group">
-									 <label for="passwdRep" class="col-lg-2 control-label">Repetir contrase&ntilde;a</label>
-										<div class="col-lg-10">
-										   <input type="password" class="form-control" id="passwdRep" placeholder="Repetir contrase&ntilde;a">
-										</div>
-								  </div>
-								  
-								  <div class="form-group">
-									 <label class="col-lg-2 control-label">Email</label>
-										<div class="col-lg-10">
-											<input type="email" class="form-control" id="inputEmail" placeholder="Introduce tu email">
-										</div>
-								  </div>
-								  
-								  <div class="pull-right"> 
-									<button type="button" class="btn ex-button">Modificar Perfil</button>
-								  </div>
-							   </form>
-							   
-							  
-						  </div>
-					    </div> 
+                        <h1 class="page-header ex-title"> Entrega Y </h1>
+                        <div class="panel panel-default">
+							<div class="panel-heading ex-panel-header"><?php echo $textos[6];//Datos de la entrega?></div>
+											
+							<ul class="list-group">
+								<li class="list-group-item"><b><?php echo $textos[7];//T&iacute;tulo:?></b> Entrega 1</li>
+								<li class="list-group-item"><b><?php echo $textos[8];//Usuario:?></b> 11223344A</li>
+							</ul>
+						</div>
 						
-                  </div>
-                    </div>
+						<div class="panel panel-default">
+							<div class="panel-heading ex-panel-header"><?php echo $textos[9];//Correci&oacute;n?></div>
+											
+							<div class="panel-body">
+								<div class="form-group">
+									 <label for="selNosta" class="col-lg-2 control-label"><?php echo $textos[10];//Nota?></label>
+										<div class="col-lg-10">
+										   <select class="form-control" id="selNota">
+												<option>1</option>
+												<option>2</option>
+												<option>3</option>
+										   <select>
+										</div>
+								</div><br>
+								
+								<div class="form-group">
+									 <label for="observ" class="col-lg-2 control-label"><?php echo $textos[11];//Observaciones?></label>
+										<div class="col-lg-10">
+										   <textarea class="form-control" rows="5" id="observ"></textarea>
+										</div>
+								</div>
+
+							</div>
+						</div>
+						<div class="pull-right">
+							<a href="trabajo.php" class="btn ex-button"><?php echo $textos[12]; //Volver?></a>
+						</div>
+					</div>
+					 <form action="../MultiLanguage/CambioIdioma.php" method="post"> 
+						</form>	
+					<form action="../MultiLanguage/CambioIdioma.php" method="post"> 				
+    <select name="idioma" onChange='this.form.submit()'>
+            <option value=""><?php echo $textos[1];//Seleccione su idioma?></option>
+            <option value="ENG">English</option>
+            <option value="ESP">Español</option>
+            <option value="GAL">Galego</option>
+			<option value="DEU">Deutsch</option>
+    </select>
+	</form>
                 </div>
                 <!-- /.row -->
 
