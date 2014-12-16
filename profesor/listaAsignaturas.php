@@ -1,3 +1,9 @@
+<?php
+	include_once "../clases/Asignatura_class.php";
+	session_start();  
+?>
+
+<html>
 <head>
 
     <meta charset="utf-8">
@@ -87,9 +93,9 @@
                         <div class="panel panel-default">
 							 <div class="panel-heading ex-panel-header">Lista de asignaturas</div>
 							 <div class="list-group">
-								<a href="asignatura.html" class="list-group-item">Interfaces de Usuario</a>
-								<a href="asignatura.html" class="list-group-item">Bases de Datos II</a>
-								<a href="asignatura.html" class="list-group-item">Redes de Computadoras II</a>
+								<?php										
+									asignatura::verAsigProf($_SESSION['userDni']);
+								?>
 							</div>
 						</div>
 						
