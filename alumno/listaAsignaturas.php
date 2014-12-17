@@ -130,9 +130,9 @@ $textos = idioma(7,$_SESSION['idioma']);
 								
 									while ($row = mysql_fetch_array($resultado))
 										{
-											echo "<TR>";
-											echo "<TD>".$row['nomAsignatura']."</TD>";
-											echo "</TR>";
+											echo "<tr>";
+											echo "<td><a href=\"listaTrabajos.php?ca=" . $row['codAsignatura'] . "\">" . $row['nomAsignatura'] . "</a></td>";
+											echo "</tr>";
 										}
 									
 								   

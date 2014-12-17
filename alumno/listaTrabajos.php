@@ -2,11 +2,17 @@
 <?php
 session_start();
 include('../MultiLanguage/FuncionIdioma.php');
-
+include('../clases/Asignatura_class.php');
 
 //$_SESSION['idioma']='ENG';
 
 $textos = idioma(8,$_SESSION['idioma']);
+
+$codAsig = $_REQUEST['ca'];
+echo $codAsig;
+$asig = new asignatura('','',-1,$codAsig);
+
+
 ?>
 <html lang="en">
 
@@ -112,20 +118,7 @@ $textos = idioma(8,$_SESSION['idioma']);
 								</tr>
 							</thead>
 							<tbody>
-								<tr>
-								   <td><a href="entrega.php">Trabajo 1</a></td>
-								   <td>26/12/2014</td>						
-								</tr>
-								
-								<tr>
-								   <td><a href="entrega.php">Trabajo 2</a></td>
-								   <td>07/01/2015</td>	
-								</tr>
-								
-								<tr>
-								   <td><a href="entrega.php">Trabajo 3</a></td>
-								   <td>17/12/2014</td>
-								</tr>
+								<?php $asig->Get_Trabajos(); ?>
 							<tbody>
 						</table>
 						</div>
