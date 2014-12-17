@@ -2,11 +2,19 @@
 <?php
 session_start();
 include('../MultiLanguage/FuncionIdioma.php');
+include('../clases/Trabajo_class.php');
 
 
 //$_SESSION['idioma']='ENG';
 
 $textos = idioma(6,$_SESSION['idioma']);
+
+$codAsig = $_REQUEST['ca'];
+$codTrab = $_REQUEST['ct'];
+
+$ent = new trabajo($codTrab, $codAsig, '', '' ,'');
+$ent->Rellenar();
+
 ?>
 <html lang="en">
 
@@ -104,13 +112,14 @@ $textos = idioma(6,$_SESSION['idioma']);
 						<div class="panel-heading ex-panel-header"><?php echo $textos[7];//Datos del trabajo?></div>
 											
 						<ul class="list-group">
-							<li class="list-group-item"><b><?php echo $textos[8];//T&iacute;tulo:?></b> Entrega 1</li>
-							<li class="list-group-item"><b><?php echo $textos[9];//Descripci&oacute;n:?></b> Descripci&oacute;n de la entrega 1</li>
-							<li class="list-group-item"><b><?php echo $textos[10];//Fecha l&iacute;mite:?></b> 19/12/14</li>
+							<li class="list-group-item"><b><?php echo $textos[8];//T&iacute;tulo:?></b> <?php echo $ent->getTitulo(); ?></li>
+							<li class="list-group-item"><b><?php echo $textos[9];//Descripci&oacute;n:?></b> <?php echo $ent->getDescripcion(); ?></li>
+							<li class="list-group-item"><b><?php echo $textos[10];//Fecha l&iacute;mite:?></b> <?php echo $ent->getFechaFinal(); ?></li>
 						</ul>
 
 					</div>
 					
+					<?php if($ent->getFechaFinal() >= date("Y-m-d")) { ?>
 					<div class="panel panel-default">
 						<div class="panel-heading ex-panel-header"><?php echo $textos[11];//Subir Entrega?></div>
 											
@@ -128,6 +137,7 @@ $textos = idioma(6,$_SESSION['idioma']);
 
 					</div>
 					
+					<?php } else {?>
 					<div class="panel panel-default">
 						<div class="panel-heading ex-panel-header"><?php echo $textos[14];//Correcci&oacute;n?></div>
 											
@@ -137,6 +147,8 @@ $textos = idioma(6,$_SESSION['idioma']);
 						</ul>
 
 					</div>
+					
+					<?php } ?>
 					
 					<div class="pull-right">
 						<a href="listaTrabajos.php" class="btn ex-button"><b><?php echo $textos[17];//Volver?></a>

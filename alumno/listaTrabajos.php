@@ -122,7 +122,7 @@ $asig = new asignatura('','',-1,$codAsig);
 									$res = $asig->Get_Trabajos(); 
 									while ($row = mysql_fetch_array($res)) {
 										echo "<tr>
-													<td><a href=\"entrega.php?ca=" . $row['codAsignatura'] . "&ce=" . $row['codTrabajo'] . "\">" . $row['nombreTrabajo'] . "</td>
+													<td><a href=\"entrega.php?ca=" . $row['codAsignatura'] . "&ct=" . $row['codTrabajo'] . "\">" . $row['nombreTrabajo'] . "</td>
 													<td>" . $row['fechaLimiteTrabajo'] . "</td>
 											 </tr>";
 									}

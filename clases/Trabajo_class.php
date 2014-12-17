@@ -1,10 +1,12 @@
 <?php
+include_once "../conexion.php";
+
 class trabajo{
 	
 	//atributo codigoTrabajo: guarda el codigo de trabajo
-	var $codTrab
+	var $codTrab;
 	//atributo codigoTrabajo: guarda el codigo de asignatura
-	var $codAsig
+	var $codAsig;
 	//atributo titulo : guarda el titulo del trabajo
 	var $titulo;
 	//atributo descripcion: guarda la descripcion del trabajo
@@ -74,6 +76,19 @@ class trabajo{
 	function setFechaFinal($fechaFinal)
 	{
 		$this->fechaFinal = $fechaFinal;
+	}
+	
+	// rellenar
+	function Rellenar() {
+		Conectarse();
+		$sql = "select * from Trabajo where codAsignatura=" . $this->codAsig . " and codTrabajo=" . $this->codTrab;
+		$resultado = mysql_query($sql);
+		
+		if ($row = mysql_fetch_array($resultado)) {
+			$this->titulo = $row['nombreTrabajo'];
+			$this->descripcion = $row['descripcionTrabajo'];
+			$this->fechaFinal = $row['fechaLimiteTrabajo'];
+		} 
 	}
 	
 	//metodo insertar
