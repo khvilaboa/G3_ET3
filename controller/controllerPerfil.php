@@ -14,8 +14,12 @@ $nombre = $_POST["name"];
 $apellidos = $_POST["surname"];
 $dni = $row['dniUsuario'];
 $password = $_POST["newPassword"];
+$oldpassword = $_POST["actualPassword"];
 $tipo = $row['tipoUsuario'];
 
 $user = new usuario($email, $nombre, $password, $apellidos, $dni, $tipo);
-$user->modificar();
+if($_SESSION['userPass'] == $oldpassword)
+    $user->modificar();
+else
+    header("Location:../alumno/perfil.php");
 ?>

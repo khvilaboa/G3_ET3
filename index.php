@@ -3,9 +3,9 @@
 <?php
 include('./MultiLanguage/FuncionIdioma.php');
 
-$_SESSION['idioma']='ENG';
+$_SESSION['idioma'] = 'ENG';
 
-$textos = idioma(0,$_SESSION['idioma']);
+$textos = idioma(0, $_SESSION['idioma']);
 ?>
 <html lang="en">
 
@@ -41,7 +41,7 @@ $textos = idioma(0,$_SESSION['idioma']);
         function rememberPassword() {
             //Comprobaciones de "email", no se puede registrar nadie sin email, ademas el formato del email debe ser valido
             if (document.getElementById("login-remember").checked == true) {
-                $.notify("<?php echo $textos[8];//¿Está seguro de que desea recordar su contraseña??>", "warn");
+                $.notify("<?php echo $textos[8]; //¿Está seguro de que desea recordar su contraseña? ?>", "warn");
             }
         }
 
@@ -81,12 +81,12 @@ $textos = idioma(0,$_SESSION['idioma']);
 
                                     <div style="margin-bottom: 25px" class="input-group">
                                         <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                                        <input id="login-username" type="text" class="form-control" onKeyUp="validar()" name="username" value="" placeholder="<?php echo $textos[1];//usuario@ejemplo.com?>">                                        
+                                        <input id="login-username" type="text" class="form-control" onKeyUp="validar()" name="username" value="" placeholder="<?php echo $textos[1]; //usuario@ejemplo.com ?>">                                        
                                     </div>
 
                                     <div style="margin-bottom: 25px" class="input-group">
                                         <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-                                        <input id="login-password" type="password" class="form-control" onKeyUp="validar()" name="password" placeholder="<?php echo $textos[2];//Contrase&ntilde;a?>">
+                                        <input id="login-password" type="password" class="form-control" onKeyUp="validar()" name="password" placeholder="<?php echo $textos[2]; //Contrase&ntilde;a ?>">
                                     </div>
 
                                     <!--<div class="input-group">
@@ -101,10 +101,10 @@ $textos = idioma(0,$_SESSION['idioma']);
 
                                         <div class="col-md-12">
 
-                                            <input id="login-remember" type="checkbox" name="remember" value="1" onclick="rememberPassword()"> <?php echo $textos[3];//Recordar?>
+                                            <input id="login-remember" type="checkbox" name="remember" value="1" onclick="rememberPassword()"> <?php echo $textos[3]; //Recordar ?>
 
                                             <div class="pull-right" id="div-login">
-                                                <a id="btn-login" onclick="document.forms['loginform'].submit()" disabled='disabled' class="btn btn-success"><?php echo $textos[4];//Entrar?>  </a>
+                                                <a id="btn-login" onclick="document.forms['loginform'].submit()" disabled='disabled' class="btn btn-success"><?php echo $textos[4]; //Entrar ?>  </a>
                                             </div>
                                         </div>
                                     </div>
@@ -114,27 +114,27 @@ $textos = idioma(0,$_SESSION['idioma']);
                                     <div class="form-group">
                                         <div class="col-md-12 control">
                                             <div style="border-top: 1px solid#888; padding-top:15px; font-size:85%" >
-                                                <?php echo $textos[5];//¿No tienes cuenta??>  
+                                                <?php echo $textos[5]; //¿No tienes cuenta??>  
                                                 <a href="registro.php" onClick="$('#loginbox').hide();
                                                         $('#signupbox').show()">
-                                                    <?php echo $textos[6];//Reg&iacute;strate aqu&iacute;?>
+                                                       <?php echo $textos[6]; //Reg&iacute;strate aqu&iacute;?>
                                                 </a>
                                             </div>
                                         </div>
                                     </div>    
                                 </form>
-<!-- Se utilizará en el futuro una vez seleccionado la manera de inicializar la variable idioma en el index
-<form action="./MultiLanguage/CambioIdioma.php" method="post"> 
-						</form>	
-					<form action="./MultiLanguage/CambioIdioma.php" method="post"> 				
-    <select name="idioma" onChange='this.form.submit()'>
-            <option value=""><_?php echo $textos[7];//Seleccione su idioma?></option>
-            <option value="ENG">English</option>
-            <option value="ESP">Español</option>
-            <option value="GAL">Galego</option>
-			<option value="DEU">Deutsch</option>
-    </select>
-	</form> -->
+                                <!-- Se utilizará en el futuro una vez seleccionado la manera de inicializar la variable idioma en el index
+                                <form action="./MultiLanguage/CambioIdioma.php" method="post"> 
+                                                                                </form>	
+                                                                        <form action="./MultiLanguage/CambioIdioma.php" method="post"> 				
+                                    <select name="idioma" onChange='this.form.submit()'>
+                                            <option value=""><_?php echo $textos[7];//Seleccione su idioma?></option>
+                                            <option value="ENG">English</option>
+                                            <option value="ESP">Español</option>
+                                            <option value="GAL">Galego</option>
+                                                        <option value="DEU">Deutsch</option>
+                                    </select>
+                                        </form> -->
                             </div>
                         </div>
                     </div>

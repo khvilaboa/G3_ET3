@@ -31,6 +31,26 @@
         <![endif]-->
 
     </head>
+    <script type="text/javascript">
+
+        function validar() {
+
+            var oldPassword = document.getElementById("passwdAct").value;
+            var newPassword = document.getElementById("passwdNew").value;
+            var passwordRepeat = document.getElementById("passwdRep").value;
+            var boton_aceptar = document.getElementById("btn-aceptar");
+
+
+            //Comprobaciones de "email", no se puede registrar nadie sin email, ademas el formato del email debe ser valido
+            if (((oldPassword.length >= 6) && (oldPassword.length < 15)) && ((newPassword.length >= 6) && (newPassword.length < 15)) && ((passwordRepeat.length >= 6) && (passwordRepeat.length < 15)) && (newPassword == passwordRepeat)) {
+                boton_aceptar.removeAttribute("disabled", "disabled");
+            }
+            else {
+                boton_aceptar.setAttribute("disabled", "disabled");
+            }
+
+        }
+    </script>
     <body>
 
         <div id="wrapper">
@@ -50,7 +70,7 @@
                 <!-- Top Menu Items -->
                 <ul class="nav navbar-right top-nav">
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> <?php echo $_SESSION['userName'];?> <b class="caret"></b></a>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> <?php echo $_SESSION['userName']; ?> <b class="caret"></b></a>
                         <ul class="dropdown-menu">
                             <li>
                                 <a href="perfil.php"><i class="fa fa-fw fa-user"></i> Perfil</a>
@@ -109,27 +129,21 @@
                                         <div class="form-group">
                                             <label for="passwdAct" class="col-lg-2 control-label">Contrase&ntilde;a actual</label>
                                             <div class="col-lg-10">
-                                                <?php
-                                                echo "<input type=\"password\" name=\"actualPassword\" class=\"form-control\" id=\"passwdAct\" value=\"{$row['passwordUsuario']}\" placeholder=\"Contrase&ntilde;a actual\">";
-                                                ?>
+                                                <input type="password" name="actualPassword" onKeyUp="validar()" class="form-control" id="passwdAct" value="" placeholder="Contrase&ntilde;a actual">
                                             </div>
                                         </div>
 
                                         <div class="form-group">
                                             <label for="passwdNew" class="col-lg-2 control-label">Nueva contrase&ntilde;a</label>
                                             <div class="col-lg-10">
-                                                <?php
-                                                echo "<input type = \"password\" name = \"newPassword\" class = \"form-control\" id = \"passwdNew\" value=\"\" placeholder = \"Nueva contrase&ntilde;a\">";
-                                                ?>
+                                                <input type = "password" name = "newPassword" onKeyUp="validar()" class = "form-control" id = "passwdNew" value="" placeholder = "Nueva contrase&ntilde;a">
                                             </div>
                                         </div>
 
                                         <div class="form-group">
                                             <label for="passwdRep" class="col-lg-2 control-label">Repetir contrase&ntilde;a</label>
                                             <div class="col-lg-10">
-                                                <?php
-                                                echo "<input type=\"password\" name=\"repeatPassword\" class=\"form-control\" id=\"passwdRep\" value=\"\" placeholder=\"Repetir contrase&ntilde;a\">";
-                                                ?> 
+                                                <input type="password" name="repeatPassword" onKeyUp="validar()" class="form-control" id="passwdRep" value="" placeholder="Repetir contrase&ntilde;a">
                                             </div>
                                         </div>
 
@@ -137,7 +151,7 @@
                                             <label for="passwdRep" class="col-lg-2 control-label">Nombre actual</label>
                                             <div class="col-lg-10">
                                                 <?php
-                                                echo "<input name=\"name\" class=\"form-control\" id=\"passwdRep\" value=\"{$row['nombreUsuario']}\" placeholder=\"Nuevo Nombre\">";
+                                                echo "<input name=\"name\" class=\"form-control\" id=\"oldName\" value=\"{$row['nombreUsuario']}\" placeholder=\"Nuevo Nombre\">";
                                                 ?>
                                             </div>
                                         </div>
@@ -146,13 +160,13 @@
                                             <label for="passwdRep" class="col-lg-2 control-label">Apellidos actuales</label>
                                             <div class="col-lg-10">
                                                 <?php
-                                                echo "<input name=\"surname\" class=\"form-control\" id=\"passwdRep\" value=\"{$row['apellidoUsuario']}\" placeholder=\"Nuevos Apellidos\">";
+                                                echo "<input name=\"surname\" class=\"form-control\" id=\"oldSurName\" value=\"{$row['apellidoUsuario']}\" placeholder=\"Nuevos Apellidos\">";
                                                 ?>
                                             </div>
                                         </div>
 
                                         <div class="pull-right"> 
-                                            <button type="button" onclick="document.forms['perfilform'].submit()" class="btn ex-button">Modificar Perfil</button>
+                                            <button type="button" onclick="document.forms['perfilform'].submit()" class="btn ex-button" id="btn-aceptar" disabled='disabled'>Modificar Perfil</button>
                                         </div>
                                     </form>
 
