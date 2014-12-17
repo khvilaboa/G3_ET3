@@ -211,7 +211,7 @@
 										$resultado = asignatura::verTrabajos($_GET['nombreAsig']);
 										while ($row = mysql_fetch_array($resultado))
 										{
-											echo "<tr><td><a href='trabajo.php?codTrabajo=".$row['codTrabajo']."'>".$row['nombreTrabajo']."</a></td>";
+											echo "<tr><td><a href='trabajo.php?codTrabajo=".$row['codTrabajo']."&codAsig=".$row['codAsignatura']."'>".$row['nombreTrabajo']."</a></td>";
 											echo "<td>".$row['fechaLimiteTrabajo']."</td></tr>";
 										}
 									?>	

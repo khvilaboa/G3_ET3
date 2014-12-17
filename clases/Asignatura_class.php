@@ -233,7 +233,7 @@ class asignatura
 	}
 
 	public static function verTrabajos($asig) {
-		$sql = "SELECT codTrabajo, nombreTrabajo, fechaLimiteTrabajo FROM trabajo 
+		$sql = "SELECT codTrabajo, codAsignatura, nombreTrabajo, fechaLimiteTrabajo FROM trabajo 
 		WHERE codAsignatura = (SELECT codAsignatura FROM asignatura WHERE nomAsignatura = '".$asig."')"; 
 		$resultado = mysql_query($sql);
 		echo mysql_error();
