@@ -104,7 +104,7 @@
 							<div class="row">
 							<div class="col-md-5">
 							<div class="table-responsive">
-						<FORM method="GET" ACTION="inscribirAlumno.php">
+						<FORM method="GET" ACTION="..\controller\profesor\inscribirAlumno.php">
 							<table class="table table-striped table-bordered table-hover table-condensed">
 								<thead>
 									<tr> 
@@ -130,7 +130,7 @@
 								<INPUT TYPE="hidden" NAME="nombreAsig" VALUE="<?php echo $_GET['nombreAsig']; ?>">
 
 						</FORM>
-						<FORM method="GET" ACTION="expulsarAlumno.php">
+						<FORM method="GET" ACTION="..\controller\profesor\expulsarAlumno.php">
 								<INPUT class="btn ex-button" TYPE="submit" NAME="accion" VALUE="<">
 								<INPUT TYPE="hidden" NAME="nombreAsig" VALUE="<?php echo $_GET['nombreAsig']; ?>">
 							</div>
