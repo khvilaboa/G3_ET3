@@ -1,6 +1,11 @@
 <?php
+		session_start();  
 	include_once "../clases/Asignatura_class.php";
-	session_start();  
+	include('../MultiLanguage/FuncionIdioma.php');
+
+//$_SESSION['idioma']='ESP';
+
+$textos = idioma(14,$_SESSION['idioma']);
 ?>
 
 <html>
@@ -48,7 +53,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.html">ESEIXesti&oacute;n - Profesor</a>
+                <a class="navbar-brand" href="index.html"><?php echo $textos[2];//ESEIXesti&oacute;n - Profesor?></a>
             </div>
             <!-- Top Menu Items -->
             <ul class="nav navbar-right top-nav">
@@ -56,11 +61,11 @@
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> <?php echo $_SESSION['userName'] ?> <b class="caret"></b></a>
                     <ul class="dropdown-menu">
                         <li>
-                            <a href="perfil.html"><i class="fa fa-fw fa-user"></i> Perfil</a>
+                            <a href="perfil.html"><i class="fa fa-fw fa-user"></i> <?php echo $textos[3]; //Perfil?></a>
                         </li>
                         <li class="divider"></li>
                         <li>
-                            <a href="#"><i class="fa fa-fw fa-power-off"></i> Cerrar sesi&oacute;n</a>
+                            <a href="#"><i class="fa fa-fw fa-power-off"></i> <?php echo $textos[4];//Cerrar sesi&oacute;n?></a>
                         </li>
                     </ul>
                 </li>
@@ -69,13 +74,13 @@
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav side-nav">
                     <li>
-                        <a href="perfil.html"><i class="fa fa-fw fa-dashboard"></i> Perfil</a>
+                        <a href="perfil.html"><i class="fa fa-fw fa-dashboard"></i> <?php echo $textos[3]; //Perfil?></a>
                     </li>
                     <li>
-                        <a href="listaAsignaturas.html"><i class="fa fa-fw fa-bar-chart-o"></i> Asignaturas</a>
+                        <a href="listaAsignaturas.html"><i class="fa fa-fw fa-bar-chart-o"></i> <?php echo $textos[5]; //Asignaturas?></a>
                     </li>
                     <li>
-                        <a href="#"><i class="fa fa-fw fa-power-off"></i> Cerrar sesi&oacute;n</a>
+                        <a href="#"><i class="fa fa-fw fa-power-off"></i> <?php echo $textos[4];//Cerrar sesi&oacute;n?></a>
                     </li>
                 </ul>
             </div>
@@ -89,9 +94,9 @@
                 <!-- Page Heading -->
                 <div class="row">
                     <div class="col-lg-12">
-                        <h1 class="page-header ex-title"> Asignaturas </h1>
+                        <h1 class="page-header ex-title"> <?php echo $textos[5]; //Asignaturas?> </h1>
                         <div class="panel panel-default">
-							 <div class="panel-heading ex-panel-header">Lista de asignaturas</div>
+							 <div class="panel-heading ex-panel-header"><?php echo $textos[6]; //Lista de asignaturas?></div>
 							 <div class="list-group">
 								<?php										
 									asignatura::verAsigProf($_SESSION['userDni']);
@@ -100,6 +105,17 @@
 						</div>
 						
                     </div>
+					<form action="../MultiLanguage/CambioIdioma.php" method="post"> 
+						</form>	
+					<form action="../MultiLanguage/CambioIdioma.php" method="post"> 				
+    <select name="idioma" onChange='this.form.submit()'>
+            <option value=""><?php echo $textos[1];//Seleccione su idioma?></option>
+            <option value="ENG">English</option>
+            <option value="ESP">Español</option>
+            <option value="GAL">Galego</option>
+			<option value="DEU">Deutsch</option>
+    </select>
+	</form>
                 </div>
                 <!-- /.row -->
 

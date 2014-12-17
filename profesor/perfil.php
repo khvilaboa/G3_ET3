@@ -2,6 +2,11 @@
 session_start();
 include_once('../conexion.php');
 Conectarse();
+include('../MultiLanguage/FuncionIdioma.php');
+
+//$_SESSION['idioma']='ESP';
+
+$textos = idioma(15,$_SESSION['idioma']);
 ?>
 
 <!DOCTYPE html>
@@ -50,7 +55,7 @@ Conectarse();
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.html">ESEIXesti&oacute;n - Profesor</a>
+                <a class="navbar-brand" href="index.html"><?php echo $textos[2];//ESEIXesti&oacute;n - Profesor?></a>
             </div>
             <!-- Top Menu Items -->
             <ul class="nav navbar-right top-nav">
@@ -58,11 +63,11 @@ Conectarse();
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> John Smith <b class="caret"></b></a>
                     <ul class="dropdown-menu">
                         <li>
-                            <a href="perfil.html"><i class="fa fa-fw fa-user"></i> Perfil</a>
+                            <a href="perfil.html"><i class="fa fa-fw fa-user"></i> <?php echo $textos[3]; //Perfil?></a>
                         </li>
                         <li class="divider"></li>
                         <li>
-                            <a href="#"><i class="fa fa-fw fa-power-off"></i> Cerrar sesi&oacute;n</a>
+                            <a href="#"><i class="fa fa-fw fa-power-off"></i> <?php echo $textos[4];//Cerrar sesi&oacute;n?></a>
                         </li>
                     </ul>
                 </li>
@@ -71,13 +76,13 @@ Conectarse();
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav side-nav">
                     <li>
-                        <a href="perfil.html"><i class="fa fa-fw fa-dashboard"></i> Perfil</a>
+                        <a href="perfil.html"><i class="fa fa-fw fa-dashboard"></i> <?php echo $textos[3]; //Perfil?></a>
                     </li>
                     <li>
-                        <a href="listaAsignaturas.html"><i class="fa fa-fw fa-bar-chart-o"></i> Asignaturas</a>
+                        <a href="listaAsignaturas.html"><i class="fa fa-fw fa-bar-chart-o"></i> <?php echo $textos[5]; //Asignaturas?></a>
                     </li>
                     <li>
-                        <a href="#"><i class="fa fa-fw fa-power-off"></i> Cerrar sesi&oacute;n</a>
+                        <a href="#"><i class="fa fa-fw fa-power-off"></i> <?php echo $textos[4];//Cerrar sesi&oacute;n?></a>
                     </li>
                 </ul>
             </div>
@@ -92,42 +97,42 @@ Conectarse();
                 <div class="row">
                     <div class="col-lg-12">
 					
-                        <h1 class="page-header ex-title"> Gesti&oacute;n de perfil </h1>
+                        <h1 class="page-header ex-title"> <?php echo $textos[6];//Perfil?> </h1>
 						<div class="panel panel-default">
-							<div class="panel-heading ex-panel-header">Gesti&oacute;n de perfil</div>
+							<div class="panel-heading ex-panel-header"><?php echo $textos[7];//Gesti&oacute;n de perfil?></div>
 							<div class="panel-body">
 							   <form class="form-horizontal" role="form" METHOD="GET" action="controladorPerfil.php">
 										
 								  <div class="form-group">
-									 <label for="passwdAct" class="col-lg-2 control-label">Contrase&ntilde;a actual</label>
+									 <label for="passwdAct" class="col-lg-2 control-label"><?php echo $textos[8];//Contrase&ntilde;a actual?></label>
 										<div class="col-lg-10">
-										   <input type="password" class="form-control" name="passwdAct" placeholder="Contrase&ntilde;a actual">
+										   <input type="password" class="form-control" name="passwdAct" placeholder="<?php echo $textos[8];//Contrase&ntilde;a actual?>">
 										</div>
 								  </div>
 							   
 								  <div class="form-group">
-									 <label for="passwdNew" class="col-lg-2 control-label">Nueva contrase&ntilde;a</label>
+									 <label for="passwdNew" class="col-lg-2 control-label"><?php echo $textos[9];//Nueva contrase&ntilde;a?></label>
 										<div class="col-lg-10">
-										   <input type="password" class="form-control" name="passwdNew" placeholder="Nueva contrase&ntilde;a">
+										   <input type="password" class="form-control" name="passwdNew" placeholder="<?php echo $textos[9];//Nueva contrase&ntilde;a?>">
 										</div>
 								  </div>
 								  
 								  <div class="form-group">
-									 <label for="passwdRep" class="col-lg-2 control-label">Repetir contrase&ntilde;a</label>
+									 <label for="passwdRep" class="col-lg-2 control-label"><?php echo $textos[10];//Repetir contrase&ntilde;a?></label>
 										<div class="col-lg-10">
-										   <input type="password" class="form-control" name="passwdRep" placeholder="Repetir contrase&ntilde;a">
+										   <input type="password" class="form-control" name="passwdRep" placeholder="<?php echo $textos[10];//Repetir contrase&ntilde;a?>">
 										</div>
 								  </div>
 								  
 								  <div class="form-group">
-									 <label class="col-lg-2 control-label">Email</label>
+									 <label class="col-lg-2 control-label">E-mail</label>
 										<div class="col-lg-10">
-											<input type="email" class="form-control" id="inputEmail" value="<?php echo $_SESSION['userLogin'];?>">
+											<input type="email" class="form-control" id="inputEmail" value="<?php echo $textos[12];//Introduce tu email?>">
 										</div>
 								  </div>
 								  
 								  <div class="pull-right"> 
-									<button class="btn ex-button" type="submit">Modificar Perfil</button>
+									<button class="btn ex-button" type="submit"><?php echo $textos[11];//Modificar Perfil?></button>
 								  </div>
 								  
 							   </form>
@@ -138,6 +143,17 @@ Conectarse();
 						
                   </div>
                     </div>
+					<form action="../MultiLanguage/CambioIdioma.php" method="post"> 
+						</form>	
+					<form action="../MultiLanguage/CambioIdioma.php" method="post"> 				
+    <select name="idioma" onChange='this.form.submit()'>
+            <option value=""><?php echo $textos[1];//Seleccione su idioma?></option>
+            <option value="ENG">English</option>
+            <option value="ESP">Español</option>
+            <option value="GAL">Galego</option>
+			<option value="DEU">Deutsch</option>
+    </select>
+	</form>
                 </div>
                 <!-- /.row -->
 				
