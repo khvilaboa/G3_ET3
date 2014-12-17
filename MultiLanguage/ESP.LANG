@@ -355,11 +355,13 @@ Lista de asignaturas
 CodTexto9
 Nombre
 CodTexto10
-Descripci&oacute;n
+Grado
 CodTexto11
 Alumno
 CodTexto12
 Preinscripci&oacute;n
+CodTexto13
+Curso
 #
 # CodPag 12 || profesor/asignatura.php
 #

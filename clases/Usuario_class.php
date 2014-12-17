@@ -222,7 +222,7 @@ class usuario {
             $sql = "select * from Asignatura where codAsignatura = '" . $codAsig . "'";
             $resultado = mysql_query($sql);
             if (mysql_num_rows($resultado) == 1) {
-                $sql = "INSERT INTO `aluinscritoasi` (`emailUsuario`, `codAsignatura`, `anhoInscrito`, `aceptado`) 
+                $sql = "INSERT INTO `AluInscritoAsi` (`emailUsuario`, `codAsignatura`, `anhoInscrito`, `aceptado`) 
 						VALUES ('" . $this->email . "', '" . $codAsig . "', '" . $anho . "', 'F');";
                 mysql_query($sql);
             } else

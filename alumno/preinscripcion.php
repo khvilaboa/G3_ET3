@@ -107,28 +107,30 @@ $textos = idioma(11,$_SESSION['idioma']);
 							<thead>
 								<tr>
 									<th><?php echo $textos[9];//Nombre?></th>
-									<th><?php echo $textos[10];//Descripci&oacute;n?></th>
+									<th><?php echo $textos[10];//Grado?></th>
+									<th><?php echo $textos[13];//Curso?></th>
 									<th><?php echo $textos[12];//Preinscripci&oacute;n?></th>
 								</tr>
 							</thead>
 							<tbody>
-								<tr>
-								   <td>Interfaces de usuario</td>
-								   <td>Asignatura de interfaces de usuario</td>
-								   <td><a class="btn">Preinscribirse</a></td>
-								</tr>
 								
-								<tr>
-								   <td>Centro de datos</td>
-								   <td>Asignatura de centro de datos</td>
-								   <td><a class="btn">Preinscribirse</a></td>
-								</tr>
-								
-								<tr>
-								   <td>Base de datos</td>
-								   <td>Asignatura de base de datos</td>
-								   <td><a class="btn">Preinscribirse</a></td>
-								</tr>
+								   <?php							   
+									include "../conexion.php";
+									$link = Conectarse();									
+									$login =  $_SESSION['userLogin'];
+									$sql= "SELECT * FROM `Asignatura` WHERE codAsignatura not in (Select A.nomAsignatura from AluInscritoAsi Ai, Asignatura A where Ai.codAsignatura=A.codAsignatura AND Ai.emailUsuario='".$login."') ";
+									$resultado = mysql_query($sql);
+									while ($row = mysql_fetch_array($resultado))
+										{
+											echo "<TR>";
+											echo "<TD>".$row['nomAsignatura']."</TD>";
+											echo "<TD>".$row['gradoAsignatura']."</TD>";
+											echo "<TD>".$row['cursoAsignatura']."</TD>";
+											$_SESSION['codAsignatura'] = $row['codAsignatura'];
+											echo "<TD> <a href=\"../controller/controllerPreins.php\">Preinscribirse</a></TD>";
+											echo "</TR>";
+										}
+										?>
 							<tbody>
 						</table>
 					</div>	
