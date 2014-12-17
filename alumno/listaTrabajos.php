@@ -118,7 +118,15 @@ $asig = new asignatura('','',-1,$codAsig);
 								</tr>
 							</thead>
 							<tbody>
-								<?php $asig->Get_Trabajos(); ?>
+								<?php 
+									$res = $asig->Get_Trabajos(); 
+									while ($row = mysql_fetch_array($res)) {
+										echo "<tr>
+													<td><a href=\"entrega.php?ca=" . $row['codAsignatura'] . "&ce=" . $row['codTrabajo'] . "\">" . $row['nombreTrabajo'] . "</td>
+													<td>" . $row['fechaLimiteTrabajo'] . "</td>
+											 </tr>";
+									}
+								?>
 							<tbody>
 						</table>
 						</div>

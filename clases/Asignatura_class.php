@@ -168,13 +168,6 @@ class asignatura
 		$sql = "select * from Trabajo where codAsignatura='".$this->codAsig."'";
 		$resultado = mysql_query($sql);
 		
-		while ($row = mysql_fetch_array($resultado)) {
-			echo "<tr>
-						<td><a href=\"entrega.php?ca=" . $row['codAsignatura'] . "&ce=" . $row['codTrabajo'] . "\">" . $row['nombreTrabajo'] . "</td>
-						<td>" . $row['fechaLimiteTrabajo'] . "</td>
-				 </tr>";
-		}
-		
 		return $resultado;
 	}
 		
