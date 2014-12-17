@@ -1,4 +1,3 @@
-<? session_start()?>
 <?php
 include_once "../conexion.php";
 
@@ -112,7 +111,7 @@ class usuario {
     }
 
     public static function validar($email, $pass) {
-	
+	    session_start();
         $link = Conectarse();
         $sql = "select * from Usuario where emailUsuario = '" . $email . "'";
         $resultado = mysql_query($sql);
@@ -177,7 +176,14 @@ class usuario {
         if (mysql_num_rows($resultado) == 1) {
             $sql = "UPDATE Usuario SET nombreUsuario= '" . $this->nombre . "',apellidoUsuario = '" . $this->apellidos . "',passwordUsuario = '" . $this->pass . "',dniUsuario = '" . $this->dni . "' WHERE emailUsuario = '" . $this->email . "'";
             mysql_query($sql);
-            echo "El usuario fue modificado con éxito";
+			$_SESSION['userName'] = $this->nombre;
+			$_SESSION['userPass'] = $this->pass;
+            if ($this->TipoUser == 'Alumno') {
+                header("Location:../alumno/listaAsignaturas.php");
+            }
+            if ($this->TipoUser == 'Profesor') {
+                header("Location:../profesor/listaAsignaturas.php");
+            }
         } else
             echo "<br>No existe un usuario con ese email<br>";
     }
