@@ -106,7 +106,7 @@ class usuario {
     //funcion Consultar: hace una búsqueda en la tabla usuario con
     //los datos del nombre y email. Si van vacios devuelve todos
     function consultar($nombre, $email) {
-        $sql = "select * from Usuario where (nombreUsuario LIKE '%" . $nombre . "%') AND (emailUsuario LIKE '%" . $email . "%'))";
+        $sql = "select * from Usuario where (nombreUsuario LIKE '%" . $nombre . "%') AND (emailUsuario LIKE '%" . $email . "%')";
         $resultado = mysql_query($sql);
         return $resultado;
     }
@@ -126,13 +126,13 @@ class usuario {
 			$_SESSION['userPass'] = $row['passwordUsuario'];
 
             if ($row["tipoUsuario"] == 'Alumno') {
-                header("Location:../alumno/listaAsignaturas.html");
+                header("Location:../alumno/listaAsignaturas.php");
             }
             if ($row["tipoUsuario"] == 'Profesor') {
-                header("Location:../profesor/listaAsignaturas.html");
+                header("Location:../profesor/listaAsignaturas.php");
             }
             if ($row["tipoUsuario"] == 'Administrador') {
-                header("Location:../admin/listaAsignaturas.html");
+                header("Location:../admin/listaAsignaturas.php");
             }
         } else {
             header("Location:../index.php");
