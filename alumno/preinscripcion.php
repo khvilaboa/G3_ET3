@@ -1,4 +1,12 @@
 <!DOCTYPE html>
+<?php
+include('../MultiLanguage/FuncionIdioma.php');
+session_start();
+
+//$_SESSION['idioma']='ENG';
+
+$textos = idioma(11,$_SESSION['idioma']);
+?>
 <html lang="en">
 
 <head>
@@ -46,7 +54,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.html">ESEIXesti&oacute;n - Alumno</a>
+                <a class="navbar-brand" href="index.php">ESEIXesti&oacute;n - <?php echo $textos[11];//Alumno?></a>
             </div>
             <!-- Top Menu Items -->
             <ul class="nav navbar-right top-nav">
@@ -54,11 +62,11 @@
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> John Smith <b class="caret"></b></a>
                     <ul class="dropdown-menu">
                         <li>
-                            <a href="perfil.html"><i class="fa fa-fw fa-user"></i> Perfil</a>
+                            <a href="perfil.php"><i class="fa fa-fw fa-user"></i> <?php echo $textos[2]; //Perfil?></a>
                         </li>
                         <li class="divider"></li>
                         <li>
-                            <a href="#"><i class="fa fa-fw fa-power-off"></i> Cerrar sesi&oacute;n</a>
+                            <a href="#"><i class="fa fa-fw fa-power-off"></i> <?php echo $textos[3];//Cerrar sesi&oacute;n?></a>
                         </li>
                     </ul>
                 </li>
@@ -67,16 +75,16 @@
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav side-nav">
 					<li>
-                        <a href="listaAsignaturas.html"><i class="fa fa-fw fa-dashboard"></i> Asignaturas</a>
+                        <a href="listaAsignaturas.php"><i class="fa fa-fw fa-dashboard"></i> <?php echo $textos[4];//Asignaturas?></a>
                     </li>
                     <li>
-                        <a href="preinscripcion.html"><i class="fa fa-fw fa-dashboard"></i> Preinscripci&oacute;n</a>
+                        <a href="preinscripcion.php"><i class="fa fa-fw fa-dashboard"></i> <?php echo $textos[5];//Preinscripci&oacute;n?></a>
                     </li>
                     <li>
-                        <a href="portfolio.html"><i class="fa fa-fw fa-bar-chart-o"></i> Portfolio</a>
+                        <a href="portfolio.php"><i class="fa fa-fw fa-bar-chart-o"></i> <?php echo $textos[6];//Portfolio?></a>
                     </li>
                     <li>
-                        <a href="#"><i class="fa fa-fw fa-power-off"></i> Cerrar sesi&oacute;n</a>
+                        <a href="#"><i class="fa fa-fw fa-power-off"></i> <?php echo $textos[3];//Cerrar sesi&oacute;n?></a>
                     </li>
                 </ul>
             </div>
@@ -90,63 +98,52 @@
                 <!-- Page Heading -->
                 <div class="row">
                     <div class="col-lg-12">
-                        <h1 class="page-header ex-title"> Portfolio </h1>
+                        <h1 class="page-header"> <?php echo $textos[7];//Preinscripciones?> </h1>
 						<div class="panel panel-default">
-                         
-						 <div class="panel-heading ex-panel-header" style="background:rgba(1,0,0,1);color:#999">Lista de trabajos</div>
+						 <div class="panel-heading ex-panel-header"><?php echo $textos[8];//Lista de asignaturas?></div>
 						 <div class="table-responsive">
 						 <table class="table table-striped table-bordered table-hover">
 							<thead>
 								<tr>
-									<th>P&uacute;blico</th>
-									<th>T&iacute;tulo</th>
-									<th>Entrega</th>
-									<th>Nota</th>
-									<th>Comentarios</th>
+									<th><?php echo $textos[9];//Nombre?></th>
+									<th><?php echo $textos[10];//Descripci&oacute;n?></th>
+									<th><?php echo $textos[12];//Preinscripci&oacute;n?></th>
 								</tr>
 							</thead>
 							<tbody>
-							<form class="form-horizontal" role="form">
 								<tr>
-								   <td><input type="checkbox" name="publico1" value="publico1" checked> </td>
-								   <td>Entrega 1</td>								  
-								   <td>Archivo entrega 1</td>
-								   <td>8</td>
-								   <td>Comentarios de la entrega 1</td>
+								   <td>Interfaces de usuario</td>
+								   <td>Asignatura de interfaces de usuario</td>
+								   <td><a class="btn">Preinscribirse</a></td>
 								</tr>
 								
 								<tr>
-								   <td><input type="checkbox" name="publico2" value="publico2"> </td>
-								   <td>Entrega 2</td>								  
-								   <td>Archivo entrega 2</td>
-								   <td>7</td>
-								   <td>Comentarios de la entrega 2</td>
+								   <td>Centro de datos</td>
+								   <td>Asignatura de centro de datos</td>
+								   <td><a class="btn">Preinscribirse</a></td>
 								</tr>
 								
 								<tr>
-								   <td><input type="checkbox" name="publico1" value="publico1"> </td>
-								   <td>Entrega 3</td>								  
-								   <td>Archivo entrega 3</td>
-								   <td>6</td>
-								   <td>Comentarios de la entrega 3</td>
+								   <td>Base de datos</td>
+								   <td>Asignatura de base de datos</td>
+								   <td><a class="btn">Preinscribirse</a></td>
 								</tr>
 							<tbody>
 						</table>
-							
+					</div>	
 					</div>
-					</div>
-					
-					<input type="checkbox" name="notas" value="notas"> Mostrar notas <br><br>
-							<input type="checkbox" name="publicar" value="publicar"> Publicar<br><br>
-							<p>URL: </p><input type="text" class="form-control" id="url" placeholder="Introduce la url"><br>
-						
-						<div class="pull-right">
-						<a href="#" class="btn ex-button">Guardar</a>
-						</div>
-					</form>
-					<br><br>
-                    </div>
-                </div>
+					<form action="../MultiLanguage/CambioIdioma.php" method="post"> 
+						</form>	
+					<form action="../MultiLanguage/CambioIdioma.php" method="post"> 				
+    <select name="idioma" onChange='this.form.submit()'>
+            <option value=""><?php echo $textos[1];//Seleccione su idioma?></option>
+            <option value="ENG">English</option>
+            <option value="ESP">Español</option>
+            <option value="GAL">Galego</option>
+			<option value="DEU">Deutsch</option>
+    </select>
+	</form>
+				</div>		
                 <!-- /.row -->
 
             </div>
