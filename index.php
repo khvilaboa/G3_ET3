@@ -1,6 +1,6 @@
 <!DOCTYPE html>
-<? session_start()?>
 <?php
+session_start();
 include('./MultiLanguage/FuncionIdioma.php');
 
 $_SESSION['idioma'] = 'ENG';

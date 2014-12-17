@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <?php
-include('./MultiLanguage/FuncionIdioma.php');
 session_start();
+include('./MultiLanguage/FuncionIdioma.php');
+
 
 //$_SESSION['idioma']='ENG';
 

@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 
-<? session_start()?>
+
 <?php
+session_start();
 include('../MultiLanguage/FuncionIdioma.php');
 
-session_start();
 //$_SESSION['idioma']='ENG';
 $textos = idioma(7,$_SESSION['idioma']);
 ?>
