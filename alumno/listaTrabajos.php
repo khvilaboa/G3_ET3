@@ -11,7 +11,7 @@ $textos = idioma(8,$_SESSION['idioma']);
 $codAsig = $_REQUEST['ca'];
 echo $codAsig;
 $asig = new asignatura('','',-1,$codAsig);
-
+$asig->Rellenar();
 
 ?>
 <html lang="en">
@@ -105,7 +105,7 @@ $asig = new asignatura('','',-1,$codAsig);
                 <!-- Page Heading -->
                 <div class="row">
                     <div class="col-lg-12">
-                        <h1 class="page-header ex-title"> <?php echo $textos[7];//Listado de trabajos de?> [Asignatura X] </h1>
+                        <h1 class="page-header ex-title"> <?php echo $textos[7];//Listado de trabajos de?> <?php echo $asig->getNombre(); ?> </h1>
                          <div class="panel panel-default">
 						 <div class="panel-heading ex-panel-header"><?php echo $textos[8];//Lista de trabajos?></div>
 						 

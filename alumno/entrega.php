@@ -3,6 +3,7 @@
 session_start();
 include('../MultiLanguage/FuncionIdioma.php');
 include('../clases/Trabajo_class.php');
+include('../clases/Asignatura_class.php');
 
 
 //$_SESSION['idioma']='ENG';
@@ -14,6 +15,9 @@ $codTrab = $_REQUEST['ct'];
 
 $ent = new trabajo($codTrab, $codAsig, '', '' ,'');
 $ent->Rellenar();
+
+$asig = new asignatura('', '', -1, $codAsig);
+$asig->Rellenar();
 
 ?>
 <html lang="en">
@@ -107,7 +111,7 @@ $ent->Rellenar();
                 <!-- Page Heading -->
                 <div class="row">
                     <div class="col-lg-12">
-                        <h1 class="page-header"> Trabajo Y </h1>
+                        <h1 class="page-header"> <?php echo $asig->getNombre(); ?> </h1>
                          <div class="panel panel-default">
 						<div class="panel-heading ex-panel-header"><?php echo $textos[7];//Datos del trabajo?></div>
 											

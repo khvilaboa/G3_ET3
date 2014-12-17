@@ -86,9 +86,9 @@ include_once "../clases/Asignatura_class.php";
 		<?php
 			//$listado=Asignatura_class::consultarSinProfesor();
 			//$listadoP=Asignatura_class::consultarSinProfesor();
-			$asignatura = new asignatura('','','','');
-			$listado=$asignatura->consultarSinProfesor();
-			$listadoP=$asignatura->consultarConProfesor();
+			//$asignatura = new asignatura('','','','');
+			$listado=asignatura::consultarSinProfesor();
+			$listadoP=asignatura::consultarConProfesor();
 				
 		?>
 
@@ -114,38 +114,39 @@ include_once "../clases/Asignatura_class.php";
 									<th width="110px">Profesores</th>				
 								</tr>
 							</thead>							
-							
+							<tbody>
 							<?php
 							
 							while($row = mysql_fetch_array($listadoP)){
 
-								echo "<tbody>";
+								
 									echo "<tr>";
 									echo "<td><a href=asignatura.php?nombreAsig=".$row['nomAsignatura']."&gradoAsig=".$row['gradoAsignatura'].">".$row['nomAsignatura']."</a></td>";
 									echo "<td>".$row['gradoAsignatura']."</td>";
 									echo "<td>".$row['cursoAsignatura']."</td>";
 									echo "<td>".$row['profesores']."</td>";
 									echo "</tr>";
-								echo "</tbody>";
+								
 							
 							}
 							
 							
 							while($row = mysql_fetch_array($listado)){
 	
-								echo "<tbody>";
+								
 									echo "<tr>";
 									echo "<td><a href=asignatura.php?nombreAsig=".$row['nomAsignatura']."&gradoAsig=".$row['gradoAsignatura'].">".$row['nomAsignatura']."</a></td>";
 									echo "<td>".$row['gradoAsignatura']."</td>";
 									echo "<td>".$row['cursoAsignatura']."</td>";
 									echo "<td> </td>";
 									echo "</tr>";
-								echo "</tbody>";
+								
 								
 							}
 
 							
 							?>
+							</tbody>
 						</table>
 						</div>
 					</div>				

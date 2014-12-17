@@ -71,6 +71,18 @@ class asignatura
 	}
 	
 	
+	function Rellenar() {
+		Conectarse();
+		$sql = "select * from Asignatura where codAsignatura=\"" . $this->codAsig . "\"";
+		$resultado = mysql_query($sql);
+		
+		if ($row = mysql_fetch_array($resultado)) {
+			$this->nombre= $row['nomAsignatura'];
+			$this->grado = $row['gradoAsignatura'];
+			$this->curso = $row['cursoAsignatura'];
+		} 
+	}
+	
 	//Metodo Insertar
 
 	function Insertar()
@@ -183,12 +195,30 @@ class asignatura
 		}
 	}
 	
+	
+		public static function verAluPreins($asig) {
+		$sql = "SELECT dniUsuario, nombreUsuario, apellidoUsuario FROM usuario, asignatura, aluinscritoasi  
+			WHERE usuario.emailUsuario=aluinscritoasi.emailUsuario AND asignatura.codAsignatura=aluinscritoasi.codAsignatura 
+			AND aluinscritoasi.aceptado='F' AND asignatura.nomAsignatura='".$asig."'"; 
+		$resultado = mysql_query($sql);
+		return $resultado;
+    }
+	
+	public static function verAluIns($asig) {
+		$sql = "SELECT dniUsuario, nombreUsuario, apellidoUsuario FROM usuario, asignatura, aluinscritoasi  
+				WHERE usuario.emailUsuario=aluinscritoasi.emailUsuario AND asignatura.codAsignatura=aluinscritoasi.codAsignatura 
+				AND aluinscritoasi.aceptado='T' AND asignatura.nomAsignatura='".$_GET['nombreAsig']."'"; 
+		$resultado = mysql_query($sql);
 		
+		return $resultado;
+    }
+	
+	
 	public static function verAsigProf($dni) {
 		Conectarse();
 		//Falta en restringirlo al profesor que este conectado
-		$sql = "SELECT `nomAsignatura` FROM `asignatura`, proimparteasi, usuario WHERE proimparteasi.codAsignatura = asignatura.codAsignatura 
-			AND proimparteasi.emailUsuario = usuario.emailUsuario AND usuario.dniUsuario = '".$dni."'";
+		$sql = "SELECT `nomAsignatura` FROM Asignatura, ProImparteAsi P, Usuario WHERE P.codAsignatura = Asignatura.codAsignatura 
+			AND P.emailUsuario = Usuario.emailUsuario AND Usuario.dniUsuario = '".$dni."'";
 		$resultado = mysql_query($sql);
 		echo mysql_error();
 		while ($row = mysql_fetch_array($resultado))
@@ -197,16 +227,16 @@ class asignatura
 		}
     }
 
-	function consultarConProfesor()
+	static function consultarConProfesor()
 	{
-
+	
 		$sql = "select distinct nomAsignatura, gradoAsignatura, cursoAsignatura, GROUP_CONCAT(nombreUsuario) as profesores
 		from asignatura A, proimparteasi P ,usuario U where P.codAsignatura=A.codAsignatura and P.emailUsuario=U.emailUsuario GROUP BY A.codAsignatura";
 		$resultado = mysql_query($sql);
 		return $resultado;
 	}
 	
-	function consultarSinProfesor()
+	static function consultarSinProfesor()
 	{
 		$sql="select nomAsignatura, gradoAsignatura, cursoAsignatura from asignatura A where (A.codAsignatura not in (select codAsignatura from proimparteasi))";
 		$resultado = mysql_query($sql);
