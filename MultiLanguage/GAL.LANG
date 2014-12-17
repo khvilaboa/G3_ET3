@@ -15,7 +15,7 @@ CodTexto5
 CodTexto6
 Rex&iacute;strate aquí
 CodTexto7
-Seleccione a s&uacute;a l&iacute;ngua
+Seleccione a s&uacute;a lingua
 CodTexto8
 ¿Está seguro de que desea recordar o seu contrasinal?
 #
@@ -23,13 +23,13 @@ CodTexto8
 #
 CodPag1
 CodTexto1
-Seleccione a s&uacute;a l&iacute;ngua
+Seleccione a s&uacute;a lingua
 CodTexto2
 Perfil
 CodTexto3
 Pechar sesi&oacute;n
 CodTexto4
-Materias
+Crear/Modificar materias
 CodTexto5
 Usuarios
 CodTexto6
@@ -59,7 +59,7 @@ Volver
 #
 CodPag2
 CodTexto1
-Seleccione a s&uacute;a l&iacute;ngua
+Seleccione a s&uacute;a lingua
 CodTexto2
 Perfil
 CodTexto3
@@ -85,7 +85,7 @@ Crear materia
 #
 CodPag3
 CodTexto1
-Seleccione a s&uacute;a l&iacute;ngua
+Seleccione a s&uacute;a lingua
 CodTexto2
 Perfil
 CodTexto3
@@ -99,19 +99,15 @@ Datos da materia
 CodTexto7
 Nome
 CodTexto8
-Grao
+Apelidos
 CodTexto9
-Curso
-CodTexto10
-E-mail
-CodTexto11
 Crear Usuario
 #
 # CodPag 4 || admin/usuario.php
 #
 CodPag4
 CodTexto1
-Seleccione a s&uacute;a l&iacute;ngua
+Seleccione a s&uacute;a lingua
 CodTexto2
 Perfil
 CodTexto3
@@ -121,7 +117,7 @@ Materias
 CodTexto5
 Usuarios
 CodTexto6
-Datos da materia
+Crear/Modificar Usuario
 CodTexto7
 Nome:
 CodTexto8
@@ -143,7 +139,7 @@ Modificar
 #
 CodPag5
 CodTexto1
-Seleccione a s&uacute;a l&iacute;ngua
+Seleccione a s&uacute;a lingua
 CodTexto2
 Rexistro
 CodTexto3
@@ -177,7 +173,7 @@ Las contraseñas deben tener un número ,una letra e debe ter entre 6 y 15 carac
 #
 CodPag6
 CodTexto1
-Seleccione a s&uacute;a l&iacute;ngua
+Seleccione a s&uacute;a lingua
 CodTexto2
 Perfil
 CodTexto3
@@ -215,7 +211,7 @@ Volver
 #
 CodPag7
 CodTexto1
-Seleccione a s&uacute;a l&iacute;ngua
+Seleccione a s&uacute;a lingua
 CodTexto2
 Perfil
 CodTexto3
@@ -241,7 +237,7 @@ Estudante
 #
 CodPag8
 CodTexto1
-Seleccione a s&uacute;a l&iacute;ngua
+Seleccione a s&uacute;a lingua
 CodTexto2
 Perfil
 CodTexto3
@@ -269,7 +265,7 @@ Volver
 #
 CodPag9
 CodTexto1
-Seleccione a s&uacute;a l&iacute;ngua
+Seleccione a s&uacute;a lingua
 CodTexto2
 Perfil
 CodTexto3
@@ -301,7 +297,7 @@ Modificar Perfil
 #
 CodPag10
 CodTexto1
-Seleccione a s&uacute;a l&iacute;ngua
+Seleccione a s&uacute;a lingua
 CodTexto2
 Perfil
 CodTexto3
@@ -337,7 +333,7 @@ Gardar
 #
 CodPag11
 CodTexto1
-Seleccione a s&uacute;a l&iacute;ngua
+Seleccione a s&uacute;a lingua
 CodTexto2
 Perfil
 CodTexto3
@@ -365,7 +361,7 @@ Preinscripci&oacute;n
 #
 CodPag12
 CodTexto1
-Seleccione a s&uacute;a l&iacute;ngua
+Seleccione a s&uacute;a lingua
 CodTexto2
 ESEIXesti&oacute;n - Profesor
 CodTexto3
@@ -400,7 +396,7 @@ Volver
 #
 CodPag13
 CodTexto1
-Seleccione a s&uacute;a l&iacute;ngua
+Seleccione a s&uacute;a lingua
 CodTexto2
 ESEIXesti&oacute;n - Profesor
 CodTexto3
@@ -428,7 +424,7 @@ Volver
 #
 CodPag14
 CodTexto1
-Seleccione a s&uacute;a l&iacute;ngua
+Seleccione a s&uacute;a lingua
 CodTexto2
 ESEIXesti&oacute;n - Profesor
 CodTexto3
@@ -444,7 +440,7 @@ Lista de asignaturas
 #
 CodPag15
 CodTexto1
-Seleccione a s&uacute;a l&iacute;ngua
+Seleccione a s&uacute;a lingua
 CodTexto2
 ESEIXesti&oacute;n - Profesor
 CodTexto3
@@ -473,7 +469,7 @@ Ingade o teu email
 #
 CodPag16
 CodTexto1
-Seleccione a s&uacute;a l&iacute;ngua
+Seleccione a s&uacute;a lingua
 CodTexto2
 ESEIXesti&oacute;n - Profesor
 CodTexto3

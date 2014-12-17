@@ -29,7 +29,7 @@ Perfil
 CodTexto3
 Cerrar sesi&oacute;n
 CodTexto4
-Asignaturas
+Crear/Modificar asignaturas
 CodTexto5
 Usuarios
 CodTexto6
@@ -99,12 +99,8 @@ Lista de usuarios
 CodTexto7
 Nombre
 CodTexto8
-Grado
+Apellidos
 CodTexto9
-Curso
-CodTexto10
-E-mail
-CodTexto11
 Crear Usuario
 #
 # CodPag 4 || admin/usuario.php

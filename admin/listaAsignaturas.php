@@ -1,4 +1,12 @@
 <!DOCTYPE html>
+<?php
+include('../MultiLanguage/FuncionIdioma.php');
+session_start();
+
+//$_SESSION['idioma']='ENG';
+
+$textos = idioma(2,$_SESSION['idioma']);
+?>
 <html lang="en">
 
 <head>
@@ -46,7 +54,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.html">ESEIXesti&oacute;n</a>
+                <a class="navbar-brand" href="index.php">ESEIXesti&oacute;n</a>
             </div>
             <!-- Top Menu Items -->
             <ul class="nav navbar-right top-nav">
@@ -54,11 +62,11 @@
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> Admin <b class="caret"></b></a>
                     <ul class="dropdown-menu">
                         <li>
-                            <a href="#"><i class="fa fa-fw fa-user"></i> Perfil</a>
+                            <a href="#"><i class="fa fa-fw fa-user"></i> <?php echo $textos[2]; //Perfil?></a>
                         </li>
                         <li class="divider"></li>
                         <li>
-                            <a href="#"><i class="fa fa-fw fa-power-off"></i> Cerrar sesi&oacute;n</a>
+                            <a href="#"><i class="fa fa-fw fa-power-off"></i> <?php echo $textos[3];//Cerrar sesi&oacute;n?></a>
                         </li>
                     </ul>
                 </li>
@@ -67,13 +75,13 @@
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav side-nav">
                     <li>
-                        <a href="listaAsignaturas.html"><i class="fa fa-fw fa-folder-open"></i> Asignaturas</a>
+                        <a href="listaAsignaturas.php"><i class="fa fa-fw fa-folder-open"></i> <?php echo $textos[4];//Asignaturas?></a>
                     </li>
                     <li>
-                        <a href="listaUsuarios.html"><i class="fa fa-fw fa-users"></i> Usuarios</a>
+                        <a href="listaUsuarios.php"><i class="fa fa-fw fa-users"></i> <?php echo $textos[5];//Usuarios?></a>
                     </li>
                     <li>
-                        <a href="../login.html"><i class="fa fa-fw fa-power-off"></i> Cerrar sesi&oacute;n</a>
+                        <a href="../index.php"><i class="fa fa-fw fa-power-off"></i> <?php echo $textos[3];//Cerrar sesi&oacute;n?></a>
                     </li>
                 </ul>
             </div>
@@ -87,29 +95,29 @@
                 <!-- Page Heading -->
                 <div class="row">
                     <div class="col-lg-12">
-                        <h1 class="page-header ex-title"> Lista de asignaturas </h1>
+                        <h1 class="page-header ex-title"> <?php echo $textos[6];//Lista de asignaturas?> </h1>
                         <div class="panel panel-default">
-						 <div class="panel-heading ex-panel-header">Asignaturas</div>
+						 <div class="panel-heading ex-panel-header"><?php echo $textos[4];//Asignaturas?></div>
 						 
 						 <div class="table-responsive">
 							<table class="table table-hover">
 							<thead>
 								<tr>
-									<th width="110px">Nombre</th>
-									<th width="110px">Grado</th>
-									<th width="110px">Curso</th>
-									<th width="110px">Profesores</th>				
+									<th width="110px"><?php echo $textos[7];//Nombre?></th>
+									<th width="110px"><?php echo $textos[8];//Grado?></th>
+									<th width="110px"><?php echo $textos[9];//Curso?></th>
+									<th width="110px"><?php echo $textos[10];//Profesores?></th>				
 								</tr>
 							</thead>							
 							<tbody>
 								<tr>
-								<td><a href="asignatura.html">SOII</a></td>
+								<td><a href="asignatura.php">SOII</a></td>
 								<td>I.Inform&aacute;tica</td>
 								<td>Segundo</td>
 								<td>Mar&iacute;a Encarnaci&oacute;n</td>
 								</tr>
 								<tr>
-								<td><a href="asignatura.html">BDII</a></td>
+								<td><a href="asignatura.php">BDII</a></td>
 								<td>I.Inform&aacute;tica</td>
 								<td>Segundo</td>
 								<td>Juan Francisco</td>
@@ -118,14 +126,26 @@
 						</table>
 						</div>
 					</div>				
-	
+						
 						
 						<div class="pull-right">
-							<a href="asignatura.html" class="btn ex-button">Crear Asignatura</a>  							
+							<a href="asignatura.php" class="btn ex-button"><?php echo $textos[11];//Crear Asignatura?></a>  							
 						</div> 
+						
 						<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 						
                     </div>
+					<form action="../MultiLanguage/CambioIdioma.php" method="post"> 
+						</form>	
+					<form action="../MultiLanguage/CambioIdioma.php" method="post"> 				
+    <select name="idioma" onChange='this.form.submit()'>
+            <option value=""><?php echo $textos[1];//Seleccione su idioma?></option>
+            <option value="ENG">English</option>
+            <option value="ESP">Español</option>
+            <option value="GAL">Galego</option>
+			<option value="DEU">Deutsch</option>
+    </select>
+	</form>
                 </div>
                 <!-- /.row -->
 

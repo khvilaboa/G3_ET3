@@ -1,4 +1,12 @@
 <!DOCTYPE html>
+<?php
+include('../MultiLanguage/FuncionIdioma.php');
+session_start();
+
+//$_SESSION['idioma']='ENG';
+
+$textos = idioma(3,$_SESSION['idioma']);
+?>
 <html lang="en">
 
 <head>
@@ -46,7 +54,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.html">ESEIXesti&oacute;n</a>
+                <a class="navbar-brand" href="index.php">ESEIXesti&oacute;n</a>
             </div>
             <!-- Top Menu Items -->
             <ul class="nav navbar-right top-nav">
@@ -54,11 +62,11 @@
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> Admin <b class="caret"></b></a>
                     <ul class="dropdown-menu">
                         <li>
-                            <a href="#"><i class="fa fa-fw fa-user"></i> Perfil</a>
+                            <a href="#"><i class="fa fa-fw fa-user"></i> <?php echo $textos[2]; //Perfil?></a>
                         </li>
                         <li class="divider"></li>
                         <li>
-                            <a href="#"><i class="fa fa-fw fa-power-off"></i> Cerrar sesi&oacute;n</a>
+                            <a href="#"><i class="fa fa-fw fa-power-off"></i> <?php echo $textos[3];//Cerrar sesi&oacute;n?></a>
                         </li>
                     </ul>
                 </li>
@@ -67,13 +75,13 @@
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav side-nav">
                     <li>
-                        <a href="listaAsignaturas.html"><i class="fa fa-fw fa-folder-open"></i> Asignaturas</a>
+                        <a href="listaAsignaturas.php"><i class="fa fa-fw fa-folder-open"></i> <?php echo $textos[4];//Asignaturas?></a>
                     </li>
                     <li>
-                        <a href="listaUsuarios.html"><i class="fa fa-fw fa-users"></i> Usuarios</a>
+                        <a href="listaUsuarios.php"><i class="fa fa-fw fa-users"></i> <?php echo $textos[5];//Usuarios?></a>
                     </li>
                     <li>
-                        <a href="../login.html"><i class="fa fa-fw fa-power-off"></i> Cerrar sesi&oacute;n</a>
+                        <a href="../index.php"><i class="fa fa-fw fa-power-off"></i> <?php echo $textos[3];//Cerrar sesi&oacute;n?></a>
                     </li>
                 </ul>
             </div>
@@ -87,56 +95,62 @@
                 <!-- Page Heading -->
                 <div class="row">
                     <div class="col-lg-12">
-                        <h1 class="page-header"> Crear/Modificar Usuario </h1>							
-								<form class="form-horizontal" role="form">
-									<div class="form-group">
-										<label class="col-sm-2 control-label">Nombre:</label>
-										<div class="col-sm-10">
-											<input type="text" class="form-control">
-										</div>
-									</div>
-									<div class="form-group">
-										<label class="col-sm-2 control-label">Apellidos:</label>
-										<div class="col-sm-10">
-											<input type="text" class="form-control">
-										</div>
-									</div>
-									<div class="form-group">
-										<label class="col-sm-2 control-label">Dni:</label>
-										<div class="col-sm-10">
-											<input type="text" class="form-control">
-										</div>
-									</div>
-									<div class="form-group">
-										<label class="col-sm-2 control-label">Email:</label>
-										<div class="col-sm-10">
-											<input type="text" class="form-control">
-										</div>
-									</div>
-									<div class="form-group">
-										<label class="col-sm-2 control-label">Nueva Contrase&nacute;a:</label>
-										<div class="col-sm-10">
-											<input type="text" class="form-control">
-										</div>
-									</div>
-									<div class="form-group">
-										<label class="col-sm-2 control-label">Tipo:</label>
-										<div class="col-sm-10">
-											<select class="form-control">
-											<option>Alumno</option>
-											<option>Profesor</option>
-											</select>
-										</div>
-									</div>
-								</form>
-							
-							<div class="pull-right">
-								<a href="listaUsuarios.html" class="btn ex-button">Borrar</a>
-								<a href="listaUsuarios.html" class="btn ex-button">Modificar</a>
-							</div>
+                        <h1 class="page-header"> <?php echo $textos[6];//Lista de usuarios?></h1>
 						
-						<br><br><br><br><br><br><br><br><br><br>
+						<div class="panel panel-default">
+						 <div class="panel-heading ex-panel-header"><?php echo $textos[5];//Usuarios?></div>
+						 
+						 <div class="table-responsive">
+							<table class="table table-hover">
+							<thead>
+								<tr>
+									<th width="110px">DNI</th>
+									<th width="110px"><?php echo $textos[7];//Nombre?></th>
+									<th width="110px"><?php echo $textos[8];//Apellidos?></th>
+									<TH width="110px">E-mail</TH>				
+								</tr>
+							</thead>							
+							<tbody>
+								<tr>
+									<td><a href="usuario.php">44444445P</a></td>
+									<td>Pablo</td>
+									<td>Gonz&aacute;lez</td>
+									<td>Peiboll@gmail.com</td>
+								</tr>
+								<tr>
+									<td><a href="usuario.php">45644444P</a></td>
+									<td>José</td>
+									<td>Garc&iacute;a</td>
+									<td>juanga@gmail.com</td>
+								</tr>
+							</tbody>
+						</table>
+						</div>
+					</div>
+					
+                      
+						
+						
+	
+						
+						
+						<div class="pull-right">
+							<a href="usuario.php" class="btn ex-button"><?php echo $textos[9];//Crear Usuario?></a>  							
+						</div> 	
+
+						<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
                     </div>
+					<form action="../MultiLanguage/CambioIdioma.php" method="post"> 
+						</form>	
+					<form action="../MultiLanguage/CambioIdioma.php" method="post"> 				
+    <select name="idioma" onChange='this.form.submit()'>
+            <option value=""><?php echo $textos[1];//Seleccione su idioma?></option>
+            <option value="ENG">English</option>
+            <option value="ESP">Español</option>
+            <option value="GAL">Galego</option>
+			<option value="DEU">Deutsch</option>
+    </select>
+	</form>
                 </div>
                 <!-- /.row -->
 
