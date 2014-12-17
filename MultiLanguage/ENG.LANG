@@ -355,11 +355,13 @@ Subjects' list
 CodTexto9
 Name
 CodTexto10
-Description
+Degree
 CodTexto11
 Student
 CodTexto12
 Preinscription
+CodTexto13
+Grade
 #
 # CodPag 12 || profesor/asignatura.php
 #
