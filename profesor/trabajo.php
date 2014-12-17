@@ -1,12 +1,11 @@
 <?php
 session_start();
-include('../MultiLanguage/FuncionIdioma.php');
-
-
-//$_SESSION['idioma']='ESP';
-
-$textos = idioma(16,$_SESSION['idioma']);
+include_once('../conexion.php');
+include_once('../clases/Trabajo_class.php');
+Conectarse();
 ?>
+
+<!DOCTYPE html>
 
 <head>
 
@@ -52,19 +51,19 @@ $textos = idioma(16,$_SESSION['idioma']);
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.php"><?php echo $textos[2];//ESEIXesti&oacute;n - Profesor?></a>
+                <a class="navbar-brand" href="index.html">ESEIXesti&oacute;n - Profesor</a>
             </div>
             <!-- Top Menu Items -->
             <ul class="nav navbar-right top-nav">
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> John Smith <b class="caret"></b></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> <?php echo $_SESSION['userName'] ?>  <b class="caret"></b></a>
                     <ul class="dropdown-menu">
                         <li>
-                            <a href="perfil.php"><i class="fa fa-fw fa-user"></i> <?php echo $textos[3]; //Perfil?></a>
+                            <a href="perfil.html"><i class="fa fa-fw fa-user"></i> Perfil</a>
                         </li>
                         <li class="divider"></li>
                         <li>
-                            <a href="#"><i class="fa fa-fw fa-power-off"></i> <?php echo $textos[4];//Cerrar sesi&oacute;n?></a>
+                            <a href="#"><i class="fa fa-fw fa-power-off"></i> Cerrar sesi&oacute;n</a>
                         </li>
                     </ul>
                 </li>
@@ -73,13 +72,13 @@ $textos = idioma(16,$_SESSION['idioma']);
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav side-nav">
                     <li>
-                        <a href="perfil.php"><i class="fa fa-fw fa-dashboard"></i> <?php echo $textos[3]; //Perfil?></a>
+                        <a href="perfil.html"><i class="fa fa-fw fa-dashboard"></i> Perfil</a>
                     </li>
                     <li>
-                        <a href="listaAsignaturas.php"><i class="fa fa-fw fa-bar-chart-o"></i> <?php echo $textos[5]; //Asignaturas?></a>
+                        <a href="listaAsignaturas.html"><i class="fa fa-fw fa-bar-chart-o"></i> Asignaturas</a>
                     </li>
                     <li>
-                        <a href="#"><i class="fa fa-fw fa-power-off"></i> <?php echo $textos[4];//Cerrar sesi&oacute;n?></a>
+                        <a href="#"><i class="fa fa-fw fa-power-off"></i> Cerrar sesi&oacute;n</a>
                     </li>
                 </ul>
             </div>
@@ -92,97 +91,124 @@ $textos = idioma(16,$_SESSION['idioma']);
 
 
                 <!-- Page Heading -->
+				<?php 
+					if(isset($_GET['codTrabajo'])){
+						$trabajo = new trabajo ('','','','','');
+						$sql = "select * from trabajo where codTrabajo=".$_GET['codTrabajo']." and codAsignatura ='".$_GET['codAsig']."'";
+						
+						$resultado=mysql_query($sql);
+						$row = mysql_fetch_array($resultado);
+							$trabajo->setCodTrab($row['codTrabajo']);
+							$trabajo->setCodAsig($row['codAsignatura']);
+							$trabajo->setTitulo($row['nombreTrabajo']);
+							$trabajo->setDescripcion($row['descripcionTrabajo']);
+							$trabajo->setFechaFinal($row['fechaLimiteTrabajo']);
+					echo mysql_error();
+				?>
                 <div class="row">
                     <div class="col-lg-12">
-                        <h1 class="page-header ex-title"> Trabajo X </h1>
+                        <h1 class="page-header ex-title"> <?php echo $trabajo->getTitulo();?> </h1>
                         
 						<div class="panel panel-default">
-							<div class="panel-heading ex-panel-header"><?php echo $textos[6];//Datos del trabajo?></div>
+							<div class="panel-heading ex-panel-header">Datos del trabajo</div>
 							<div class="panel-body">
-							   <form class="form-horizontal" role="form">
+							   <form class="form-horizontal" role="form" METHOD="GET" action="..\controller\profesor\controladorTrabajo.php">
 										
 								  <div class="form-group">
-									 <label for="title" class="col-lg-2 control-label"><?php echo $textos[7];//T&iacute;tulo?></label>
+									 <label for="title" class="col-lg-2 control-label">T&iacute;tulo</label>
 										<div class="col-lg-10">
-										   <input type="text" class="form-control" id="title" placeholder="<?php echo $textos[7];//T&iacute;tulo?>">
+										   <input type="text" class="form-control" name="title" value="<?php echo $trabajo->getTitulo();?>">
 										</div>
 								  </div>
 							   
 								  <div class="form-group">
-									 <label for="desc" class="col-lg-2 control-label"><?php echo $textos[8];//Descripci&oacute;n?></label>
+									 <label for="desc" class="col-lg-2 control-label">Descripci&oacute;n</label>
 										<div class="col-lg-10">
-										   <input type="text" class="form-control" id="desc" placeholder="<?php echo $textos[8];//Descripci&oacute;n?>">
+										   <input type="text" class="form-control" name="desc" value="<?php echo $trabajo->getDescripcion();?>">
 										</div>
 								  </div>
 								  
 								  <div class="form-group">
-									 <label for="limit" class="col-lg-2 control-label"><?php echo $textos[9];//Fecha l&iacute;mite?></label>
+									 <label for="limit" class="col-lg-2 control-label">Fecha l&iacute;mite</label>
 										<div class="col-lg-10">
-										   <input type="text" class="form-control" id="limit" placeholder="<?php echo $textos[9];//Fecha l&iacute;mite?>">
+										   <input type="text" class="form-control" name="limit" value="<?php echo $trabajo->getFechaFinal();?>">
 										</div>
 								  </div>
 
-							   </form>
+							  
 							   
 							  <p class="pull-right"> 
-								<button type="button" class="btn ex-button"><?php echo $textos[10];//Modificar?></button>
+								<input type="hidden" name="codT" value="<?php echo $_GET['codTrabajo'];?>">
+								<!--<input type="hidden" name="codA" value="<?php echo $_GET['codAsig'];?>"> -->
+								<input type="hidden" name="nomA" value="<?php echo $_GET['nomAsig'];?>">
+								<button type="submit" class="btn ex-button">Modificar</button>
 							  </p>
+							   </form>
 						  </div>
 					    </div>
 						
-						<div class="panel panel-default">
-							<div class="panel-heading ex-panel-header"><?php echo $textos[11];//Entregables subidos?></div>
-								<table class="table table-striped table-bordered table-hover">
-									<thead>
-										<tr>
-											<th><?php echo $textos[7];//T&iacute;tulo?></th>
-											<th><?php echo $textos[12];//Usuario?></th>
-											<th><?php echo $textos[13];//Entrega?></th>
-											<th><?php echo $textos[14];//Nota?></th>
-										</tr>
-									</thead>
-									<tbody>
-										<tr>
-										   <td><a href="entrega.php">Entrega 1</a></td>
-										   <td>11223344A</td>
-										   <td>Descripci&oacute;n de la entrega 1</td>
-										   <td>10</td>
-										</tr>
-										
-										<tr>
-										   <td><a href="entrega.php">Entrega 2</a></td>
-										   <td>33223344A</td>
-										   <td>Descripci&oacute;n de la entrega 2</td>
-										   <td>10</td>		
-										</tr>
-										
-										<tr>
-										   <td><a href="entrega.php">Entrega 3</a></td>
-										   <td>22223344A</td>
-										   <td>Descripci&oacute;n de la entrega 3</td>
-										   <td>10</td>
-										   </tr>
-									<tbody>
-								</table>
-						</div>
 					</div>
                     </div>
+					<?php
+					}
+					else{
+					?>
+					<div class="row">
+                    <div class="col-lg-12">
+                        <h1 class="page-header ex-title"> Crear trabajo </h1>
+                        
+						<div class="panel panel-default">
+							<div class="panel-heading ex-panel-header">Datos del trabajo</div>
+							<div class="panel-body">
+							   <form class="form-horizontal" role="form" METHOD="GET" action="..\controller\profesor\controladorTrabajo.php">
+										
+								  <div class="form-group">
+									 <label for="title" class="col-lg-2 control-label">T&iacute;tulo</label>
+										<div class="col-lg-10">
+										   <input type="text" class="form-control" name="title" placeholder="Introduce t&iacute;tulo">
+										</div>
+								  </div>
+							   
+								  <div class="form-group">
+									 <label for="desc" class="col-lg-2 control-label">Descripci&oacute;n</label>
+										<div class="col-lg-10">
+										   <input type="text" class="form-control" name="desc" placeholder="Introduce descripci&oacute;n">
+										</div>
+								  </div>
+								  
+								  <div class="form-group">
+									 <label for="limit" class="col-lg-2 control-label">Fecha l&iacute;mite</label>
+										<div class="col-lg-10">
+										   <input type="text" class="form-control" name="limit" placeholder="Introduce fecha l&iacute;mite">
+										</div>
+								  </div>
+
+							  
+							   
+							  <p class="pull-right"> 
+							  <input type="hidden" name="nomA" value="<?php echo $_GET['nomAsig'];?>">
+							  <input type="hidden" name="codT" value="<?php echo "Crear";?>">
+
+								<button type="submit" class="btn ex-button">Crear</button>
+							  </p>
+							  
+							  </form>
+						  </div>
+					    </div>
+						
+					</div>
+                    </div>
+					<?php
+					}
+					?>
+					
+					
+					
 					
 					<div class="pull-right">
-						<a href="asignatura.php" class="btn ex-button"><?php echo $textos[15];//Volver?></a>
+						<a href="asignatura.html" class="btn ex-button">Volver</a>
 					</div>
  </div>
- <form action="../MultiLanguage/CambioIdioma.php" method="post"> 
-						</form>	
-					<form action="../MultiLanguage/CambioIdioma.php" method="post"> 				
-    <select name="idioma" onChange='this.form.submit()'>
-            <option value=""><?php echo $textos[1];//Seleccione su idioma?></option>
-            <option value="ENG">English</option>
-            <option value="ESP">Español</option>
-            <option value="GAL">Galego</option>
-			<option value="DEU">Deutsch</option>
-    </select>
-	</form>
                     </div>
                 </div>
                 <!-- /.row -->
@@ -203,5 +229,4 @@ $textos = idioma(16,$_SESSION['idioma']);
     <script src="../js/bootstrap.min.js"></script>
 
 </body>
-
 </html>

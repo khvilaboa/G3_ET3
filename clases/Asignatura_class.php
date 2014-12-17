@@ -1,4 +1,5 @@
 <?php
+session_start();
 include_once "../conexion.php";
 Conectarse(); 
 
@@ -71,18 +72,6 @@ class asignatura
 	}
 	
 	
-	function Rellenar() {
-		Conectarse();
-		$sql = "select * from Asignatura where codAsignatura=\"" . $this->codAsig . "\"";
-		$resultado = mysql_query($sql);
-		
-		if ($row = mysql_fetch_array($resultado)) {
-			$this->nombre= $row['nomAsignatura'];
-			$this->grado = $row['gradoAsignatura'];
-			$this->curso = $row['cursoAsignatura'];
-		} 
-	}
-	
 	//Metodo Insertar
 
 	function Insertar()
@@ -120,6 +109,19 @@ class asignatura
 		//podria llamarse a this->PresentarAsignatura($resultado);
 		return $resultado;
 	}
+	
+	function Rellenar() {
+		Conectarse();
+		$sql = "select * from Asignatura where codAsignatura=\"" . $this->codAsig . "\"";
+		$resultado = mysql_query($sql);
+		
+		if ($row = mysql_fetch_array($resultado)) {
+			$this->nombre= $row['nomAsignatura'];
+			$this->grado = $row['gradoAsignatura'];
+			$this->curso = $row['cursoAsignatura'];
+		} 
+	}
+	
 	
 	//Presenta en pantalla los datos que se le pasan en un recordset, en este caso de consultar asignaturas
 
@@ -195,8 +197,20 @@ class asignatura
 		}
 	}
 	
-	
-		public static function verAluPreins($asig) {
+		
+	public static function verAsigProf($dni) {
+		Conectarse();
+		$sql = "SELECT `nomAsignatura` FROM `asignatura`, proimparteasi, usuario WHERE proimparteasi.codAsignatura = asignatura.codAsignatura 
+			AND proimparteasi.emailUsuario = usuario.emailUsuario AND usuario.dniUsuario = '".$dni."'";
+		$resultado = mysql_query($sql);
+		echo mysql_error();
+		while ($row = mysql_fetch_array($resultado))
+		{
+			echo "<a class='list-group-item' href=asignatura.php?nombreAsig=".$row['nomAsignatura'].">".$row['nomAsignatura']."</a>";
+		}
+    }
+
+	public static function verAluPreins($asig) {
 		$sql = "SELECT dniUsuario, nombreUsuario, apellidoUsuario FROM usuario, asignatura, aluinscritoasi  
 			WHERE usuario.emailUsuario=aluinscritoasi.emailUsuario AND asignatura.codAsignatura=aluinscritoasi.codAsignatura 
 			AND aluinscritoasi.aceptado='F' AND asignatura.nomAsignatura='".$asig."'"; 
@@ -213,34 +227,30 @@ class asignatura
 		return $resultado;
     }
 	
-	
-	public static function verAsigProf($dni) {
-		Conectarse();
-		//Falta en restringirlo al profesor que este conectado
-		$sql = "SELECT `nomAsignatura` FROM Asignatura, ProImparteAsi P, Usuario WHERE P.codAsignatura = Asignatura.codAsignatura 
-			AND P.emailUsuario = Usuario.emailUsuario AND Usuario.dniUsuario = '".$dni."'";
-		$resultado = mysql_query($sql);
-		echo mysql_error();
-		while ($row = mysql_fetch_array($resultado))
-		{
-			echo "<a class='list-group-item' href=asignatura.php?nombreAsig=".$row['nomAsignatura'].">".$row['nomAsignatura']."</a>";
-		}
-    }
-
-	static function consultarConProfesor()
+	function consultarConProfesor()
 	{
-	
-		$sql = "select distinct nomAsignatura, gradoAsignatura, cursoAsignatura, GROUP_CONCAT(nombreUsuario) as profesores
-		from asignatura A, proimparteasi P ,usuario U where P.codAsignatura=A.codAsignatura and P.emailUsuario=U.emailUsuario GROUP BY A.codAsignatura";
+		//Buscamos las asignaturas cuyo nombre de parezca a $nombre
+		$sql = "select distinct nomAsignatura, gradoAsignatura, cursoAsignatura, nombreUsuario, apellidoUsuario from asignatura A, proimparteasi P ,usuario U where A.codAsignatura=P.codAsignatura and P.emailUsuario=U.emailUsuario";
 		$resultado = mysql_query($sql);
 		return $resultado;
 	}
 	
-	static function consultarSinProfesor()
+	function consultarSinProfesor()
 	{
+		//Buscamos las asignaturas cuyo nombre de parezca a $nombre
+		//$sql = "select distinct nomAsignatura, gradoAsignatura, cursoAsignatura from asignatura A, proimparteasi P where A.codAsignatura!=P.codAsignatura OR (select count(*) from proimparteasi)=0 ";
 		$sql="select nomAsignatura, gradoAsignatura, cursoAsignatura from asignatura A where (A.codAsignatura not in (select codAsignatura from proimparteasi))";
 		$resultado = mysql_query($sql);
 		return $resultado;
 	}
 
+	public static function verTrabajos($asig) {
+		echo mysql_error();
+		$sql = "SELECT codTrabajo, codAsignatura, nombreTrabajo, fechaLimiteTrabajo FROM trabajo 
+		WHERE codAsignatura = (SELECT codAsignatura FROM asignatura WHERE nomAsignatura = '".$asig."')"; 
+		$resultado = mysql_query($sql);
+		echo mysql_error();
+		return $resultado;
+    }								
+									
 }

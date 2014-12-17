@@ -1,6 +1,4 @@
 <?php
-include_once "../conexion.php";
-
 class trabajo{
 	
 	//atributo codigoTrabajo: guarda el codigo de trabajo
@@ -90,7 +88,6 @@ class trabajo{
 			$this->fechaFinal = $row['fechaLimiteTrabajo'];
 		} 
 	}
-	
 	//metodo insertar
 	//inserta en la tabla trabajo
 	function Insertar()
@@ -102,13 +99,14 @@ class trabajo{
 			$resultado = mysql_query($sql);
 			if (mysql_num_rows($resultado) == 0)
 			{
-				$sql = "INSERT INTO Trabajo (codTrabajo,codAsignatura,nombreTrabajo,fechaLimiteTrabajo,descripcionTrabajo) VALUES ('".$this->codTrab."','".$this->codAsig."','".$this->titulo."','".$this->fechaLimite."','".$this->descripcion."');";
+				$sql = "INSERT INTO Trabajo (codTrabajo,codAsignatura,nombreTrabajo,fechaLimiteTrabajo,descripcionTrabajo) VALUES ('".$this->codTrab."','".$this->codAsig."','".$this->titulo."','".$this->fechaFinal."','".$this->descripcion."');";
 				mysql_query($sql);
 			}
 			else
 			{
 			echo "<br> El trabajo con código: ".$this->codTrab." ya existe <br>";
 			}	
+			echo mysql_error();
 		}
 		else
 		{
@@ -151,7 +149,7 @@ class trabajo{
 		$resultado = mysql_query($sql);
 		if (mysql_num_rows($resultado) == 1)
 		{
-			$sql= "update Trabajo set nombreTrabajo='".$this->titulo."',fechaLimiteTrabajo='".$this->fechaLimite."',descripcionTrabajo='".$this->descripcion."' where codTrabajo='".$this->codTrab."' and codAsignatura='".$this->codAsig."';";
+			$sql= "update Trabajo set nombreTrabajo='".$this->titulo."',fechaLimiteTrabajo='".$this->fechaFinal."',descripcionTrabajo='".$this->descripcion."' where codTrabajo='".$this->codTrab."' and codAsignatura='".$this->codAsig."';";
 			mysql_query($sql);
 		}
 		else
