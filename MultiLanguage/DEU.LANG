@@ -3,233 +3,235 @@
 #
 CodPag0
 CodTexto1
-user@example.com  
+Benutzer@Beispiel.com  
 CodTexto2
-password 
+Passwort
 CodTexto3
-Remember me
+Erinnere mich
 CodTexto4
-Login
+Einloggen / Anmeldung
 CodTexto5
-Don't you have an account ?
+Hast du ein Benutzerkonto?
 CodTexto6
-Register here
+Melde dich hier an
 CodTexto7
-Select your language
-CodTexto8
-Do you want to remember your password?
+Sprachauswahl
 #
 # CodPag 1 || admin/asignatura.php
 #
 CodPag1
 CodTexto1
-Select your language
+Sprachauswahl
 CodTexto2
-Profile
+Profil
 CodTexto3
-Log out
+Ausloggen
 CodTexto4
-Create/Modify subjects
+Unterrichtsfach
 CodTexto5
-Users
+Benützer
 CodTexto6
-About the subject
+Über das Unterrichtsfach
 CodTexto7
-Name:
+Name: 
 CodTexto8
-Degree:
+Studiengang
 CodTexto9
-Year:
+Jahr
 CodTexto10
-Modify
+verändern
 CodTexto11
-Professors
+Professoren
 CodTexto12
 Name
 CodTexto13
-Search
+Suche	
 CodTexto14
-Search... 
+Suche...
 CodTexto15
-Last name
+Nachname
 CodTexto16
-Back
+Zurück
 #
 # CodPag 2 || admin/listaAsignaturas.php
 #
 CodPag2
 CodTexto1
-Select your language
+Sprachauswahl
 CodTexto2
-Profile
+Profil
 CodTexto3
-Log out
+Ausloggen
 CodTexto4
-Subjects
+Unterrichtsfach
 CodTexto5
-Users
+Benützer 
 CodTexto6
-Subjects' List
+Liste über die Unterrichtsfächer
 CodTexto7
 Name
 CodTexto8
-Degree
+Studiengang
 CodTexto9
-Year
+Jahr
 CodTexto10
-Professors
+Professoren
 CodTexto11
-Create subject
+Erstelle ein neues Fach
 #
 # CodPag 3 || admin/listaAsignaturas.php
 #
 CodPag3
 CodTexto1
-Select your language
+Sprachauswahl
 CodTexto2
-Profile
+Profil
 CodTexto3
-Log out
+Ausloggen
 CodTexto4
-Subjects
+Unterrichtsfach
 CodTexto5
-Users
+Benützer 
 CodTexto6
-Users list
+Benutzerliste
 CodTexto7
 Name
 CodTexto8
-Last name
+Studiengang
 CodTexto9
-Create User
+Jahr
+CodTexto10
+E-mail
+CodTexto11
+Entwerfe einen Benutzer
 #
 # CodPag 4 || admin/usuario.php
 #
 CodPag4
 CodTexto1
-Select your language
+Sprachauswahl
 CodTexto2
-Profile
+Profil
 CodTexto3
-Log out
+Ausloggen
 CodTexto4
-Subjects
+Unterrichtsfach
 CodTexto5
-Users
+Benützer 
 CodTexto6
-Create/Modify user
+Entwerfen/Erstellen einen betnuzer
 CodTexto7
 Name:
 CodTexto8
-Last name:
+Nachname:
 CodTexto9
-New password:
+Neues Passwort:
 CodTexto10
-User type:
+Benutzer Art
 CodTexto11
 Student
 CodTexto12
 Professor
 CodTexto13
-Delete
+Löschen
 CodTexto14
-Modify
+Verändern
 #
 # CodPag 5 || Registrar.php
 #
 CodPag5
 CodTexto1
-Select your language
+Sprachauswahl
 CodTexto2
-Register
+Anmelden
 CodTexto3
 Cancel
 CodTexto4
-Register
+Anmelden
 CodTexto5
 E-mail
 CodTexto6
 Name
 CodTexto7
-Last name
+Nachname
 CodTexto8
-Password
+Passwort
 CodTexto9
-Repeat password
+Passwort wiederholen
 CodTexto10
-The e-mail is incorrect
+Die e-mail ist inkorrekt
 CodTexto11
-You must insert a name
+Sie müssen einen name einfügen
 CodTexto12
-You must insert a last name
+Sie müssen einen Nachname einfügen
 CodTexto13
-The DNI that you inserted is not valid
+Der DNI dass Sie eingefügt haben, ist nicht korrekt.
 CodTexto14
-The passwords does not match, it must have a number, a letter and between 6 and 15 characters
+Die Passwörter überein nicht, es muss eine Zahl, einen Buchstabe und zwischen 6 und 15 Buchstaben haben
 CodTexto15
-The passwords must have a number, a letter and between 6 and 15 characters
+Das Passwort muss eine Zahl, einen Buchstabe und zwischen 6 und 15 Buchstaben haben
 #
 # CodPag 6 || alumno/entrega.php
 #
 CodPag6
 CodTexto1
-Select your language
+Sprachauswahl
 CodTexto2
-Profile
+Profil
 CodTexto3
-Log out
+Ausloggen
 CodTexto4
-Subjects
+Unterrichtsfach
 CodTexto5
-Preinscription
+Pre Inschrift
 CodTexto6
-Portfolio
+Portefeuille
 CodTexto7
-Assignment's information
+Aufgabeinformationen
 CodTexto8
-Title:
+Titel:
 CodTexto9
-Description:
+Beschreibung:
 CodTexto10
-Dead line:
+Abgabeschluss:
 CodTexto11
-Upload an assignment
+Eine aufgabe hochladen
 CodTexto12
-Attach file
+Datei anhängen
 CodTexto13
-Send
+Schicken
 CodTexto14
-Correction
+Korrektur
 CodTexto15
-Grade:
+Benotung
 CodTexto16
-Observations:
+Beobachtungen: 
 CodTexto17
-Back
+Zurück
 #
 # CodPag 7 || alumno/listaAsignaturas.php
 #
 CodPag7
 CodTexto1
-Select your language
+Sprachauswahl
 CodTexto2
-Profile
+Profil
 CodTexto3
-Log out
+Ausloggen
 CodTexto4
-Subjects
+Unterrichtsfach
 CodTexto5
-Preinscription
+Pre Inschrift
 CodTexto6
-Portfolio
+Portefeuille
 CodTexto7
-Subjects
+Unterrichtsfach
 CodTexto8
-Subject's list
+Liste über die Unterrichtsfächer
 CodTexto9
 Name
 CodTexto10
-Description
+Beobachtungen
 CodTexto11
 Student
 #
@@ -237,268 +239,272 @@ Student
 #
 CodPag8
 CodTexto1
-Select your language
+Sprachauswahl
 CodTexto2
-Profile
+Profil
 CodTexto3
-Log out
+Ausloggen
 CodTexto4
-Subjects
+Unterrichtsfach
 CodTexto5
-Preinscription
+Pre Inschrift
 CodTexto6
-Portfolio
+Portefeuille
 CodTexto7
-Assignments of 
+Aufgaben von 
 CodTexto8
-Assignments' list
+Liste über die Aufgaben
 CodTexto9
-Title
+Titel
 CodTexto10
-Dead line
+Abgabeschluss
 CodTexto11
 Student
 CodTexto12
-Back
+Zurück
 #
 # CodPag 9 || alumno/perfil.php
 #
 CodPag9
 CodTexto1
-Select your language
+Sprachauswahl
 CodTexto2
-Profile
+Profil
 CodTexto3
-Log out
+Ausloggen
 CodTexto4
-Subjects
+Unterrichtsfach
 CodTexto5
-Preinscription
+Pre Inschrift
 CodTexto6
-Portfolio
+Portefeuille
 CodTexto7
-My profile
+Mein Profil
 CodTexto8
-Profile management
+Profil Verwaltung
 CodTexto9
-Current password
+Aktuelles Passwort
 CodTexto10
-New password
+Neues Passwort
 CodTexto11
 Student
 CodTexto12
-Repeat password
+Passwort wiederholen
 CodTexto13
-user@example.com
+Benutzer@Beispiel.com
 CodTexto14
-Modify profile
+Profil verändern
 CodTexto15
-Actual name
+Aktuellen Name 
 CodTexto16
-Actual last name
+Aktuellen Nachname
 #
 # CodPag 10 || alumno/Portfolio.php
 #
 CodPag10
 CodTexto1
-Select your language
+Sprachauswahl
 CodTexto2
-Profile
+Profil
 CodTexto3
-Log out
+Ausloggen
 CodTexto4
-Subjects
+Unterrichtsfach
 CodTexto5
-Preinscription
+Pre Inschrift
 CodTexto6
-Portfolio
+Portefeuille
 CodTexto7
-Assignment's list
+Liste über die Aufgaben
 CodTexto8
-Public
+Öffentlich
 CodTexto9
-Title
+Titel
 CodTexto10
-Assignment
+Aufgabe
 CodTexto11
 Student
 CodTexto12
 Grade
 CodTexto13
-Observations
+Beobachtungen
 CodTexto14
 Show grades
 CodTexto15
-Publish
+Veröffentlichen
 CodTexto16
-Save
+Speichern
+
 #
 # CodPag 11 || alumno/preinscripción.php
 #
 CodPag11
 CodTexto1
-Select your language
+Sprachauswahl
 CodTexto2
-Profile
+Profil
 CodTexto3
-Log out
+Ausloggen
 CodTexto4
-Subjects
+Unterrichtsfach
 CodTexto5
-Preinscription
+Pre Inschrift
 CodTexto6
-Portfolio
+Portefeuille
 CodTexto7
-Preinscriptions
+Pre Inschriften
 CodTexto8
-Subjects' list
+Liste über die Unterrichtsfächer
 CodTexto9
 Name
 CodTexto10
-Degree
+Beschreibung
 CodTexto11
 Student
 CodTexto12
-Preinscription
-CodTexto13
-Year
+Pre Inschrift
+
 #
 # CodPag 12 || profesor/asignatura.php
 #
 CodPag12
 CodTexto1
-Select your language
+Sprachauswahl
 CodTexto2
 ESEIXesti&oacute;n - Professor
 CodTexto3
-Profile
+Profil
 CodTexto4
-Log out
+Ausloggen
 CodTexto5
-Subjects
+Unterrichtsfach
 CodTexto6
-Students
+Studenten
 CodTexto7
 Name
 CodTexto8
-Search
+Suche
 CodTexto9
-Search...
+Suche...
 CodTexto10
 Last Name
 CodTexto11
-Assignments 
+Aufgaben
 CodTexto12
-Assignment
+Aufgabe
 CodTexto13
-Deadline
+Abgabeschluss
 CodTexto14
-Create assignment
+Entwerfe eine Aufgabe
 CodTexto15
-Back
+Zurück
 #
 # CodPag 13 || profesor/entrega.php
 #
 CodPag13
 CodTexto1
-Select your language
+Sprachauswahl
 CodTexto2
 ESEIXesti&oacute;n - Professor
 CodTexto3
-Profile
+Profil
 CodTexto4
-Log out
+Ausloggen
 CodTexto5
-Subjects
+Unterrichtsfach
 CodTexto6
-Assignment's information
+Aufgabeinformationen
 CodTexto7
-Title:
+Titel:
 CodTexto8
-User:
+Benutzer:
 CodTexto9
-Correction
+Korrektur
 CodTexto10
-Grade
+Benotung
 CodTexto11
-Observations
+Beobachtungen
 CodTexto12
-Back
+Zurück
 #
 # CodPag 14 || profesor/listaAsignaturas.php
 #
 CodPag14
 CodTexto1
-Select your language
+Sprachauswahl
 CodTexto2
 ESEIXesti&oacute;n - Professor
 CodTexto3
-Profile
+Profil
 CodTexto4
-Log out
+Ausloggen
 CodTexto5
-Subjects
+Unterrichtsfach
 CodTexto6
-Subjects' list
+Liste über die Unterrichtsfächer
 #
 # CodPag 15 || profesor/perfil.php
 #
 CodPag15
 CodTexto1
-Select your language
+Sprachauswahl
 CodTexto2
 ESEIXesti&oacute;n - Professor
 CodTexto3
-Profile
+Profil
 CodTexto4
-Log out
+Ausloggen
 CodTexto5
-Subjects
+Unterrichtsfach
 CodTexto6
-My Profile
+Mein Profil
 CodTexto7
-Profile Management
+Profil Verwaltung
 CodTexto8
-Current password
+Aktuelles passwort
 CodTexto9
-New password
+Neues passwort
 CodTexto10
-Repeat password
+Passwort wiederholen
 CodTexto11
-Modify profile
+Profil verändern
 CodTexto12
-Insert your email
+Fügt deine e-mail ein
+
 #
 # CodPag 16 || profesor/trabajo.php
 #
 CodPag16
 CodTexto1
-Select your language
+Sprachauswahl
 CodTexto2
 ESEIXesti&oacute;n - Professor
 CodTexto3
-Profile
+Profil
 CodTexto4
-Log out
+Ausloggen
 CodTexto5
-Subjects
+Unterrichtsfach
 CodTexto6
-Assignment's information
+Aufgabeinformationen
 CodTexto7
-Title
+Titel
 CodTexto8
-Description
+Beschreibung
 CodTexto9
-Deadline
+Abgabeschluss
 CodTexto10
-Modify
+Verändern
 CodTexto11
-Uploaded Assignments
+Hochgeladene Aufgaben
 CodTexto12
-User
+Benutzer
 CodTexto13
-Assignment
+Aufgabe
 CodTexto14
-Grade
+Benotung
 CodTexto15
-Back
+Zurück
+#
+#
+#
