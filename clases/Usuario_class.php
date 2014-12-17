@@ -1,6 +1,5 @@
 <?php
 include_once "../conexion.php";
-Conectarse();
 
 class usuario {
 
@@ -112,7 +111,7 @@ class usuario {
     }
 
     public static function validar($email, $pass) {
-	
+	    session_start();
         $link = Conectarse();
         $sql = "select * from Usuario where emailUsuario = '" . $email . "'";
         $resultado = mysql_query($sql);
@@ -123,15 +122,16 @@ class usuario {
             $_SESSION['userName'] = $row['nombreUsuario'];
             $_SESSION['userTipo'] = $row['tipoUsuario'];
 		    $_SESSION['userDni'] = $row['dniUsuario'];
+			$_SESSION['userPass'] = $row['passwordUsuario'];
 
             if ($row["tipoUsuario"] == 'Alumno') {
-                header("Location:../alumno/listaAsignaturas");
+                header("Location:../alumno/listaAsignaturas.php");
             }
             if ($row["tipoUsuario"] == 'Profesor') {
-                header("Location:../profesor/listaAsignaturas");
+                header("Location:../profesor/listaAsignaturas.php");
             }
             if ($row["tipoUsuario"] == 'Administrador') {
-                header("Location:../admin/listaAsignaturas");
+                header("Location:../admin/listaAsignaturas.php");
             }
         } else {
             header("Location:../index.php");
@@ -176,7 +176,14 @@ class usuario {
         if (mysql_num_rows($resultado) == 1) {
             $sql = "UPDATE Usuario SET nombreUsuario= '" . $this->nombre . "',apellidoUsuario = '" . $this->apellidos . "',passwordUsuario = '" . $this->pass . "',dniUsuario = '" . $this->dni . "' WHERE emailUsuario = '" . $this->email . "'";
             mysql_query($sql);
-            echo "El usuario fue modificado con éxito";
+			$_SESSION['userName'] = $this->nombre;
+			$_SESSION['userPass'] = $this->pass;
+            if ($this->TipoUser == 'Alumno') {
+                header("Location:../alumno/listaAsignaturas.php");
+            }
+            if ($this->TipoUser == 'Profesor') {
+                header("Location:../profesor/listaAsignaturas.php");
+            }
         } else
             echo "<br>No existe un usuario con ese email<br>";
     }
@@ -215,7 +222,7 @@ class usuario {
             $sql = "select * from Asignatura where codAsignatura = '" . $codAsig . "'";
             $resultado = mysql_query($sql);
             if (mysql_num_rows($resultado) == 1) {
-                $sql = "INSERT INTO `aluinscritoasi` (`emailUsuario`, `codAsignatura`, `anhoInscrito`, `aceptado`) 
+                $sql = "INSERT INTO `AluInscritoAsi` (`emailUsuario`, `codAsignatura`, `anhoInscrito`, `aceptado`) 
 						VALUES ('" . $this->email . "', '" . $codAsig . "', '" . $anho . "', 'F');";
                 mysql_query($sql);
             } else
