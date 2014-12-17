@@ -1,4 +1,12 @@
 <!DOCTYPE html>
+<?php
+include('./MultiLanguage/FuncionIdioma.php');
+session_start();
+
+//$_SESSION['idioma']='ENG';
+
+$textos = idioma(5,$_SESSION['idioma']);
+?>
 <html lang="en">
 
     <head>
@@ -35,7 +43,7 @@
             if (regexp.test(email) == 0) {
                 $("#div-username").removeClass("has-success");
                 $("#div-username").addClass("has-error");
-                $.notify("El email no es válido", "error");
+                $.notify("<?php echo $textos[10];//El email no es válido?>", "error");
             }
             else {
                 $("#div-username").removeClass("has-error");
@@ -50,7 +58,7 @@
             if (name.length == 0) {
                 $("#div-name").removeClass("has-success");
                 $("#div-name").addClass("has-error");
-                $.notify("El campo nombre no puede estar vacío", "error");
+                $.notify("<?php echo $textos[11];//El campo nombre no puede estar vacío?>", "error");
             }
             else {
                 $("#div-name").removeClass("has-error");
@@ -65,7 +73,7 @@
             if (surName.length == 0) {
                 $("#div-surname").removeClass("has-success");
                 $("#div-surname").addClass("has-error");
-                $.notify("El campo apellido no puede estar vacío", "error");
+                $.notify("<?php echo $textos[12];//El campo apellido no puede estar vacío?>", "error");
             }
             else {
                 $("#div-surname").removeClass("has-error");
@@ -80,7 +88,7 @@
             if ((!(/^\d{8}[A-Z]$/.test(valor))) || (valor.charAt(8) != letras[(valor.substring(0, 8)) % 23])) {
                 $("#div-DNI").removeClass("has-success");
                 $("#div-DNI").addClass("has-error");
-                $.notify("Introduzca un DNI válido", "error");
+                $.notify("<?php echo $textos[13];//Introduzca un DNI válido?>", "error");
             }
             else {
                 $("#div-DNI").removeClass("has-error");
@@ -99,7 +107,7 @@
                 $("#div-password").addClass("has-error");
                 $("#div-repeatPassword").removeClass("has-success");
                 $("#div-repeatPassword").addClass("has-error");
-                $.notify("Las contraseñas no coinciden ,deben tener un número ,una letra y entre 6 y 15 caracteres", "error");
+                $.notify("<?php echo $textos[14];//Las contraseñas no coinciden ,deben tener un número ,una letra y entre 6 y 15 caracteres?>", "error");
 
             }
             else {
@@ -112,7 +120,7 @@
 
         function ayudaPass() {
 
-            $.notify("Las contraseñas deben tener un número ,una letra y entre 6 y 15 caracteres", "info");
+            $.notify("<?php echo $textos[15];//Las contraseñas deben tener un número ,una letra y entre 6 y 15 caracteres?>", "info");
         }
 
     </script>
@@ -127,7 +135,7 @@
                     <div class="col-xs-12 col-sm-8 col-md-4 col-sm-offset-2 col-md-offset-4">
                         <div class="panel panel-default">
                             <div class="panel-heading">
-                                <h3 class="panel-title"><strong>Registro</strong></h3>
+                                <h3 class="panel-title"><strong><?php echo $textos[2];//Registro?></strong></h3>
                             </div>
 
                             <div class="panel-body">
@@ -135,17 +143,17 @@
 
                                     <div style="margin-bottom: 25px" class="input-group" id="div-username">
                                         <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
-                                        <input id="register-username" type="text" class="form-control" name="username" value="" placeholder="Correo electr&oacute;nico" onblur="validateMail()">                                        
+                                        <input id="register-username" type="text" class="form-control" name="username" value="" placeholder="<?php echo $textos[5];//Correo electr&oacute;nico?>" onblur="validateMail()">                                        
                                     </div>
 
                                     <div style="margin-bottom: 25px" class="input-group" id="div-name">
                                         <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                                        <input id="register-name" type="text" class="form-control" name="name" placeholder="Nombre" onblur="validateName()">
+                                        <input id="register-name" type="text" class="form-control" name="name" placeholder="<?php echo $textos[6];//Nombre?>" onblur="validateName()">
                                     </div>
 
                                     <div style="margin-bottom: 25px" class="input-group" id="div-surname">
                                         <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                                        <input id="register-surname" type="text" class="form-control" name="surname" placeholder="Apellidos" onblur="validateSurName()">
+                                        <input id="register-surname" type="text" class="form-control" name="surname" placeholder="<?php echo $textos[7];//Apellidos?>" onblur="validateSurName()">
                                     </div>
 
                                     <div style="margin-bottom: 25px" class="input-group" id="div-DNI">
@@ -155,13 +163,13 @@
 
                                     <div style="margin-bottom: 25px" class="input-group" id="div-password">
                                         <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-                                        <input id="register-password" type="password" class="form-control" name="password" placeholder="Contrase&ntilde;a">
+                                        <input id="register-password" type="password" class="form-control" name="password" placeholder="<?php echo $textos[8];//Contrase&ntilde;a?>">
                                         <span class="input-group-addon" onClick="ayudaPass()" style="CURSOR: pointer"><i class="glyphicon glyphicon-info-sign"></i></span>
                                     </div>
 
                                     <div style="margin-bottom: 25px" class="input-group" id="div-repeatPassword">
                                         <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-                                        <input id="register-repeatPassword" type="password" class="form-control" name="repeatPassword" placeholder="Repita la contrase&ntilde;a" onblur="validatePassword()">
+                                        <input id="register-repeatPassword" type="password" class="form-control" name="repeatPassword" placeholder="<?php echo $textos[9];//Repita la contrase&ntilde;a?>" onblur="validatePassword()">
                                     </div>											
                                     <!--<div class="input-group">
                                             <div class="checkbox">
@@ -176,11 +184,11 @@
                                         <div class="col-md-12">
 
                                             <div class="pull-left">
-                                                <a id="btn-login" href="index.php" class="btn btn-success">Cancelar  </a>
+                                                <a id="btn-login" href="index.php" class="btn btn-success"><?php echo $textos[3];//Cancelar?> </a>
                                             </div>
 
                                             <div class="pull-right">
-                                                <a id="btn-login" onclick="document.forms['registerform'].submit()" class="btn btn-success">Registrarse  </a>
+                                                <a id="btn-login" onclick="document.forms['registerform'].submit()" class="btn btn-success"><?php echo $textos[4];//Registrarse?>  </a>
                                             </div>
                                         </div>
                                     </div>
@@ -192,7 +200,17 @@
                                         </div>
                                     </div>    
                                 </form>
-
+<form action="../MultiLanguage/CambioIdioma.php" method="post"> 
+						</form>	
+					<form action="../MultiLanguage/CambioIdioma.php" method="post"> 				
+    <select name="idioma" onChange='this.form.submit()'>
+            <option value=""><?php echo $textos[1];//Seleccione su idioma?></option>
+            <option value="ENG">English</option>
+            <option value="ESP">Español</option>
+            <option value="GAL">Galego</option>
+			<option value="DEU">Deutsch</option>
+    </select>
+	</form>
                             </div>
                         </div>
                     </div>

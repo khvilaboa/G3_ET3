@@ -1,0 +1,502 @@
+#
+# CodPag 0 || index.php
+#
+CodPag0
+CodTexto1
+user@example.com  
+CodTexto2
+password 
+CodTexto3
+Remember me
+CodTexto4
+Login
+CodTexto5
+Don't you have an account ?
+CodTexto6
+Register here
+CodTexto7
+Select your language
+CodTexto8
+Do you want to remember your password?
+#
+# CodPag 1 || admin/asignatura.php
+#
+CodPag1
+CodTexto1
+Select your language
+CodTexto2
+Profile
+CodTexto3
+Log out
+CodTexto4
+Subjects
+CodTexto5
+Users
+CodTexto6
+About the subject
+CodTexto7
+Name:
+CodTexto8
+Major:
+CodTexto9
+Year:
+CodTexto10
+Modify
+CodTexto11
+Professors
+CodTexto12
+Name
+CodTexto13
+Search
+CodTexto14
+Search... 
+CodTexto15
+Last name
+CodTexto16
+Back
+#
+# CodPag 2 || admin/listaAsignaturas.php
+#
+CodPag2
+CodTexto1
+Select your language
+CodTexto2
+Profile
+CodTexto3
+Log out
+CodTexto4
+Subjects
+CodTexto5
+Users
+CodTexto6
+Subjects' List
+CodTexto7
+Name
+CodTexto8
+Major
+CodTexto9
+Year
+CodTexto10
+Professors
+CodTexto11
+Create subject
+#
+# CodPag 3 || admin/listaAsignaturas.php
+#
+CodPag3
+CodTexto1
+Select your language
+CodTexto2
+Profile
+CodTexto3
+Log out
+CodTexto4
+Subjects
+CodTexto5
+Users
+CodTexto6
+Users list
+CodTexto7
+Name
+CodTexto8
+Major
+CodTexto9
+Year
+CodTexto10
+E-mail
+CodTexto11
+Create user
+#
+# CodPag 4 || admin/usuario.php
+#
+CodPag4
+CodTexto1
+Select your language
+CodTexto2
+Profile
+CodTexto3
+Log out
+CodTexto4
+Subjects
+CodTexto5
+Users
+CodTexto6
+Create/Modify user
+CodTexto7
+Name:
+CodTexto8
+Last name:
+CodTexto9
+New password:
+CodTexto10
+User type:
+CodTexto11
+Student
+CodTexto12
+Professor
+CodTexto13
+Delete
+CodTexto14
+Modify
+#
+# CodPag 5 || Registrar.php
+#
+CodPag5
+CodTexto1
+Select your language
+CodTexto2
+Register
+CodTexto3
+Cancel
+CodTexto4
+Register
+CodTexto5
+E-mail
+CodTexto6
+Name
+CodTexto7
+Last name
+CodTexto8
+Password
+CodTexto9
+Repeat password
+CodTexto10
+The e-mail is incorrect
+CodTexto11
+You must insert a name
+CodTexto12
+You must insert a last name
+CodTexto13
+The DNI that you inserted is not valid
+CodTexto14
+The passwords does not match, it must have a number, a letter and between 6 and 15 characters
+CodTexto15
+The passwords must have a number, a letter and between 6 and 15 characters
+#
+# CodPag 6 || alumno/entrega.php
+#
+CodPag6
+CodTexto1
+Select your language
+CodTexto2
+Profile
+CodTexto3
+Log out
+CodTexto4
+Subjects
+CodTexto5
+Preinscription
+CodTexto6
+Portfolio
+CodTexto7
+Assignment's information
+CodTexto8
+Title:
+CodTexto9
+Description:
+CodTexto10
+Dead line:
+CodTexto11
+Upload an assignment
+CodTexto12
+Attach file
+CodTexto13
+Send
+CodTexto14
+Correction
+CodTexto15
+Grade:
+CodTexto16
+Observations:
+CodTexto17
+Back
+#
+# CodPag 7 || alumno/listaAsignaturas.php
+#
+CodPag7
+CodTexto1
+Select your language
+CodTexto2
+Profile
+CodTexto3
+Log out
+CodTexto4
+Subjects
+CodTexto5
+Preinscription
+CodTexto6
+Portfolio
+CodTexto7
+Subjects
+CodTexto8
+Subject's list
+CodTexto9
+Name
+CodTexto10
+Description
+CodTexto11
+Student
+#
+# CodPag 8 || alumno/listaTrabajos.php
+#
+CodPag8
+CodTexto1
+Select your language
+CodTexto2
+Profile
+CodTexto3
+Log out
+CodTexto4
+Subjects
+CodTexto5
+Preinscription
+CodTexto6
+Portfolio
+CodTexto7
+Assignments of 
+CodTexto8
+Assignments' list
+CodTexto9
+Title
+CodTexto10
+Dead line
+CodTexto11
+Student
+CodTexto12
+Back
+#
+# CodPag 9 || alumno/perfil.php
+#
+CodPag9
+CodTexto1
+Select your language
+CodTexto2
+Profile
+CodTexto3
+Log out
+CodTexto4
+Subjects
+CodTexto5
+Preinscription
+CodTexto6
+Portfolio
+CodTexto7
+My profile
+CodTexto8
+Profile management
+CodTexto9
+Current password
+CodTexto10
+New password
+CodTexto11
+Student
+CodTexto12
+Repeat password
+CodTexto13
+user@example.com
+CodTexto14
+Modify profile
+#
+# CodPag 10 || alumno/Portfolio.php
+#
+CodPag10
+CodTexto1
+Select your language
+CodTexto2
+Profile
+CodTexto3
+Log out
+CodTexto4
+Subjects
+CodTexto5
+Preinscription
+CodTexto6
+Portfolio
+CodTexto7
+Assignment's list
+CodTexto8
+Public
+CodTexto9
+Title
+CodTexto10
+Assignment
+CodTexto11
+Student
+CodTexto12
+Grade
+CodTexto13
+Observations
+CodTexto14
+Show grades
+CodTexto15
+Publish
+CodTexto16
+Save
+#
+# CodPag 11 || alumno/preinscripción.php
+#
+CodPag11
+CodTexto1
+Select your language
+CodTexto2
+Profile
+CodTexto3
+Log out
+CodTexto4
+Subjects
+CodTexto5
+Preinscription
+CodTexto6
+Portfolio
+CodTexto7
+Preinscriptions
+CodTexto8
+Subjects' list
+CodTexto9
+Name
+CodTexto10
+Description
+CodTexto11
+Student
+CodTexto12
+Preinscription
+#
+# CodPag 12 || profesor/asignatura.php
+#
+CodPag12
+CodTexto1
+Select your language
+CodTexto2
+ESEIXesti&oacute;n - Professor
+CodTexto3
+Profile
+CodTexto4
+Log out
+CodTexto5
+Subjects
+CodTexto6
+Students
+CodTexto7
+Name
+CodTexto8
+Search
+CodTexto9
+Search...
+CodTexto10
+Last Name
+CodTexto11
+Assignments 
+CodTexto12
+Assignment
+CodTexto13
+Deadline
+CodTexto14
+Create assignment
+CodTexto15
+Back
+#
+# CodPag 13 || profesor/entrega.php
+#
+CodPag13
+CodTexto1
+Select your language
+CodTexto2
+ESEIXesti&oacute;n - Professor
+CodTexto3
+Profile
+CodTexto4
+Log out
+CodTexto5
+Subjects
+CodTexto6
+Assignment's information
+CodTexto7
+Title:
+CodTexto8
+User:
+CodTexto9
+Correction
+CodTexto10
+Grade
+CodTexto11
+Observations
+CodTexto12
+Back
+#
+# CodPag 14 || profesor/listaAsignaturas.php
+#
+CodPag14
+CodTexto1
+Select your language
+CodTexto2
+ESEIXesti&oacute;n - Professor
+CodTexto3
+Profile
+CodTexto4
+Log out
+CodTexto5
+Subjects
+CodTexto6
+Subjects' list
+#
+# CodPag 15 || profesor/perfil.php
+#
+CodPag15
+CodTexto1
+Select your language
+CodTexto2
+ESEIXesti&oacute;n - Professor
+CodTexto3
+Profile
+CodTexto4
+Log out
+CodTexto5
+Subjects
+CodTexto6
+My Profile
+CodTexto7
+Profile Management
+CodTexto8
+Current password
+CodTexto9
+New password
+CodTexto10
+Repeat password
+CodTexto11
+Modify profile
+CodTexto12
+Insert your email
+#
+# CodPag 16 || profesor/trabajo.php
+#
+CodPag16
+CodTexto1
+Select your language
+CodTexto2
+ESEIXesti&oacute;n - Professor
+CodTexto3
+Profile
+CodTexto4
+Log out
+CodTexto5
+Subjects
+CodTexto6
+Assignment's information
+CodTexto7
+Title
+CodTexto8
+Description
+CodTexto9
+Deadline
+CodTexto10
+Modify
+CodTexto11
+Uploaded Assignments
+CodTexto12
+User
+CodTexto13
+Assignment
+CodTexto14
+Grade
+CodTexto15
+Back

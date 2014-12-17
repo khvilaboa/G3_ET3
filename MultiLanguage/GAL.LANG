@@ -1,0 +1,504 @@
+#
+# CodPag 0 || index.php
+#
+CodPag0
+CodTexto1
+usuario@exemplo.com 
+CodTexto2
+Contrasinal 
+CodTexto3
+Recordar
+CodTexto4
+Entrar
+CodTexto5
+¿Non tes conta?
+CodTexto6
+Rex&iacute;strate aquí
+CodTexto7
+Seleccione a s&uacute;a l&iacute;ngua
+CodTexto8
+¿Está seguro de que desea recordar o seu contrasinal?
+#
+# CodPag 1 || admin/asignatura.php
+#
+CodPag1
+CodTexto1
+Seleccione a s&uacute;a l&iacute;ngua
+CodTexto2
+Perfil
+CodTexto3
+Pechar sesi&oacute;n
+CodTexto4
+Materias
+CodTexto5
+Usuarios
+CodTexto6
+Datos da materia
+CodTexto7
+Nome:
+CodTexto8
+Grao:
+CodTexto9
+Curso:
+CodTexto10
+Modificar
+CodTexto11
+Profesores da materia
+CodTexto12
+Nome
+CodTexto13
+Filtro
+CodTexto14
+Filtro de busca
+CodTexto15
+Apelidos
+CodTexto16
+Volver
+#
+# CodPag 2 || admin/listaAsignaturas.php
+#
+CodPag2
+CodTexto1
+Seleccione a s&uacute;a l&iacute;ngua
+CodTexto2
+Perfil
+CodTexto3
+Pechar sesi&oacute;n
+CodTexto4
+Materias
+CodTexto5
+Usuarios
+CodTexto6
+Datos da materia
+CodTexto7
+Nome
+CodTexto8
+Grao
+CodTexto9
+Curso
+CodTexto10
+Profesores
+CodTexto11
+Crear materia
+#
+# CodPag 3 || admin/listaAsignaturas.php
+#
+CodPag3
+CodTexto1
+Seleccione a s&uacute;a l&iacute;ngua
+CodTexto2
+Perfil
+CodTexto3
+Pechar sesi&oacute;n
+CodTexto4
+Materias
+CodTexto5
+Usuarios
+CodTexto6
+Datos da materia
+CodTexto7
+Nome
+CodTexto8
+Grao
+CodTexto9
+Curso
+CodTexto10
+E-mail
+CodTexto11
+Crear Usuario
+#
+# CodPag 4 || admin/usuario.php
+#
+CodPag4
+CodTexto1
+Seleccione a s&uacute;a l&iacute;ngua
+CodTexto2
+Perfil
+CodTexto3
+Pechar sesi&oacute;n
+CodTexto4
+Materias
+CodTexto5
+Usuarios
+CodTexto6
+Datos da materia
+CodTexto7
+Nome:
+CodTexto8
+Apelidos:
+CodTexto9
+Novo contrasinal:
+CodTexto10
+Tipo:
+CodTexto11
+Estudante
+CodTexto12
+Profesor
+CodTexto13
+Borrar
+CodTexto14
+Modificar
+#
+# CodPag 5 || Registro.php
+#
+CodPag5
+CodTexto1
+Seleccione a s&uacute;a l&iacute;ngua
+CodTexto2
+Rexistro
+CodTexto3
+Cancelar
+CodTexto4
+Rexistrarse
+CodTexto5
+Correo electr&oacute;nico
+CodTexto6
+Nome
+CodTexto7
+Apelidos
+CodTexto8
+Contrasinal
+CodTexto9
+Repita o novo contrasinal
+CodTexto10
+O email non é válido
+CodTexto11
+O campo do nome non pode atoparse baleiro
+CodTexto12
+O campo do apelido non pode atoparse baleiro
+CodTexto13
+Inserte un DNI válido
+CodTexto14
+Os contrasinais non coinciden ,deben ter un número ,unha letra e debe ter entre 6 y 15 caracteres
+CodTexto15
+Las contraseñas deben tener un número ,una letra e debe ter entre 6 y 15 caracteres
+#
+# CodPag 6 || alumno/entrega.php
+#
+CodPag6
+CodTexto1
+Seleccione a s&uacute;a l&iacute;ngua
+CodTexto2
+Perfil
+CodTexto3
+Pechar sesi&oacute;n
+CodTexto4
+Materias
+CodTexto5
+Preinscripci&oacute;n
+CodTexto6
+Portfolio
+CodTexto7
+Datos do traballo
+CodTexto8
+T&iacute;tulo:
+CodTexto9
+Descripci&oacute;n:
+CodTexto10
+Data l&iacute;mite:
+CodTexto11
+Subir Entrega
+CodTexto12
+Adxuntar un arquivo
+CodTexto13
+Enviar
+CodTexto14
+Correcci&oacute;n
+CodTexto15
+Nota:
+CodTexto16
+Observacions:
+CodTexto17
+Volver
+#
+# CodPag 7 || alumno/listaAsignaturas.php
+#
+CodPag7
+CodTexto1
+Seleccione a s&uacute;a l&iacute;ngua
+CodTexto2
+Perfil
+CodTexto3
+Pechar sesi&oacute;n
+CodTexto4
+Materias
+CodTexto5
+Preinscripci&oacute;n
+CodTexto6
+Portfolio
+CodTexto7
+Materias
+CodTexto8
+Lista de materias
+CodTexto9
+Nome
+CodTexto10
+Descripci&oacute;n
+CodTexto11
+Estudante
+#
+# CodPag 8 || alumno/listaTrabajos.php
+#
+CodPag8
+CodTexto1
+Seleccione a s&uacute;a l&iacute;ngua
+CodTexto2
+Perfil
+CodTexto3
+Pechar sesi&oacute;n
+CodTexto4
+Materias
+CodTexto5
+Preinscripci&oacute;n
+CodTexto6
+Portfolio
+CodTexto7
+Listado de traballos de
+CodTexto8
+Lista de materias
+CodTexto9
+T&iacute;tulo
+CodTexto10
+Data l&iacute;mite
+CodTexto11
+Estudante
+CodTexto12
+Volver
+#
+# CodPag 9 || alumno/perfil.php
+#
+CodPag9
+CodTexto1
+Seleccione a s&uacute;a l&iacute;ngua
+CodTexto2
+Perfil
+CodTexto3
+Pechar sesi&oacute;n
+CodTexto4
+Materias
+CodTexto5
+Preinscripci&oacute;n
+CodTexto6
+Portfolio
+CodTexto7
+Perfil
+CodTexto8
+Xesti&oacute;n do perfil
+CodTexto9
+Contrasinal actual
+CodTexto10
+Nueva contrasinal
+CodTexto11
+Alumno
+CodTexto12
+Repetir contrasinal
+CodTexto13
+usuario@exemplo.com 
+CodTexto14
+Modificar Perfil
+#
+# CodPag 10 || alumno/Portfolio.php
+#
+CodPag10
+CodTexto1
+Seleccione a s&uacute;a l&iacute;ngua
+CodTexto2
+Perfil
+CodTexto3
+Pechar sesi&oacute;n
+CodTexto4
+Materias
+CodTexto5
+Preinscripci&oacute;n
+CodTexto6
+Portfolio
+CodTexto7
+Lista de traballos
+CodTexto8
+P&uacute;blico
+CodTexto9
+T&iacute;tulo
+CodTexto10
+Entrega
+CodTexto11
+Estudante
+CodTexto12
+Nota
+CodTexto13
+Comentarios
+CodTexto14
+Mostrar notas
+CodTexto15
+Publicar
+CodTexto16
+Gardar
+#
+# CodPag 11 || alumno/preinscripción.php
+#
+CodPag11
+CodTexto1
+Seleccione a s&uacute;a l&iacute;ngua
+CodTexto2
+Perfil
+CodTexto3
+Pechar sesi&oacute;n
+CodTexto4
+Materias
+CodTexto5
+Preinscripci&oacute;n
+CodTexto6
+Portfolio
+CodTexto7
+Preinscripciones
+CodTexto8
+Lista de materias
+CodTexto9
+Nome
+CodTexto10
+Descripci&oacute;n
+CodTexto11
+Estudante
+CodTexto12
+Preinscripci&oacute;n
+#
+# CodPag 12 || profesor/asignatura.php
+#
+CodPag12
+CodTexto1
+Seleccione a s&uacute;a l&iacute;ngua
+CodTexto2
+ESEIXesti&oacute;n - Profesor
+CodTexto3
+Perfil
+CodTexto4
+Pechar sesi&oacute;n
+CodTexto5
+Materias
+CodTexto6
+Alumnos da materia
+CodTexto7
+Nome
+CodTexto8
+Filtro: 
+CodTexto9
+Filtro de b&uacute;squeda
+CodTexto10
+Apelidos
+CodTexto11
+Traballos da asignatura
+CodTexto12
+Traballo
+CodTexto13
+Data l&iacute;mite
+CodTexto14
+Crear traballo
+CodTexto15
+Volver
+
+#
+# CodPag 13 || profesor/entrega.php
+#
+CodPag13
+CodTexto1
+Seleccione a s&uacute;a l&iacute;ngua
+CodTexto2
+ESEIXesti&oacute;n - Profesor
+CodTexto3
+Perfil
+CodTexto4
+Pechar sesi&oacute;n
+CodTexto5
+Asignaturas
+CodTexto6
+Datos da entrega
+CodTexto7
+T&iacute;tulo:
+CodTexto8
+Usuario:
+CodTexto9
+Correci&oacute;n
+CodTexto10
+Nota
+CodTexto11
+Observacions
+CodTexto12
+Volver
+#
+# CodPag 14 || profesor/listaAsignaturas.php
+#
+CodPag14
+CodTexto1
+Seleccione a s&uacute;a l&iacute;ngua
+CodTexto2
+ESEIXesti&oacute;n - Profesor
+CodTexto3
+Perfil
+CodTexto4
+Pechar sesi&oacute;n
+CodTexto5
+Materias
+CodTexto6
+Lista de asignaturas
+#
+# CodPag 15 || profesor/perfil.php
+#
+CodPag15
+CodTexto1
+Seleccione a s&uacute;a l&iacute;ngua
+CodTexto2
+ESEIXesti&oacute;n - Profesor
+CodTexto3
+Perfil
+CodTexto4
+Pechar sesi&oacute;n
+CodTexto5
+Materias
+CodTexto6
+Perfil
+CodTexto7
+Xesti&oacute;n de perfil
+CodTexto8
+Contrasinal actual
+CodTexto9
+Novo contrasinal
+CodTexto10
+Repetir contrasinal
+CodTexto11
+Modificar perfil
+CodTexto12
+Ingade o teu email
+
+#
+# CodPag 16 || profesor/trabajo.php
+#
+CodPag16
+CodTexto1
+Seleccione a s&uacute;a l&iacute;ngua
+CodTexto2
+ESEIXesti&oacute;n - Profesor
+CodTexto3
+Perfil
+CodTexto4
+Pechar sesi&oacute;n
+CodTexto5
+Materias
+CodTexto6
+Datos do traballo
+CodTexto7
+T&iacute;tulo
+CodTexto8
+Descripci&oacute;n
+CodTexto9
+Data l&iacute;mite
+CodTexto10
+Modificar
+CodTexto11
+Entregables subidos
+CodTexto12
+Usuario
+CodTexto13
+Entrega
+CodTexto14
+Nota
+CodTexto15
+Volver
