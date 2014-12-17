@@ -199,32 +199,20 @@ class asignatura
     }
 
 	public static function verAluPreins($asig) {
-		Conectarse();
 		$sql = "SELECT dniUsuario, nombreUsuario, apellidoUsuario FROM usuario, asignatura, aluinscritoasi  
 			WHERE usuario.emailUsuario=aluinscritoasi.emailUsuario AND asignatura.codAsignatura=aluinscritoasi.codAsignatura 
 			AND aluinscritoasi.aceptado='F' AND asignatura.nomAsignatura='".$asig."'"; 
 		$resultado = mysql_query($sql);
-		while ($row = mysql_fetch_array($resultado))
-		{
-			echo "<tr><td>".$row['dniUsuario']."</td>";
-			echo "<td>".$row['apellidoUsuario'].", ".$row['nombreUsuario']."</td>";
-			echo " <td><input type='checkbox' name='dniUsuario' value='".$row['dniUsuario']."'>  <br><br></td></tr>";
-		}
+		return $resultado;
     }
 	
 	public static function verAluIns($asig) {
-		Conectarse();
 		$sql = "SELECT dniUsuario, nombreUsuario, apellidoUsuario FROM usuario, asignatura, aluinscritoasi  
 				WHERE usuario.emailUsuario=aluinscritoasi.emailUsuario AND asignatura.codAsignatura=aluinscritoasi.codAsignatura 
 				AND aluinscritoasi.aceptado='T' AND asignatura.nomAsignatura='".$_GET['nombreAsig']."'"; 
 		$resultado = mysql_query($sql);
 		
-		while ($row = mysql_fetch_array($resultado))
-		{
-			echo "<tr><td>".$row['dniUsuario']."</td>";
-			echo "<td>".$row['apellidoUsuario'].", ".$row['nombreUsuario']."</td>";
-			echo " <td><input type='checkbox' name='dniUsuario' value='".$row['dniUsuario']."'>  <br><br></td></tr>";
-		}
+		return $resultado;
     }
 	
 	function consultarConProfesor()
@@ -244,4 +232,12 @@ class asignatura
 		return $resultado;
 	}
 
+	public static function verTrabajos($asig) {
+		$sql = "SELECT codTrabajo, nombreTrabajo, fechaLimiteTrabajo FROM trabajo 
+		WHERE codAsignatura = (SELECT codAsignatura FROM asignatura WHERE nomAsignatura = '".$asig."')"; 
+		$resultado = mysql_query($sql);
+		echo mysql_error();
+		return $resultado;
+    }								
+									
 }

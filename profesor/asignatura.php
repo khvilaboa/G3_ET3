@@ -118,7 +118,13 @@
 								</thead>
 								<tbody>
 									<?php
-										asignatura::verAluPreins($_GET['nombreAsig']);
+										$resultado = asignatura::verAluPreins($_GET['nombreAsig']);
+										while ($row = mysql_fetch_array($resultado))
+										{
+											echo "<tr><td>".$row['dniUsuario']."</td>";
+											echo "<td>".$row['apellidoUsuario'].", ".$row['nombreUsuario']."</td>";
+											echo " <td><input type='checkbox' name='dniUsuario' value='".$row['dniUsuario']."'>  <br><br></td></tr>";
+										}
 									?>	
 								<tbody>
 							</table>
@@ -150,7 +156,13 @@
 									</thead>
 									<tbody>
 									<?php
-										asignatura::verAluIns($_GET['nombreAsig']);
+										$resultado = asignatura::verAluIns($_GET['nombreAsig']);
+										while ($row = mysql_fetch_array($resultado))
+										{
+											echo "<tr><td>".$row['dniUsuario']."</td>";
+											echo "<td>".$row['apellidoUsuario'].", ".$row['nombreUsuario']."</td>";
+											echo " <td><input type='checkbox' name='dniUsuario' value='".$row['dniUsuario']."'>  <br><br></td></tr>";
+										}
 									?>									
 
 									<tbody>
@@ -195,23 +207,15 @@
 									</tr>
 								</thead>
 								<tbody>
-									<tr>
-									   <td><a href="trabajo.html">Trabajo de IU</a></td>
-									   <td>11/11/11</td>
-									   
-									</tr>
+									<?php
+										$resultado = asignatura::verTrabajos($_GET['nombreAsig']);
+										while ($row = mysql_fetch_array($resultado))
+										{
+											echo "<tr><td><a href='trabajo.php?codTrabajo=".$row['codTrabajo']."'>".$row['nombreTrabajo']."</a></td>";
+											echo "<td>".$row['fechaLimiteTrabajo']."</td></tr>";
+										}
+									?>	
 									
-									<tr>
-									   <td><a href="trabajo.html">Trabajo de CDA</a></td>
-									   <td>12/12/12</td>
-			
-									</tr>
-									
-									<tr>
-									   <td><a href="trabajo.html">Trabajo de BDII</a></td>
-									   <td>10/10/10</td>
-									   
-									</tr>
 								<tbody>
 							</table>
 							
