@@ -3,6 +3,9 @@
 	include_once "../clases/Asignatura_class.php";
 
 	$link=Conectarse();   
+	
+	$fil=$_GET['filt'];
+	
 ?>
 
 <html>
@@ -34,7 +37,7 @@
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
-
+	
 </head>
 <body>
 
@@ -118,14 +121,30 @@
 								</thead>
 								<tbody>
 									<?php
-										$resultado = asignatura::verAluPreins($_GET['nombreAsig']);
-										$count2 = 0;
-										while ($row = mysql_fetch_array($resultado))
+										if($fil=='filtro'){
+											
+											
+											$result = asignatura::verAluPreinsFil($_GET['nombreAsig'],$_GET['texto'],$_GET['campo']);
+											$count2 = 0;
+										while ($row = mysql_fetch_array($result))
 										{
 											echo "<tr><td>".$row['dniUsuario']."</td>";
 											echo "<td>".$row['apellidoUsuario'].", ".$row['nombreUsuario']."</td>";
 											echo " <td><input type='checkbox' name='dniUsuario".$count2."' value='".$row['dniUsuario']."'>  <br><br></td></tr>";
 											$count2++;
+										}
+										}
+										else{
+										
+										$resultado = asignatura::verAluPreins($_GET['nombreAsig']);
+										$count2 = 0;
+											while ($row = mysql_fetch_array($resultado))
+											{
+												echo "<tr><td>".$row['dniUsuario']."</td>";
+												echo "<td>".$row['apellidoUsuario'].", ".$row['nombreUsuario']."</td>";
+												echo " <td><input type='checkbox' name='dniUsuario".$count2."' value='".$row['dniUsuario']."'>  <br><br></td></tr>";
+												$count2++;
+											}
 										}
 									?>	
 								<tbody>
@@ -160,14 +179,30 @@
 									</thead>
 									<tbody>
 									<?php
-										$resultado = asignatura::verAluIns($_GET['nombreAsig']);
-										$count = 0;
-										while ($row = mysql_fetch_array($resultado))
+									
+									if($fil=='filtro'){
+											
+											
+											$result = asignatura::verAluInsFil($_GET['nombreAsig'],$_GET['texto'],$_GET['campo']);
+											$count2 = 0;
+										while ($row = mysql_fetch_array($result))
 										{
 											echo "<tr><td>".$row['dniUsuario']."</td>";
 											echo "<td>".$row['apellidoUsuario'].", ".$row['nombreUsuario']."</td>";
-											echo " <td><input type='checkbox' name='dniUsuario".$count."' value='".$row['dniUsuario']."'>  <br><br></td></tr>";
-											$count++;
+											echo " <td><input type='checkbox' name='dniUsuario".$count2."' value='".$row['dniUsuario']."'>  <br><br></td></tr>";
+											$count2++;
+										}
+										}
+										else{
+										$resultado = asignatura::verAluIns($_GET['nombreAsig']);
+										$count = 0;
+											while ($row = mysql_fetch_array($resultado))
+											{
+												echo "<tr><td>".$row['dniUsuario']."</td>";
+												echo "<td>".$row['apellidoUsuario'].", ".$row['nombreUsuario']."</td>";
+												echo " <td><input type='checkbox' name='dniUsuario".$count."' value='".$row['dniUsuario']."'>  <br><br></td></tr>";
+												$count++;
+											}
 										}
 									?>		
 									<INPUT TYPE="hidden" NAME="count" VALUE="<?php echo $count; ?>">
@@ -179,28 +214,33 @@
 								</div>
 							</li>
 						</FORM>
-							
+							<FORM method="GET" ACTION="asignatura.php">
 							<li class="list-group-item">
 								
 								<div class="form-group">
 								<label for="filterText" class="col-md-1 control-label">Filtro: </label>
-									<div class="col-md-7">
-										<input type="name" class="form-control" id="filterText" placeholder="Filtro de b&uacute;squeda">
+									<div class="col-md-5">
+										<input type="text" class="form-control" name="texto" placeholder="Filtro de b&uacute;squeda">
 									</div>
 								
 								<div class="col-md-3">
-								<select name="ad" class="form-control">
-									<option selected> ---</option>
-									<option value="1.htm">Nombre</option>
-									<option value="2.htm">Dni</option>
-									<option value="3.htm">Apellidos</option>
+								<select id="campo" name="campo" class="form-control">
+									<option  selected value="nombreUsuario">Nombre</option>
+									<option value="dniUsuario">Dni</option>
+									<option value="apellidoUsuario">Apellidos</option>
 								</select>
 								
 								</div>
+								<div class="col-md-2">
+								<INPUT TYPE="hidden" NAME="filt" VALUE="filtro">
+								<INPUT TYPE="hidden" NAME="nombreAsig" VALUE="<?php echo $_GET['nombreAsig'];?>">
+                                  <button class='btn btn-default btn-lg' type="submit"><span class="glyphicon glyphicon-search"></span></button>
+								</div>
+								
 								</div>
 								<br>
 							</li>
-							
+							</FORM>
 						</div>
 						
 						
