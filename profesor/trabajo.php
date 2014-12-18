@@ -35,6 +35,7 @@ Conectarse();
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
+	<script language="javascript" src="calendar/calendar.js"></script>
 
 </head>
 <body>
@@ -131,7 +132,24 @@ Conectarse();
 								  <div class="form-group">
 									 <label for="limit" class="col-lg-2 control-label">Fecha l&iacute;mite</label>
 										<div class="col-lg-10">
-										   <input type="text" class="form-control" name="limit" value="<?php echo $trabajo->getFechaFinal();?>">
+										   <input type="hidden" class="form-control" name="limit" placeholder="
+										   <?php
+												require_once('calendar/classes/tc_calendar.php');
+
+												$myCalendar = new tc_calendar("date5", true, false);
+												$myCalendar->setIcon("calendar/images/iconCalendar.gif");
+												$myCalendar->setDate(date('d'), date('m'), date('Y'));
+												$myCalendar->setPath("calendar/");
+												$myCalendar->setYearInterval(2000, 2015);
+												$myCalendar->dateAllow('2008-05-13', '2015-03-01');
+												$myCalendar->setDateFormat('j F Y');
+												$myCalendar->setDateYMD($trabajo->getFechaFinal());
+												$myCalendar->setAlignment('left', 'bottom');
+												$myCalendar->setSpecificDate(array("2011-04-01", "2011-04-04", "2011-12-25"), 0, 'year');
+												$myCalendar->setSpecificDate(array("2011-04-10", "2011-04-14"), 0, 'month');
+												$myCalendar->setSpecificDate(array("2011-06-01"), 0, '');
+												$myCalendar->writeScript();
+											?>
 										</div>
 								  </div>
 
@@ -179,7 +197,26 @@ Conectarse();
 								  <div class="form-group">
 									 <label for="limit" class="col-lg-2 control-label">Fecha l&iacute;mite</label>
 										<div class="col-lg-10">
-										   <input type="text" class="form-control" name="limit" placeholder="Introduce fecha l&iacute;mite">
+										
+										   <input type="hidden" class="form-control" name="limit" placeholder="
+										   <?php											
+												require_once('calendar/classes/tc_calendar.php');
+
+												$myCalendar = new tc_calendar("date5", true, false);
+												$myCalendar->setIcon("calendar/images/iconCalendar.gif");
+												$myCalendar->setDate(date('d'), date('m'), date('Y'));
+												$myCalendar->setPath("calendar/");
+												$myCalendar->setYearInterval(2000, 2015);
+												$myCalendar->dateAllow('2008-05-13', '2015-03-01');
+												$myCalendar->setDateFormat('j F Y');
+												$myCalendar->setAlignment('left', 'bottom');
+												$myCalendar->setSpecificDate(array("2011-04-01", "2011-04-04", "2011-12-25"), 0, 'year');
+												$myCalendar->setSpecificDate(array("2011-04-10", "2011-04-14"), 0, 'month');
+												$myCalendar->setSpecificDate(array("2011-06-01"), 0, '');
+												$myCalendar->writeScript();
+													
+											?>
+										   
 										</div>
 								  </div>
 

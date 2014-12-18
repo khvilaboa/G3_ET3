@@ -76,23 +76,13 @@ class trabajo{
 		$this->fechaFinal = $fechaFinal;
 	}
 	
-	// rellenar
-	function Rellenar() {
-		Conectarse();
-		$sql = "select * from Trabajo where codAsignatura=\"" . $this->codAsig . "\" and codTrabajo=" . $this->codTrab;
-		$resultado = mysql_query($sql);
-		
-		if ($row = mysql_fetch_array($resultado)) {
-			$this->titulo = $row['nombreTrabajo'];
-			$this->descripcion = $row['descripcionTrabajo'];
-			$this->fechaFinal = $row['fechaLimiteTrabajo'];
-		} 
-	}
 	//metodo insertar
 	//inserta en la tabla trabajo
 	function Insertar()
 	{
-		if (($this->codTrab && $this->codAsig) <> '')
+		echo "CA:".$this->codAsig;
+		echo "CT:".$this->codTrab;
+		if ($this->codTrab <> '' && $this->codAsig <> '')
 		{
 			$sql= "select * from Trabajo where codTrabajo= '".$this->codTrab."' and codAsignatura= '".$this->codAsig."';";
 			
@@ -110,8 +100,21 @@ class trabajo{
 		}
 		else
 		{
-			echo "Introduzca un trabajo válido";
+			echo "Introduzca un trabajo valido";
 		}		
+	}
+	
+	// rellenar
+	function Rellenar() {
+		Conectarse();
+		$sql = "select * from Trabajo where codAsignatura=\"" . $this->codAsig . "\" and codTrabajo=" . $this->codTrab;
+		$resultado = mysql_query($sql);
+		
+		if ($row = mysql_fetch_array($resultado)) {
+			$this->titulo = $row['nombreTrabajo'];
+			$this->descripcion = $row['descripcionTrabajo'];
+			$this->fechaFinal = $row['fechaLimiteTrabajo'];
+		} 
 	}
 	
 	//funcion Consultar: hace una búsqueda en la tabla trabajos con

@@ -6,7 +6,6 @@ include ('../../clases/Trabajo_class.php');
 session_start();
 
 $nomA = $_GET['nomA'];
-//$codA = $_GET['codA'];
 $codT = $_GET['codT'];
 $titulo = $_GET['title'];
 $desc = $_GET['desc'];
