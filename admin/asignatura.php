@@ -90,9 +90,9 @@
             <div class="container-fluid">
 				
 				<?php 
-				if(isset($_GET['nombreAsig'])){
+				if(isset($_GET['codAsig'])){
 					$asignatura=new Asignatura('','','','');
-					$sql = "select * from Asignatura where nomAsignatura='".$_GET['nombreAsig']."' and gradoAsignatura='".$_GET['gradoAsig']."'";
+					$sql = "select * from Asignatura where codAsignatura='".$_GET['codAsig']."'";
 					$resultado=mysql_query($sql);
 					while($row = mysql_fetch_array($resultado)){
 		
@@ -102,12 +102,11 @@
 						$asignatura->setCodigo($row['codAsignatura']);
 									
 					}
+					$sqlUN = "SELECT * FROM usuario U where U.tipoUsuario='profesor' and U.emailUsuario not in (select emailUsuario from proimparteasi P where P.codAsignatura='".$asignatura->getCodigo()."') group by U.emailUsuario";
+					$usuarioN=mysql_query($sqlUN);
 					
-					$sqlU = "SELECT * FROM usuario U where U.tipoUsuario='profesor' and (U.emailUsuario not in (select emailUsuario from proimparteasi))";
-					$usuarioN=mysql_query($sqlU);
-					
-					$sqlU2 = "SELECT * FROM usuario, proimparteasi U where U.tipoUsuario='profesor' and (U.emailUsuario in (select emailUsuario from proimparteasi))";
-					$usuarioS=mysql_query($sqlU2);
+					$sqlUS = "SELECT * FROM usuario U, proimparteasi P where U.emailUsuario=P.emailUsuario and P.codAsignatura='".$asignatura->getCodigo()."'";
+					$usuarioS=mysql_query($sqlUS);
 					
 				?>
 				
@@ -120,30 +119,35 @@
 						<div class="panel panel-default">
 						<div class="panel-heading ex-panel-header">Datos de la asignatura</div>
 						<div class="panel panel-body">
-								<form class="form-horizontal" role="form">
+							<form method="post" class="form-horizontal" role="form" action="../controller/controladorAdmin.php">
+							
+								<div class="form-group">
+									<label for="name" class="col-sm-2 control-label">Nombre:</label>
+									<div class="col-sm-10">
+										<input id="name" name="nombreA" type="text" value="<?php echo $asignatura->getNombre()?>" class="form-control">
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="grade" class="col-sm-2 control-label">Grado:</label>
+									<div class="col-sm-10">
+										<input id="grade" name="gradoA" type="text" value="<?php echo $asignatura->getGrado()?>" class="form-control">
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="course" class="col-sm-2 control-label">Curso:</label>
+									<div class="col-sm-10">
+										<input id="course" name="cursoA" type="text" value="<?php echo $asignatura->getCurso()?>" class="form-control">
+									</div>
+								</div>
+								<div class="pull-right">
 								
-									<div class="form-group">
-										<label for="name" class="col-sm-2 control-label">Nombre:</label>
-										<div class="col-sm-10">
-											<input id="name" type="text" value="<?php echo $asignatura->getNombre()?>" class="form-control">
-										</div>
-									</div>
-									<div class="form-group">
-										<label for="grade" class="col-sm-2 control-label">Grado:</label>
-										<div class="col-sm-10">
-											<input id="grade" type="text" value="<?php echo $asignatura->getGrado()?>" class="form-control">
-										</div>
-									</div>
-									<div class="form-group">
-										<label for="course" class="col-sm-2 control-label">Curso:</label>
-										<div class="col-sm-10">
-											<input id="course" type="text" value="<?php echo $asignatura->getCurso()?>" class="form-control">
-										</div>
-									</div>
-									<div class="pull-right">
-										<a href="#" class="btn ex-button">Modificar</a>  							
-									</div>
-							</div></div>		
+									<input type="hidden" name="elemento" value="asignatura"/>
+									<input type="hidden" name="asignatura" value="<?php echo $asignatura->getCodigo() ?>"/>
+									<input type="submit" name="accion" class="btn ex-button" value="Modificar"/>
+
+								</div>
+							</form>
+						</div></div>		
 							
 							<div class="panel panel-default">
 							<div class="panel-heading ex-panel-header">Profesores de la asignatura</div>
@@ -151,72 +155,90 @@
 							<li class="list-group-item">
 							<div class="row">
 							<div class="col-md-5">
-							<div class="table-responsive">
-							<form method="post" class="form-horizontal" role="form" action="../controller/controladorAdmin.php">	
-								<table class="table table-striped table-bordered table-hover table-condensed " style='overflow-y:scroll'>
-									<thead>
-										<tr>
-										<th>DNI</th>
-											<th>Nombre</th>
-											<th>	</th>
-										</tr>
-									</thead>
+								<div class="table-responsive">
+									<form method="post" class="form-horizontal" role="form" action="../controller/controladorAdmin.php">	
+										<table class="table table-striped table-bordered table-hover table-condensed ">
+											<thead>
+												<tr>
+													<th class="panel-heading ex-panel-header">Sin asignar</th>
+													<th class="panel-heading ex-panel-header"></th>
+													<th class="panel-heading ex-panel-header"></th>
+												</tr><tr>
+													<th>DNI</th>
+													<th>Nombre</th>
+													<th>	</th>
+												</tr>
+											</thead>
+											
+											<?php
+												$contP=0;
+												while($row = mysql_fetch_array($usuarioN)){
+													echo"<tbody";
+													echo "<tr>";
+														echo "<td>".$row['dniUsuario']."</td>";
+														echo "<td>".$row['nombreUsuario']."</td>";
+														echo "<td><input type='checkbox' name='emailU".$contP++."' value='".$row['emailUsuario']."'/><br><br></td>";
+														echo "</tr>";
+													
+													echo"</tbody>";
+												}
+											?>
+										</table>
+								</div>
+							</div>
+								<div class="col-md-1 text-center">
+									<input type="hidden" name="contP" value="<?php echo $contP; ?>"/>
+									<input type="hidden" name="elemento" value="asignatura"/>
+									<input type="hidden" name="anho" value="<?php echo $asignatura->getCurso(); ?>"/>
+									<input type="hidden" name="asignatura" value="<?php echo $asignatura->getCodigo(); ?>"/>
+									<input type="submit" name="accion" class="btn ex-button" value=">"/>
 									
-									<?php
-										while($row = mysql_fetch_array($usuarioN)){
-											echo "<tbody ";
-											echo "<tr>";
-												echo "<td>".$row['dniUsuario']."</td>";
-												echo "<td>".$row['nombreUsuario']."</td>";
-												echo "<td><input type='checkbox' name='selection' value='selection'>  <br><br></td>	";
-											echo "</tr>";
-											echo "</tbody>";
-										}
-									?>
-										
-								</table>
-							</form>
-							</div>
-							</div>
-							
-							
-							
-							
-							<div class="col-md-1 text-center">
-								<a href="#" class="btn ex-button"> > </a> 
-								<a href="#" class="btn ex-button"> < </a><br>
-							</div>
-							
 								
+							</form>
 							
 							
+							<form method="post" class="form-horizontal" role="form" action="../controller/controladorAdmin.php">		
+							<input type="submit" name="accion" class="btn ex-button" value="<"/>
+								</div>
 							<div class="col-md-5">
 								<div class="table-responsive">
-								<table class="table table-striped table-bordered table-hover table-condensed">
-									<thead>
-										<tr>
-											<th>DNI</th>
-											<th>Nombre</th>
-											<th>	</th>
-										</tr>
-									</thead>
-									<tbody>
-										<tr>
-										   <td>33445566C</td>
-										   <td>Hierro Pozo, Marta</td>
-										   <td><input type="checkbox" name="selection" value="selection">  <br><br></td>								   
-										</tr>
-										
-										<tr>
-										   <td>44556677D</td>
-										   <td>Dorado Fardo, Lana</td>
-										   <td><input type="checkbox" name="selection" value="selection">  <br><br></td>		
-										</tr>
-										
-									<tbody>
-								</table>
+									<table class="table table-striped table-bordered table-hover table-condensed ">
+										<thead>
+											<tr>
+												<th class="panel-heading ex-panel-header">Asignados</th>
+												<th class="panel-heading ex-panel-header"></th>
+												<th class="panel-heading ex-panel-header"></th>
+											</tr><tr>
+												<th>DNI</th>
+												<th>Nombre</th>
+												<th>	</th>
+											</tr>
+										</thead>
+																		
+										<?php
+												$contPS=0;
+												while($row = mysql_fetch_array($usuarioS)){
+													echo"<tbody";
+													echo "<tr>";
+														echo "<td>".$row['dniUsuario']."</td>";
+														echo "<td>".$row['nombreUsuario']."</td>";
+														echo "<td><input type='checkbox' name='emailU".$contPS++."' value='".$row['emailUsuario']."'/><br><br></td>";
+														echo "</tr>";
+													
+													echo"</tbody>";
+												}
+											?>
+									</table>
+								
+								
+									<input type="hidden" name="contPS" value="<?php echo $contPS; ?>"/>
+									<input type="hidden" name="elemento" value="asignatura"/>
+									<input type="hidden" name="asignatura" value="<?php echo $asignatura->getCodigo(); ?>"/>
+									
+							
 								</div>
-								</div>
+							</div>
+							</form>
 							</li>
 							
 							<li class="list-group-item">
@@ -255,8 +277,10 @@
 					
 					
 				<?php 
-				if(!isset($_GET['nombreAsig'])){
+				if(!isset($_GET['codAsig'])){
 					$asignatura=new Asignatura('','','','');
+					$sql="select * from usuario U, proimparteasi P where U.emailUsuario=P.emailUsuario";
+					$usuario=mysql_query($sql);
 				
 				?>
 				
@@ -269,29 +293,34 @@
 						<div class="panel panel-default">
 						<div class="panel-heading ex-panel-header">Datos de la asignatura</div>
 						<div class="panel panel-body">
-								<form class="form-horizontal" role="form">
+								<form method="post" class="form-horizontal" role="form" action="../controller/controladorAdmin.php">
 								
 									<div class="form-group">
 										<label for="name" class="col-sm-2 control-label">Nombre:</label>
 										<div class="col-sm-10">
-											<input id="name" type="text" value="" class="form-control">
+											<input id="name" name="nombreA" type="text" value="" class="form-control">
 										</div>
 									</div>
 									<div class="form-group">
 										<label for="grade" class="col-sm-2 control-label">Grado:</label>
 										<div class="col-sm-10">
-											<input id="grade" type="text" value="" class="form-control">
+											<input id="grade" name="gradoA" type="text" value="" class="form-control">
 										</div>
 									</div>
 									<div class="form-group">
 										<label for="course" class="col-sm-2 control-label">Curso:</label>
 										<div class="col-sm-10">
-											<input id="course" type="text" value="" class="form-control">
+											<input id="course" name="cursoA" type="text" value="" class="form-control">
 										</div>
 									</div>
 									<div class="pull-right">
-										<a href="#" class="btn ex-button">Crear</a>  							
+									
+										<input type="hidden" name="elemento" value="asignatura"/>
+										<input type="hidden" name="asignatura" value="<?php echo $asignatura->getCodigo() ?>"/>
+										<input type="submit" name="accion" class="btn ex-button" value="Crear"/>
+							
 									</div>
+								</form>
 							</div></div>		
 							
 							<div class="panel panel-default">
@@ -301,68 +330,55 @@
 							<div class="row">
 							<div class="col-md-5">
 							<div class="table-responsive">
-							<table class="table table-striped table-bordered table-hover table-condensed">
-								<thead>
-									<tr>
-									<th>DNI</th>
-										<th>Nombre</th>
-										<th>	</th>
-									</tr>
-								</thead>
-								<tbody>
-									<tr>
-									   <td>11223344A</td>
-									   <td>Paris Lois, Mario</td>
-									   <td><input type="checkbox" name="selection" value="selection">  <br><br></td>
-									</tr>
-									
-									
-									<tr>
-									   <td>22334455B</td>
-									   <td>Tifan Peril, Lola</td>
-									   <td><input type="checkbox" name="selection" value="selection">  <br><br></td>								   
-									   </tr>
-								<tbody>
-							</table>
+							<form method="post" class="form-horizontal" role="form" action="../controller/controladorAdmin.php">	
+										<table class="table table-striped table-bordered table-hover table-condensed ">
+											<thead>
+												<tr>
+												<th>DNI</th>
+													<th>Nombre</th>
+													<th>	</th>
+												</tr>
+											</thead>
+											
+											<?php
+												while($row = mysql_fetch_array($usuario)){
+													echo "<tbody ";
+													echo "<tr>";
+														echo "<td>".$row['dniUsuario']."</td>";
+														echo "<td>".$row['nombreUsuario']."</td>";
+														echo "<td><input type='checkbox' name='selection' value='selection'>  <br><br></td>	";
+													echo "</tr>";
+													echo "</tbody>";
+												}
+											?>
+												
+										</table>
+								</div>
 							</div>
-							</div>
+								<div class="col-md-1 text-center">
+									<a href="#" class="btn ex-button"> > </a> 	
+							</form>
 							
 							
-							
-							
-							<div class="col-md-1 text-center">
-								<a href="#" class="btn ex-button"> > </a> 
-								<a href="#" class="btn ex-button"> < </a><br>
-							</div>
-							
-								
-							
-							
+							<form method="post" class="form-horizontal" role="form" action="../controller/controladorAdmin.php">	
+									<a href="#" class="btn ex-button"> < </a><br>
+								</div>
+		
 							<div class="col-md-5">
 								<div class="table-responsive">
-								<table class="table table-striped table-bordered table-hover table-condensed">
-									<thead>
-										<tr>
+									<table class="table table-striped table-bordered table-hover table-condensed ">
+										<thead>
+											<tr>
 											<th>DNI</th>
-											<th>Nombre</th>
-											<th>	</th>
-										</tr>
-									</thead>
-									<tbody>
-										<tr>
-										   <td>33445566C</td>
-										   <td>Hierro Pozo, Marta</td>
-										   <td><input type="checkbox" name="selection" value="selection">  <br><br></td>								   
-										</tr>
+												<th>Nombre</th>
+												<th>	</th>
+											</tr>
+										</thead>
 										
-										<tr>
-										   <td>44556677D</td>
-										   <td>Dorado Fardo, Lana</td>
-										   <td><input type="checkbox" name="selection" value="selection">  <br><br></td>		
-										</tr>
 										
-									<tbody>
-								</table>
+											
+									</table>
+							</form>
 								</div>
 								</div>
 							</li>
