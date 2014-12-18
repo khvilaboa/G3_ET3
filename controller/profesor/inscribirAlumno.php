@@ -1,12 +1,20 @@
 <?php
 	include_once("../../conexion.php"); 
 	Conectarse();
-	$sql = "UPDATE `aluinscritoasi` SET `aceptado` = 'T'
-	WHERE `aluinscritoasi`.`emailUsuario` = (SELECT usuario.emailUsuario FROM usuario WHERE usuario.dniUsuario = '".$_GET['dniUsuario']."') 
-	AND `aluinscritoasi`.`codAsignatura` = (SELECT `asignatura`.`codAsignatura` FROM asignatura WHERE asignatura.nomAsignatura='".$_GET['nombreAsig']."');";
 	
-	$resultado = mysql_query($sql);
-	echo mysql_error();
+	$count = $_GET['count'];
+	echo $count;
+	for($i=0; $i<$count; $i++){
+		if(isset($_GET['dniUsuario'.$i])){
+			$dni = $_GET['dniUsuario'.$i];
+			$sql = "UPDATE `aluinscritoasi` SET `aceptado` = 'T'
+			WHERE `aluinscritoasi`.`emailUsuario` = (SELECT usuario.emailUsuario FROM usuario WHERE usuario.dniUsuario = '".$dni."') 
+			AND `aluinscritoasi`.`codAsignatura` = (SELECT `asignatura`.`codAsignatura` FROM asignatura WHERE asignatura.nomAsignatura='".$_GET['nombreAsig']."');";
+			
+			$resultado = mysql_query($sql);
+			echo mysql_error();
+		}
+	}
 	
 ?>
 <script type="text/javascript">

@@ -119,11 +119,13 @@
 								<tbody>
 									<?php
 										$resultado = asignatura::verAluPreins($_GET['nombreAsig']);
+										$count2 = 0;
 										while ($row = mysql_fetch_array($resultado))
 										{
 											echo "<tr><td>".$row['dniUsuario']."</td>";
 											echo "<td>".$row['apellidoUsuario'].", ".$row['nombreUsuario']."</td>";
-											echo " <td><input type='checkbox' name='dniUsuario' value='".$row['dniUsuario']."'>  <br><br></td></tr>";
+											echo " <td><input type='checkbox' name='dniUsuario".$count2."' value='".$row['dniUsuario']."'>  <br><br></td></tr>";
+											$count2++;
 										}
 									?>	
 								<tbody>
@@ -134,6 +136,8 @@
 							<div class="col-md-1 text-center">
 								<INPUT class="btn ex-button" TYPE="submit" NAME="accion" VALUE=">">
 								<INPUT TYPE="hidden" NAME="nombreAsig" VALUE="<?php echo $_GET['nombreAsig']; ?>">
+								<INPUT TYPE="hidden" NAME="count" VALUE="<?php echo $count2; ?>">
+
 
 						</FORM>
 						<FORM method="GET" ACTION="..\controller\profesor\expulsarAlumno.php">
@@ -157,19 +161,24 @@
 									<tbody>
 									<?php
 										$resultado = asignatura::verAluIns($_GET['nombreAsig']);
+										$count = 0;
 										while ($row = mysql_fetch_array($resultado))
 										{
 											echo "<tr><td>".$row['dniUsuario']."</td>";
 											echo "<td>".$row['apellidoUsuario'].", ".$row['nombreUsuario']."</td>";
-											echo " <td><input type='checkbox' name='dniUsuario' value='".$row['dniUsuario']."'>  <br><br></td></tr>";
+											echo " <td><input type='checkbox' name='dniUsuario".$count."' value='".$row['dniUsuario']."'>  <br><br></td></tr>";
+											$count++;
 										}
-									?>									
+									?>		
+									<INPUT TYPE="hidden" NAME="count" VALUE="<?php echo $count; ?>">
+
 
 									<tbody>
 								</table>
 								</div>
 								</div>
 							</li>
+						</FORM>
 							
 							<li class="list-group-item">
 								
