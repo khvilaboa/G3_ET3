@@ -157,7 +157,7 @@ class asignatura
 	}
 
 	//Modifica en la BD los valores de la asignatura.
-	function Modificar()
+	function modificar()
 	{
 		//Buscamos una asignatura con el código de nuestro objeto
 		$sql = "select * from Asignatura where codAsignatura = '".$this->codAsig."'";
@@ -166,13 +166,14 @@ class asignatura
 		//Si encuentra una asignatura, la modificamos
 		if (mysql_num_rows($resultado) == 1	)
 		{
-			$sql = "UPDATE Asignatura SET codAsignatura = '".$this->codAsig."',nomAsignatura = '".$this->nombre."',gradoAsignatura = '".$this->grado."',cursoAsignatura = '".$this->curso."' WHERE codAsignatura = '".$this->codAsig."'";
+			$sql = "UPDATE Asignatura SET nomAsignatura = '".$this->nombre."',gradoAsignatura = '".$this->grado."',cursoAsignatura = '".$this->curso."' WHERE codAsignatura = '".$this->codAsig."'";
 			mysql_query($sql);
 			echo "La Asignatura fue modificada con éxito";
 		}
 		else
-		echo "<br>No existe esa Asignatura<br>";
+			echo "<br>No existe esa Asignatura<br>";
 	}
+	
 
 	//Buscamos en la Bd los trabajos de esta asignatura
 	function Get_Trabajos()
@@ -200,6 +201,7 @@ class asignatura
 		
 	public static function verAsigProf($dni) {
 		Conectarse();
+		//Falta en restringirlo al profesor que este conectado
 		$sql = "SELECT `nomAsignatura` FROM `asignatura`, proimparteasi, usuario WHERE proimparteasi.codAsignatura = asignatura.codAsignatura 
 			AND proimparteasi.emailUsuario = usuario.emailUsuario AND usuario.dniUsuario = '".$dni."'";
 		$resultado = mysql_query($sql);
@@ -209,13 +211,13 @@ class asignatura
 			echo "<a class='list-group-item' href=asignatura.php?nombreAsig=".$row['nomAsignatura'].">".$row['nomAsignatura']."</a>";
 		}
     }
-
+	
 	public static function verAluPreins($asig) {
-		$sql = "SELECT dniUsuario, nombreUsuario, apellidoUsuario FROM usuario, asignatura, aluinscritoasi  
-			WHERE usuario.emailUsuario=aluinscritoasi.emailUsuario AND asignatura.codAsignatura=aluinscritoasi.codAsignatura 
-			AND aluinscritoasi.aceptado='F' AND asignatura.nomAsignatura='".$asig."'"; 
-		$resultado = mysql_query($sql);
-		return $resultado;
+	$sql = "SELECT dniUsuario, nombreUsuario, apellidoUsuario FROM usuario, asignatura, aluinscritoasi  
+		WHERE usuario.emailUsuario=aluinscritoasi.emailUsuario AND asignatura.codAsignatura=aluinscritoasi.codAsignatura 
+		AND aluinscritoasi.aceptado='F' AND asignatura.nomAsignatura='".$asig."'"; 
+	$resultado = mysql_query($sql);
+	return $resultado;
     }
 	
 	public static function verAluPreinsFil($asig,$text,$campo) {
@@ -242,24 +244,23 @@ class asignatura
 		
 		return $resultado;
     }
-	
+
 	function consultarConProfesor()
 	{
-		//Buscamos las asignaturas cuyo nombre de parezca a $nombre
-		$sql = "select distinct nomAsignatura, gradoAsignatura, cursoAsignatura, nombreUsuario, apellidoUsuario from asignatura A, proimparteasi P ,usuario U where A.codAsignatura=P.codAsignatura and P.emailUsuario=U.emailUsuario";
+
+		$sql = "select distinct A.codAsignatura, nomAsignatura, gradoAsignatura, cursoAsignatura, GROUP_CONCAT(nombreUsuario) as profesores
+		from Asignatura A, Proimparteasi P ,Usuario U where P.codAsignatura=A.codAsignatura and P.emailUsuario=U.emailUsuario GROUP BY A.codAsignatura";
 		$resultado = mysql_query($sql);
 		return $resultado;
 	}
 	
 	function consultarSinProfesor()
 	{
-		//Buscamos las asignaturas cuyo nombre de parezca a $nombre
-		//$sql = "select distinct nomAsignatura, gradoAsignatura, cursoAsignatura from asignatura A, proimparteasi P where A.codAsignatura!=P.codAsignatura OR (select count(*) from proimparteasi)=0 ";
-		$sql="select nomAsignatura, gradoAsignatura, cursoAsignatura from asignatura A where (A.codAsignatura not in (select codAsignatura from proimparteasi))";
+		$sql="select A.codAsignatura, nomAsignatura, gradoAsignatura, cursoAsignatura from Asignatura A where (A.codAsignatura not in (select codAsignatura from Proimparteasi))";
 		$resultado = mysql_query($sql);
 		return $resultado;
 	}
-
+	
 	public static function verTrabajos($asig) {
 		echo mysql_error();
 		$sql = "SELECT codTrabajo, codAsignatura, nombreTrabajo, fechaLimiteTrabajo FROM trabajo 
@@ -267,6 +268,6 @@ class asignatura
 		$resultado = mysql_query($sql);
 		echo mysql_error();
 		return $resultado;
-    }								
-									
+	}			
+
 }
