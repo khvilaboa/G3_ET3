@@ -235,7 +235,7 @@
 						</div>
 						
 						<div class="pull-right">
-							<a href="listaAsignaturas.html" class="btn ex-button">Volver</a>
+							<a href="listaAsignaturas.php" class="btn ex-button">Volver</a>
 						</div>
 						
 						

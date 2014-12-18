@@ -168,6 +168,15 @@ class trabajo{
 		$resultado = mysql_query($sql);
 		return $resultado;
 	}
+	
+	public static function verEntregas($asig, $trab) {		 
+		$sql = "SELECT titulo, emailUsuario, observaciones, calificacion, codTrabajo, codAsignatura 
+		FROM `aluentregatra` 
+		WHERE `codAsignatura`='".$asig."' AND codTrabajo='".$trab."'"; 
+		$resultado = mysql_query($sql);
+		echo mysql_error();
+		return $resultado;
+    }	
 
 }
 

@@ -157,14 +157,31 @@ Conectarse();
 							   
 							  <p class="pull-right"> 
 								<input type="hidden" name="codT" value="<?php echo $_GET['codTrabajo'];?>">
-								<!--<input type="hidden" name="codA" value="<?php echo $_GET['codAsig'];?>"> -->
 								<input type="hidden" name="nomA" value="<?php echo $_GET['nomAsig'];?>">
 								<button type="submit" class="btn ex-button">Modificar</button>
 							  </p>
 							   </form>
 						  </div>
 					    </div>
-						
+						<div class="panel panel-default">
+							<div class="panel-heading ex-panel-header"><?php echo "Entregables subidos";?></div>
+								<table class="table table-striped table-bordered table-hover">
+									<tbody>
+									<?php
+										$resultado = trabajo::verEntregas($_GET['codAsig'], $_GET['codTrabajo']);
+										while ($row = mysql_fetch_array($resultado))
+										{
+											echo "<tr><td><a href='entrega.php?codTrabajo=".$row['codTrabajo']."&codAsig=".$row['codAsignatura']."
+													&nombreAsig=".$_GET['nomAsig']."&emailUs=".$row['emailUsuario']."&nombreEntrega=".$row['titulo']."'>".$row['titulo']."</a></td>";
+											echo "<td>".$row['emailUsuario']."</td>";
+											echo "<td>".$row['observaciones']."</td>";
+											echo "<td>".$row['calificacion']."</td></tr>";
+										}
+									?>	
+										
+									<tbody>
+								</table>
+						</div>
 					</div>
                     </div>
 					<?php

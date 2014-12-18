@@ -1,3 +1,8 @@
+<?php
+session_start();
+include_once('../conexion.php');
+Conectarse();
+?>
 <head>
 
     <meta charset="utf-8">
@@ -96,7 +101,7 @@
 																					echo $_GET['nombreEntrega']; 
 																				  ?> </li>
 								<li class="list-group-item"><b>Usuario:</b> <?php 
-																				echo $_GET['dniUsuario']; 
+																				echo $_GET['emailUs']; 
 																			  ?></li>
 							</ul>
 						</div>
@@ -126,7 +131,14 @@
 								<div class="form-group">
 									 <label for="observ" class="col-lg-2 control-label">Observaciones</label>
 										<div class="col-lg-10">
-										   <textarea class="form-control" rows="5" id="observ" NAME="observaciones"></textarea>
+										   <textarea class="form-control" rows="5" id="observ" NAME="observaciones"><?php 
+													$sql = "select observaciones from aluentregatra
+													WHERE `codAsignatura`='".$_GET['codAsig']."' AND codTrabajo='".$_GET['codTrabajo']."' AND emailUsuario='".$_GET['emailUs']."'";													
+													$resultado = mysql_query($sql);
+													$observacion = mysql_fetch_array($resultado);
+													echo $observacion['observaciones'];
+												?></textarea>
+										  
 										</div>
 								</div>
 
@@ -135,9 +147,12 @@
 								
 						<div class="pull-right">
 							<INPUT class="btn ex-button" TYPE="submit" NAME="accion" VALUE="Guardar">
-							<INPUT TYPE="hidden" NAME="nombreAsig" VALUE="<?php echo $_GET['nombreAsig']; ?>">
+							<INPUT TYPE="hidden" NAME="codAsig" VALUE="<?php echo $_GET['codAsig']; ?>">
+							<INPUT TYPE="hidden" NAME="codTrab" VALUE="<?php echo $_GET['codTrabajo']; ?>">
+							<INPUT TYPE="hidden" NAME="emailUs" VALUE="<?php echo $_GET['emailUs']; ?>">
+							<INPUT TYPE="hidden" NAME="nomAsig" VALUE="<?php echo $_GET['nombreAsig']; ?>">
 						</FORM>
-							<a href="trabajo.html" class="btn ex-button">Volver</a>
+							<a href="trabajo.php" class="btn ex-button">Volver</a>
 						</div>
 						  
 					</div>
