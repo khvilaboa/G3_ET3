@@ -218,6 +218,22 @@ class asignatura
 		return $resultado;
     }
 	
+	public static function verAluPreinsFil($asig,$text,$campo) {
+		$sql = "SELECT dniUsuario, nombreUsuario, apellidoUsuario FROM usuario, asignatura, aluinscritoasi  
+			WHERE usuario.emailUsuario=aluinscritoasi.emailUsuario AND asignatura.codAsignatura=aluinscritoasi.codAsignatura 
+			AND aluinscritoasi.aceptado='F' AND asignatura.nomAsignatura='".$asig."' and ".$campo." LIKE '%".$text."%'"; 
+		$resultado = mysql_query($sql);
+		return $resultado;
+    }
+	
+	public static function verAluInsFil($asig,$text,$campo) {
+		$sql = "SELECT dniUsuario, nombreUsuario, apellidoUsuario FROM usuario, asignatura, aluinscritoasi  
+			WHERE usuario.emailUsuario=aluinscritoasi.emailUsuario AND asignatura.codAsignatura=aluinscritoasi.codAsignatura 
+			AND aluinscritoasi.aceptado='T' AND asignatura.nomAsignatura='".$asig."' and ".$campo." LIKE '%".$text."%'"; 
+		$resultado = mysql_query($sql);
+		return $resultado;
+    }
+	
 	public static function verAluIns($asig) {
 		$sql = "SELECT dniUsuario, nombreUsuario, apellidoUsuario FROM usuario, asignatura, aluinscritoasi  
 				WHERE usuario.emailUsuario=aluinscritoasi.emailUsuario AND asignatura.codAsignatura=aluinscritoasi.codAsignatura 
