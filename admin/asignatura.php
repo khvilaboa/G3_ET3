@@ -63,7 +63,7 @@
                         </li>
                         <li class="divider"></li>
                         <li>
-                            <a href="#"><i class="fa fa-fw fa-power-off"></i> Cerrar sesi&oacute;n</a>
+                            <a href="../index.php"><i class="fa fa-fw fa-power-off"></i> Cerrar sesi&oacute;n</a>
                         </li>
                     </ul>
                 </li>
@@ -78,7 +78,7 @@
                         <a href="listaUsuarios.php"><i class="fa fa-fw fa-users"></i> Usuarios</a>
                     </li>
                     <li>
-                        <a href="../login.php"><i class="fa fa-fw fa-power-off"></i> Cerrar sesi&oacute;n</a>
+                        <a href="../index.php"><i class="fa fa-fw fa-power-off"></i> Cerrar sesi&oacute;n</a>
                     </li>
                 </ul>
             </div>

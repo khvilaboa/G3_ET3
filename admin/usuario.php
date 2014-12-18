@@ -61,7 +61,7 @@
                         </li>
                         <li class="divider"></li>
                         <li>
-                            <a href="#"><i class="fa fa-fw fa-power-off"></i> Cerrar sesi&oacute;n</a>
+                            <a href="../index.php"><i class="fa fa-fw fa-power-off"></i> Cerrar sesi&oacute;n</a>
                         </li>
                     </ul>
                 </li>
@@ -76,7 +76,7 @@
                         <a href="listaUsuarios.php"><i class="fa fa-fw fa-users"></i> Usuarios</a>
                     </li>
                     <li>
-                        <a href="../login.php"><i class="fa fa-fw fa-power-off"></i> Cerrar sesi&oacute;n</a>
+                        <a href="../index.php"><i class="fa fa-fw fa-power-off"></i> Cerrar sesi&oacute;n</a>
                     </li>
                 </ul>
             </div>
@@ -143,7 +143,8 @@
 										<div class="form-group">
 											<label class="col-sm-2 control-label">Tipo:</label>
 											<div class="col-sm-10">
-												<select class="form-control" name="tipo" >
+												<select class="form-control" name="tipo"  <?php if($usuario->getTipo()=="Administrador") echo "disabled"?>>
+												<?php if($usuario->getTipo()=="Administrador") echo '<option value="Administrador">Administrador</option>'?>
 												<option value="Alumno" <?php if($usuario->getTipo()=="Alumno") echo " selected";?>>Alumno</option>
 												<option value="Profesor" <?php if($usuario->getTipo()=="Profesor") echo " selected";?>>Profesor</option>
 												</select>
@@ -155,7 +156,7 @@
 										
 										<input type="hidden" name="elemento" value="usuario"/>
 										<input type="hidden" name="usuario" value="<?php echo $usuario->getDni() ?>"/>
-										<input type="submit" name="accion" class="btn ex-button" value="Borrar"/>
+										<?php if($usuario->getTipo()!="Administrador") echo '<input type="submit" name="accion" class="btn ex-button"  value="Borrar"/>'?>
 										<input type="submit" name="accion" class="btn ex-button" value="Modificar"/>
 										
 
