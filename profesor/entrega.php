@@ -2,6 +2,11 @@
 session_start();
 include_once('../conexion.php');
 Conectarse();
+include('../MultiLanguage/FuncionIdioma.php');
+//La siguiente linea se descomenta para hacer prueba sin pasar por login, una vez que este inicializada debe comentarse otra vez.
+//$_SESSION['idioma']='ESP';
+
+$textos = idioma(13,$_SESSION['idioma']);
 ?>
 <head>
 
@@ -47,7 +52,7 @@ Conectarse();
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.html">ESEIXesti&oacute;n - Profesor</a>
+                <a class="navbar-brand" href="index.html"><?php echo $textos[2];//ESEIXesti&oacute;n - Profesor?></a>
             </div>
             <!-- Top Menu Items -->
             <ul class="nav navbar-right top-nav">
@@ -55,11 +60,11 @@ Conectarse();
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> John Smith <b class="caret"></b></a>
                     <ul class="dropdown-menu">
                         <li>
-                            <a href="perfil.html"><i class="fa fa-fw fa-user"></i> Perfil</a>
+                            <a href="perfil.html"><i class="fa fa-fw fa-user"></i> <?php echo $textos[3]; //Perfil?></a>
                         </li>
                         <li class="divider"></li>
                         <li>
-                            <a href="#"><i class="fa fa-fw fa-power-off"></i> Cerrar sesi&oacute;n</a>
+                            <a href="#"><i class="fa fa-fw fa-power-off"></i><?php echo $textos[4];//Cerrar sesi&oacute;n?></a>
                         </li>
                     </ul>
                 </li>
@@ -68,13 +73,13 @@ Conectarse();
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav side-nav">
                     <li>
-                        <a href="perfil.html"><i class="fa fa-fw fa-dashboard"></i> Perfil</a>
+                        <a href="perfil.html"><i class="fa fa-fw fa-dashboard"></i> <?php echo $textos[3]; //Perfil?></a>
                     </li>
                     <li>
-                        <a href="listaAsignaturas.html"><i class="fa fa-fw fa-bar-chart-o"></i> Asignaturas</a>
+                        <a href="listaAsignaturas.html"><i class="fa fa-fw fa-bar-chart-o"></i> <?php echo $textos[5]; //Asignaturas?></a>
                     </li>
                     <li>
-                        <a href="#"><i class="fa fa-fw fa-power-off"></i> Cerrar sesi&oacute;n</a>
+                        <a href="#"><i class="fa fa-fw fa-power-off"></i> <?php echo $textos[4];//Cerrar sesi&oacute;n?></a>
                     </li>
                 </ul>
             </div>
@@ -94,26 +99,26 @@ Conectarse();
 						</h1>
                         <FORM method="GET" ACTION="..\controller\profesor\evaluarEntrega.php">
 						<div class="panel panel-default">
-							<div class="panel-heading ex-panel-header">Datos de la entrega</div>
+							<div class="panel-heading ex-panel-header"><?php echo $textos[6];//Datos de la entrega?></div>
 											
 							<ul class="list-group">
-								<li class="list-group-item"><b>T&iacute;tulo:</b> <?php 
+								<li class="list-group-item"><b><?php echo $textos[7];//T&iacute;tulo:?></b> <?php 
 																					echo $_GET['nombreEntrega']; 
 																				  ?> </li>
-								<li class="list-group-item"><b>Usuario:</b> <?php 
+								<li class="list-group-item"><b><?php echo $textos[8];//Usuario:?></b> <?php 
 																				echo $_GET['emailUs']; 
 																			  ?></li>
 							</ul>
 						</div>
 						
 						<div class="panel panel-default">
-							<div class="panel-heading ex-panel-header">Correci&oacute;n</div>
+							<div class="panel-heading ex-panel-header"><?php echo $textos[9];//Correci&oacute;n?></div>
 											
 							<div class="panel-body">
 								<div class="form-group">
-									 <label for="selNosta" class="col-lg-2 control-label">Nota</label>
+									 <label for="selNosta" class="col-lg-2 control-label"><?php echo $textos[10];//Nota?></label>
 										<div class="col-lg-10">
-										   <select class="form-control" id="selNota" NAME="nota">
+										   <select class="form-control" id="selNota" NAME="nota"> <!--Modificar nota? -->
 												<option>1</option>
 												<option>2</option>
 												<option>3</option>
@@ -129,7 +134,7 @@ Conectarse();
 								</div><br>
 								
 								<div class="form-group">
-									 <label for="observ" class="col-lg-2 control-label">Observaciones</label>
+									 <label for="observ" class="col-lg-2 control-label"><?php echo $textos[11];//Observaciones?></label>
 										<div class="col-lg-10">
 										   <textarea class="form-control" rows="5" id="observ" NAME="observaciones"><?php 
 													$sql = "select observaciones from aluentregatra
@@ -152,10 +157,21 @@ Conectarse();
 							<INPUT TYPE="hidden" NAME="emailUs" VALUE="<?php echo $_GET['emailUs']; ?>">
 							<INPUT TYPE="hidden" NAME="nomAsig" VALUE="<?php echo $_GET['nombreAsig']; ?>">
 						</FORM>
-							<a href="trabajo.php" class="btn ex-button">Volver</a>
+							<a href="trabajo.php" class="btn ex-button"><?php echo $textos[12]; //Volver?></a>
 						</div>
 						  
 					</div>
+					<form action="../MultiLanguage/CambioIdioma.php" method="post"> 
+						</form>	
+					<form action="../MultiLanguage/CambioIdioma.php" method="post"> 				
+    <select name="idioma" onChange='this.form.submit()'>
+            <option value=""><?php echo $textos[1];//Seleccione su idioma?></option>
+            <option value="ENG">English</option>
+            <option value="ESP">Español</option>
+            <option value="GAL">Galego</option>
+			<option value="DEU">Deutsch</option>
+    </select>
+	</form>
                 </div>
                 <!-- /.row -->
 

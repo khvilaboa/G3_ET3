@@ -127,7 +127,7 @@ $textos = idioma(11,$_SESSION['idioma']);
 											echo "<TD>".$row['gradoAsignatura']."</TD>";
 											echo "<TD>".$row['cursoAsignatura']."</TD>";
 											$_SESSION['codAsignatura'] = $row['codAsignatura'];
-											echo "<TD> <a href=\"../controller/controllerPreins.php\">Preinscribirse</a></TD>";
+											echo "<TD> <a href=\"../controller/controllerPreins.php\">"echo $textos[14];/*Preinscribirse*/"</a></TD>";
 											echo "</TR>";
 										}
 										?>

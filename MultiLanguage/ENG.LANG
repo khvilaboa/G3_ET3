@@ -54,6 +54,12 @@ CodTexto15
 Last name
 CodTexto16
 Back
+CodTexto17
+Unassigned
+CodTexto18
+Assigned
+CodTexto19
+Create
 #
 # CodPag 2 || admin/listaAsignaturas.php
 #
@@ -134,6 +140,8 @@ CodTexto13
 Delete
 CodTexto14
 Modify
+CodTexto15
+Create
 #
 # CodPag 5 || Registrar.php
 #
@@ -362,6 +370,8 @@ CodTexto12
 Preinscription
 CodTexto13
 Year
+CodTexto14
+Preregister
 #
 # CodPag 12 || profesor/asignatura.php
 #
@@ -400,6 +410,8 @@ CodTexto16
 Pre-registered students
 CodTexto17
 Registered students
+CodTexto18
+Subject
 #
 # CodPag 13 || profesor/entrega.php
 #
@@ -506,3 +518,10 @@ CodTexto14
 Grade
 CodTexto15
 Back
+CodTexto16
+Create assignment
+CodTexto17
+Create
+#
+#
+#

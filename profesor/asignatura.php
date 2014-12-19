@@ -1,11 +1,15 @@
 <?php
+	session_start();
 	include_once("../conexion.php"); 
 	include_once "../clases/Asignatura_class.php";
 
 	$link=Conectarse();   
 	
 	$fil=$_GET['filt'];
-	
+	include('../MultiLanguage/FuncionIdioma.php');
+	//La siguiente linea se descomenta para hacer prueba sin pasar por login, una vez que este inicializada debe comentarse otra vez.
+	//$_SESSION['idioma']='ENG';
+	$textos = idioma(12,$_SESSION['idioma']);
 ?>
 
 <html>
@@ -53,7 +57,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.html">ESEIXesti&oacute;n - Profesor</a>
+                <a class="navbar-brand" href="index.html"><?php echo $textos[2];//ESEIXesti&oacute;n - Profesor?></a>
             </div>
             <!-- Top Menu Items -->
             <ul class="nav navbar-right top-nav">
@@ -61,11 +65,11 @@
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> John Smith <b class="caret"></b></a>
                     <ul class="dropdown-menu">
                         <li>
-                            <a href="perfil.html"><i class="fa fa-fw fa-user"></i> Perfil</a>
+                            <a href="perfil.html"><i class="fa fa-fw fa-user"></i> <?php echo $textos[3]; //Perfil?></a>
                         </li>
                         <li class="divider"></li>
                         <li>
-                            <a href="#"><i class="fa fa-fw fa-power-off"></i> Cerrar sesi&oacute;n</a>
+                            <a href="#"><i class="fa fa-fw fa-power-off"></i> <?php echo $textos[4];//Cerrar sesi&oacute;n?></a>
                         </li>
                     </ul>
                 </li>
@@ -74,13 +78,13 @@
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav side-nav">
                     <li>
-                        <a href="perfil.html"><i class="fa fa-fw fa-dashboard"></i> Perfil</a>
+                        <a href="perfil.html"><i class="fa fa-fw fa-dashboard"></i> <?php echo $textos[3]; //Perfil?></a>
                     </li>
                     <li>
-                        <a href="listaAsignaturas.html"><i class="fa fa-fw fa-bar-chart-o"></i> Asignaturas</a>
+                        <a href="listaAsignaturas.html"><i class="fa fa-fw fa-bar-chart-o"></i> <?php echo $textos[5]; //Asignaturas?></a>
                     </li>
                     <li>
-                        <a href="#"><i class="fa fa-fw fa-power-off"></i> Cerrar sesi&oacute;n</a>
+                        <a href="#"><i class="fa fa-fw fa-power-off"></i> <?php echo $textos[4];//Cerrar sesi&oacute;n?></a>
                     </li>
                 </ul>
             </div>
@@ -94,14 +98,14 @@
                 <!-- Page Heading -->
                 <div class="row">
                     <div class="col-lg-12">
-                        <h1 class="page-header ex-title"> Asignatura
+                        <h1 class="page-header ex-title"> <?php echo $textos[18]; //Asignatura?>
 							<?php
 								echo $_GET['nombreAsig'];
 ;							?>
 						</h1>
 						
 						<div class="panel panel-default">
-							<div class="panel-heading ex-panel-header">Alumnos de la asignatura</div>
+							<div class="panel-heading ex-panel-header"><?php echo $textos[6]; //Alumnos de la asignatura?></div>
 														
 							<li class="list-group-item">
 							<div class="row">
@@ -111,11 +115,11 @@
 							<table class="table table-striped table-bordered table-hover table-condensed">
 								<thead>
 									<tr> 
-										<th colspan=3> Alumnos pre-inscritos </th> 
+										<th colspan=3> <?php echo $textos[16];//Alumnos pre-inscritos?> </th> 
 									</tr>
 									<tr>
 									<th>DNI</th>
-										<th>Nombre</th>
+										<th><?php echo $textos[7]; //Nombre?></th>
 										<th>	</th>
 									</tr>
 								</thead>
@@ -169,11 +173,11 @@
 								<table class="table table-striped table-bordered table-hover table-condensed">
 									<thead>
 										<tr> 
-											<th colspan=3> Alumnos inscritos </th> 
+											<th colspan=3> <?php echo $textos[17];//Alumnos inscritos?> </th> 
 										</tr>
 										<tr>
 											<th>DNI</th>
-											<th>Nombre</th>
+											<th><?php echo $textos[7]; //Nombre?></th>
 											<th>	</th>
 										</tr>
 									</thead>
@@ -218,16 +222,16 @@
 							<li class="list-group-item">
 								
 								<div class="form-group">
-								<label for="filterText" class="col-md-1 control-label">Filtro: </label>
+								<label for="filterText" class="col-md-1 control-label"><?php echo $textos[8]; //Filtro:?> </label>
 									<div class="col-md-5">
-										<input type="text" class="form-control" name="texto" placeholder="Filtro de b&uacute;squeda">
+										<input type="text" class="form-control" name="texto" placeholder="<?php echo $textos[8]; //Filtro:?>">
 									</div>
 								
 								<div class="col-md-3">
 								<select id="campo" name="campo" class="form-control">
-									<option  selected value="nombreUsuario">Nombre</option>
+									<option  selected value="nombreUsuario"><?php echo $textos[7]; //Nombre?></option>
 									<option value="dniUsuario">Dni</option>
-									<option value="apellidoUsuario">Apellidos</option>
+									<option value="apellidoUsuario"><?php echo $textos[10]; //Apellidos?></option>
 								</select>
 								
 								</div>
@@ -245,14 +249,14 @@
 						
 						
 						<div class="panel panel-default">
-							<div class="panel-heading ex-panel-header">Trabajos de la asignatura</div>
+							<div class="panel-heading ex-panel-header"><?php echo $textos[11]; //Trabajos de la asignatura?></div>
 
 							<li class="list-group-item">
 							<table class="table table-striped table-bordered table-hover">
 								<thead>
 									<tr>
-										<th>Trabajo</th>
-										<th>Fecha l&iacute;mite</th>
+										<th><?php echo $textos[12]; //Trabajo?></th>
+										<th><?php echo $textos[13]; //Fecha l&iacute;mite?></th>
 									</tr>
 								</thead>
 								<tbody>
@@ -269,15 +273,25 @@
 							</table>
 							
 							<div class="pull-right">
-								<a href="trabajo.php?nomAsig=<?php echo $_GET['nombreAsig']; ?>" class="btn ex-button">Crear trabajo</a>
+								<a href="trabajo.php?nomAsig=<?php echo $_GET['nombreAsig']; ?>" class="btn ex-button"><?php echo $textos[14]; //Crear trabajo?></a>
 							</div><br><br>
 							</li>
 						</div>
 						
 						<div class="pull-right">
-							<a href="listaAsignaturas.php" class="btn ex-button">Volver</a>
+							<a href="listaAsignaturas.php" class="btn ex-button"><?php echo $textos[15]; //Volver?></a>
 						</div>
-						
+						<form action="../MultiLanguage/CambioIdioma.php" method="post"> 
+						</form>	
+					<form action="../MultiLanguage/CambioIdioma.php" method="post"> 				
+    <select name="idioma" onChange='this.form.submit()'>
+            <option value=""><?php echo $textos[1];//Seleccione su idioma?></option>
+            <option value="ENG">English</option>
+            <option value="ESP">Español</option>
+            <option value="GAL">Galego</option>
+			<option value="DEU">Deutsch</option>
+    </select>
+	</form>
 						
 					</div>
                 </div>

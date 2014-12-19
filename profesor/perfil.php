@@ -3,7 +3,7 @@ session_start();
 include_once('../conexion.php');
 Conectarse();
 include('../MultiLanguage/FuncionIdioma.php');
-
+//La siguiente linea se descomenta para hacer prueba sin pasar por login, una vez que este inicializada debe comentarse otra vez.
 //$_SESSION['idioma']='ESP';
 
 $textos = idioma(15,$_SESSION['idioma']);

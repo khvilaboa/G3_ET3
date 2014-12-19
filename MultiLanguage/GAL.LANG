@@ -54,6 +54,10 @@ CodTexto15
 Apelidos
 CodTexto16
 Volver
+CodTexto17
+Sin asignar
+CodTexto17
+Asignados
 #
 # CodPag 2 || admin/listaAsignaturas.php
 #
@@ -134,6 +138,8 @@ CodTexto13
 Borrar
 CodTexto14
 Modificar
+CodTexto15
+Crear
 #
 # CodPag 5 || Registro.php
 #
@@ -362,6 +368,8 @@ CodTexto12
 Preinscripci&oacute;n
 CodTexto13
 Curso
+CodTexto14
+Preinscribirse
 #
 # CodPag 12 || profesor/asignatura.php
 #
@@ -400,6 +408,10 @@ CodTexto16
 Estudantes pre-inscritos
 CodTexto17
 Estudantes inscritos
+CodTexto18
+Materia
+CodTexto19
+Crear
 #
 # CodPag 13 || profesor/entrega.php
 #
@@ -471,8 +483,7 @@ Repetir contrasinal
 CodTexto11
 Modificar perfil
 CodTexto12
-Ingade o teu email
-
+Engade o teu email
 #
 # CodPag 16 || profesor/trabajo.php
 #
@@ -507,3 +518,10 @@ CodTexto14
 Nota
 CodTexto15
 Volver
+CodTexto16
+Crear traballo
+CodTexto17
+Crear
+#
+#
+#
