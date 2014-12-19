@@ -45,10 +45,14 @@ $textos = idioma(5,$_SESSION['idioma']);
                 $("#div-username").removeClass("has-success");
                 $("#div-username").addClass("has-error");
                 $.notify("<?php echo $textos[10];//El email no es válido?>", "error");
+				
+				return false;
             }
             else {
                 $("#div-username").removeClass("has-error");
                 $("#div-username").addClass("has-success");
+				
+				return true;
             }
         }
 
@@ -60,10 +64,14 @@ $textos = idioma(5,$_SESSION['idioma']);
                 $("#div-name").removeClass("has-success");
                 $("#div-name").addClass("has-error");
                 $.notify("<?php echo $textos[11];//El campo nombre no puede estar vacío?>", "error");
+				
+				return false;
             }
             else {
                 $("#div-name").removeClass("has-error");
                 $("#div-name").addClass("has-success");
+				
+				return true;
             }
         }
 
@@ -75,10 +83,14 @@ $textos = idioma(5,$_SESSION['idioma']);
                 $("#div-surname").removeClass("has-success");
                 $("#div-surname").addClass("has-error");
                 $.notify("<?php echo $textos[12];//El campo apellido no puede estar vacío?>", "error");
+				
+				return false;
             }
             else {
                 $("#div-surname").removeClass("has-error");
                 $("#div-surname").addClass("has-success");
+				
+				return true;
             }
         }
 
@@ -90,18 +102,25 @@ $textos = idioma(5,$_SESSION['idioma']);
                 $("#div-DNI").removeClass("has-success");
                 $("#div-DNI").addClass("has-error");
                 $.notify("<?php echo $textos[13];//Introduzca un DNI válido?>", "error");
+				
+				return false;
             }
             else {
                 $("#div-DNI").removeClass("has-error");
                 $("#div-DNI").addClass("has-success");
+				
+				return true;
             }
         }
 
         function validatePassword() {
-            var cont = /(?!^[0-9]*$)(?!^[a-zA-Z]*$)^([a-zA-Z0-9]{6,15})$/;
+            //var cont = /(?!^[0-9]*$)(?!^[a-zA-Z]*$)^([a-zA-Z0-9]{6,15})$/;
+			var cont = /(?=.*\d)(?=.*[a-z]){6,15}/;
             var password = document.getElementById("register-password").value;
             var pass2 = document.getElementById("register-repeatPassword").value
-
+			
+			if(password.length == 0 || pass2.length == 0) return false;
+			
             if ((cont.test(password) == 0) || (password.length < 6) || (password.length > 15) || (password != pass2)) {
 
                 $("#div-password").removeClass("has-success");
@@ -109,16 +128,25 @@ $textos = idioma(5,$_SESSION['idioma']);
                 $("#div-repeatPassword").removeClass("has-success");
                 $("#div-repeatPassword").addClass("has-error");
                 $.notify("<?php echo $textos[14];//Las contraseñas no coinciden ,deben tener un número ,una letra y entre 6 y 15 caracteres?>", "error");
-
+				
+				return false;
             }
             else {
                 $("#div-password").removeClass("has-error");
                 $("#div-password").addClass("has-success");
                 $("#div-repeatPassword").removeClass("has-error");
                 $("#div-repeatPassword").addClass("has-success");
+				
+				return true;
             }
         }
 
+		function validate() {
+			if(validateMail() && validateName() && validateSurName() && validateDNI() && validatePassword()) {
+				document.forms['registerform'].submit();
+			}
+		}
+		
         function ayudaPass() {
 
             $.notify("<?php echo $textos[15];//Las contraseñas deben tener un número ,una letra y entre 6 y 15 caracteres?>", "info");
@@ -164,7 +192,7 @@ $textos = idioma(5,$_SESSION['idioma']);
 
                                     <div style="margin-bottom: 25px" class="input-group" id="div-password">
                                         <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-                                        <input id="register-password" type="password" class="form-control" name="password" placeholder="<?php echo $textos[8];//Contrase&ntilde;a?>">
+                                        <input id="register-password" type="password" class="form-control" name="password" placeholder="<?php echo $textos[8];//Contrase&ntilde;a?>" onblur="validatePassword()">
                                         <span class="input-group-addon" onClick="ayudaPass()" style="CURSOR: pointer"><i class="glyphicon glyphicon-info-sign"></i></span>
                                     </div>
 
@@ -189,7 +217,7 @@ $textos = idioma(5,$_SESSION['idioma']);
                                             </div>
 
                                             <div class="pull-right">
-                                                <a id="btn-login" onclick="document.forms['registerform'].submit()" class="btn btn-success"><?php echo $textos[4];//Registrarse?>  </a>
+                                                <a id="btn-login" onclick="validate()" class="btn btn-success"><?php echo $textos[4];//Registrarse?>  </a>
                                             </div>
                                         </div>
                                     </div>
