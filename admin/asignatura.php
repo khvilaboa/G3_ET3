@@ -1,7 +1,12 @@
 <!DOCTYPE html>
 <?php 
+	session_start();
 	include_once "../clases/Asignatura_class.php";
 	include_once "../clases/Usuario_class.php";
+	include('../MultiLanguage/FuncionIdioma.php');
+	// La siguiente linea se descomenta para hacer prueba sin pasar por login, una vez que este inicializada debe comentarse otra vez
+	//$_SESSION['idioma']='ENG';
+	$textos = idioma(1,$_SESSION['idioma']);
 ?>
 
 <html lang="en">
@@ -59,11 +64,11 @@
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> Admin <b class="caret"></b></a>
                     <ul class="dropdown-menu">
                         <li>
-                            <a href="#"><i class="fa fa-fw fa-user"></i> Perfil</a>
+                            <a href="#"><i class="fa fa-fw fa-user"></i> <?php echo $textos[2]; //Perfil?></a>
                         </li>
                         <li class="divider"></li>
                         <li>
-                            <a href="../index.php"><i class="fa fa-fw fa-power-off"></i> Cerrar sesi&oacute;n</a>
+                            <a href="../index.php"><i class="fa fa-fw fa-power-off"></i><?php echo $textos[3];//Cerrar sesi&oacute;n?></a>
                         </li>
                     </ul>
                 </li>
@@ -72,13 +77,13 @@
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav side-nav">
                     <li>
-                        <a href="listaAsignaturas.php"><i class="fa fa-fw fa-folder-open"></i> Asignaturas</a>
+                        <a href="listaAsignaturas.php"><i class="fa fa-fw fa-folder-open"></i> <?php echo $textos[4];//Crear/Modificar asignaturas?></a>
                     </li>
                     <li>
-                        <a href="listaUsuarios.php"><i class="fa fa-fw fa-users"></i> Usuarios</a>
+                        <a href="listaUsuarios.php"><i class="fa fa-fw fa-users"></i> <?php echo $textos[5];//Usuarios?></a>
                     </li>
                     <li>
-                        <a href="../index.php"><i class="fa fa-fw fa-power-off"></i> Cerrar sesi&oacute;n</a>
+                        <a href="../index.php"><i class="fa fa-fw fa-power-off"></i> <?php echo $textos[3];//Cerrar sesi&oacute;n?></a>
                     </li>
                 </ul>
             </div>
@@ -114,27 +119,27 @@
                 <!-- Page Heading -->
                 <div class="row">
                     <div class="col-lg-12">
-                        <h1 class="page-header"> Crear/Modificar Asignaturas </h1>
+                        <h1 class="page-header"> <?php echo $textos[4];//Crear/Modificar asignaturas?> </h1>
                         
 						<div class="panel panel-default">
-						<div class="panel-heading ex-panel-header">Datos de la asignatura</div>
+						<div class="panel-heading ex-panel-header"><?php echo $textos[6];//Datos de la asignatura?></div>
 						<div class="panel panel-body">
 							<form method="post" class="form-horizontal" role="form" action="../controller/controladorAdmin.php">
 							
 								<div class="form-group">
-									<label for="name" class="col-sm-2 control-label">Nombre:</label>
+									<label for="name" class="col-sm-2 control-label"><?php echo $textos[7];//Nombre:?></label>
 									<div class="col-sm-10">
 										<input id="name" name="nombreA" type="text" value="<?php echo $asignatura->getNombre()?>" class="form-control">
 									</div>
 								</div>
 								<div class="form-group">
-									<label for="grade" class="col-sm-2 control-label">Grado:</label>
+									<label for="grade" class="col-sm-2 control-label"><?php echo $textos[8];//Grado:?></label>
 									<div class="col-sm-10">
 										<input id="grade" name="gradoA" type="text" value="<?php echo $asignatura->getGrado()?>" class="form-control">
 									</div>
 								</div>
 								<div class="form-group">
-									<label for="course" class="col-sm-2 control-label">Curso:</label>
+									<label for="course" class="col-sm-2 control-label"><?php echo $textos[9];//Curso:?></label>
 									<div class="col-sm-10">
 										<input id="course" name="cursoA" type="text" value="<?php echo $asignatura->getCurso()?>" class="form-control">
 									</div>
@@ -143,14 +148,14 @@
 								
 									<input type="hidden" name="elemento" value="asignatura"/>
 									<input type="hidden" name="asignatura" value="<?php echo $asignatura->getCodigo() ?>"/>
-									<input type="submit" name="accion" class="btn ex-button" value="Modificar"/>
+									<input type="submit" name="accion" class="btn ex-button" value="<?php echo $textos[10];//Modificar?>"/>
 
 								</div>
 							</form>
 						</div></div>		
 							
 							<div class="panel panel-default">
-							<div class="panel-heading ex-panel-header">Profesores de la asignatura</div>
+							<div class="panel-heading ex-panel-header"><?php echo $textos[11];//Profesores de la asignatura?></div>
 														
 							<li class="list-group-item">
 							<div class="row">
@@ -160,12 +165,12 @@
 										<table class="table table-striped table-bordered table-hover table-condensed ">
 											<thead>
 												<tr>
-													<th class="panel-heading ex-panel-header">Sin asignar</th>
+													<th class="panel-heading ex-panel-header"><?php echo $textos[17];//Sin asignar?></th>
 													<th class="panel-heading ex-panel-header"></th>
 													<th class="panel-heading ex-panel-header"></th>
 												</tr><tr>
 													<th>DNI</th>
-													<th>Nombre</th>
+													<th><?php echo $textos[12];//Nombre?></th>
 													<th>	</th>
 												</tr>
 											</thead>
@@ -205,12 +210,12 @@
 									<table class="table table-striped table-bordered table-hover table-condensed ">
 										<thead>
 											<tr>
-												<th class="panel-heading ex-panel-header">Asignados</th>
+												<th class="panel-heading ex-panel-header"><?php echo $textos[18];//Asignados?></th>
 												<th class="panel-heading ex-panel-header"></th>
 												<th class="panel-heading ex-panel-header"></th>
 											</tr><tr>
 												<th>DNI</th>
-												<th>Nombre</th>
+												<th><?php echo $textos[12];//Nombre?></th>
 												<th>	</th>
 											</tr>
 										</thead>
@@ -244,17 +249,17 @@
 							<li class="list-group-item">
 								
 								<div class="form-group">
-								<label for="filterText" class="col-md-1 control-label">Filtro: </label>
+								<label for="filterText" class="col-md-1 control-label"><?php echo $textos[13];//Filtro:?> </label>
 									<div class="col-md-7">
-										<input type="name" class="form-control" id="filterText" placeholder="Filtro de b&uacute;squeda">
+										<input type="name" class="form-control" id="filterText" placeholder="<?php echo $textos[14];//Filtro de b&uacute;squeda?>">
 									</div>
 								
 								<div class="col-md-3">
 								<select name="ad" class="form-control">
 									<option selected> ---</option>
-									<option value="1.htm">Nombre</option>
+									<option value="1.htm"><?php echo $textos[12];//Nombre?></option>
 									<option value="2.htm">Dni</option>
-									<option value="3.htm">Apellidos</option>
+									<option value="3.htm"><?php echo $textos[15];//Apellidos?></option>
 								</select>
 								
 								</div>
@@ -269,8 +274,19 @@
 					</div>
 																			
 					<div class="pull-right">
-						<a href="listaAsignaturas.php" class="btn ex-button">Volver</a>  							
-					</div>    
+						<a href="listaAsignaturas.php" class="btn ex-button"><?php echo $textos[16];//Volver?></a>  							
+					</div> 
+	<form action="../MultiLanguage/CambioIdioma.php" method="post"> 
+						</form>	
+					<form action="../MultiLanguage/CambioIdioma.php" method="post"> 				
+    <select name="idioma" onChange='this.form.submit()'>
+            <option value=""><?php echo $textos[1];//Seleccione su idioma?></option>
+            <option value="ENG">English</option>
+            <option value="ESP">Español</option>
+            <option value="GAL">Galego</option>
+			<option value="DEU">Deutsch</option>
+    </select>
+	</form>					
 					<?php
 					}
 					?>
@@ -288,43 +304,43 @@
                 <!-- Page Heading -->
                 <div class="row">
                     <div class="col-lg-12">
-                        <h1 class="page-header"> Crear/Modificar Asignaturas </h1>
+                        <h1 class="page-header"> <?php echo $textos[4];//Crear/Modificar asignaturas?> </h1>
                         
 						<div class="panel panel-default">
-						<div class="panel-heading ex-panel-header">Datos de la asignatura</div>
+						<div class="panel-heading ex-panel-header"><?php echo $textos[6];//Datos de la asignatura?></div>
 						<div class="panel panel-body">
 								<form method="post" class="form-horizontal" role="form" action="../controller/controladorAdmin.php">
 								
 									<div class="form-group">
-										<label for="name" class="col-sm-2 control-label">Nombre:</label>
+										<label for="name" class="col-sm-2 control-label"><?php echo $textos[7];//Nombre:?></label>
 										<div class="col-sm-10">
 											<input id="name" name="nombreA" type="text" value="" class="form-control">
 										</div>
 									</div>
 									<div class="form-group">
-										<label for="grade" class="col-sm-2 control-label">Grado:</label>
+										<label for="grade" class="col-sm-2 control-label"><?php echo $textos[8];//Grado:?></label>
 										<div class="col-sm-10">
 											<input id="grade" name="gradoA" type="text" value="" class="form-control">
 										</div>
 									</div>
 									<div class="form-group">
-										<label for="course" class="col-sm-2 control-label">Curso:</label>
+										<label for="course" class="col-sm-2 control-label"><?php echo $textos[9];//Curso:?></label>
 										<div class="col-sm-10">
 											<input id="course" name="cursoA" type="text" value="" class="form-control">
 										</div>
 									</div>
 									<div class="pull-right">
 									
-										<input type="hidden" name="elemento" value="asignatura"/>
+										<input type="hidden" name="elemento" value="asignatura"/> <!--Cambiar asignatura?-->
 										<input type="hidden" name="asignatura" value="<?php echo $asignatura->getCodigo() ?>"/>
-										<input type="submit" name="accion" class="btn ex-button" value="Crear"/>
+										<input type="submit" name="accion" class="btn ex-button" value="<?php echo $textos[19];//Crear?>"/>
 							
 									</div>
 								</form>
 							</div></div>		
 							
 							<div class="panel panel-default">
-							<div class="panel-heading ex-panel-header">Profesores de la asignatura</div>
+							<div class="panel-heading ex-panel-header"><?php echo $textos[11];//Profesores de la asignatura?></div>
 														
 							<li class="list-group-item">
 							<div class="row">
@@ -335,7 +351,7 @@
 											<thead>
 												<tr>
 												<th>DNI</th>
-													<th>Nombre</th>
+													<th><?php echo $textos[12];//Nombre?></th>
 													<th>	</th>
 												</tr>
 											</thead>
@@ -370,7 +386,7 @@
 										<thead>
 											<tr>
 											<th>DNI</th>
-												<th>Nombre</th>
+												<th><?php echo $textos[12];//Nombre?></th>
 												<th>	</th>
 											</tr>
 										</thead>
@@ -386,17 +402,17 @@
 							<li class="list-group-item">
 								
 								<div class="form-group">
-								<label for="filterText" class="col-md-1 control-label">Filtro: </label>
+								<label for="filterText" class="col-md-1 control-label"><?php echo $textos[13];//Filtro:?></label>
 									<div class="col-md-7">
-										<input type="name" class="form-control" id="filterText" placeholder="Filtro de b&uacute;squeda">
+										<input type="name" class="form-control" id="filterText" placeholder="<?php echo $textos[14];//Filtro de b&uacute;squeda?>">
 									</div>
 								
 								<div class="col-md-3">
 								<select name="ad" class="form-control">
 									<option selected> ---</option>
-									<option value="1.htm">Nombre</option>
+									<option value="1.htm"><?php echo $textos[12];//Nombre?></option>
 									<option value="2.htm">Dni</option>
-									<option value="3.htm">Apellidos</option>
+									<option value="3.htm"><?php echo $textos[15];//Apellidos?></option>
 								</select>
 								
 								</div>
@@ -411,7 +427,7 @@
 					</div>
 																			
 					<div class="pull-right">
-						<a href="listaAsignaturas.php" class="btn ex-button">Volver</a>  							
+						<a href="listaAsignaturas.php" class="btn ex-button"><?php echo $textos[16];//Volver?></a>  							
 					</div>    
 					<?php
 					}
@@ -420,6 +436,17 @@
 					
 <br><br><br><br><br><br><br><br><br><br>		
 					</div>
+					<form action="../MultiLanguage/CambioIdioma.php" method="post"> 
+						</form>	
+					<form action="../MultiLanguage/CambioIdioma.php" method="post"> 				
+    <select name="idioma" onChange='this.form.submit()'>
+            <option value=""><?php echo $textos[1];//Seleccione su idioma?></option>
+            <option value="ENG">English</option>
+            <option value="ESP">Español</option>
+            <option value="GAL">Galego</option>
+			<option value="DEU">Deutsch</option>
+    </select>
+	</form>
                 </div>
                 <!-- /.row -->
 

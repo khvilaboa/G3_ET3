@@ -27,7 +27,7 @@ Profil
 CodTexto3
 Ausloggen
 CodTexto4
-Unterrichtsfach
+Entwerfen/Erstellen ein Fach
 CodTexto5
 Benützer
 CodTexto6
@@ -39,7 +39,7 @@ Studiengang
 CodTexto9
 Jahr
 CodTexto10
-verändern
+Verändern
 CodTexto11
 Professoren
 CodTexto12
@@ -52,6 +52,12 @@ CodTexto15
 Nachname
 CodTexto16
 Zurück
+CodTexto17
+Nicht zugeordnet
+CodTexto18
+Vergeben
+CodTexto19
+Entwerfen
 #
 # CodPag 2 || admin/listaAsignaturas.php
 #
@@ -79,7 +85,7 @@ Professoren
 CodTexto11
 Erstelle ein neues Fach
 #
-# CodPag 3 || admin/listaAsignaturas.php
+# CodPag 3 || admin/listaUsuarios.php
 #
 CodPag3
 CodTexto1
@@ -99,11 +105,9 @@ Name
 CodTexto8
 Studiengang
 CodTexto9
-Jahr
+Entwerfe einen Benutzer
 CodTexto10
 E-mail
-CodTexto11
-Entwerfe einen Benutzer
 #
 # CodPag 4 || admin/usuario.php
 #
@@ -136,6 +140,8 @@ CodTexto13
 Löschen
 CodTexto14
 Verändern
+CodTexto15
+Entwerfen
 #
 # CodPag 5 || Registrar.php
 #
@@ -145,7 +151,7 @@ Sprachauswahl
 CodTexto2
 Anmelden
 CodTexto3
-Cancel
+Abbrechen
 CodTexto4
 Anmelden
 CodTexto5
@@ -187,7 +193,7 @@ Pre Inschrift
 CodTexto6
 Portefeuille
 CodTexto7
-Aufgabeinformationen
+Auftragsinformationen
 CodTexto8
 Titel:
 CodTexto9
@@ -195,7 +201,7 @@ Beschreibung:
 CodTexto10
 Abgabeschluss:
 CodTexto11
-Eine aufgabe hochladen
+Eine Auftrag hochladen
 CodTexto12
 Datei anhängen
 CodTexto13
@@ -251,9 +257,9 @@ Pre Inschrift
 CodTexto6
 Portefeuille
 CodTexto7
-Aufgaben von 
+Aufträge von 
 CodTexto8
-Liste über die Aufgaben
+Liste über die Aufträge
 CodTexto9
 Titel
 CodTexto10
@@ -315,13 +321,13 @@ Pre Inschrift
 CodTexto6
 Portefeuille
 CodTexto7
-Liste über die Aufgaben
+Liste über die Aufträge
 CodTexto8
 Öffentlich
 CodTexto9
 Titel
 CodTexto10
-Aufgabe
+Auftrag
 CodTexto11
 Student
 CodTexto12
@@ -358,11 +364,15 @@ Liste über die Unterrichtsfächer
 CodTexto9
 Name
 CodTexto10
-Beschreibung
+Studiengang
 CodTexto11
 Student
 CodTexto12
-Pre Inschrift
+Pre Inschriften
+CodTexto13
+Jahr
+CodTexto14
+Sich registrieren
 
 #
 # CodPag 12 || profesor/asignatura.php
@@ -389,19 +399,21 @@ Suche...
 CodTexto10
 Last Name
 CodTexto11
-Aufgaben
+Aufträge
 CodTexto12
-Aufgabe
+Auftrag
 CodTexto13
 Abgabeschluss
 CodTexto14
-Entwerfe eine Aufgabe
+Entwerfe eine Auftrag
 CodTexto15
 Zurück
 CodTexto16
-Vorregistriert Studenten
+Vorregistrierte Studenten
 CodTexto17
 Registrierte Studenten
+CodTexto18
+Unterrichtsfach
 #
 # CodPag 13 || profesor/entrega.php
 #
@@ -417,7 +429,7 @@ Ausloggen
 CodTexto5
 Unterrichtsfach
 CodTexto6
-Aufgabeinformationen
+Auftragsinformationen
 CodTexto7
 Titel:
 CodTexto8
@@ -490,7 +502,7 @@ Ausloggen
 CodTexto5
 Unterrichtsfach
 CodTexto6
-Aufgabeinformationen
+Auftragsinformationen
 CodTexto7
 Titel
 CodTexto8
@@ -500,15 +512,19 @@ Abgabeschluss
 CodTexto10
 Verändern
 CodTexto11
-Hochgeladene Aufgaben
+Hochgeladene Aufträge
 CodTexto12
 Benutzer
 CodTexto13
-Aufgabe
+Auftrag
 CodTexto14
 Benotung
 CodTexto15
 Zurück
+CodTexto16
+Entwerfe eine Auftrag
+CodTexto17
+Entwerfen
 #
 #
 #

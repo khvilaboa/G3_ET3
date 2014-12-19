@@ -1,6 +1,11 @@
 <!DOCTYPE html>
 <?php
+	session_start();
 	include_once "../clases/Usuario_class.php";
+	include('../MultiLanguage/FuncionIdioma.php');
+	// La siguiente linea se descomenta para hacer prueba sin pasar por login, una vez que este inicializada debe comentarse otra vez
+	//$_SESSION['idioma']='ENG';
+	$textos = idioma(4,$_SESSION['idioma']);
 ?>
 <html lang="en">
 
@@ -57,11 +62,11 @@
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> Admin <b class="caret"></b></a>
                     <ul class="dropdown-menu">
                         <li>
-                            <a href="#"><i class="fa fa-fw fa-user"></i> Perfil</a>
+                            <a href="#"><i class="fa fa-fw fa-user"></i>  <?php echo $textos[2]; //Perfil?></a>
                         </li>
                         <li class="divider"></li>
                         <li>
-                            <a href="../index.php"><i class="fa fa-fw fa-power-off"></i> Cerrar sesi&oacute;n</a>
+                            <a href="../index.php"><i class="fa fa-fw fa-power-off"></i>  <?php echo $textos[3];//Cerrar sesi&oacute;n?></a>
                         </li>
                     </ul>
                 </li>
@@ -70,13 +75,13 @@
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav side-nav">
                     <li>
-                        <a href="listaAsignaturas.php"><i class="fa fa-fw fa-folder-open"></i> Asignaturas</a>
+                        <a href="listaAsignaturas.php"><i class="fa fa-fw fa-folder-open"></i> <?php echo $textos[4];//Asignaturas?></a>
                     </li>
                     <li>
-                        <a href="listaUsuarios.php"><i class="fa fa-fw fa-users"></i> Usuarios</a>
+                        <a href="listaUsuarios.php"><i class="fa fa-fw fa-users"></i>  <?php echo $textos[5];//Usuarios?></a>
                     </li>
                     <li>
-                        <a href="../index.php"><i class="fa fa-fw fa-power-off"></i> Cerrar sesi&oacute;n</a>
+                        <a href="../index.php"><i class="fa fa-fw fa-power-off"></i> <?php echo $textos[3];//Cerrar sesi&oacute;n?></a>
                     </li>
                 </ul>
             </div>
@@ -108,16 +113,16 @@
 					<!-- Page Heading -->
 					<div class="row">
 						<div class="col-lg-12">
-							<h1 class="page-header"> Crear/Modificar Usuario </h1>							
+							<h1 class="page-header"> <?php echo $textos[6];//Crear/Modificar Usuario?> </h1>							
 									<form method="post" class="form-horizontal" role="form" action="../controller/controladorAdmin.php">
 										<div class="form-group">
-											<label class="col-sm-2 control-label ">Nombre:</label>
+											<label class="col-sm-2 control-label "><?php echo $textos[7];//Nombre:?></label>
 											<div class="col-sm-10">
 												<input type="text" name="nombre" value="<?php echo $usuario->getNombre();?>" class="form-control">
 											</div>
 										</div>
 										<div class="form-group">
-											<label class="col-sm-2 control-label">Apellidos:</label>
+											<label class="col-sm-2 control-label"><?php echo $textos[8];//Apellidos:?></label>
 											<div class="col-sm-10">
 												<input type="text" name="apellidos" value="<?php echo $usuario->getApellido();?>"class="form-control">
 											</div>
@@ -129,24 +134,24 @@
 											</div>
 										</div>
 										<div class="form-group">
-											<label class="col-sm-2 control-label">Email:</label>
+											<label class="col-sm-2 control-label">E-mail:</label>
 											<div class="col-sm-10">
 												<input readonly type="text" name="email" value="<?php echo $usuario->getEmail();?>" class="form-control">
 											</div>
 										</div>
 										<div class="form-group">
-											<label class="col-sm-2 control-label">Nueva Contrase&nacute;a:</label>
+											<label class="col-sm-2 control-label"><?php echo $textos[9];//Nueva Contrase&nacute;a:?></label>
 											<div class="col-sm-10">
 												<input type="password" name="pass" value="<?php echo $usuario->getPassword();?>" class="form-control">
 											</div>
 										</div>
 										<div class="form-group">
-											<label class="col-sm-2 control-label">Tipo:</label>
+											<label class="col-sm-2 control-label"><?php echo $textos[10];//Tipo:?></label>
 											<div class="col-sm-10">
 												<select class="form-control" name="tipo"  <?php if($usuario->getTipo()=="Administrador") echo "disabled"?>>
 												<?php if($usuario->getTipo()=="Administrador") echo '<option value="Administrador">Administrador</option>'?>
-												<option value="Alumno" <?php if($usuario->getTipo()=="Alumno") echo " selected";?>>Alumno</option>
-												<option value="Profesor" <?php if($usuario->getTipo()=="Profesor") echo " selected";?>>Profesor</option>
+												<option value="Alumno" <?php if($usuario->getTipo()=="Alumno") echo " selected";?>><?php echo $textos[11];//Alumno?></option>
+												<option value="Profesor" <?php if($usuario->getTipo()=="Profesor") echo " selected";?>><?php echo $textos[12];//Profesor?></option>
 												</select>
 											</div>
 										</div>
@@ -155,9 +160,9 @@
 										
 										
 										<input type="hidden" name="elemento" value="usuario"/>
-										<input type="hidden" name="usuario" value="<?php echo $usuario->getDni() ?>"/>
-										<?php if($usuario->getTipo()!="Administrador") echo '<input type="submit" name="accion" class="btn ex-button"  value="Borrar"/>'?>
-										<input type="submit" name="accion" class="btn ex-button" value="Modificar"/>
+										<input type="hidden" name="usuario" value="<?php echo $usuario->getDni()?>"/>
+										<?php if($usuario->getTipo()!="Administrador") echo '<input type="submit" name="accion" class="btn ex-button"  value="echo $textos[13];/*Borrar*/"';?>
+										<input type="submit" name="accion" class="btn ex-button" value="<?php echo $textos[14];//Modificar?>"/>
 										
 
 									</div>
@@ -168,6 +173,17 @@
 							
 							<br><br><br><br><br><br><br><br><br><br>
 						</div>
+						<form action="../MultiLanguage/CambioIdioma.php" method="post"> 
+						</form>	
+					<form action="../MultiLanguage/CambioIdioma.php" method="post"> 				
+    <select name="idioma" onChange='this.form.submit()'>
+            <option value=""><?php echo $textos[1];//Seleccione su idioma?></option>
+            <option value="ENG">English</option>
+            <option value="ESP">Español</option>
+            <option value="GAL">Galego</option>
+			<option value="DEU">Deutsch</option>
+    </select>
+	</form>
 					</div>
 					<!-- /.row -->
 				<?php
@@ -182,16 +198,16 @@
 				<!-- Page Heading -->
 					<div class="row">
 						<div class="col-lg-12">
-							<h1 class="page-header"> Crear/Modificar Usuario </h1>							
+							<h1 class="page-header"> <?php echo $textos[6];//Crear/Modificar Usuario?> </h1>							
 								<form method="post" class="form-horizontal" role="form" action="../controller/controladorAdmin.php">
 									<div class="form-group">
-										<label class="col-sm-2 control-label ">Nombre:</label>
+										<label class="col-sm-2 control-label "><?php echo $textos[7];//Nombre:?></label>
 										<div class="col-sm-10">
 											<input type="text" name="nombre" class="form-control">
 										</div>
 									</div>
 									<div class="form-group">
-										<label class="col-sm-2 control-label">Apellidos:</label>
+										<label class="col-sm-2 control-label"><?php echo $textos[8];//Apellidos:?></label>
 										<div class="col-sm-10">
 											<input type="text" name="apellidos" class="form-control">
 										</div>
@@ -203,23 +219,23 @@
 										</div>
 									</div>
 									<div class="form-group">
-										<label class="col-sm-2 control-label">Email:</label>
+										<label class="col-sm-2 control-label">E-mail:</label>
 										<div class="col-sm-10">
 											<input type="text" name="email" class="form-control">
 										</div>
 									</div>
 									<div class="form-group">
-										<label class="col-sm-2 control-label">Nueva Contrase&nacute;a:</label>
+										<label class="col-sm-2 control-label"><?php echo $textos[9];//Nueva Contrase&nacute;a:?></label>
 										<div class="col-sm-10">
 											<input type="password" name="pass" class="form-control">
 										</div>
 									</div>
 									<div class="form-group">
-										<label class="col-sm-2 control-label">Tipo:</label>
+										<label class="col-sm-2 control-label"><?php echo $textos[10];//Tipo:?></label>
 										<div class="col-sm-10">
 											<select class="form-control" name="tipo" >
-											<option value="Alumno">Alumno</option>
-											<option value="Profesor">Profesor</option>
+											<option value="Alumno"><?php echo $textos[11];//Alumno?></option>
+											<option value="Profesor"><?php echo $textos[12];//Profesor?></option>
 											</select>
 										</div>
 									</div>
@@ -228,7 +244,7 @@
 									
 									
 									<input type="hidden" name="elemento" value="usuario"/>
-									<input type="submit" name="accion" class="btn ex-button" value="Crear"/>
+									<input type="submit" name="accion" class="btn ex-button" value="<?php echo $textos[15];//Crear?>"/>
 									
 
 								</div>
@@ -237,6 +253,17 @@
 
 							<br><br><br><br><br><br><br><br><br><br>
 						</div>
+						<form action="../MultiLanguage/CambioIdioma.php" method="post"> 
+						</form>	
+					<form action="../MultiLanguage/CambioIdioma.php" method="post"> 				
+    <select name="idioma" onChange='this.form.submit()'>
+            <option value=""><?php echo $textos[1];//Seleccione su idioma?></option>
+            <option value="ENG">English</option>
+            <option value="ESP">Español</option>
+            <option value="GAL">Galego</option>
+			<option value="DEU">Deutsch</option>
+    </select>
+	</form>
 					</div>
 					<!-- /.row -->
 				

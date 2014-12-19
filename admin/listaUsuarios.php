@@ -1,6 +1,11 @@
 <!DOCTYPE html>
 <?php
+	session_start();
 	include_once "../clases/Usuario_class.php";
+	include('../MultiLanguage/FuncionIdioma.php');
+	// La siguiente linea se descomenta para hacer prueba sin pasar por login, una vez que este inicializada debe comentarse otra vez
+	//$_SESSION['idioma']='ENG';
+	$textos = idioma(3,$_SESSION['idioma']);
 ?>
 <html lang="en">
 
@@ -57,11 +62,11 @@
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> Admin <b class="caret"></b></a>
                     <ul class="dropdown-menu">
                         <li>
-                            <a href="#"><i class="fa fa-fw fa-user"></i> Perfil</a>
+                            <a href="#"><i class="fa fa-fw fa-user"></i> <?php echo $textos[2]; //Perfil?></a>
                         </li>
                         <li class="divider"></li>
                         <li>
-                            <a href="../index.php"><i class="fa fa-fw fa-power-off"></i> Cerrar sesi&oacute;n</a>
+                            <a href="../index.php"><i class="fa fa-fw fa-power-off"></i> <?php echo $textos[3];//Cerrar sesi&oacute;n?></a>
                         </li>
                     </ul>
                 </li>
@@ -70,13 +75,13 @@
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav side-nav">
                     <li>
-                        <a href="listaAsignaturas.php"><i class="fa fa-fw fa-folder-open"></i> Asignaturas</a>
+                        <a href="listaAsignaturas.php"><i class="fa fa-fw fa-folder-open"></i>  <?php echo $textos[4];//Asignaturas?></a>
                     </li>
                     <li>
-                        <a href="listaUsuarios.php"><i class="fa fa-fw fa-users"></i> Usuarios</a>
+                        <a href="listaUsuarios.php"><i class="fa fa-fw fa-users"></i>  <?php echo $textos[5];//Usuarios?></a>
                     </li>
                     <li>
-                        <a href="../index.php"><i class="fa fa-fw fa-power-off"></i> Cerrar sesi&oacute;n</a>
+                        <a href="../index.php"><i class="fa fa-fw fa-power-off"></i>  <?php echo $textos[3];//Cerrar sesi&oacute;n?></a>
                     </li>
                 </ul>
             </div>
@@ -97,19 +102,19 @@
                 <!-- Page Heading -->
                 <div class="row">
                     <div class="col-lg-12">
-                        <h1 class="page-header"> Lista de usuarios </h1>
+                        <h1 class="page-header"><?php echo $textos[6];//Lista de usuarios?></h1>
 						
 						<div class="panel panel-default">
-						 <div class="panel-heading ex-panel-header">Usuarios</div>
+						 <div class="panel-heading ex-panel-header"><?php echo $textos[5];//Usuarios?></div>
 						 
 						 <div class="table-responsive">
 							<table class="table table-hover">
 							<thead>
 								<tr>
-									<TH width="auto">Dni</TH>
-									<TH width="auto">Nombre</TH>
-									<TH width="auto">Apellidos</TH>
-									<TH width="auto">Email</TH>				
+									<th width="110px">DNI</th>
+									<th width="110px"><?php echo $textos[7];//Nombre?></th>
+									<th width="110px"><?php echo $textos[8];//Apellidos?></th>
+									<TH width="110px">E-mail</TH>				
 								</tr>
 							</thead>
 							
@@ -140,11 +145,22 @@
 						
 						
 						<div class="pull-right">
-							<a href="usuario.php" class="btn ex-button">Crear Usuario</a>  							
+							<a href="usuario.php" class="btn ex-button"><?php echo $textos[9];//Crear Usuario?></a>  							
 						</div> 	
 
 						<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
                     </div>
+					<form action="../MultiLanguage/CambioIdioma.php" method="post"> 
+						</form>	
+					<form action="../MultiLanguage/CambioIdioma.php" method="post"> 				
+    <select name="idioma" onChange='this.form.submit()'>
+            <option value=""><?php echo $textos[1];//Seleccione su idioma?></option>
+            <option value="ENG">English</option>
+            <option value="ESP">Español</option>
+            <option value="GAL">Galego</option>
+			<option value="DEU">Deutsch</option>
+    </select>
+	</form>
                 </div>
                 <!-- /.row -->
 
