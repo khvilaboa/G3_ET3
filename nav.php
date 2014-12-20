@@ -17,7 +17,7 @@ function showNav($textos) {
 				<!-- Top Menu Items -->
 				<ul class=\"nav navbar-right top-nav\">
 					<li class=\"dropdown\">
-						<a href=\"#\" class=\"dropdown-toggle\" data-toggle=\"dropdown\"><i class=\"fa fa-user\"></i>" . $_SESSION['userName'] . "<b class=\"caret\"></b></a>
+						<a href=\"#\" class=\"dropdown-toggle\" data-toggle=\"dropdown\"><i class=\"fa fa-user\"></i> " . $_SESSION['userName'] . "<b class=\"caret\"></b></a>
 						<ul class=\"dropdown-menu\">
 							<li>
 								<a href=\"perfil.php\"><i class=\"fa fa-fw fa-user\"></i>" . $textos[2] /* Perfil */ . "</a>
@@ -60,12 +60,12 @@ function showNav($textos) {
                     <span class=\"icon-bar\"></span>
                     <span class=\"icon-bar\"></span>
                 </button>
-                <a class=\"navbar-brand\" href=\"index.php\">" . $textos[2] . /*ESEIXesti&oacute . n - Profesor*/ "</a>
+                <a class=\"navbar-brand\" href=\"index.php\">" . $textos[2] . /*ESEIXesti&oacute;n - Profesor*/ "</a>
             </div>
             <!-- Top Menu Items -->
             <ul class=\"nav navbar-right top-nav\">
                 <li class=\"dropdown\">
-                    <a href=\"#\" class=\"dropdown-toggle\" data-toggle=\"dropdown\"><i class=\"fa fa-user\"></i>" . $_SESSION['userName'] . "<b class=\"caret\"></b></a>
+                    <a href=\"#\" class=\"dropdown-toggle\" data-toggle=\"dropdown\"><i class=\"fa fa-user\"></i> " . $_SESSION['userName'] . "<b class=\"caret\"></b></a>
                     <ul class=\"dropdown-menu\">
                         <li>
                             <a href=\"perfil.php\"><i class=\"fa fa-fw fa-user\"></i> " . $textos[3] .  /*Perfil*/ "</a>
@@ -110,10 +110,10 @@ function showNav($textos) {
             <!-- Top Menu Items -->
             <ul class=\"nav navbar-right top-nav\">
                 <li class=\"dropdown\">
-                    <a href=\"#\" class=\"dropdown-toggle\" data-toggle=\"dropdown\"><i class=\"fa fa-user\"></i>" . $_SESSION['userName'] . "<b class=\"caret\"></b></a>
+                    <a href=\"#\" class=\"dropdown-toggle\" data-toggle=\"dropdown\"><i class=\"fa fa-user\"></i> "  . $_SESSION['userName'] . "<b class=\"caret\"></b></a>
                     <ul class=\"dropdown-menu\">
                         <li>
-                            <a href=\"../logout.php\"><i class=\"fa fa-fw fa-power-off\"></i>" . $textos[3] . /*Cerrar sesi&oacute;n*/ "</a>
+                            <a href=\"../logout.php\"><i class=\"fa fa-fw fa-power-off\"></i> " . $textos[3] ./*Cerrar sesi&oacute .n*/"</a>
                         </li>
                     </ul>
                 </li>
@@ -122,13 +122,13 @@ function showNav($textos) {
             <div class=\"collapse navbar-collapse navbar-ex1-collapse\">
                 <ul class=\"nav navbar-nav side-nav\">
                     <li>
-                        <a href=\"listaAsignaturas.php\"><i class=\"fa fa-fw fa-folder-open\"></i>" . $textos[4]; /*Asignaturas*/ "</a>
+                        <a href=\"listaAsignaturas.php\"><i class=\"fa fa-fw fa-folder-open\"></i> " . $textos[4] ./*Asignaturas*/"</a>
                     </li>
                     <li>
-                        <a href=\"listaUsuarios.php\"><i class=\"fa fa-fw fa-users\"></i>" . $textos[5]; /*Usuarios*/ "</a>
+                        <a href=\"listaUsuarios.php\"><i class=\"fa fa-fw fa-users\"></i> " . $textos[5] ./*Usuarios*/"</a>
                     </li>
                     <li>
-                        <a href=\"../logout.php\"><i class=\"fa fa-fw fa-power-off\"></i>" . $textos[3]; /*Cerrar sesi&oacute;n*/" </a>
+                        <a href=\"../logout.php\"><i class=\"fa fa-fw fa-power-off\"></i>" . $textos[3] ./*Cerrar sesi&oacute .n*/"</a>
                     </li>
                 </ul>
             </div>
