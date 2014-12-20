@@ -104,7 +104,7 @@ class trabajo{
 		}		
 	}
 	
-	// rellenar
+	
 	function Rellenar() {
 		Conectarse();
 		$sql = "select * from Trabajo where codAsignatura=\"" . $this->codAsig . "\" and codTrabajo=" . $this->codTrab;

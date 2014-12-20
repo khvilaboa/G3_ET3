@@ -198,23 +198,21 @@ class asignatura
 	}
 	
 		
-	public static function verAsigProf($dni) {
-		Conectarse();
-		//Falta en restringirlo al profesor que este conectado
-		$sql = "SELECT `nomAsignatura` FROM `asignatura`, proimparteasi, usuario WHERE proimparteasi.codAsignatura = asignatura.codAsignatura 
-			AND proimparteasi.emailUsuario = usuario.emailUsuario AND usuario.dniUsuario = '".$dni."'";
+	public static function verAsigProf($email) {
+		$sql = "SELECT DISTINCT asignatura.`codAsignatura`, `nomAsignatura` FROM `asignatura`, proimparteasi, usuario WHERE proimparteasi.codAsignatura = asignatura.codAsignatura 
+			AND proimparteasi.emailUsuario = \"" . $email . "\"";
 		$resultado = mysql_query($sql);
 		echo mysql_error();
 		while ($row = mysql_fetch_array($resultado))
 		{
-			echo "<a class='list-group-item' href=asignatura.php?nombreAsig=".$row['nomAsignatura'].">".$row['nomAsignatura']."</a>";
+			echo "<a class='list-group-item' href=asignatura.php?ca=".$row['codAsignatura'].">".$row['nomAsignatura']."</a>";
 		}
     }
 	
-	public static function verAluPreins($asig) {
+	public static function verAluPreins($codAsig) {
 	$sql = "SELECT dniUsuario, nombreUsuario, apellidoUsuario FROM usuario, asignatura, aluinscritoasi  
 		WHERE usuario.emailUsuario=aluinscritoasi.emailUsuario AND asignatura.codAsignatura=aluinscritoasi.codAsignatura 
-		AND aluinscritoasi.aceptado='F' AND asignatura.nomAsignatura='".$asig."'"; 
+		AND aluinscritoasi.aceptado='F' AND asignatura.codAsignatura='".$codAsig."'"; 
 	$resultado = mysql_query($sql);
 	return $resultado;
     }
@@ -235,10 +233,10 @@ class asignatura
 		return $resultado;
     }
 	
-	public static function verAluIns($asig) {
+	public static function verAluIns($codAsig) {
 		$sql = "SELECT dniUsuario, nombreUsuario, apellidoUsuario FROM usuario, asignatura, aluinscritoasi  
 				WHERE usuario.emailUsuario=aluinscritoasi.emailUsuario AND asignatura.codAsignatura=aluinscritoasi.codAsignatura 
-				AND aluinscritoasi.aceptado='T' AND asignatura.nomAsignatura='".$_GET['nombreAsig']."'"; 
+				AND aluinscritoasi.aceptado='T' AND asignatura.codAsignatura='".$codAsig."'"; 
 		$resultado = mysql_query($sql);
 		
 		return $resultado;
@@ -260,10 +258,10 @@ class asignatura
 		return $resultado;
 	}
 	
-	public static function verTrabajos($asig) {
+	public static function verTrabajos($codAsig) {
 		echo mysql_error();
 		$sql = "SELECT codTrabajo, codAsignatura, nombreTrabajo, fechaLimiteTrabajo FROM trabajo 
-		WHERE codAsignatura = (SELECT codAsignatura FROM asignatura WHERE nomAsignatura = '".$asig."')"; 
+		WHERE codAsignatura = (SELECT codAsignatura FROM asignatura WHERE codAsignatura = '".$codAsig."')"; 
 		$resultado = mysql_query($sql);
 		echo mysql_error();
 		return $resultado;

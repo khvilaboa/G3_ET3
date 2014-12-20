@@ -58,7 +58,7 @@
 							 <div class="panel-heading ex-panel-header"><?php echo $textos[6]; //Lista de asignaturas?></div>
 							 <div class="list-group">
 								<?php										
-									asignatura::verAsigProf($_SESSION['userDni']);
+									asignatura::verAsigProf($_SESSION['userLogin']);
 								?>
 							</div>
 						</div>

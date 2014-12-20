@@ -117,6 +117,21 @@ class entrega
 		else
 			echo "ERROR: No puede insertar la entrega";
 	}
+	
+	function Rellenar() {
+		Conectarse();
+		$sql = "select * from AluEntregaTra where codAsignatura=\"" . $this->codAsig . "\" and codTrabajo=" . $this->codTrab . " and emailUsuario=\"" . $this->emailUs . "\"";
+		echo $sql;
+		$resultado = mysql_query($sql);
+		
+		if ($row = mysql_fetch_array($resultado)) {
+			$this->fechaEnt = $row['fechaEntrega'];
+			$this->obser = $row['observaciones'];
+			$this->tit = $row['titulo'];
+			$this->cal = $row['calificacion'];
+			$this->portf = $row['portfolio'];
+		} 
+	}
 
 	//Metodo Consultar
 	function Consultar($titulo)

@@ -8,6 +8,9 @@ Conectarse();
 //La siguiente linea se descomenta para hacer prueba sin pasar por login, una vez que este inicializada debe comentarse otra vez.
 //$_SESSION['idioma']='ESP';
 $textos = idioma(16,$_SESSION['idioma']);
+
+$codTrab = $_GET['ct'];
+$codAsig = $_GET['ca'];
 ?>
 
 <!DOCTYPE html>
@@ -56,18 +59,9 @@ $textos = idioma(16,$_SESSION['idioma']);
 
                 <!-- Page Heading -->
 				<?php 
-					if(isset($_GET['codTrabajo'])){
-						$trabajo = new trabajo ('','','','','');
-						$sql = "select * from trabajo where codTrabajo=".$_GET['codTrabajo']." and codAsignatura ='".$_GET['codAsig']."'";
-						
-						$resultado=mysql_query($sql);
-						$row = mysql_fetch_array($resultado);
-							$trabajo->setCodTrab($row['codTrabajo']);
-							$trabajo->setCodAsig($row['codAsignatura']);
-							$trabajo->setTitulo($row['nombreTrabajo']);
-							$trabajo->setDescripcion($row['descripcionTrabajo']);
-							$trabajo->setFechaFinal($row['fechaLimiteTrabajo']);
-					echo mysql_error();
+					if(isset($_GET['ct'])){
+						$trabajo = new trabajo ($codTrab,$codAsig,'','','');
+						$trabajo->Rellenar();
 				?>
                 <div class="row">
                     <div class="col-lg-12">
@@ -96,22 +90,22 @@ $textos = idioma(16,$_SESSION['idioma']);
 									 <label for="limit" class="col-lg-2 control-label"><?php echo $textos[9];//Fecha l&iacute;mite?></label>
 										<div class="col-lg-10">
 										   <input type="hidden" class="form-control" name="limit" placeholder="
-										   <?php
+										   <?php											
 												require_once('calendar/classes/tc_calendar.php');
 
 												$myCalendar = new tc_calendar("date5", true, false);
 												$myCalendar->setIcon("calendar/images/iconCalendar.gif");
 												$myCalendar->setDate(date('d'), date('m'), date('Y'));
 												$myCalendar->setPath("calendar/");
-												$myCalendar->setYearInterval(2000, 2015);
-												$myCalendar->dateAllow('2008-05-13', '2015-03-01');
+												$myCalendar->setYearInterval(2000, 2100);
+												$myCalendar->dateAllow('2000-01-01', '2100-01-01');
 												$myCalendar->setDateFormat('j F Y');
-												$myCalendar->setDateYMD($trabajo->getFechaFinal());
 												$myCalendar->setAlignment('left', 'bottom');
 												$myCalendar->setSpecificDate(array("2011-04-01", "2011-04-04", "2011-12-25"), 0, 'year');
 												$myCalendar->setSpecificDate(array("2011-04-10", "2011-04-14"), 0, 'month');
 												$myCalendar->setSpecificDate(array("2011-06-01"), 0, '');
 												$myCalendar->writeScript();
+													
 											?>
 										</div>
 								  </div>
@@ -129,16 +123,24 @@ $textos = idioma(16,$_SESSION['idioma']);
 						<div class="panel panel-default">
 							<div class="panel-heading ex-panel-header"><?php echo $textos[11];//Entregables subidos?></div>
 								<table class="table table-striped table-bordered table-hover">
+									<thead>
+										<tr>
+											<th>Nombre</th>   <!-- [!MUL] -->
+											<th>Usuario</th>   <!-- [!MUL] -->
+											<th>Observaciones</th>   <!-- [!MUL] -->
+											<th>Calificaci$oacute;n</th>   <!-- [!MUL] -->
+										</tr>
+									</thead>
 									<tbody>
 									<?php
-										$resultado = trabajo::verEntregas($_GET['codAsig'], $_GET['codTrabajo']);
+										$resultado = trabajo::verEntregas($_GET['ca'], $_GET['ct']);
 										while ($row = mysql_fetch_array($resultado))
 										{
-											echo "<tr><td><a href='entrega.php?codTrabajo=".$row['codTrabajo']."&codAsig=".$row['codAsignatura']."
-													&nombreAsig=".$_GET['nomAsig']."&emailUs=".$row['emailUsuario']."&nombreEntrega=".$row['titulo']."'>".$row['titulo']."</a></td>";
+											echo "<tr><td><a href='entrega.php?ca=".$row['codAsignatura']."&ct=".$row['codTrabajo']."
+													&mail=".$row['emailUsuario']."'>".$row['titulo']."</a></td>";
 											echo "<td>".$row['emailUsuario']."</td>";
-											echo "<td>".$row['observaciones']."</td>";
-											echo "<td>".$row['calificacion']."</td></tr>";
+											echo "<td>".(empty($row['observaciones'])?"-":$row['observaciones'])."</td>";
+											echo "<td>".(empty($row['calificacion'])?"-":$row['calificacion'])."</td></tr>";
 										}
 									?>	
 										
@@ -159,9 +161,9 @@ $textos = idioma(16,$_SESSION['idioma']);
     </select>
 	</form>
 					<?php
-					}
-					else{
+					} else {
 					?>
+					
 					<div class="row">
                     <div class="col-lg-12">
                         <h1 class="page-header ex-title"> <?php echo $textos[16];//Crear trabajo?> </h1>
@@ -197,8 +199,8 @@ $textos = idioma(16,$_SESSION['idioma']);
 												$myCalendar->setIcon("calendar/images/iconCalendar.gif");
 												$myCalendar->setDate(date('d'), date('m'), date('Y'));
 												$myCalendar->setPath("calendar/");
-												$myCalendar->setYearInterval(2000, 2015);
-												$myCalendar->dateAllow('2008-05-13', '2015-03-01');
+												$myCalendar->setYearInterval(2000, 2100);
+												$myCalendar->dateAllow('2000-01-01', '2100-01-01');
 												$myCalendar->setDateFormat('j F Y');
 												$myCalendar->setAlignment('left', 'bottom');
 												$myCalendar->setSpecificDate(array("2011-04-01", "2011-04-04", "2011-12-25"), 0, 'year');

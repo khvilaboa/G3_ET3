@@ -1,6 +1,7 @@
 <?php
 session_start();
 include_once('../conexion.php');
+include_once('../clases/Entrega_class.php');
 include('../nav.php');
 Conectarse();
 include('../MultiLanguage/FuncionIdioma.php');
@@ -8,6 +9,13 @@ include('../MultiLanguage/FuncionIdioma.php');
 //$_SESSION['idioma']='ESP';
 
 $textos = idioma(13,$_SESSION['idioma']);
+
+$codTrab = $_GET['ct'];
+$codAsig = $_GET['ca'];
+$email = $_GET['mail'];
+
+$ent = new entrega($codAsig, $codTrab, $email, '', '', '', '', '');
+$ent->Rellenar();
 ?>
 <head>
 
@@ -52,20 +60,18 @@ $textos = idioma(13,$_SESSION['idioma']);
                 <!-- Page Heading -->
                 <div class="row">
                     <div class="col-lg-12">
-                        <h1 class="page-header ex-title"> Entrega <?php 
-																	echo $_GET['nombreAsig']; 
-																  ?> 
+                        <h1 class="page-header ex-title"> Entrega <?php echo $ent->getTitulo(); ?> 
 						</h1>
-                        <FORM method="GET" ACTION="..\controller\profesor\evaluarEntrega.php">
+                        <form method="get" action="..\controller\profesor\evaluarEntrega.php">
 						<div class="panel panel-default">
 							<div class="panel-heading ex-panel-header"><?php echo $textos[6];//Datos de la entrega?></div>
 											
 							<ul class="list-group">
 								<li class="list-group-item"><b><?php echo $textos[7];//T&iacute;tulo:?></b> <?php 
-																					echo $_GET['nombreEntrega']; 
+																					echo $ent->getTitulo(); 
 																				  ?> </li>
 								<li class="list-group-item"><b><?php echo $textos[8];//Usuario:?></b> <?php 
-																				echo $_GET['emailUs']; 
+																				echo $ent->getEmailUsuario(); 
 																			  ?></li>
 							</ul>
 						</div>
@@ -78,16 +84,11 @@ $textos = idioma(13,$_SESSION['idioma']);
 									 <label for="selNosta" class="col-lg-2 control-label"><?php echo $textos[10];//Nota?></label>
 										<div class="col-lg-10">
 										   <select class="form-control" id="selNota" NAME="nota"> <!--Modificar nota? -->
-												<option>1</option>
-												<option>2</option>
-												<option>3</option>
-												<option>4</option>
-												<option>5</option>
-												<option>6</option>
-												<option>7</option>
-												<option>8</option>
-												<option>9</option>
-												<option>10</option>
+												<?php
+													for($i=0; $i<=10; $i+=0.5) {
+														echo "<option>" . $i . "</option>";
+													}
+												?>
 										   <select>
 										</div>
 								</div><br>
@@ -97,7 +98,7 @@ $textos = idioma(13,$_SESSION['idioma']);
 										<div class="col-lg-10">
 										   <textarea class="form-control" rows="5" id="observ" NAME="observaciones"><?php 
 													$sql = "select observaciones from aluentregatra
-													WHERE `codAsignatura`='".$_GET['codAsig']."' AND codTrabajo='".$_GET['codTrabajo']."' AND emailUsuario='".$_GET['emailUs']."'";													
+													WHERE `codAsignatura`='".$ent->getCodAsignatura()."' AND codTrabajo='".$ent->getCodTrabajo()."' AND emailUsuario='".$ent->getEmailUsuario()."'";													
 													$resultado = mysql_query($sql);
 													$observacion = mysql_fetch_array($resultado);
 													echo $observacion['observaciones'];

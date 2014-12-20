@@ -1,13 +1,18 @@
 <?php
 	session_start();
 	include_once("../conexion.php"); 
+	include('../MultiLanguage/FuncionIdioma.php');
 	include_once "../clases/Asignatura_class.php";
 	include('../nav.php');
 	
 	$link=Conectarse();   
 	
+	$codAsig=$_GET['ca'];
+	$asig = new asignatura('','',-1,$codAsig);
+	$asig->Rellenar();
+	
 	$fil=$_GET['filt'];
-	include('../MultiLanguage/FuncionIdioma.php');
+	
 	//La siguiente linea se descomenta para hacer prueba sin pasar por login, una vez que este inicializada debe comentarse otra vez.
 	//$_SESSION['idioma']='ENG';
 	$textos = idioma(12,$_SESSION['idioma']);
@@ -59,7 +64,7 @@
                     <div class="col-lg-12">
                         <h1 class="page-header ex-title"> <?php echo $textos[18]; //Asignatura?>
 							<?php
-								echo $_GET['nombreAsig'];
+								echo $asig->getNombre();
 ;							?>
 						</h1>
 						
@@ -99,7 +104,7 @@
 										}
 										else{
 										
-										$resultado = asignatura::verAluPreins($_GET['nombreAsig']);
+										$resultado = asignatura::verAluPreins($codAsig);
 										$count2 = 0;
 											while ($row = mysql_fetch_array($resultado))
 											{
@@ -157,7 +162,7 @@
 										}
 										}
 										else{
-										$resultado = asignatura::verAluIns($_GET['nombreAsig']);
+										$resultado = asignatura::verAluIns($codAsig);
 										$count = 0;
 											while ($row = mysql_fetch_array($resultado))
 											{
@@ -220,10 +225,10 @@
 								</thead>
 								<tbody>
 									<?php
-										$resultado = asignatura::verTrabajos($_GET['nombreAsig']);
+										$resultado = asignatura::verTrabajos($codAsig);
 										while ($row = mysql_fetch_array($resultado))
 										{
-											echo "<tr><td><a href='trabajo.php?codTrabajo=".$row['codTrabajo']."&codAsig=".$row['codAsignatura']."&nomAsig=".$_GET['nombreAsig']."'>".$row['nombreTrabajo']."</a></td>";
+											echo "<tr><td><a href='trabajo.php?ca=".$codAsig."&ct=".$row['codTrabajo']."'>".$row['nombreTrabajo']."</a></td>";
 											echo "<td>".$row['fechaLimiteTrabajo']."</td></tr>";
 										}
 									?>	
@@ -232,7 +237,7 @@
 							</table>
 							
 							<div class="pull-right">
-								<a href="trabajo.php?nomAsig=<?php echo $_GET['nombreAsig']; ?>" class="btn ex-button"><?php echo $textos[14]; //Crear trabajo?></a>
+								<a href="trabajo.php?ca=<?php echo $codAsig; ?>" class="btn ex-button"><?php echo $textos[14]; //Crear trabajo?></a>
 							</div><br><br>
 							</li>
 						</div>
