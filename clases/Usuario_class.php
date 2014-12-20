@@ -105,6 +105,14 @@ class usuario {
 
     //funcion Consultar: hace una búsqueda en la tabla usuario con
     //los datos del nombre y email. Si van vacios devuelve todos
+    public static function consultarP($emali){
+        $link = Conectarse();
+        $sql = "SELECT * FROM Usuario WHERE emailUsuario='".$email."'";
+        $resultado = mysql_query($sql);
+        return $resultado;
+    }
+    
+    
     function consultar($nombre, $email) {
         $sql = "select * from Usuario where (nombreUsuario LIKE '%" . $nombre . "%') AND (emailUsuario LIKE '%" . $email . "%')";
         $resultado = mysql_query($sql);

@@ -126,6 +126,13 @@ class trabajo{
 		return $resultado;
 	}
 	
+        public static function ConsultarUsuario($usuario)
+	{
+		$sql = "SELECT * FROM AluEntregaTra Where `emailUsuario` = '" . $usuario . "'";
+                $resultado = mysql_query($sql);
+		return $resultado;
+	}
+        
 	//funcion Borrar: borra el trabajo en la tabla Trabajo de la base de datos
 	
 	function Borrar()
