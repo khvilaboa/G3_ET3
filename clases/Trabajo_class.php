@@ -156,6 +156,7 @@ class trabajo{
 	function Modificar()
 	{
 		$sql= "select * from Trabajo where codTrabajo= '".$this->codTrab."' and codAsignatura= '".$this->codAsig."';";
+		echo $sql;
 		$resultado = mysql_query($sql);
 		if (mysql_num_rows($resultado) == 1)
 		{

@@ -62,7 +62,7 @@ $ent->Rellenar();
                     <div class="col-lg-12">
                         <h1 class="page-header ex-title"> Entrega <?php echo $ent->getTitulo(); ?> 
 						</h1>
-                        <form method="get" action="..\controller\profesor\evaluarEntrega.php">
+                        <form method="get" action="..\controller\evaluarEntrega.php">
 						<div class="panel panel-default">
 							<div class="panel-heading ex-panel-header"><?php echo $textos[6];//Datos de la entrega?></div>
 											

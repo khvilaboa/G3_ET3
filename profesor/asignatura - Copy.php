@@ -48,25 +48,6 @@
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 	
-	<!-- jQuery -->
-    <script src="../js/jquery.js"></script>
-	
-	<script>
-		$(document).ready(function(){
-			$("#buscar").click(function(){
-				con = document.getElementById("alupreins");
-				ca = document.getElementById("ca").value;
-				text = document.getElementById("filtro").value;
-				campo = document.getElementById("campo");
-				campo = campo.options[campo.selectedIndex].value
-				
-				$.get("../controller/mostrarAlumnos.php?text=" + text + "&campo=" + campo + "&ca=" + ca,function(data){
-					con.innerHTML = data;
-				});
-			}); 
-		});
-	</script>
-	
 </head>
 <body>
 
@@ -80,9 +61,6 @@
 
                 <!-- Page Heading -->
                 <div class="row">
-				
-					
-					
                     <div class="col-lg-12">
                         <h1 class="page-header ex-title"> <?php echo $textos[18]; //Asignatura?>
 							<?php
@@ -90,16 +68,14 @@
 ;							?>
 						</h1>
 						
-						
-						<FORM method="GET" ACTION="../controller/inscribirAlumno.php">
-						<input type="hidden" name="ca" id="ca" value="<?php echo $codAsig; ?>">
 						<div class="panel panel-default">
 							<div class="panel-heading ex-panel-header"><?php echo $textos[6]; //Alumnos de la asignatura?></div>
-							
+														
 							<li class="list-group-item">
 							<div class="row">
 							<div class="col-md-5">
 							<div class="table-responsive">
+						<FORM method="GET" ACTION="..\controller\profesor\inscribirAlumno.php">
 							<table class="table table-striped table-bordered table-hover table-condensed">
 								<thead>
 									<tr> 
@@ -111,19 +87,47 @@
 										<th>	</th>
 									</tr>
 								</thead>
-								<tbody id="alupreins">
-									<?php asignatura::verAluPreins($codAsig); ?>
-								</tbody>
+								<tbody>
+									<?php
+										if($fil=='filtro'){
+											$result = asignatura::verAluPreinsFil($_GET['nombreAsig'],$_GET['texto'],$_GET['campo']);
+											$count2 = 0;
+											while ($row = mysql_fetch_array($result))
+											{
+												echo "<tr><td>".$row['dniUsuario']."</td>";
+												echo "<td>".$row['apellidoUsuario'].", ".$row['nombreUsuario']."</td>";
+												echo " <td><input type='checkbox' name='dniUsuario".$count2."' value='".$row['dniUsuario']."'>  <br><br></td></tr>";
+												$count2++;
+											}
+										}
+										else{
+										
+										$resultado = asignatura::verAluPreins($codAsig);
+										$count2 = 0;
+											while ($row = mysql_fetch_array($resultado))
+											{
+												echo "<tr><td>".$row['dniUsuario']."</td>";
+												echo "<td>".$row['apellidoUsuario'].", ".$row['nombreUsuario']."</td>";
+												echo " <td><input type='checkbox' name='dniUsuario".$count2."' value='".$row['dniUsuario']."'>  <br><br></td></tr>";
+												$count2++;
+											}
+										}
+									?>	
+								<tbody>
 							</table>
 							</div>
 							</div>
 							
 							<div class="col-md-1 text-center">
 								<INPUT class="btn ex-button" TYPE="submit" NAME="accion" VALUE=">">
-								</FORM>
-								<FORM method="GET" ACTION="../controller/expulsarAlumno.php">
-								<input type="hidden" name="ca" id="ca2" value="<?php echo $codAsig; ?>">
+								<INPUT TYPE="hidden" NAME="nombreAsig" VALUE="<?php echo $_GET['nombreAsig']; ?>">
+								<INPUT TYPE="hidden" NAME="count" VALUE="<?php echo $count2; ?>">
+
+
+						</FORM>
+						<FORM method="GET" ACTION="..\controller\profesor\expulsarAlumno.php">
 								<INPUT class="btn ex-button" TYPE="submit" NAME="accion" VALUE="<">
+								<INPUT TYPE="hidden" NAME="nombreAsig" VALUE="<?php echo $_GET['nombreAsig']; ?>">
 							</div>
 							
 							<div class="col-md-5">
@@ -139,21 +143,50 @@
 											<th>	</th>
 										</tr>
 									</thead>
-									<tbody id="aluins">
-										<?php asignatura::verAluIns($codAsig); ?>
-									</tbody>
+									<tbody>
+									<?php
+									
+									if($fil=='filtro'){
+											
+											
+											$result = asignatura::verAluInsFil($_GET['nombreAsig'],$_GET['texto'],$_GET['campo']);
+											$count2 = 0;
+										while ($row = mysql_fetch_array($result))
+										{
+											echo "<tr><td>".$row['dniUsuario']."</td>";
+											echo "<td>".$row['apellidoUsuario'].", ".$row['nombreUsuario']."</td>";
+											echo " <td><input type='checkbox' name='dniUsuario".$count2."' value='".$row['dniUsuario']."'>  <br><br></td></tr>";
+											$count2++;
+										}
+										}
+										else{
+										$resultado = asignatura::verAluIns($codAsig);
+										$count = 0;
+											while ($row = mysql_fetch_array($resultado))
+											{
+												echo "<tr><td>".$row['dniUsuario']."</td>";
+												echo "<td>".$row['apellidoUsuario'].", ".$row['nombreUsuario']."</td>";
+												echo " <td><input type='checkbox' name='dniUsuario".$count."' value='".$row['dniUsuario']."'>  <br><br></td></tr>";
+												$count++;
+											}
+										}
+									?>		
+									<INPUT TYPE="hidden" NAME="count" VALUE="<?php echo $count; ?>">
+
+
+									<tbody>
 								</table>
 								</div>
 								</div>
 							</li>
-							</FORM>
-							
+						</FORM>
+							<FORM method="GET" ACTION="asignatura.php">
 							<li class="list-group-item">
 								
 								<div class="form-group">
 								<label for="filterText" class="col-md-1 control-label"><?php echo $textos[8]; //Filtro:?> </label>
 									<div class="col-md-5">
-										<input type="text" id="filtro" class="form-control" name="texto" placeholder="<?php echo $textos[8]; //Filtro:?>">
+										<input type="text" class="form-control" name="texto" placeholder="<?php echo $textos[8]; //Filtro:?>">
 									</div>
 								
 								<div class="col-md-3">
@@ -165,13 +198,15 @@
 								
 								</div>
 								<div class="col-md-2">
-                                  <button class='btn btn-default btn-lg' id="buscar"><span class="glyphicon glyphicon-search"></span></button>
+								<INPUT TYPE="hidden" NAME="filt" VALUE="filtro">
+								<INPUT TYPE="hidden" NAME="nombreAsig" VALUE="<?php echo $_GET['nombreAsig'];?>">
+                                  <button class='btn btn-default btn-lg' type="submit"><span class="glyphicon glyphicon-search"></span></button>
 								</div>
 								
 								</div>
 								<br>
 							</li>
-							
+							</FORM>
 						</div>
 						
 						
@@ -230,7 +265,8 @@
     </div>
     <!-- /#wrapper -->
 
-    
+    <!-- jQuery -->
+    <script src="../js/jquery.js"></script>
 
     <!-- Bootstrap Core JavaScript -->
     <script src="../js/bootstrap.min.js"></script>

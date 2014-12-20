@@ -240,7 +240,7 @@ class usuario {
             echo "<br>No existe un usuario con ese email<br>";
     }
 
-    function inscribirAlumno($codAsig, $emailAlum) {
+    function inscribirAlumno($codAsig) {
         $sql = "select * from Usuario where emailUsuario = '" . $this->email . "'";
         $resultado = mysql_query($sql);
         if (mysql_num_rows($resultado) == 1) {
@@ -253,6 +253,16 @@ class usuario {
                 echo "<br>No existe la asignatura<br>";
         } else
             echo "<br>No existe un usuario con ese email<br>";
+    }
+	
+	function expulsarAlumno($codAsig) {
+
+        $sql = "select * from Asignatura where codAsignatura = '" . $codAsig . "'";
+        $resultado = mysql_query($sql);
+        if (mysql_num_rows($resultado) == 1) {
+            $sql = " UPDATE `aluinscritoasi` SET aceptado='F' WHERE emailUsuario = '" . $this->email . "' AND codAsignatura = '" . $codAsig . "'";
+            mysql_query($sql);
+        } 
     }
 
 }

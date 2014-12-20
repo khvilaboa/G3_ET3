@@ -70,7 +70,7 @@ $codAsig = $_GET['ca'];
 						<div class="panel panel-default">
 							<div class="panel-heading ex-panel-header"><?php echo $textos[6];//Datos del trabajo?></div>
 							<div class="panel-body">
-							   <form class="form-horizontal" role="form" METHOD="GET" action="..\controller\profesor\controladorTrabajo.php">
+							   <form class="form-horizontal" role="form" METHOD="GET" action="../controller/controladorTrabajo.php">
 										
 								  <div class="form-group">
 									 <label for="title" class="col-lg-2 control-label"><?php echo $textos[7];//T&iacute;tulo?></label>
@@ -113,8 +113,8 @@ $codAsig = $_GET['ca'];
 							  
 							   
 							  <p class="pull-right"> 
-								<input type="hidden" name="codT" value="<?php echo $_GET['codTrabajo'];?>">
-								<input type="hidden" name="nomA" value="<?php echo $_GET['nomAsig'];?>">
+								<input type="hidden" name="ct" value="<?php echo $_GET['ct'];?>">
+								<input type="hidden" name="ca" value="<?php echo $_GET['ca'];?>">
 								<button type="submit" class="btn ex-button"><?php echo $textos[10];//Modificar?></button>
 							  </p>
 							   </form>
@@ -171,7 +171,7 @@ $codAsig = $_GET['ca'];
 						<div class="panel panel-default">
 							<div class="panel-heading ex-panel-header"><?php echo $textos[6];//Datos del trabajo?></div>
 							<div class="panel-body">
-							   <form class="form-horizontal" role="form" METHOD="GET" action="..\controller\profesor\controladorTrabajo.php">
+							   <form class="form-horizontal" role="form" METHOD="GET" action="..\controller\controladorTrabajo.php">
 										
 								  <div class="form-group">
 									 <label for="title" class="col-lg-2 control-label"><?php echo $textos[7];//T&iacute;tulo?></label>

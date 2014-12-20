@@ -209,20 +209,35 @@ class asignatura
 		}
     }
 	
-	public static function verAluPreins($codAsig) {
-	$sql = "SELECT dniUsuario, nombreUsuario, apellidoUsuario FROM usuario, asignatura, aluinscritoasi  
-		WHERE usuario.emailUsuario=aluinscritoasi.emailUsuario AND asignatura.codAsignatura=aluinscritoasi.codAsignatura 
-		AND aluinscritoasi.aceptado='F' AND asignatura.codAsignatura='".$codAsig."'"; 
-	$resultado = mysql_query($sql);
-	return $resultado;
+	public static function verAluPreins($codAsig, $text='', $campo='') {
+		$sql = "SELECT dniUsuario, nombreUsuario, apellidoUsuario, usuario.emailUsuario FROM usuario, asignatura, aluinscritoasi  
+			WHERE usuario.emailUsuario=aluinscritoasi.emailUsuario AND asignatura.codAsignatura=aluinscritoasi.codAsignatura 
+			AND aluinscritoasi.aceptado='F' AND asignatura.codAsignatura='".$codAsig."'"; 
+		
+		if(!empty($text) && !empty($campo)) $sql .=  " and ".$campo." LIKE '%".$text."%'";
+
+		$resultado = mysql_query($sql);
+		
+		while ($row = mysql_fetch_array($resultado))
+		{
+			echo "<tr><td>".$row['dniUsuario']."</td>";
+			echo "<td>".$row['apellidoUsuario'].", ".$row['nombreUsuario']."</td>";
+			echo "<td><input type='checkbox' name='aluPreIns[]' value='".$row['emailUsuario']."'></td></tr>";
+		}
     }
 	
-	public static function verAluPreinsFil($asig,$text,$campo) {
+	/*public static function verAluPreinsFil($asig,$text,$campo) {
 		$sql = "SELECT dniUsuario, nombreUsuario, apellidoUsuario FROM usuario, asignatura, aluinscritoasi  
 			WHERE usuario.emailUsuario=aluinscritoasi.emailUsuario AND asignatura.codAsignatura=aluinscritoasi.codAsignatura 
 			AND aluinscritoasi.aceptado='F' AND asignatura.nomAsignatura='".$asig."' and ".$campo." LIKE '%".$text."%'"; 
 		$resultado = mysql_query($sql);
-		return $resultado;
+		
+		while ($row = mysql_fetch_array($resultado))
+		{
+			echo "<tr><td>".$row['dniUsuario']."</td>";
+			echo "<td>".$row['apellidoUsuario'].", ".$row['nombreUsuario']."</td>";
+			echo "<td><input type='checkbox' name='dniUsuario[]' value='".$row['dniUsuario']."'></td></tr>";
+		}
     }
 	
 	public static function verAluInsFil($asig,$text,$campo) {
@@ -231,20 +246,27 @@ class asignatura
 			AND aluinscritoasi.aceptado='T' AND asignatura.nomAsignatura='".$asig."' and ".$campo." LIKE '%".$text."%'"; 
 		$resultado = mysql_query($sql);
 		return $resultado;
-    }
+    }*/
 	
-	public static function verAluIns($codAsig) {
-		$sql = "SELECT dniUsuario, nombreUsuario, apellidoUsuario FROM usuario, asignatura, aluinscritoasi  
+	public static function verAluIns($codAsig, $text='', $campo='') {
+		$sql = "SELECT dniUsuario, nombreUsuario, apellidoUsuario, usuario.emailUsuario FROM usuario, asignatura, aluinscritoasi  
 				WHERE usuario.emailUsuario=aluinscritoasi.emailUsuario AND asignatura.codAsignatura=aluinscritoasi.codAsignatura 
 				AND aluinscritoasi.aceptado='T' AND asignatura.codAsignatura='".$codAsig."'"; 
+		
+		if(!empty($text) && !empty($campo)) $sql +=  " and ".$campo." LIKE '%".$text."%'";
+		
 		$resultado = mysql_query($sql);
 		
-		return $resultado;
+		while ($row = mysql_fetch_array($resultado))
+		{
+			echo "<tr><td>".$row['dniUsuario']."</td>";
+			echo "<td>".$row['apellidoUsuario'].", ".$row['nombreUsuario']."</td>";
+			echo "<td><input type='checkbox' name='aluIns[]' value='".$row['emailUsuario']."'></td></tr>";
+		}
     }
 
 	function consultarConProfesor()
 	{
-
 		$sql = "select distinct A.codAsignatura, nomAsignatura, gradoAsignatura, cursoAsignatura, GROUP_CONCAT(nombreUsuario) as profesores
 		from Asignatura A, Proimparteasi P ,Usuario U where P.codAsignatura=A.codAsignatura and P.emailUsuario=U.emailUsuario GROUP BY A.codAsignatura";
 		$resultado = mysql_query($sql);
