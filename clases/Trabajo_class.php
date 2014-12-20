@@ -119,10 +119,10 @@ class trabajo{
 	
 	//funcion Consultar: hace una búsqueda en la tabla trabajos con
 	//el titulo del trabajo. Si no se indica devuelve todos
-	function Consultar($titulo)
+	public static function Consultar($codTrabajo)
 	{
-		$sql = "select * from Trabajo where (nombreTrabajo LIKE '%".$titulo."%')";
-		$resultado = mysql_query($sql);
+		$sql = "select * from Trabajo where codTrabajo='".$codTrabajo."'";
+                $resultado = mysql_query($sql);
 		return $resultado;
 	}
 	

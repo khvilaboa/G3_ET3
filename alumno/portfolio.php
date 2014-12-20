@@ -40,7 +40,7 @@ $textos = idioma(10, $_SESSION['idioma']);
             <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
             <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
         <![endif]-->
-        <script type="text/javascript">
+        <!--<script type="text/javascript">
             function save() {
                 var primaryKey = document.getElementsByName("publico");
                 var text = '';
@@ -56,7 +56,7 @@ $textos = idioma(10, $_SESSION['idioma']);
                 alert(document.forms['portfolio-form'].action);
                 //document.getElementById("portfolio-form").submit();
             }
-        </script>
+        </script>-->
     </head>
 
     <body>
@@ -98,29 +98,35 @@ $textos = idioma(10, $_SESSION['idioma']);
                                             $resultado = trabajo::ConsultarUsuario($login);
 
                                             while ($row = mysql_fetch_array($resultado)) {
-
+                                                $resultado2 = trabajo::Consultar($row['codTrabajo'], $row['codAsignatura']);
+                                                $descripcion = mysql_fetch_array($resultado2);
                                                 echo "<tr>";
-                                                echo "<td><input " . (($row['portfolio'] == 'F') ? '' : 'checked') . " type=\"checkbox\" name=\"publico\" id='" . $row['codAsignatura'] . " " . $row['codTrabajo'] . "'></td>";
-                                                echo "<td>" . $row['titulo'] . "</td>";
-                                                echo "<td></td>"; //echo "<td><a href=\"listaTrabajos.php?ca=" . $row['codAsignatura'] . "\">" . $row['nomAsignatura'] . "</a></td>";
+                                                echo "<td><input " . (($row['portfolio'] == 'F') ? '' : 'checked') . " type=\"checkbox\" name=\"publico[]\" value='" . $row['codAsignatura'] . " " . $row['codTrabajo'] . "'></td>";
+                                                echo "<td><a href= ../" . $row['codAsignatura'] . "/" . $row['codTrabajo'] . "/" . $login . '~' . $row['titulo'] . ">" . $row['titulo'] . "</a></td>";
+                                                echo "<td>" . $descripcion['descripcionTrabajo'] . "</td>";
                                                 echo "<td>" . $row['calificacion'] . "</td>";
                                                 echo "<td>" . $row['observaciones'] . "</td>";
                                                 echo "</tr>";
                                             }
-                                            
+
                                             echo "<tbody>";
                                             echo "</table>";
-                                                echo "</div>";
-                                                echo "</div>";
-                                                
-                                            $resultado = usuario::consultar($login);    
-                                            echo "<input name=\"notas\" type=\"checkbox\" name=\"notas\" value=\"notas\"> ".$textos[14]."<br><br>"; //Mostrar notas;
-                                            echo "<input name=\"publicar\" type=\"checkbox\" name=\"publicar\" value=\"publicar\"> ".$textos[15]."<br><br>"; //Publicar;
+                                            echo "</div>";
+                                            echo "</div>";
+
+                                            $resultado = usuario::consultarP($login);
+                                            $row = mysql_fetch_array($resultado);
+                                            echo "<input " . (($row['correccionesUsuario'] == 'F') ? '' : 'checked') . " name = \"notas\" type=\"checkbox\" name=\"notas\"> " . $textos[14] . "<br><br>"; //Mostrar notas;
+                                            echo "<input " . (($row['publicoUsuario'] == 'F') ? '' : 'checked') . " name=\"publicarUrl\" type=\"checkbox\" name=\"notas\"> " . $textos[15] . "<br><br>"; //Publicar;
                                             ?>
-                                            <p>URL: </p><input type="text" class="form-control" id="url" placeholder="Url"><br>
+                                            <p>URL: <?php echo "<a id=\"cosaPaCopiar\" href=\"../portfolio.php?" . $login . "\">Enlace</a>"; ?></p><br>
+                                            <div class="pull-left">
+                                                <a id="copy-button" class="btn ex-button" href="#" data-clipboard-text="<?php echo $_SERVER['PHP_SELF']."/portfolio.php?" . $login; ?>">Copiame</a><!-- Guardar -->
+
+                                            </div>
 
                                             <div class="pull-right" id="btn-save">
-                                                <a onclick="save()" class="btn ex-button"><?php echo $textos[16]; ?></a> <!-- Guardar -->
+                                                <a onclick="document.forms['portfolio-form'].submit()" class="btn ex-button"><?php echo $textos[16]; ?></a>  <!-- Guardar -->
                                             </div>
                                         </form>
                                         <br><br>
@@ -153,7 +159,11 @@ $textos = idioma(10, $_SESSION['idioma']);
 
                     <!-- Bootstrap Core JavaScript -->
                     <script src="../js/bootstrap.min.js"></script>
+                    <script src="../js/zeroClipBoard/ZeroClipboard.js"></script>
+                    <script>
+                            var client = new ZeroClipboard(document.getElementById("copy-button"));
 
+                    </script>
                     </body>
 
                     </html>

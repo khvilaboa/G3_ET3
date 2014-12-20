@@ -50,9 +50,9 @@ CREATE TABLE IF NOT EXISTS `AluEntregaTra` (
 CREATE TABLE IF NOT EXISTS `AluInscritoAsi` (
   `emailUsuario` varchar(40) NOT NULL,
   `codAsignatura` varchar(40) NOT NULL,
-  `anhoInscrito` date NOT NULL,
+  `anhoInscrito` number(4) NOT NULL,
   `aceptado` enum('T','F') NOT NULL DEFAULT 'F',
-  PRIMARY KEY (`emailUsuario`,`codAsignatura`,`anhoInscrito`),
+  PRIMARY KEY (`emailUsuario`,`codAsignatura`),
   KEY `codAsignatura` (`codAsignatura`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
