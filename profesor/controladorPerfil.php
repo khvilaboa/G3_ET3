@@ -3,7 +3,6 @@ echo $_SESSION['userPass'];
 
 include_once('../conexion.php');
 
-
 include ('../clases/Usuario_class.php');
 session_start();
 
