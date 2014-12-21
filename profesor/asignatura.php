@@ -211,16 +211,6 @@
 						<div class="pull-right">
 							<a href="listaAsignaturas.php" class="btn ex-button"><?php echo $textos[15]; //Volver?></a>
 						</div>
-
-					<form action="../MultiLanguage/CambioIdioma.php" method="post"> 				
-    <select name="idioma" onChange='this.form.submit()'>
-            <option value=""><?php echo $textos[1];//Seleccione su idioma?></option>
-            <option value="ENG">English</option>
-            <option value="ESP">Español</option>
-            <option value="GAL">Galego</option>
-			<option value="DEU">Deutsch</option>
-    </select>
-	</form>
 						
 					</div>
                 </div>
