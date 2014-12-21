@@ -16,7 +16,7 @@ function showNav($textos) {
 				<!-- Top Menu Items -->
 				<ul class=\"nav navbar-right top-nav\">
 					<li class=\"dropdown\">
-						<a href=\"#\" class=\"dropdown-toggle\" data-toggle=\"dropdown\"><i class=\"fa fa-language\"></i>";
+						<a href=\"#\" class=\"dropdown-toggle\" data-toggle=\"dropdown\"><i class=\"fa fa-flag-o\"></i>";
 						
 				/*switch($_SESSION['idioma']) {
 				case 'ESP': echo "<img src=\"../icons/Spain.png\">"; break;
