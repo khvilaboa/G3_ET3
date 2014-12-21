@@ -84,7 +84,7 @@ $asig->Rellenar();
                                     <ul class="list-group">
                                         <li class="list-group-item">
                                             <!-- subir archivo-->
-                                            <form action="upload.php" method="post" enctype="multipart/form-data">
+                                            <form action="../controller/controllerEntrega.php?ca=<?php echo $codAsig?>&ct=<?php echo $codTrab?>&fe=<?php echo $ent->getFechaFinal()?>" method="post" enctype="multipart/form-data">
                                                 <label for="ejemplo_archivo_1"><?php echo $textos[12]; //Adjuntar un archivo ?></label>
                                                 <input type="file"  name="uploadFile"><br>
                                                 <button type="submit" class="btn btn-default" value="Upload File"><?php echo $textos[13]; //Enviar ?></button>

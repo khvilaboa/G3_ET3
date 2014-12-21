@@ -32,9 +32,9 @@ CREATE TABLE IF NOT EXISTS `AluEntregaTra` (
   `codAsignatura` varchar(40) NOT NULL,
   `codTrabajo` varchar(40) NOT NULL,
   `fechaEntrega` date NOT NULL,
-  `observaciones` varchar(256) NOT NULL,
+  `observaciones` varchar(256), DEFAULT NULL,
   `titulo` varchar(40) NOT NULL,
-  `calificacion` decimal(4,0),
+  `calificacion` float(4,0),
   `portfolio` enum('T','F') NOT NULL DEFAULT 'F',
   PRIMARY KEY (`emailUsuario`,`codAsignatura`,`codTrabajo`),
   KEY `codAsignatura` (`codAsignatura`),
@@ -79,7 +79,7 @@ CREATE TABLE IF NOT EXISTS `Asignatura` (
 CREATE TABLE IF NOT EXISTS `ProImparteAsi` (
   `emailUsuario` varchar(40) NOT NULL,
   `codAsignatura` varchar(40) NOT NULL,
-  `anhoImparte` date NOT NULL,
+  `anhoImparte` number(4) NOT NULL,
   PRIMARY KEY (`emailUsuario`,`codAsignatura`,`anhoImparte`),
   KEY `codAsignatura` (`codAsignatura`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
