@@ -135,15 +135,19 @@ class asignatura {
         //Buscamos una asignatura cuyo codigo sea $cod.
         $sql = "select * from Asignatura where codAsignatura = '" . $cod . "'";
         $resultado = mysql_query($sql);
+		
+		
 
         //Si encontro una asignatura con ese código, borramos.
         if (mysql_num_rows($resultado) == 1) {
             $sql = "delete from Asignatura where codAsignatura='" . $cod . "'";
             mysql_query($sql);
+			
+			echo $sql;
             asignatura::deltree("../uploads/" . $cod);
             rmdir("../uploads/". $cod);
             echo "<br>La asignatura de código " . $cod . " fue borrada correctamente<br>";
-            header("Location: ../admin/listaAsignaturas.php");
+            
         } else
             echo "<br>la asignatura de código " . $cod . " no existe<br>";
     }

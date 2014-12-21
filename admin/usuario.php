@@ -120,8 +120,9 @@
 										
 										<input type="hidden" name="elemento" value="usuario"/>
 										<input type="hidden" name="usuario" value="<?php echo $usuario->getDni()?>"/>
-										<?php if($usuario->getTipo()!="Administrador") echo '<input type="submit" name="accion" class="btn ex-button"  value="echo $textos[13];/*Borrar*/"';?>
-										<input type="submit" name="accion" class="btn ex-button" value="<?php echo $textos[14];//Modificar?>"/>
+										<?php if($usuario->getTipo()!="Administrador") echo '<a href="../controller/controladorAdmin.php?accion=Borrar&elemento=usuario&usuario=' . $usuario->getEmail() . '" name="acciona" class="btn ex-button">' . $textos[13] /*Borrar*/ . '</a>';?>
+										<input type="submit" class="btn ex-button" value="<?php echo $textos[14];//Modificar?>"/>
+										<input type="hidden" name="accion" class="btn ex-button" value="Modificar"/>
 										
 
 									</div>
@@ -193,7 +194,8 @@
 									
 									
 									<input type="hidden" name="elemento" value="usuario"/>
-									<input type="submit" name="accion" class="btn ex-button" value="<?php echo $textos[15];//Crear?>"/>
+									<input type="submit" class="btn ex-button" value="<?php echo $textos[15];//Crear?>"/>
+									<input type="hidden" name="accion" class="btn ex-button" value="Crear"/>
 									
 
 								</div>

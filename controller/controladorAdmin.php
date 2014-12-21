@@ -4,32 +4,24 @@
 include_once "../clases/Usuario_class.php";
 include_once "../clases/Asignatura_class.php";
 
-if (isset($_POST['accion'])) {
-    switch ($_POST['accion']) {
+if (isset($_REQUEST['accion'])) {
+    switch ($_REQUEST['accion']) {
         //acciones de borrado de elementos
-        case 'Borrar':
-            switch ($_POST['elemento']) {
+        case 'Borrar': // http://localhost/g3_et3/controller/controladorAdmin.php?accion=Borrar&elemento=asignatura&asignatura=CDAIng3
+            switch ($_REQUEST['elemento']) {
                 //borrado de usuario
                 case "usuario":
-                    $usuario = new usuario('', '', '', '', '', '');
-                    $sql = "select * from Usuario where dniUsuario='" . $_POST['usuario'] . "'";
-                    $resultado = mysql_query($sql);
-                    while ($row = mysql_fetch_array($resultado)) {
-
-                        $usuario->setEmail($row['emailUsuario']);
-                        $usuario->setNombre($row['nombreUsuario']);
-                        $usuario->setPassword($row['passwordUsuario']);
-                        $usuario->setApellido($row['apellidoUsuario']);
-                        $usuario->setDni($row['dniUsuario']);
-                        $usuario->setTipo($row['tipoUsuario']);
-                    }
-                    $usuario->borrar($usuario->getEmail());
+                    $usuario = new usuario($_REQUEST['usuario'], '', '', '', '', '');
+                    $usuario->Rellenar();
+                    $usuario->borrar($_REQUEST['usuario']);
                     header("Location: ../admin/listaUsuarios.php");
                     break;
 
                 case "asignatura":
                     $asig = new asignatura('', '', '', $_REQUEST['asignatura']);
                     $asig->Borrar($_REQUEST['asignatura']);
+					
+					header("Location: ../admin/listaAsignaturas.php");
                     break;
                 default:
                     header("Location: ../admin/listaAsignaturas.php");
@@ -41,12 +33,12 @@ if (isset($_POST['accion'])) {
 
         case 'Modificar':
             //Acciones de modificacion
-            switch ($_POST['elemento']) {
+            switch ($_REQUEST['elemento']) {
                 //modificado de usuario
                 case "usuario":
-                    $usuario = new usuario($_POST['email'], $_POST['nombre'], $_POST['pass'], $_POST['apellidos'], $_POST['dni'], $_POST['tipo']);
+                    $usuario = new usuario($_REQUEST['email'], $_REQUEST['nombre'], $_REQUEST['pass'], $_REQUEST['apellidos'], $_REQUEST['dni'], $_REQUEST['tipo']);
                     $usuario->modificar();
-                    $usuario->modificarTipoUsuario($_POST['tipo']);
+                    $usuario->modificarTipoUsuario($_REQUEST['tipo']);
                     header("Location: ../admin/listaUsuarios.php");
                     break;
 
@@ -54,7 +46,7 @@ if (isset($_POST['accion'])) {
                 case "asignatura":
 
                     $asignatura = new asignatura("", "", "", "");
-                    $sql = "select * from asignatura where codAsignatura='" . $_POST['asignatura'] . "'";
+                    $sql = "select * from asignatura where codAsignatura='" . $_REQUEST['asignatura'] . "'";
                     $resultado = mysql_query($sql);
                     while ($row = mysql_fetch_array($resultado)) {
 
@@ -63,7 +55,7 @@ if (isset($_POST['accion'])) {
                         $asignatura->setGrado($row['gradoAsignatura']);
                         $asignatura->setCurso($row['cursoAsignatura']);
                     }
-                    $asignaturaM = new asignatura($_POST['nombreA'], $_POST['gradoA'], $_POST['cursoA'], $asignatura->getCodigo());
+                    $asignaturaM = new asignatura($_REQUEST['nombreA'], $_REQUEST['gradoA'], $_REQUEST['cursoA'], $asignatura->getCodigo());
                     $asignaturaM->modificar();
                     header("Location: ../admin/asignatura.php?codAsig=" . $_REQUEST['asignatura'] . "");
 
@@ -78,12 +70,12 @@ if (isset($_POST['accion'])) {
             break;
 
         case 'Crear':
-            switch ($_POST['elemento']) {
+            switch ($_REQUEST['elemento']) {
                 //creacion de usuario
                 case "usuario":
-                    $usuario = new usuario($_POST['email'], $_POST['nombre'], $_POST['pass'], $_POST['apellidos'], $_POST['dni'], $_POST['tipo']);
+                    $usuario = new usuario($_REQUEST['email'], $_REQUEST['nombre'], $_REQUEST['pass'], $_REQUEST['apellidos'], $_REQUEST['dni'], $_REQUEST['tipo']);
                     $usuario->insertar();
-                    $usuario->modificarTipoUsuario($_POST['tipo']);
+                    $usuario->modificarTipoUsuario($_REQUEST['tipo']);
                     header("Location: ../admin/listaUsuarios.php");
                     break;
 
@@ -92,8 +84,8 @@ if (isset($_POST['accion'])) {
                     $sql = "select ifnull(MAX(codAsignatura+1),0) FROM Asignatura";
                     $resultado = mysql_query($sql);
                     $codigo = mysql_fetch_array($resultado);
-                    if ($_POST['nombreA'] <> '' && $_POST['gradoA'] <> '') {
-                        $asignatura = new asignatura($_POST['nombreA'], $_POST['gradoA'], $_POST['cursoA'], $codigo[0]);
+                    if ($_REQUEST['nombreA'] <> '' && $_REQUEST['gradoA'] <> '') {
+                        $asignatura = new asignatura($_REQUEST['nombreA'], $_REQUEST['gradoA'], $_REQUEST['cursoA'], $codigo[0]);
                         $asignatura->insertar();
                         header("Location: ../admin/asignatura.php?codAsig=" . $asignatura->getCodigo() . "");
                     } else
@@ -108,13 +100,13 @@ if (isset($_POST['accion'])) {
 
         case '>':
 
-            $contP = $_POST['contP'];
+            $contP = $_REQUEST['contP'];
 
             for ($i = 0; $i < $contP; $i++) {
-                if (isset($_POST['emailU' . $i])) {
-                    $emailU = $_POST['emailU' . $i];
-                    $anho = "" . $_POST['anho'] . "-01-01";
-                    $sql = "INSERT INTO Proimparteasi (emailUsuario,codAsignatura,anhoImparte) VALUES ('" . $emailU . "','" . $_POST['asignatura'] . "','" . $anho . "')";
+                if (isset($_REQUEST['emailU' . $i])) {
+                    $emailU = $_REQUEST['emailU' . $i];
+                    $anho = "" . $_REQUEST['anho'] . "-01-01";
+                    $sql = "INSERT INTO Proimparteasi (emailUsuario,codAsignatura,anhoImparte) VALUES ('" . $emailU . "','" . $_REQUEST['asignatura'] . "','" . $anho . "')";
                     $resultado = mysql_query($sql);
                 }
             }
@@ -124,11 +116,11 @@ if (isset($_POST['accion'])) {
 
         case '<':
 
-            $contPS = $_POST['contPS'];
+            $contPS = $_REQUEST['contPS'];
             for ($i = 0; $i < $contPS; $i++) {
-                if (isset($_POST['emailU' . $i])) {
-                    $emailU = $_POST['emailU' . $i];
-                    $sql = "DELETE FROM Proimparteasi WHERE emailUsuario='" . $emailU . "' and codAsignatura='" . $_POST['asignatura'] . "'";
+                if (isset($_REQUEST['emailU' . $i])) {
+                    $emailU = $_REQUEST['emailU' . $i];
+                    $sql = "DELETE FROM Proimparteasi WHERE emailUsuario='" . $emailU . "' and codAsignatura='" . $_REQUEST['asignatura'] . "'";
                     $resultado = mysql_query($sql);
                     echo "j";
                 }
