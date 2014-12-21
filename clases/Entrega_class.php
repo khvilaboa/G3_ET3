@@ -100,8 +100,6 @@ class entrega {
         if ($this->tit <> '') {
             $sql = "INSERT INTO `aluentregatra` (`emailUsuario`, `codAsignatura`, `codTrabajo`, `fechaEntrega`, `observaciones`, `titulo`, `calificacion`, `portfolio`) 
 						VALUES ('$this->emailUs', '$this->codAsig', '$this->codTrab', '$this->fechaEnt', NULL, '$this->tit', NULL, '$this->portf');";
-            echo $sql;
-            echo "Entrega creada correctamente";
             $link = Conectarse();
             mysql_query($sql);
         } else

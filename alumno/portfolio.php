@@ -102,7 +102,7 @@ $textos = idioma(10, $_SESSION['idioma']);
                                                 $descripcion = mysql_fetch_array($resultado2);
                                                 echo "<tr>";
                                                 echo "<td><input " . (($row['portfolio'] == 'F') ? '' : 'checked') . " type=\"checkbox\" name=\"publico[]\" value='" . $row['codAsignatura'] . " " . $row['codTrabajo'] . "'></td>";
-                                                echo "<td><a href= ../" . $row['codAsignatura'] . "/" . $row['codTrabajo'] . "/" . $login . '~' . $row['titulo'] . ">" . $row['titulo'] . "</a></td>";
+                                                echo "<td><a href= ../uploads/" . $row['codAsignatura'] . "/" . $row['codTrabajo'] . "/" . $login . '~' . $row['titulo'] . ">" . $row['titulo'] . "</a></td>";
                                                 echo "<td>" . $descripcion['descripcionTrabajo'] . "</td>";
                                                 echo "<td>" . $row['calificacion'] . "</td>";
                                                 echo "<td>" . $row['observaciones'] . "</td>";
