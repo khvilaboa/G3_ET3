@@ -102,6 +102,20 @@ class usuario {
             echo "Introduzca un valor para el email<br>";
         }
     }
+	
+	function Rellenar() {
+        Conectarse();
+        $sql = "select * from Usuario where emailUsuario='" . $this->email . "'";
+        $resultado = mysql_query($sql);
+
+        if ($row = mysql_fetch_array($resultado)) {
+			$this->nombre = $row['nombreUsuario'];
+			$this->pass = $row['passwordUsuario'];
+			$this->apellidos = $row['apellidoUsuario'];
+			$this->dni = $row['dniUsuario'];
+			$this->TipoUser = $row['tipoUsuario'];
+        }
+    }
 
     //funcion Consultar: hace una búsqueda en la tabla usuario con
     //los datos del nombre y email. Si van vacios devuelve todos
