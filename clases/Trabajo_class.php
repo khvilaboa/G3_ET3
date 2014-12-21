@@ -107,7 +107,7 @@ class trabajo{
 	
 	function Rellenar() {
 		Conectarse();
-		$sql = "select * from Trabajo where codAsignatura=\"" . $this->codAsig . "\" and codTrabajo=" . $this->codTrab;
+		$sql = "select * from Trabajo where codAsignatura=\"" . $this->codAsig . "\" and codTrabajo='" . $this->codTrab."'";
 		$resultado = mysql_query($sql);
 		
 		if ($row = mysql_fetch_array($resultado)) {
