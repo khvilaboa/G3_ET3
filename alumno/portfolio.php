@@ -121,7 +121,7 @@ $textos = idioma(10, $_SESSION['idioma']);
                                             ?>
                                             <p>URL: <?php echo "<a id=\"cosaPaCopiar\" href=\"../portfolio.php?" . $login . "\">Enlace</a>"; ?></p><br>
                                             <div class="pull-left">
-                                                <a id="copy-button" class="btn ex-button" href="#" data-clipboard-text="<?php echo $_SERVER['PHP_SELF']."/portfolio.php?" . $login; ?>">Copiame</a><!-- Guardar -->
+                                                <a id="copy-button" class="btn ex-button" href="#" data-clipboard-text="<?php echo $_SERVER['SERVER_ADDR'].$_SERVER['PHP_SELF']."/portfolio.php?" . $login; ?>">Copiame</a><!-- Guardar -->
 
                                             </div>
 
@@ -131,17 +131,6 @@ $textos = idioma(10, $_SESSION['idioma']);
                                         </form>
                                         <br><br>
                                         </div>
-                                        <form action="../MultiLanguage/CambioIdioma.php" method="post"> 
-                                        </form>	
-                                        <form action="../MultiLanguage/CambioIdioma.php" method="post"> 				
-                                            <select name="idioma" onChange='this.form.submit()'>
-                                                <option value=""><?php echo $textos[1]; ?></option> <!-- Seleccione su idioma -->
-                                                <option value="ENG">English</option>
-                                                <option value="ESP">Español</option>
-                                                <option value="GAL">Galego</option>
-                                                <option value="DEU">Deutsch</option>
-                                            </select>
-                                        </form>
                                 </div>
                                 <!-- /.row -->
 

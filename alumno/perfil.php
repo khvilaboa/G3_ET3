@@ -7,7 +7,7 @@ include('../nav.php');
 
 //$_SESSION['idioma']='ENG';
 
-$textos = idioma(9,$_SESSION['idioma']);
+$textos = idioma(9, $_SESSION['idioma']);
 ?>
 <html lang="en">
     <head>
@@ -74,9 +74,9 @@ $textos = idioma(9,$_SESSION['idioma']);
                     <div class="row">
                         <div class="col-lg-12">
 
-                            <h1 class="page-header ex-title"> <?php echo $textos[7];//Perfil?> </h1>
+                            <h1 class="page-header ex-title"> <?php echo $textos[7]; //Perfil ?> </h1>
                             <div class="panel panel-default">
-                                <div class="panel-heading ex-panel-header"><?php echo $textos[8]; //Gesti&oacute;n de perfil?></div>
+                                <div class="panel-heading ex-panel-header"><?php echo $textos[8]; //Gesti&oacute;n de perfil ?></div>
                                 <div class="panel-body">
                                     <form id="perfilform" METHOD="POST" ACTION="../controller/controllerPerfil.php" class="form-horizontal" role="form">
                                         <?php
@@ -91,28 +91,28 @@ $textos = idioma(9,$_SESSION['idioma']);
                                         $row = mysql_fetch_array($resultado);
                                         ?>
                                         <div class="form-group">
-                                            <label for="passwdAct" class="col-lg-2 control-label"><?php echo $textos[9];//Contrase&ntilde;a actual?></label>
+                                            <label for="passwdAct" class="col-lg-2 control-label"><?php echo $textos[9]; //Contrase&ntilde;a actual ?></label>
                                             <div class="col-lg-10">
-                                                <input type="password" name="actualPassword" onKeyUp="validar()" class="form-control" id="passwdAct" value="" placeholder="<?php echo $textos[9];//Contrase&ntilde;a actual?>">
+                                                <input type="password" name="actualPassword" onKeyUp="validar()" class="form-control" id="passwdAct" value="" placeholder="<?php echo $textos[9]; //Contrase&ntilde;a actual ?>">
                                             </div>
                                         </div>
 
                                         <div class="form-group">
-                                            <label for="passwdNew" class="col-lg-2 control-label"><?php echo $textos[10];//Nueva contrase&ntilde;a?></label>
+                                            <label for="passwdNew" class="col-lg-2 control-label"><?php echo $textos[10]; //Nueva contrase&ntilde;a ?></label>
                                             <div class="col-lg-10">
-                                                <input type = "password" name = "newPassword" onKeyUp="validar()" class = "form-control" id = "passwdNew" value="" placeholder = "<?php echo $textos[10];//Nueva contrase&ntilde;a?>">
+                                                <input type = "password" name = "newPassword" onKeyUp="validar()" class = "form-control" id = "passwdNew" value="" placeholder = "<?php echo $textos[10]; //Nueva contrase&ntilde;a ?>">
                                             </div>
                                         </div>
 
                                         <div class="form-group">
-                                            <label for="passwdRep" class="col-lg-2 control-label"><?php echo $textos[12];//Repetir contrase&ntilde;a?></label>
+                                            <label for="passwdRep" class="col-lg-2 control-label"><?php echo $textos[12]; //Repetir contrase&ntilde;a ?></label>
                                             <div class="col-lg-10">
-                                                <input type="password" name="repeatPassword" onKeyUp="validar()" class="form-control" id="passwdRep" value="" placeholder="<?php echo $textos[12];//Repetir contrase&ntilde;a?>">
+                                                <input type="password" name="repeatPassword" onKeyUp="validar()" class="form-control" id="passwdRep" value="" placeholder="<?php echo $textos[12]; //Repetir contrase&ntilde;a ?>">
                                             </div>
                                         </div>
 
                                         <div class="form-group">
-                                            <label for="passwdRep" class="col-lg-2 control-label"><?php echo $textos[15]; //Nombre actual?></label>
+                                            <label for="passwdRep" class="col-lg-2 control-label"><?php echo $textos[15]; //Nombre actual ?></label>
                                             <div class="col-lg-10">
                                                 <?php
                                                 echo "<input name=\"name\" class=\"form-control\" id=\"oldName\" value=\"{$row['nombreUsuario']}\" placeholder=\"Nuevo Nombre\">";
@@ -121,7 +121,7 @@ $textos = idioma(9,$_SESSION['idioma']);
                                         </div>
 
                                         <div class="form-group">
-                                            <label for="passwdRep" class="col-lg-2 control-label"><?php echo $textos[16]; //Apellidos actuales?></label>
+                                            <label for="passwdRep" class="col-lg-2 control-label"><?php echo $textos[16]; //Apellidos actuales ?></label>
                                             <div class="col-lg-10">
                                                 <?php
                                                 echo "<input name=\"surname\" class=\"form-control\" id=\"oldSurName\" value=\"{$row['apellidoUsuario']}\" placeholder=\"Nuevos Apellidos\">";
@@ -130,7 +130,7 @@ $textos = idioma(9,$_SESSION['idioma']);
                                         </div>
 
                                         <div class="pull-right"> 
-                                            <button type="button" onclick="document.forms['perfilform'].submit()" class="btn ex-button" id="btn-aceptar" disabled='disabled'><?php echo $textos[14];//Modificar Perfil?></button>
+                                            <button type="button" onclick="document.forms['perfilform'].submit()" class="btn ex-button" id="btn-aceptar" disabled='disabled'><?php echo $textos[14]; //Modificar Perfil ?></button>
                                         </div>
                                     </form>
 
@@ -140,17 +140,6 @@ $textos = idioma(9,$_SESSION['idioma']);
 
                         </div>
                     </div>
-					<form action="../MultiLanguage/CambioIdioma.php" method="post"> 
-						</form>	
-					<form action="../MultiLanguage/CambioIdioma.php" method="post"> 				
-    <select name="idioma" onChange='this.form.submit()'>
-            <option value=""><?php echo $textos[1];//Seleccione su idioma?></option>
-            <option value="ENG">English</option>
-            <option value="ESP">Español</option>
-            <option value="GAL">Galego</option>
-			<option value="DEU">Deutsch</option>
-    </select>
-	</form>
                 </div>
                 <!-- /.row -->
 
