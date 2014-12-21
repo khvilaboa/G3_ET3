@@ -32,7 +32,7 @@ CREATE TABLE IF NOT EXISTS `AluEntregaTra` (
   `codAsignatura` varchar(40) NOT NULL,
   `codTrabajo` varchar(40) NOT NULL,
   `fechaEntrega` date NOT NULL,
-  `observaciones` varchar(256), DEFAULT NULL,
+  `observaciones` varchar(256) NOT NULL,
   `titulo` varchar(40) NOT NULL,
   `calificacion` decimal(4,0),
   `portfolio` enum('T','F') NOT NULL DEFAULT 'F',
