@@ -27,10 +27,14 @@ if (isset($_POST['accion'])) {
                     header("Location: ../admin/listaUsuarios.php");
                     break;
 
-
+                case "asignatura":
+                    $asig = new asignatura('', '', '', $_REQUEST['asignatura']);
+                    $asig->Borrar($_REQUEST['asignatura']);
+                    break;
                 default:
                     header("Location: ../admin/listaAsignaturas.php");
                     break;
+                
             }
             break;
 
@@ -61,7 +65,7 @@ if (isset($_POST['accion'])) {
                     }
                     $asignaturaM = new asignatura($_POST['nombreA'], $_POST['gradoA'], $_POST['cursoA'], $asignatura->getCodigo());
                     $asignaturaM->modificar();
-                    header("Location: ../admin/asignatura.php?codAsig=" . $asignaturaM->getCodigo() . "");
+                    header("Location: ../admin/asignatura.php?codAsig=" . $_REQUEST['asignatura'] . "");
 
                     break;
             }
@@ -115,7 +119,7 @@ if (isset($_POST['accion'])) {
                 }
             }
 
-            header("Location: ../admin/asignatura.php?codAsig=" . $_POST['asignatura'] . "");
+            header("Location: ../admin/asignatura.php?codAsig=" . $_REQUEST['asignatura'] . "");
             break;
 
         case '<':
@@ -130,7 +134,7 @@ if (isset($_POST['accion'])) {
                 }
             }
 
-            header("Location: ../admin/asignatura.php?codAsig=" . $_POST['asignatura'] . "");
+            header("Location: ../admin/asignatura.php?codAsig=" . $_REQUEST['asignatura'] . "");
             break;
 
         default:

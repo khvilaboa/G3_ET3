@@ -106,6 +106,7 @@ $textos = idioma(1, $_SESSION['idioma']);
                                                 <input type="hidden" name="elemento" value="asignatura"/>
                                                 <input type="hidden" name="asignatura" value="<?php echo $asignatura->getCodigo() ?>"/>
                                                 <input type="submit" name="accion" class="btn ex-button" value="<?php echo $textos[10]; //Modificar ?>"/>
+                                                <input type="submit" name="accion" class="btn ex-button" value="Borrar"/>
 
                                             </div>
                                         </form>
@@ -159,7 +160,7 @@ $textos = idioma(1, $_SESSION['idioma']);
                                                 </form>
 
 
-                                                <form method="post" class="form-horizontal" role="form" action="../controller/controladorAdmin.php">		
+                                                    <form method="post" class="form-horizontal" role="form" action="../controller/controladorAdmin.php">		
                                                     <input type="submit" name="accion" class="btn ex-button" value="<"/>
                                             </div>
                                             <div class="col-md-5">
@@ -279,7 +280,8 @@ if (!isset($_GET['codAsig'])) {
 
                                                     <input type="hidden" name="elemento" value="asignatura"/> <!--Cambiar asignatura?-->
                                                     <input type="hidden" name="asignatura" value="<?php echo $asignatura->getCodigo() ?>"/>
-                                                    <input type="submit" name="accion" class="btn ex-button" value="<?php echo $textos[19]; //Crear ?>"/>
+                                                    <input type="submit" class="btn ex-button" value="<?php echo $textos[19]; //Crear ?>"/>
+                                                    <input type="hidden" name="accion" class="btn ex-button" value="Crear"/>
 
                                                 </div>
                                             </form>
