@@ -1,17 +1,22 @@
 <?php
-	include_once("../../conexion.php"); 
+	include_once("../conexion.php"); 
 	Conectarse();
 	
+	include ('../clases/Entrega_class.php');
+	
+	$codAsig = $_GET['ca'];
+	$codTrab = $_GET['ct'];
+	$email = $_GET['email'];
+
+	$ent = new entrega($codAsig, $codTrab, $email, '', '', '', '', '');
+	$ent->Rellenar();
+	
 	$sql = "UPDATE `aluentregatra` SET `observaciones` = '".$_GET['observaciones']."', `calificacion` = '".$_GET['nota']."' 
-	WHERE `aluentregatra`.`emailUsuario` = '".$_GET['emailUs']."' AND `aluentregatra`.`codAsignatura` = '".$_GET['codAsig']."' 
-	AND `aluentregatra`.`codTrabajo` = '".$_GET['codTrab']."';";
+	WHERE `aluentregatra`.`emailUsuario` = '".$email."' AND `aluentregatra`.`codAsignatura` = '".$codAsig."' 
+	AND `aluentregatra`.`codTrabajo` = '".$codTrab."';";
 	
 	$resultado = mysql_query($sql);
 	echo mysql_error();
+	
+	header("Location: ../profesor/trabajo.php?ca=" . $codAsig . "&ct=" . $codTrab . "&mail=" . $email . "&msg=creado");
 ?>
-<script type="text/javascript">
-	function redireccionar(){
-	  window.location="../../profesor/trabajo.php?codTrabajo=<?php echo $_GET['codTrab']; ?>&codAsig=<?php echo $_GET['codAsig']; ?>&nomAsig=<?php echo $_GET['nomAsig']; ?>";
-	} 
-	setTimeout ("redireccionar()", 1); //tiempo expresado en milisegundos
-</script>

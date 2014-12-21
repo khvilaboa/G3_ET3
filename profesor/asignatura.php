@@ -51,6 +51,8 @@
 	<!-- jQuery -->
     <script src="../js/jquery.js"></script>
 	
+	
+	
 	<script>
 		$(document).ready(function(){
 			$("#buscar").click(function(){
@@ -62,14 +64,23 @@
 				
 				$.get("../controller/mostrarAlumnos.php?text=" + text + "&campo=" + campo + "&ca=" + ca,function(data){
 					con.innerHTML = data;
-					alert(data);
 				});
 			}); 
 		});
+		
+		function showMsg() {
+			msg = "<?php echo (isset($_GET['msg'])?$_GET['msg']:''); ?>";
+			
+			if(msg == "creado") {
+				$.notify("El trabajo se ha creado correctamente", "success");
+			} else if(msg == "modificado"){
+				$.notify("El trabajo se ha modificado correctamente", "success");
+			} 
+		}
 	</script>
 	
 </head>
-<body>
+<body onload="showMsg();">
 
     <div id="wrapper">
 
@@ -226,6 +237,9 @@
 
     <!-- Bootstrap Core JavaScript -->
     <script src="../js/bootstrap.min.js"></script>
+	
+	<!-- notify -->
+    <script src="../js/notify.js"></script>
 
 </body>
 

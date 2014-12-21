@@ -62,7 +62,7 @@ $ent->Rellenar();
                     <div class="col-lg-12">
                         <h1 class="page-header ex-title"> Entrega <?php echo $ent->getTitulo(); ?> 
 						</h1>
-                        <form method="get" action="..\controller\evaluarEntrega.php">
+                        <form method="get" action="../controller/evaluarEntrega.php">
 						<div class="panel panel-default">
 							<div class="panel-heading ex-panel-header"><?php echo $textos[6];//Datos de la entrega?></div>
 											
@@ -83,10 +83,11 @@ $ent->Rellenar();
 								<div class="form-group">
 									 <label for="selNosta" class="col-lg-2 control-label"><?php echo $textos[10];//Nota?></label>
 										<div class="col-lg-10">
-										   <select class="form-control" id="selNota" NAME="nota"> <!--Modificar nota? -->
+										   <select class="form-control" id="selNota" NAME="nota" value=""> <!--Modificar nota? -->
 												<?php
 													for($i=0; $i<=10; $i+=0.5) {
-														echo "<option>" . $i . "</option>";
+														echo "<option " . (($ent->getCalificacion()==$i)?"selected":"") . ">" . $ent->getCalificacion() . "</option>";
+														//echo "<option " . ((getCalificacion()==$i)?"selected":"") . ">" . $i . "</option>";
 													}
 												?>
 										   <select>
@@ -97,11 +98,7 @@ $ent->Rellenar();
 									 <label for="observ" class="col-lg-2 control-label"><?php echo $textos[11];//Observaciones?></label>
 										<div class="col-lg-10">
 										   <textarea class="form-control" rows="5" id="observ" NAME="observaciones"><?php 
-													$sql = "select observaciones from aluentregatra
-													WHERE `codAsignatura`='".$ent->getCodAsignatura()."' AND codTrabajo='".$ent->getCodTrabajo()."' AND emailUsuario='".$ent->getEmailUsuario()."'";													
-													$resultado = mysql_query($sql);
-													$observacion = mysql_fetch_array($resultado);
-													echo $observacion['observaciones'];
+													echo $ent->getObservacion();
 												?></textarea>
 										  
 										</div>
@@ -112,17 +109,15 @@ $ent->Rellenar();
 								
 						<div class="pull-right">
 							<INPUT class="btn ex-button" TYPE="submit" NAME="accion" VALUE="Guardar">
-							<INPUT TYPE="hidden" NAME="codAsig" VALUE="<?php echo $_GET['codAsig']; ?>">
-							<INPUT TYPE="hidden" NAME="codTrab" VALUE="<?php echo $_GET['codTrabajo']; ?>">
-							<INPUT TYPE="hidden" NAME="emailUs" VALUE="<?php echo $_GET['emailUs']; ?>">
-							<INPUT TYPE="hidden" NAME="nomAsig" VALUE="<?php echo $_GET['nombreAsig']; ?>">
+							<INPUT TYPE="hidden" NAME="ca" VALUE="<?php echo $codAsig; ?>">
+							<INPUT TYPE="hidden" NAME="ct" VALUE="<?php echo $codTrab; ?>">
+							<INPUT TYPE="hidden" NAME="email" VALUE="<?php echo $email; ?>">
 						</FORM>
-							<a href="trabajo.php" class="btn ex-button"><?php echo $textos[12]; //Volver?></a>
+							<a href="trabajo.php?ca=<?php echo $codAsig;?>&ct=<?php echo $codTrab;?>" class="btn ex-button"><?php echo $textos[12]; //Volver?></a>
 						</div>
 						  
 					</div>
-					<form action="../MultiLanguage/CambioIdioma.php" method="post"> 
-						</form>	
+
 				
                 </div>
                 <!-- /.row -->

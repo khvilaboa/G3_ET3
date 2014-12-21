@@ -14,7 +14,7 @@ Conectarse();
 
 
 if($_GET['ct'] == 'Crear'){ 
-	$sql = "select ifnull(max(codTrabajo+1),0) from trabajo where codAsignatura='".$codAsig['codAsignatura']."'";
+	$sql = "select ifnull(max(codTrabajo+1),0) from trabajo where codAsignatura='".$codA."'";
 	$resultado = mysql_query($sql);
 	$codTrab = mysql_fetch_array($resultado);
 
@@ -22,12 +22,12 @@ if($_GET['ct'] == 'Crear'){
 	$trabajo->insertar();
 	echo mysql_error();
 	
-	header("Location: ../profesor/trabajo.php?ca=" . $codA . "ct=" . $codT);
+	header("Location: ../profesor/asignatura.php?ca=" . $codA . "&msg=creado");
 }else{
 	$codT = $_GET['ct'];
 	$trabajo = new trabajo ($codT,$codA,$titulo,$desc,$fecha);
 	$trabajo->modificar();
 	
-	//header("Location: ../profesor/trabajo.php?ca=" . $codA . "ct=" . $codT);
+	header("Location: ../profesor/asignatura.php?ca=" . $codA . "&msg=modificado");
 }
 ?>

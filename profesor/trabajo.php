@@ -44,9 +44,23 @@ $codAsig = $_GET['ca'];
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 	<script language="javascript" src="calendar/calendar.js"></script>
-
+	
+	
+	<script>
+	
+		function showMsg() {
+			msg = "<?php echo (isset($_GET['msg'])?$_GET['msg']:''); ?>";
+			
+			if(msg == "creado") {
+				$.notify("La entrega se ha creado correctamente", "success");
+			} else if(msg == "modificado"){
+				$.notify("La entrega se ha modificado correctamente", "success");
+			} 
+		}
+	</script>	
+	
 </head>
-<body>
+<body onload="showMsg();">
 
     <div id="wrapper">
 
@@ -128,7 +142,7 @@ $codAsig = $_GET['ca'];
 											<th>Nombre</th>   <!-- [!MUL] -->
 											<th>Usuario</th>   <!-- [!MUL] -->
 											<th>Observaciones</th>   <!-- [!MUL] -->
-											<th>Calificaci$oacute;n</th>   <!-- [!MUL] -->
+											<th>Calificaci&oacute;n</th>   <!-- [!MUL] -->
 										</tr>
 									</thead>
 									<tbody>
@@ -161,7 +175,7 @@ $codAsig = $_GET['ca'];
 						<div class="panel panel-default">
 							<div class="panel-heading ex-panel-header"><?php echo $textos[6];//Datos del trabajo?></div>
 							<div class="panel-body">
-							   <form class="form-horizontal" role="form" METHOD="GET" action="..\controller\controladorTrabajo.php">
+							   <form class="form-horizontal" role="form" METHOD="GET" action="../controller/controladorTrabajo.php">
 										
 								  <div class="form-group">
 									 <label for="title" class="col-lg-2 control-label"><?php echo $textos[7];//T&iacute;tulo?></label>
@@ -206,8 +220,8 @@ $codAsig = $_GET['ca'];
 							  
 							   
 							  <p class="pull-right"> 
-							  <input type="hidden" name="nomA" value="<?php echo $_GET['nomAsig'];?>">
-							  <input type="hidden" name="codT" value="<?php echo "Crear";?>"><!-- Modificar crear? -->
+							  <input type="hidden" name="ca" value="<?php echo $codAsig;?>">
+							  <input type="hidden" name="ct" value="<?php echo "Crear";?>"><!-- Modificar crear? -->
 
 								<button type="submit" class="btn ex-button"><?php echo $textos[17];//Crear?></button>
 							  </p>
@@ -226,7 +240,7 @@ $codAsig = $_GET['ca'];
 					
 					
 					<div class="pull-right">
-						<a href="asignatura.html" class="btn ex-button"><?php echo $textos[15];//Volver?></a>
+						<a href="asignatura.php?ca=<?php echo $codAsig;?>" class="btn ex-button"><?php echo $textos[15];//Volver?></a>
 					</div>
 			</div>
 
