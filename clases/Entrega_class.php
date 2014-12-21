@@ -108,7 +108,7 @@ class entrega {
 
     function Rellenar() {
         Conectarse();
-        $sql = "select * from AluEntregaTra where codAsignatura=\"" . $this->codAsig . "\" and codTrabajo=" . $this->codTrab . " and emailUsuario=\"" . $this->emailUs . "\"";
+        $sql = "select * from AluEntregaTra where codAsignatura=\"" . $this->codAsig . "\" and codTrabajo=\"" . $this->codTrab . "\" and emailUsuario=\"" . $this->emailUs . "\"";
         echo $sql;
         $resultado = mysql_query($sql);
 

@@ -86,8 +86,7 @@ $ent->Rellenar();
 										   <select class="form-control" id="selNota" NAME="nota" value=""> <!--Modificar nota? -->
 												<?php
 													for($i=0; $i<=10; $i+=0.5) {
-														echo "<option " . (($ent->getCalificacion()==$i)?"selected":"") . ">" . $ent->getCalificacion() . "</option>";
-														//echo "<option " . ((getCalificacion()==$i)?"selected":"") . ">" . $i . "</option>";
+														echo "<option " . (($ent->getCalificacion()==$i)?"selected":"") . ">" . $i . "</option>";
 													}
 												?>
 										   <select>

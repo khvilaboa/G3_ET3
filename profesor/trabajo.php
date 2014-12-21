@@ -127,8 +127,8 @@ $codAsig = $_GET['ca'];
 							  
 							   
 							  <p class="pull-right"> 
-								<input type="hidden" name="ct" value="<?php echo $_GET['ct'];?>">
-								<input type="hidden" name="ca" value="<?php echo $_GET['ca'];?>">
+								<input type="hidden" name="ct" value="<?php echo $codTrab;?>">
+								<input type="hidden" name="ca" value="<?php echo $codAsig;?>">
 								<button type="submit" class="btn ex-button"><?php echo $textos[10];//Modificar?></button>
 							  </p>
 							   </form>

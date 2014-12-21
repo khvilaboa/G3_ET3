@@ -2,6 +2,7 @@
 include_once('../conexion.php');
 
 include ('../clases/Trabajo_class.php');
+include ('../clases/Asignatura_class.php');
 session_start();
 
 $codA = $_GET['ca'];
@@ -14,11 +15,11 @@ Conectarse();
 
 
 if($_GET['ct'] == 'Crear'){ 
-	$sql = "select ifnull(max(codTrabajo+1),0) from trabajo where codAsignatura='".$codA."'";
-	$resultado = mysql_query($sql);
-	$codTrab = mysql_fetch_array($resultado);
+	$asig = new asignatura('','','',$codA);
+	$asig->Rellenar();
+	$codTrab = $asig->getNombre() . substr($asig->getGrado(),0,3) . $asig->getCurso() . $titulo;
 
-	$trabajo = new trabajo ($codT,$codA,$titulo,$desc,$fecha);
+	$trabajo = new trabajo ($codTrab,$codA,$titulo,$desc,$fecha);
 	$trabajo->insertar();
 	echo mysql_error();
 	
