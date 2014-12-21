@@ -214,8 +214,8 @@ class asignatura
 			WHERE usuario.emailUsuario=aluinscritoasi.emailUsuario AND asignatura.codAsignatura=aluinscritoasi.codAsignatura 
 			AND aluinscritoasi.aceptado='F' AND asignatura.codAsignatura='".$codAsig."'"; 
 		
-		if(!empty($text) && !empty($campo)) $sql .=  " and ".$campo." LIKE '%".$text."%'";
-
+		if($text != '' && $campo != '') $sql .=  " and ".$campo." LIKE '%".$text."%'";
+			
 		$resultado = mysql_query($sql);
 		
 		while ($row = mysql_fetch_array($resultado))

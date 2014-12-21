@@ -58,10 +58,11 @@
 				ca = document.getElementById("ca").value;
 				text = document.getElementById("filtro").value;
 				campo = document.getElementById("campo");
-				campo = campo.options[campo.selectedIndex].value
+				campo = campo.options[campo.selectedIndex].value;
 				
 				$.get("../controller/mostrarAlumnos.php?text=" + text + "&campo=" + campo + "&ca=" + ca,function(data){
 					con.innerHTML = data;
+					alert(data);
 				});
 			}); 
 		});
@@ -91,7 +92,7 @@
 						</h1>
 						
 						
-						<FORM method="GET" ACTION="../controller/inscribirAlumno.php">
+						
 						<input type="hidden" name="ca" id="ca" value="<?php echo $codAsig; ?>">
 						<div class="panel panel-default">
 							<div class="panel-heading ex-panel-header"><?php echo $textos[6]; //Alumnos de la asignatura?></div>
@@ -112,6 +113,7 @@
 									</tr>
 								</thead>
 								<tbody id="alupreins">
+									<FORM method="GET" ACTION="../controller/inscribirAlumno.php">
 									<?php asignatura::verAluPreins($codAsig); ?>
 								</tbody>
 							</table>
@@ -119,10 +121,11 @@
 							</div>
 							
 							<div class="col-md-1 text-center">
+								<input type="hidden" name="ca" value="<?php echo $codAsig; ?>">
 								<INPUT class="btn ex-button" TYPE="submit" NAME="accion" VALUE=">">
 								</FORM>
 								<FORM method="GET" ACTION="../controller/expulsarAlumno.php">
-								<input type="hidden" name="ca" id="ca2" value="<?php echo $codAsig; ?>">
+								<input type="hidden" name="ca" value="<?php echo $codAsig; ?>">
 								<INPUT class="btn ex-button" TYPE="submit" NAME="accion" VALUE="<">
 							</div>
 							
@@ -208,8 +211,7 @@
 						<div class="pull-right">
 							<a href="listaAsignaturas.php" class="btn ex-button"><?php echo $textos[15]; //Volver?></a>
 						</div>
-						<form action="../MultiLanguage/CambioIdioma.php" method="post"> 
-						</form>	
+
 					<form action="../MultiLanguage/CambioIdioma.php" method="post"> 				
     <select name="idioma" onChange='this.form.submit()'>
             <option value=""><?php echo $textos[1];//Seleccione su idioma?></option>

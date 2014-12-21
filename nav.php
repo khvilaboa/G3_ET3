@@ -1,7 +1,6 @@
 <?php	
 function showNav($textos) {
-	switch($_SESSION['userTipo']) {
-	case "Alumno":
+
 		echo "<!-- Navigation -->
 			<nav class=\"navbar navbar-inverse navbar-fixed-top\" role=\"navigation\">
 				<!-- Brand and toggle get grouped for better mobile display -->
@@ -11,12 +10,41 @@ function showNav($textos) {
 						<span class=\"icon-bar\"></span>
 						<span class=\"icon-bar\"></span>
 						<span class=\"icon-bar\"></span>
-					</button>
-					<a class=\"navbar-brand\" href=\"#\">ESEIXesti&oacute;n -" . $textos[11] /* Alumno */ . "</a>
+					</button> 
+					<a class=\"navbar-brand\" href=\"#\">ESEIXesti&oacute;n - " . (($_SESSION['userTipo']=="Alumno")?$textos[11]:(($_SESSION['userTipo']=="Profesor")?$textos[2]:"Admin")) /* Alumno/Profesor/Administrador */ . "</a>
 				</div>
 				<!-- Top Menu Items -->
 				<ul class=\"nav navbar-right top-nav\">
 					<li class=\"dropdown\">
+						<a href=\"#\" class=\"dropdown-toggle\" data-toggle=\"dropdown\"><i class=\"fa fa-language\"></i>";
+						
+				/*switch($_SESSION['idioma']) {
+				case 'ESP': echo "<img src=\"../icons/Spain.png\">"; break;
+				case 'GAL': echo "<img src=\"../icons/Galicia.png\">"; break;
+				case 'ENG': echo "<img src=\"../icons/EEUU.png\">"; break;
+				case 'DEU': echo "<img src=\"../icons/Germany.png\">"; break;
+				}*/		
+					
+						echo " <b class=\"caret\"></b></a>
+						<ul class=\"dropdown-menu alert-dropdown\">
+							<li>
+								<a href=\"../MultiLanguage/CambioIdioma.php?idioma=ESP\"><img src=\"../icons/Spain.png\"> Espa&ntilde;ol</a>
+							</li>
+							<li>
+								<a href=\"../MultiLanguage/CambioIdioma.php?idioma=GAL\"><img src=\"../icons/Galicia.png\"> Gallego</a>
+							</li>
+							<li>
+								<a href=\"../MultiLanguage/CambioIdioma.php?idioma=ENG\"><img src=\"../icons/EEUU.png\"> Ing&eacute;s</a>
+							</li>
+							<li>
+								<a href=\"../MultiLanguage/CambioIdioma.php?idioma=DEU\"><img src=\"../icons/Germany.png\"> Alem&aacute;n</a>
+							</li>
+						</ul>
+					</li>";
+					
+	switch($_SESSION['userTipo']) {
+		case "Alumno":
+					echo "<li class=\"dropdown\">
 						<a href=\"#\" class=\"dropdown-toggle\" data-toggle=\"dropdown\"><i class=\"fa fa-user\"></i> " . $_SESSION['userName'] . "<b class=\"caret\"></b></a>
 						<ul class=\"dropdown-menu\">
 							<li>
@@ -48,23 +76,9 @@ function showNav($textos) {
 				</div>
 				<!-- /.navbar-collapse -->
 			</nav>";
-		break;	
+			break;	
 	case "Profesor":
-		echo "<!-- Navigation -->
-        <nav class=\"navbar navbar-inverse navbar-fixed-top\" role=\"navigation\">
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class=\"navbar-header\">
-                <button type=\"button\" class=\"navbar-toggle\" data-toggle=\"collapse\" data-target=\".navbar-ex1-collapse\">
-                    <span class=\"sr-only\">Toggle navigation</span>
-                    <span class=\"icon-bar\"></span>
-                    <span class=\"icon-bar\"></span>
-                    <span class=\"icon-bar\"></span>
-                </button>
-                <a class=\"navbar-brand\" href=\"index.php\">" . $textos[2] . /*ESEIXesti&oacute;n - Profesor*/ "</a>
-            </div>
-            <!-- Top Menu Items -->
-            <ul class=\"nav navbar-right top-nav\">
-                <li class=\"dropdown\">
+		echo "<li class=\"dropdown\">
                     <a href=\"#\" class=\"dropdown-toggle\" data-toggle=\"dropdown\"><i class=\"fa fa-user\"></i> " . $_SESSION['userName'] . "<b class=\"caret\"></b></a>
                     <ul class=\"dropdown-menu\">
                         <li>
@@ -95,21 +109,7 @@ function showNav($textos) {
         </nav>";
 		break;
 	case "Administrador":
-		echo "<!-- Navigation -->
-        <nav class=\"navbar navbar-inverse navbar-fixed-top\" role=\"navigation\">
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class=\"navbar-header\">
-                <button type=\"button\" class=\"navbar-toggle\" data-toggle=\"collapse\" data-target=\".navbar-ex1-collapse\">
-                    <span class=\"sr-only\">Toggle navigation</span>
-                    <span class=\"icon-bar\"></span>
-                    <span class=\"icon-bar\"></span>
-                    <span class=\"icon-bar\"></span>
-                </button>
-                <a class=\"navbar-brand\" href=\"index.html\">ESEIXesti&oacute;n</a>
-            </div>
-            <!-- Top Menu Items -->
-            <ul class=\"nav navbar-right top-nav\">
-                <li class=\"dropdown\">
+		echo "<li class=\"dropdown\">
                     <a href=\"#\" class=\"dropdown-toggle\" data-toggle=\"dropdown\"><i class=\"fa fa-user\"></i> "  . $_SESSION['userName'] . "<b class=\"caret\"></b></a>
                     <ul class=\"dropdown-menu\">
                         <li>

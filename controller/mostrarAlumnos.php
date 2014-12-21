@@ -20,8 +20,6 @@
 	$campo = $_REQUEST['campo'];
 	$text = $_REQUEST['text'];
 	
-	
-	
 	echo asignatura::verAluPreIns($ca, $text, $campo);
 	
 	/*$count = $_GET['count'];
