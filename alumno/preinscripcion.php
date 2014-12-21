@@ -73,15 +73,14 @@ $textos = idioma(11, $_SESSION['idioma']);
                                             include "../conexion.php";
                                             $link = Conectarse();
                                             $login = $_SESSION['userLogin'];
-                                            $sql = "SELECT * FROM `Asignatura` WHERE codAsignatura not in (Select A.nomAsignatura from AluInscritoAsi Ai, Asignatura A where Ai.codAsignatura=A.codAsignatura AND Ai.emailUsuario='" . $login . "') ";
+                                            $sql = "SELECT * FROM `Asignatura` WHERE codAsignatura not in (Select A.codAsignatura from AluInscritoAsi Ai, Asignatura A where Ai.codAsignatura=A.codAsignatura AND Ai.emailUsuario='" . $login . "') ";
                                             $resultado = mysql_query($sql);
                                             while ($row = mysql_fetch_array($resultado)) {
                                                 echo "<TR>";
                                                 echo "<TD>" . $row['nomAsignatura'] . "</TD>";
                                                 echo "<TD>" . $row['gradoAsignatura'] . "</TD>";
                                                 echo "<TD>" . $row['cursoAsignatura'] . "</TD>";
-                                                $_SESSION['codAsignatura'] = $row['codAsignatura'];
-                                                echo "<TD> <a href=\"../controller/controllerPreins.php\">" . $textos[14] . "</a></TD>"; /* Preinscribirse */
+                                                echo "<TD> <a href=\"../controller/controllerPreins.php?ca=".$row['codAsignatura']."\">" . $textos[14] . "</a></TD>"; /* Preinscribirse */
                                                 echo "</TR>";
                                             }
                                             ?>

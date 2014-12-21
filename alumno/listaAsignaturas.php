@@ -78,7 +78,7 @@ $textos = idioma(7, $_SESSION['idioma']);
                                         $login = $_SESSION['userLogin'];
 
 
-                                        $sql = "Select A.nomAsignatura, A.codAsignatura from AluInscritoAsi Ai, Asignatura A where Ai.codAsignatura=A.codAsignatura AND Ai.emailUsuario='" . $login . "'";
+                                        $sql = "Select A.nomAsignatura, A.codAsignatura from AluInscritoAsi Ai, Asignatura A where Ai.codAsignatura=A.codAsignatura AND aceptado ='T' AND Ai.emailUsuario='" . $login . "'";
 
 
 
