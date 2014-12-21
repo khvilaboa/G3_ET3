@@ -109,7 +109,7 @@ $asig->Rellenar();
                             <?php } ?>
 
                             <div class="pull-right">
-                                <a href="listaTrabajos.php" class="btn ex-button"><b><?php echo $textos[17]; //Volver ?></a>
+                                <a href="listaTrabajos.php?ca=<?php echo $codAsig?>" class="btn ex-button"><b><?php echo $textos[17]; //Volver ?></a>
                             </div>
 
                         </div>
