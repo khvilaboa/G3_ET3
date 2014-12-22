@@ -142,6 +142,16 @@ CodTexto14
 Modify
 CodTexto15
 Create
+CodTexto16
+The e-mail is incorrect
+CodTexto17
+You must insert a name
+CodTexto18
+You must insert a last name
+CodTexto19
+The DNI that you inserted is not valid
+CodTexto20
+The passwords must have a number, a letter and between 6 and 15 characters
 #
 # CodPag 5 || Registrar.php
 #
@@ -214,6 +224,8 @@ CodTexto16
 Observations:
 CodTexto17
 Back
+CodTexto18
+Choose file
 #
 # CodPag 7 || alumno/listaAsignaturas.php
 #
@@ -484,12 +496,6 @@ CodTexto11
 Modify profile
 CodTexto12
 Insert your email
-CodTexto14
-Modify profile
-CodTexto15
-Actual name
-CodTexto16
-Actual last name
 #
 # CodPag 16 || profesor/trabajo.php
 #

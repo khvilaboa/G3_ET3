@@ -86,7 +86,29 @@ $asig->Rellenar();
                                             <!-- subir archivo-->
                                             <form action="../controller/controllerEntrega.php?ca=<?php echo $codAsig?>&ct=<?php echo $codTrab?>&fe=<?php echo $ent->getFechaFinal()?>" method="post" enctype="multipart/form-data">
                                                 <label for="ejemplo_archivo_1"><?php echo $textos[12]; //Adjuntar un archivo ?></label>
-                                                <input type="file"  name="uploadFile"><br>
+                                                <script language="JavaScript" type="text/javascript">
+												function HandleBrowseClick()
+												{
+												var fileinput = document.getElementById("browse");
+												
+												fileinput.click();
+												}
+												function Handlechange()
+												{
+												var fileinput = document.getElementById("browse");
+												var textinput = document.getElementById("filename");
+												textinput.value = fileinput.value;	
+												textinput.value = textinput.value.replace(/C:\\fakepath\\/i,'');
+												}
+												</script>
+												
+												<br>
+												<input type="file" id="browse" name="fileUpload" style="display: none" onChange="Handlechange();"/>
+												<input type="text" id="filename" readonly="true"/>
+												<input type="button" value="<?php echo $textos[18]; //Adjuntar un archivo ?>" id="fakeBrowse" onclick="HandleBrowseClick();"/><br>
+												<!--El siguiente comentario es el código funcional, y el script de arriba con los tres inputs pertenece a la posible implementación con el cambio de idiomas,
+												pero no sube los archivos, devuelve un error de index indefinido en uploadFile-->
+												<!--<input type="file"  name="uploadFile"><br>-->
                                                 <button type="submit" class="btn btn-default" value="Upload File"><?php echo $textos[13]; //Enviar ?></button>
                                             </form>
 

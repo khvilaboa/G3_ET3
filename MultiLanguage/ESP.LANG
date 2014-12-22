@@ -152,7 +152,6 @@ CodTexto19
 Introduzca un DNI válido
 CodTexto20
 La contraseña debe tener un número ,una letra y entre 6 y 15 caracteres
-
 #
 # CodPag 5 || Registro.php
 #
@@ -225,6 +224,8 @@ CodTexto16
 Observaciones:
 CodTexto17
 Volver
+CodTexto18
+Seleccionar archivo
 #
 # CodPag 7 || alumno/listaAsignaturas.php
 #
@@ -495,12 +496,6 @@ CodTexto11
 Modificar perfil
 CodTexto12
 Introduce tu email
-CodTexto14
-Modificar Perfil
-CodTexto15
-Nombre actual
-CodTexto16
-Apellidos actuales
 #
 # CodPag 16 || profesor/trabajo.php
 #

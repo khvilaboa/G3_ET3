@@ -142,6 +142,16 @@ CodTexto14
 Verändern
 CodTexto15
 Entwerfen
+CodTexto16
+Die e-mail ist inkorrekt
+CodTexto17
+Sie müssen einen name einfügen
+CodTexto18
+Sie müssen einen Nachname einfügen
+CodTexto19
+Der DNI dass Sie eingefügt haben, ist nicht korrekt.
+CodTexto20
+Das Passwort muss eine Zahl, einen Buchstabe und zwischen 6 und 15 Buchstaben haben
 #
 # CodPag 5 || Registrar.php
 #
@@ -214,6 +224,8 @@ CodTexto16
 Beobachtungen: 
 CodTexto17
 Zurück
+CodTexto18
+Dateiwählen
 #
 # CodPag 7 || alumno/listaAsignaturas.php
 #
@@ -486,12 +498,6 @@ CodTexto11
 Profil verändern
 CodTexto12
 Fügt deine e-mail ein
-CodTexto14
-Profil verändern
-CodTexto15
-Aktuellen Name 
-CodTexto16
-Aktuellen Nachname
 
 #
 # CodPag 16 || profesor/trabajo.php

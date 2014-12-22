@@ -149,8 +149,7 @@ O campo do apelido non pode atoparse baleiro
 CodTexto19
 Inserte un DNI válido
 CodTexto20
-O contrasinal debe ter un número ,unha letra e debe ter entre 6 y 15 caracteres
-
+Os contrasinais non coinciden ,deben ter un número ,unha letra e debe ter entre 6 y 15 caracteres
 #
 # CodPag 5 || Registro.php
 #
@@ -184,7 +183,7 @@ Inserte un DNI válido
 CodTexto14
 Os contrasinais non coinciden ,deben ter un número ,unha letra e debe ter entre 6 y 15 caracteres
 CodTexto15
-As contraseñas deben tener un número ,una letra e debe ter entre 6 y 15 caracteres
+Las contraseñas deben tener un número ,una letra e debe ter entre 6 y 15 caracteres
 #
 # CodPag 6 || alumno/entrega.php
 #
@@ -223,6 +222,8 @@ CodTexto16
 Observacions:
 CodTexto17
 Volver
+CodTexto18
+Engadir arquivo
 #
 # CodPag 7 || alumno/listaAsignaturas.php
 #
@@ -495,12 +496,6 @@ CodTexto11
 Modificar perfil
 CodTexto12
 Engade o teu email
-CodTexto14
-Modificar Perfil
-CodTexto15
-Nome actual
-CodTexto16
-Apelidos actuais
 #
 # CodPag 16 || profesor/trabajo.php
 #
