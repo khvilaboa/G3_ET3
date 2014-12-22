@@ -1,111 +1,159 @@
+<!DOCTYPE html>
+<script language="JavaScript" src="../md5.js" type="text/javascript"></script> 
+
 <?php
 session_start();
-include_once('../conexion.php');
-include('../nav.php');
-Conectarse();
 include('../MultiLanguage/FuncionIdioma.php');
-//La siguiente linea se descomenta para hacer prueba sin pasar por login, una vez que este inicializada debe comentarse otra vez.
-//$_SESSION['idioma']='ESP';
+include('../nav.php');
 
-$textos = idioma(15,$_SESSION['idioma']);
+//$_SESSION['idioma']='ENG';
+
+$textos = idioma(9, $_SESSION['idioma']);
 ?>
-
-<!DOCTYPE html>
 <html lang="en">
-<head>
+    <head>
 
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="">
+        <meta name="author" content="">
 
-    <title>SB Admin - Bootstrap Admin Template</title>
+        <title>SB Admin - Bootstrap Admin Template</title>
 
-    <!-- Bootstrap Core CSS -->
-    <link href="../css/bootstrap.min.css" rel="stylesheet">
+        <!-- Bootstrap Core CSS -->
+        <link href="../css/bootstrap.min.css" rel="stylesheet">
 
-    <!-- Custom CSS -->
-    <link href="../css/sb-admin.css" rel="stylesheet">
-	
-	<!-- EseiXestion Style -->
-    <link href="../css/ex.css" rel="stylesheet" type="text/css">
+        <!-- Custom CSS -->
+        <link href="../css/sb-admin.css" rel="stylesheet">
 
-    <!-- Custom Fonts -->
-    <link href="../font-awesome-4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+        <!-- EseiXestion Style -->
+        <link href="../css/ex.css" rel="stylesheet" type="text/css">
 
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
+        <!-- Custom Fonts -->
+        <link href="../font-awesome-4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
-</head>
-<body>
+        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
 
-    <div id="wrapper">
+    </head>
+    <script type="text/javascript">
 
-        <?php showNav($textos); ?>
+        function validar() {
 
-        <div id="page-wrapper">
+            var oldPassword = document.getElementById("passwdAct").value;
+            var newPassword = document.getElementById("passwdNew").value;
+            var passwordRepeat = document.getElementById("passwdRep").value;
+            var boton_aceptar = document.getElementById("btn-aceptar");
 
-            <div class="container-fluid">
 
-                <!-- Page Heading -->
-                <div class="row">
-                    <div class="col-lg-12">
-					
-                        <h1 class="page-header ex-title"> <?php echo $textos[6];//Perfil?> </h1>
-						<div class="panel panel-default">
-							<div class="panel-heading ex-panel-header"><?php echo $textos[7];//Gesti&oacute;n de perfil?></div>
-							<div class="panel-body">
-							   <form class="form-horizontal" role="form" METHOD="GET" action="controladorPerfil.php">
-										
-								  <div class="form-group">
-									 <label for="passwdAct" class="col-lg-2 control-label"><?php echo $textos[8];//Contrase&ntilde;a actual?></label>
-										<div class="col-lg-10">
-										   <input type="password" class="form-control" name="passwdAct" placeholder="<?php echo $textos[8];//Contrase&ntilde;a actual?>">
-										</div>
-								  </div>
-							   
-								  <div class="form-group">
-									 <label for="passwdNew" class="col-lg-2 control-label"><?php echo $textos[9];//Nueva contrase&ntilde;a?></label>
-										<div class="col-lg-10">
-										   <input type="password" class="form-control" name="passwdNew" placeholder="<?php echo $textos[9];//Nueva contrase&ntilde;a?>">
-										</div>
-								  </div>
-								  
-								  <div class="form-group">
-									 <label for="passwdRep" class="col-lg-2 control-label"><?php echo $textos[10];//Repetir contrase&ntilde;a?></label>
-										<div class="col-lg-10">
-										   <input type="password" class="form-control" name="passwdRep" placeholder="<?php echo $textos[10];//Repetir contrase&ntilde;a?>">
-										</div>
-								  </div>
-								  
-								  <div class="form-group">
-									 <label class="col-lg-2 control-label">E-mail</label>
-										<div class="col-lg-10">
-											<input type="email" class="form-control" id="inputEmail" value="<?php echo $textos[12];//Introduce tu email?>">
-										</div>
-								  </div>
-								  
-								  <div class="pull-right"> 
-									<button class="btn ex-button" type="submit"><?php echo $textos[11];//Modificar Perfil?></button>
-								  </div>
-								  
-							   </form>
-							   
-							  
-						  </div>
-					    </div> 
-						
-                  </div>
+            //Comprobaciones de "email", no se puede registrar nadie sin email, ademas el formato del email debe ser valido
+            if (((oldPassword.length >= 6) && (oldPassword.length < 15)) && ((newPassword.length >= 6) && (newPassword.length < 15)) && ((passwordRepeat.length >= 6) && (passwordRepeat.length < 15)) && (newPassword == passwordRepeat)) {
+                boton_aceptar.removeAttribute("disabled", "disabled");
+            }
+            else {
+                boton_aceptar.setAttribute("disabled", "disabled");
+            }
+
+        }
+		
+		function modificar(){
+			document.forms["perfilform"].elements["passwdAct"].value = (hex_md5(document.forms["perfilform"].elements["passwdAct"].value));
+			document.forms["perfilform"].elements["passwdNew"].value = (hex_md5(document.forms["perfilform"].elements["passwdNew"].value));
+			
+		document.forms["perfilform"].submit();
+		
+		
+		
+		}
+    </script>
+    <body>
+
+        <div id="wrapper">
+
+            <?php showNav($textos); ?>
+
+            <div id="page-wrapper">
+
+                <div class="container-fluid">
+
+                    <!-- Page Heading -->
+                    <div class="row">
+                        <div class="col-lg-12">
+
+                            <h1 class="page-header ex-title"> <?php echo $textos[7]; //Perfil ?> </h1>
+                            <div class="panel panel-default">
+                                <div class="panel-heading ex-panel-header"><?php echo $textos[8]; //Gesti&oacute;n de perfil ?></div>
+                                <div class="panel-body">
+                                    <form id="perfilform" METHOD="POST" ACTION="../controller/controllerPerfil.php" class="form-horizontal" role="form">
+                                        <?php
+                                        include "../conexion.php";
+
+                                        $link = Conectarse();
+
+                                        $login = $_SESSION['userLogin'];
+
+                                        $sql = "Select * from Usuario where emailUsuario='" . $login . "'";
+                                        $resultado = mysql_query($sql);
+                                        $row = mysql_fetch_array($resultado);
+                                        ?>
+                                        <div class="form-group">
+                                            <label for="passwdAct" class="col-lg-2 control-label"><?php echo $textos[9]; //Contrase&ntilde;a actual ?></label>
+                                            <div class="col-lg-10">
+                                                <input type="password" name="actualPassword" onKeyUp="validar()" class="form-control" id="passwdAct" value="" placeholder="<?php echo $textos[9]; //Contrase&ntilde;a actual ?>">
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="passwdNew" class="col-lg-2 control-label"><?php echo $textos[10]; //Nueva contrase&ntilde;a ?></label>
+                                            <div class="col-lg-10">
+                                                <input type = "password" name = "newPassword" onKeyUp="validar()" class = "form-control" id = "passwdNew" value="" placeholder = "<?php echo $textos[10]; //Nueva contrase&ntilde;a ?>">
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="passwdRep" class="col-lg-2 control-label"><?php echo $textos[12]; //Repetir contrase&ntilde;a ?></label>
+                                            <div class="col-lg-10">
+                                                <input type="password" name="repeatPassword" onKeyUp="validar()" class="form-control" id="passwdRep" value="" placeholder="<?php echo $textos[12]; //Repetir contrase&ntilde;a ?>">
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="passwdRep" class="col-lg-2 control-label"><?php echo $textos[15]; //Nombre actual ?></label>
+                                            <div class="col-lg-10">
+                                                <?php
+                                                echo "<input name=\"name\" class=\"form-control\" id=\"oldName\" value=\"{$row['nombreUsuario']}\" placeholder=\"Nuevo Nombre\">";
+                                                ?>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="passwdRep" class="col-lg-2 control-label"><?php echo $textos[16]; //Apellidos actuales ?></label>
+                                            <div class="col-lg-10">
+                                                <?php
+                                                echo "<input name=\"surname\" class=\"form-control\" id=\"oldSurName\" value=\"{$row['apellidoUsuario']}\" placeholder=\"Nuevos Apellidos\">";
+                                                ?>
+                                            </div>
+                                        </div>
+
+                                        <div class="pull-right"> 
+                                            <button type="button" onclick="modificar()" class="btn ex-button" id="btn-aceptar" disabled='disabled'><?php echo $textos[14]; //Modificar Perfil ?></button>
+                                        </div>
+                                    </form>
+
+
+                                </div>
+                            </div> 
+
+                        </div>
                     </div>
-					
                 </div>
                 <!-- /.row -->
-				
+
             </div>
             <!-- /.container-fluid -->
 

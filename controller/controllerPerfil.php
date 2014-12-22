@@ -20,6 +20,11 @@ $tipo = $row['tipoUsuario'];
 $user = new usuario($email, $nombre, $password, $apellidos, $dni, $tipo);
 if($_SESSION['userPass'] == $oldpassword)
     $user->modificar();
-else
+else{
+	if($tipo == 'Alumno')
     header("Location:../alumno/perfil.php");
+	else
+    header("Location:../profesor/perfil.php");
+	
+	}
 ?>
