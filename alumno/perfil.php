@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<script language="JavaScript" src="../md5.js" type="text/javascript"></script> 
 
 <?php
 session_start();
@@ -59,6 +60,16 @@ $textos = idioma(9, $_SESSION['idioma']);
             }
 
         }
+		
+		function modificar(){
+			document.forms["perfilform"].elements["passwdAct"].value = (hex_md5(document.forms["perfilform"].elements["passwdAct"].value));
+			document.forms["perfilform"].elements["passwdNew"].value = (hex_md5(document.forms["perfilform"].elements["passwdNew"].value));
+			
+		document.forms["perfilform"].submit();
+		
+		
+		
+		}
     </script>
     <body>
 
@@ -130,7 +141,7 @@ $textos = idioma(9, $_SESSION['idioma']);
                                         </div>
 
                                         <div class="pull-right"> 
-                                            <button type="button" onclick="document.forms['perfilform'].submit()" class="btn ex-button" id="btn-aceptar" disabled='disabled'><?php echo $textos[14]; //Modificar Perfil ?></button>
+                                            <button type="button" onclick="modificar()" class="btn ex-button" id="btn-aceptar" disabled='disabled'><?php echo $textos[14]; //Modificar Perfil ?></button>
                                         </div>
                                     </form>
 
