@@ -1,4 +1,6 @@
 <!DOCTYPE html>
+<script language="JavaScript" src="./md5.js" type="text/javascript"></script> 
+
 <?php
 session_start();
 include('./MultiLanguage/FuncionIdioma.php');
@@ -137,12 +139,15 @@ $textos = idioma(5,$_SESSION['idioma']);
                 $("#div-repeatPassword").removeClass("has-error");
                 $("#div-repeatPassword").addClass("has-success");
 				
+							
 				return true;
             }
         }
 
 		function validate() {
 			if(validateMail() && validateName() && validateSurName() && validateDNI() && validatePassword()) {
+				document.forms["registerform"].elements["register-password"].value = (hex_md5(document.forms["registerform"].elements["register-password"].value));
+			
 				document.forms['registerform'].submit();
 			}
 		}
@@ -151,6 +156,8 @@ $textos = idioma(5,$_SESSION['idioma']);
 
             $.notify("<?php echo $textos[15];//Las contraseñas deben tener un número ,una letra y entre 6 y 15 caracteres?>", "info");
         }
+		
+		
 
     </script>
     <body>
@@ -168,7 +175,7 @@ $textos = idioma(5,$_SESSION['idioma']);
                             </div>
 
                             <div class="panel-body">
-                                <form id="registerform" method="post" action="controller/controllerRegister.php" class="form-horizontal" role="form">
+                                <form id="registerform"  method="post" action="controller/controllerRegister.php"   class="form-horizontal" role="form">
 
                                     <div style="margin-bottom: 25px" class="input-group" id="div-username">
                                         <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>

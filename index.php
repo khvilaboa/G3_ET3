@@ -1,4 +1,6 @@
 <!DOCTYPE html>
+
+<script language="JavaScript" src="./md5.js" type="text/javascript"></script> 
 <?php
 session_start();
 include('./MultiLanguage/FuncionIdioma.php');
@@ -61,6 +63,15 @@ $textos = idioma(0, $_SESSION['idioma']);
             }
 
         }
+		
+		function entrar(){
+			document.forms["loginform"].elements["login-password"].value = (hex_md5(document.forms["loginform"].elements["login-password"].value));
+			
+		document.forms["loginform"].submit();
+		
+		
+		
+		}
     </script>
     <body>
 
@@ -104,7 +115,7 @@ $textos = idioma(0, $_SESSION['idioma']);
                                             <input id="login-remember" type="checkbox" name="remember" value="1" onclick="rememberPassword()"> <?php echo $textos[3]; //Recordar ?>
 
                                             <div class="pull-right" id="div-login">
-                                                <a id="btn-login" onclick="document.forms['loginform'].submit()" disabled='disabled' class="btn btn-success"><?php echo $textos[4]; //Entrar ?>  </a>
+                                                <a id="btn-login" onclick="entrar()" disabled='disabled' class="btn btn-success"><?php echo $textos[4]; //Entrar ?>  </a>
                                             </div>
                                         </div>
                                     </div>

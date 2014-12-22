@@ -141,12 +141,14 @@ CREATE TABLE IF NOT EXISTS `Usuario` (
 
 --
 -- Volcado de datos para la tabla `Usuario`
+-- Contraseña admin: Admin1. --> 530e6cc7d2affa1dc1b38a0716e12e97
+-- Contraseña de los demas --> bfd59291e825b5f2bbf1eb76569f8fe7
 --
 
 INSERT INTO `Usuario` (`emailUsuario`, `nombreUsuario`, `apellidoUsuario`, `passwordUsuario`, `correccionesUsuario`, `publicoUsuario`, `idiomaUsuario`, `tipoUsuario`, `dniUsuario`) VALUES
-('admin@admin.com', 'admin', 'admin', 'Admin1.', 'F', 'F', 'ESP', 'Administrador', '11111111X'),
-('asd@asd.com', 'asd', 'asd', 'asd123', 'T', 'T', 'ESP', 'Alumno', '44655485L'),
-('prof@prof.com', 'prof', 'asd', 'asd123', 'F', 'F', 'ESP', 'Profesor', 'asd');
+('admin@admin.com', 'admin', 'admin', '530e6cc7d2affa1dc1b38a0716e12e97', 'F', 'F', 'ESP', 'Administrador', '11111111X'),
+('asd@asd.com', 'asd', 'asd', 'bfd59291e825b5f2bbf1eb76569f8fe7', 'T', 'T', 'ESP', 'Alumno', '44655485L'),
+('prof@prof.com', 'prof', 'asd', 'bfd59291e825b5f2bbf1eb76569f8fe7', 'F', 'F', 'ESP', 'Profesor', 'asd');
 
 --
 -- Índices para tablas volcadas
