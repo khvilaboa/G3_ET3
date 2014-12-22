@@ -11,7 +11,7 @@ function showNav($textos) {
 						<span class=\"icon-bar\"></span>
 						<span class=\"icon-bar\"></span>
 					</button> 
-					<a class=\"navbar-brand\" href=\"listaAsignaturas.php\">ESEIXesti&oacute;n - " . (($_SESSION['userTipo']=="Alumno")?$textos[11]:(($_SESSION['userTipo']=="Profesor")?$textos[2]:"Admin")) /* Alumno/Profesor/Administrador */ . "</a>
+					<a class=\"navbar-brand\" href=\"listaAsignaturas.php\">ESEIXesti&oacute;n - " . (($_SESSION['userTipo']=="Alumno")?$textos[11]:(($_SESSION['userTipo']=="Profesor")?$textos[2]:?$textos[22]))/* Alumno/Profesor/Administrador */ . "</a>
 				</div>
 				<!-- Top Menu Items -->
 				<ul class=\"nav navbar-right top-nav\">
@@ -28,16 +28,16 @@ function showNav($textos) {
 						echo " <b class=\"caret\"></b></a>
 						<ul class=\"dropdown-menu alert-dropdown\">
 							<li>
-								<a href=\"../MultiLanguage/CambioIdioma.php?idioma=ESP\"><img src=\"../icons/Spain.png\"> Espa&ntilde;ol</a>
+								<a href=\"../MultiLanguage/CambioIdioma.php?idioma=ESP\"><img src=\"../icons/Spain.png\">".$textos[30] /* Espa&ntilde;ol*/."</a> 
 							</li>
 							<li>
-								<a href=\"../MultiLanguage/CambioIdioma.php?idioma=GAL\"><img src=\"../icons/Galicia.png\"> Gallego</a>
+								<a href=\"../MultiLanguage/CambioIdioma.php?idioma=GAL\"><img src=\"../icons/Galicia.png\"> ".$textos[31] /* Gallego*/."</a>
 							</li>
 							<li>
-								<a href=\"../MultiLanguage/CambioIdioma.php?idioma=ENG\"><img src=\"../icons/EEUU.png\"> Ing&eacute;s</a>
+								<a href=\"../MultiLanguage/CambioIdioma.php?idioma=ENG\"><img src=\"../icons/EEUU.png\"> ".$textos[32] /* Ing&eacute;s*/."</a>
 							</li>
 							<li>
-								<a href=\"../MultiLanguage/CambioIdioma.php?idioma=DEU\"><img src=\"../icons/Germany.png\"> Alem&aacute;n</a>
+								<a href=\"../MultiLanguage/CambioIdioma.php?idioma=DEU\"><img src=\"../icons/Germany.png\"> ".$textos[33] /* Alem&aacute;n*/."</a>
 							</li>
 						</ul>
 					</li>";

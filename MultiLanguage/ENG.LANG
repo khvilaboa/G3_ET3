@@ -60,6 +60,18 @@ CodTexto18
 Assigned
 CodTexto19
 Create
+CodTexto20
+Delete
+CodTexto22
+Administrator
+CodTexto30
+Spanish
+CodTexto31
+Galician
+CodTexto32
+English
+CodTexto33
+German
 #
 # CodPag 2 || admin/listaAsignaturas.php
 #
@@ -86,6 +98,16 @@ CodTexto10
 Professors
 CodTexto11
 Create subject
+CodTexto22
+Administrator
+CodTexto30
+Spanish
+CodTexto31
+Galician
+CodTexto32
+English
+CodTexto33
+German
 #
 # CodPag 3 || admin/listaAsignaturas.php
 #
@@ -108,6 +130,16 @@ CodTexto8
 Last name
 CodTexto9
 Create User
+CodTexto22
+Administrator
+CodTexto30
+Spanish
+CodTexto31
+Galician
+CodTexto32
+English
+CodTexto33
+German
 #
 # CodPag 4 || admin/usuario.php
 #
@@ -123,7 +155,7 @@ Subjects
 CodTexto5
 Users
 CodTexto6
-Create/Modify user
+Create user
 CodTexto7
 Name:
 CodTexto8
@@ -152,6 +184,18 @@ CodTexto19
 The DNI that you inserted is not valid
 CodTexto20
 The passwords must have a number, a letter and between 6 and 15 characters
+CodTexto21
+Modify user
+CodTexto22
+Administrator
+CodTexto30
+Spanish
+CodTexto31
+Galician
+CodTexto32
+English
+CodTexto33
+German
 #
 # CodPag 5 || Registrar.php
 #
@@ -186,6 +230,14 @@ CodTexto14
 The passwords does not match, it must have a number, a letter and between 6 and 15 characters
 CodTexto15
 The passwords must have a number, a letter and between 6 and 15 characters
+CodTexto30
+Spanish
+CodTexto31
+Galician
+CodTexto32
+English
+CodTexto33
+German
 #
 # CodPag 6 || alumno/entrega.php
 #
@@ -226,6 +278,14 @@ CodTexto17
 Back
 CodTexto18
 Choose file
+CodTexto30
+Spanish
+CodTexto31
+Galician
+CodTexto32
+English
+CodTexto33
+German
 #
 # CodPag 7 || alumno/listaAsignaturas.php
 #
@@ -252,6 +312,14 @@ CodTexto10
 Description
 CodTexto11
 Student
+CodTexto30
+Spanish
+CodTexto31
+Galician
+CodTexto32
+English
+CodTexto33
+German
 #
 # CodPag 8 || alumno/listaTrabajos.php
 #
@@ -280,6 +348,14 @@ CodTexto11
 Student
 CodTexto12
 Back
+CodTexto30
+Spanish
+CodTexto31
+Galician
+CodTexto32
+English
+CodTexto33
+German
 #
 # CodPag 9 || alumno/perfil.php
 #
@@ -316,6 +392,14 @@ CodTexto15
 Actual name
 CodTexto16
 Actual last name
+CodTexto30
+Spanish
+CodTexto31
+Galician
+CodTexto32
+English
+CodTexto33
+German
 #
 # CodPag 10 || alumno/Portfolio.php
 #
@@ -352,6 +436,14 @@ CodTexto15
 Publish
 CodTexto16
 Save
+CodTexto30
+Spanish
+CodTexto31
+Galician
+CodTexto32
+English
+CodTexto33
+German
 #
 # CodPag 11 || alumno/preinscripción.php
 #
@@ -384,6 +476,14 @@ CodTexto13
 Year
 CodTexto14
 Preregister
+CodTexto30
+Spanish
+CodTexto31
+Galician
+CodTexto32
+English
+CodTexto33
+German
 #
 # CodPag 12 || profesor/asignatura.php
 #
@@ -424,6 +524,14 @@ CodTexto17
 Registered students
 CodTexto18
 Subject
+CodTexto30
+Spanish
+CodTexto31
+Galician
+CodTexto32
+English
+CodTexto33
+German
 #
 # CodPag 13 || profesor/entrega.php
 #
@@ -452,6 +560,14 @@ CodTexto11
 Observations
 CodTexto12
 Back
+CodTexto30
+Spanish
+CodTexto31
+Galician
+CodTexto32
+English
+CodTexto33
+German
 #
 # CodPag 14 || profesor/listaAsignaturas.php
 #
@@ -468,6 +584,14 @@ CodTexto5
 Subjects
 CodTexto6
 Subjects' list
+CodTexto30
+Spanish
+CodTexto31
+Galician
+CodTexto32
+English
+CodTexto33
+German
 #
 # CodPag 15 || profesor/perfil.php
 #
@@ -502,6 +626,14 @@ CodTexto15
 Actual name
 CodTexto16
 Actual last name
+CodTexto30
+Spanish
+CodTexto31
+Galician
+CodTexto32
+English
+CodTexto33
+German
 #
 # CodPag 16 || profesor/trabajo.php
 #
@@ -540,6 +672,24 @@ CodTexto16
 Create assignment
 CodTexto17
 Create
+CodTexto18
+Name
+CodTexto19
+Observations
+CodTexto20
+Grade
+CodTexto21
+Insert title
+CodTexto22
+Insert description
+CodTexto30
+Spanish
+CodTexto31
+Galician
+CodTexto32
+English
+CodTexto33
+German
 #
 #
 #

@@ -58,6 +58,18 @@ CodTexto18
 Vergeben
 CodTexto19
 Entwerfen
+CodTexto20
+Löschen
+CodTexto22
+Administrator
+CodTexto30
+Spanisch
+CodTexto31
+Galizisch
+CodTexto32
+Englisch
+CodTexto33
+Deutsch
 #
 # CodPag 2 || admin/listaAsignaturas.php
 #
@@ -84,6 +96,16 @@ CodTexto10
 Professoren
 CodTexto11
 Erstelle ein neues Fach
+CodTexto22
+Administrator
+CodTexto30
+Spanisch
+CodTexto31
+Galizisch
+CodTexto32
+Englisch
+CodTexto33
+Deutsch
 #
 # CodPag 3 || admin/listaUsuarios.php
 #
@@ -108,6 +130,16 @@ CodTexto9
 Entwerfe einen Benutzer
 CodTexto10
 E-mail
+CodTexto22
+Administrator
+CodTexto30
+Spanisch
+CodTexto31
+Galizisch
+CodTexto32
+Englisch
+CodTexto33
+Deutsch
 #
 # CodPag 4 || admin/usuario.php
 #
@@ -123,7 +155,7 @@ Unterrichtsfach
 CodTexto5
 Benützer 
 CodTexto6
-Entwerfen/Erstellen einen betnuzer
+Entwerfen einen Betnuzer
 CodTexto7
 Name:
 CodTexto8
@@ -152,6 +184,18 @@ CodTexto19
 Der DNI dass Sie eingefügt haben, ist nicht korrekt.
 CodTexto20
 Das Passwort muss eine Zahl, einen Buchstabe und zwischen 6 und 15 Buchstaben haben
+CodTexto21
+Erstellen einen Betnuzer
+CodTexto22
+Administrator
+CodTexto30
+Spanisch
+CodTexto31
+Galizisch
+CodTexto32
+Englisch
+CodTexto33
+Deutsch
 #
 # CodPag 5 || Registrar.php
 #
@@ -186,6 +230,14 @@ CodTexto14
 Die Passwörter überein nicht, es muss eine Zahl, einen Buchstabe und zwischen 6 und 15 Buchstaben haben
 CodTexto15
 Das Passwort muss eine Zahl, einen Buchstabe und zwischen 6 und 15 Buchstaben haben
+CodTexto30
+Spanisch
+CodTexto31
+Galizisch
+CodTexto32
+Englisch
+CodTexto33
+Deutsch
 #
 # CodPag 6 || alumno/entrega.php
 #
@@ -226,6 +278,14 @@ CodTexto17
 Zurück
 CodTexto18
 Dateiwählen
+CodTexto30
+Spanisch
+CodTexto31
+Galizisch
+CodTexto32
+Englisch
+CodTexto33
+Deutsch
 #
 # CodPag 7 || alumno/listaAsignaturas.php
 #
@@ -252,6 +312,14 @@ CodTexto10
 Beobachtungen
 CodTexto11
 Student
+CodTexto30
+Spanisch
+CodTexto31
+Galizisch
+CodTexto32
+Englisch
+CodTexto33
+Deutsch
 #
 # CodPag 8 || alumno/listaTrabajos.php
 #
@@ -280,6 +348,14 @@ CodTexto11
 Student
 CodTexto12
 Zurück
+CodTexto30
+Spanisch
+CodTexto31
+Galizisch
+CodTexto32
+Englisch
+CodTexto33
+Deutsch
 #
 # CodPag 9 || alumno/perfil.php
 #
@@ -316,6 +392,14 @@ CodTexto15
 Aktuellen Name 
 CodTexto16
 Aktuellen Nachname
+CodTexto30
+Spanisch
+CodTexto31
+Galizisch
+CodTexto32
+Englisch
+CodTexto33
+Deutsch
 #
 # CodPag 10 || alumno/Portfolio.php
 #
@@ -352,7 +436,14 @@ CodTexto15
 Veröffentlichen
 CodTexto16
 Speichern
-
+CodTexto30
+Spanisch
+CodTexto31
+Galizisch
+CodTexto32
+Englisch
+CodTexto33
+Deutsch
 #
 # CodPag 11 || alumno/preinscripción.php
 #
@@ -385,7 +476,14 @@ CodTexto13
 Jahr
 CodTexto14
 Sich registrieren
-
+CodTexto30
+Spanisch
+CodTexto31
+Galizisch
+CodTexto32
+Englisch
+CodTexto33
+Deutsch
 #
 # CodPag 12 || profesor/asignatura.php
 #
@@ -426,6 +524,14 @@ CodTexto17
 Registrierte Studenten
 CodTexto18
 Unterrichtsfach
+CodTexto30
+Spanisch
+CodTexto31
+Galizisch
+CodTexto32
+Englisch
+CodTexto33
+Deutsch
 #
 # CodPag 13 || profesor/entrega.php
 #
@@ -454,6 +560,14 @@ CodTexto11
 Beobachtungen
 CodTexto12
 Zurück
+CodTexto30
+Spanisch
+CodTexto31
+Galizisch
+CodTexto32
+Englisch
+CodTexto33
+Deutsch
 #
 # CodPag 14 || profesor/listaAsignaturas.php
 #
@@ -470,6 +584,14 @@ CodTexto5
 Unterrichtsfach
 CodTexto6
 Liste über die Unterrichtsfächer
+CodTexto30
+Spanisch
+CodTexto31
+Galizisch
+CodTexto32
+Englisch
+CodTexto33
+Deutsch
 #
 # CodPag 15 || profesor/perfil.php
 #
@@ -504,6 +626,14 @@ CodTexto15
 Aktuellen Name 
 CodTexto16
 Aktuellen Nachname
+CodTexto30
+Spanisch
+CodTexto31
+Galizisch
+CodTexto32
+Englisch
+CodTexto33
+Deutsch
 #
 # CodPag 16 || profesor/trabajo.php
 #
@@ -542,6 +672,24 @@ CodTexto16
 Entwerfe eine Auftrag
 CodTexto17
 Entwerfen
+CodTexto18
+Name
+CodTexto19
+Beobachtungen
+CodTexto20
+Benotung
+CodTexto21
+Fügt einen Titel ein
+CodTexto22
+Fügt eine Beschreibung ein
+CodTexto30
+Spanisch
+CodTexto31
+Galizisch
+CodTexto32
+Englisch
+CodTexto33
+Deutsch
 #
 #
 #

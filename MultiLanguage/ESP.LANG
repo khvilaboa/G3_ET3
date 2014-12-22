@@ -60,6 +60,18 @@ CodTexto18
 Asignados
 CodTexto19
 Crear
+CodTexto20
+Borrar
+CodTexto22
+Administrador
+CodTexto30
+Espa&ntilde;ol
+CodTexto31
+Gallego
+CodTexto32
+Ing&eacute;s
+CodTexto33
+Alem&aacute;n
 #
 # CodPag 2 || admin/listaAsignaturas.php
 #
@@ -86,6 +98,16 @@ CodTexto10
 Profesores
 CodTexto11
 Crear Asignatura
+CodTexto22
+Administrador
+CodTexto30
+Espa&ntilde;ol
+CodTexto31
+Gallego
+CodTexto32
+Ing&eacute;s
+CodTexto33
+Alem&aacute;n
 #
 # CodPag 3 || admin/listaAsignaturas.php
 #
@@ -108,6 +130,16 @@ CodTexto8
 Apellidos
 CodTexto9
 Crear Usuario
+CodTexto22
+Administrador
+CodTexto30
+Espa&ntilde;ol
+CodTexto31
+Gallego
+CodTexto32
+Ing&eacute;s
+CodTexto33
+Alem&aacute;n
 #
 # CodPag 4 || admin/usuario.php
 #
@@ -123,7 +155,7 @@ Asignaturas
 CodTexto5
 Usuarios
 CodTexto6
-Crear/Modificar Usuario
+Crear Usuario
 CodTexto7
 Nombre:
 CodTexto8
@@ -152,6 +184,18 @@ CodTexto19
 Introduzca un DNI válido
 CodTexto20
 La contraseña debe tener un número ,una letra y entre 6 y 15 caracteres
+CodTexto21
+Modificar Usuario
+CodTexto22
+Administrador
+CodTexto30
+Espa&ntilde;ol
+CodTexto31
+Gallego
+CodTexto32
+Ing&eacute;s
+CodTexto33
+Alem&aacute;n
 #
 # CodPag 5 || Registro.php
 #
@@ -186,6 +230,14 @@ CodTexto14
 Las contraseñas no coinciden ,deben tener un número ,una letra y entre 6 y 15 caracteres
 CodTexto15
 Las contraseñas deben tener un número ,una letra y entre 6 y 15 caracteres
+CodTexto30
+Espa&ntilde;ol
+CodTexto31
+Gallego
+CodTexto32
+Ing&eacute;s
+CodTexto33
+Alem&aacute;n
 #
 # CodPag 6 || alumno/entrega.php
 #
@@ -226,6 +278,14 @@ CodTexto17
 Volver
 CodTexto18
 Seleccionar archivo
+CodTexto30
+Espa&ntilde;ol
+CodTexto31
+Gallego
+CodTexto32
+Ing&eacute;s
+CodTexto33
+Alem&aacute;n
 #
 # CodPag 7 || alumno/listaAsignaturas.php
 #
@@ -252,6 +312,14 @@ CodTexto10
 Descripci&oacute;n
 CodTexto11
 Alumno
+CodTexto30
+Espa&ntilde;ol
+CodTexto31
+Gallego
+CodTexto32
+Ing&eacute;s
+CodTexto33
+Alem&aacute;n
 #
 # CodPag 8 || alumno/listaTrabajos.php
 #
@@ -280,6 +348,14 @@ CodTexto11
 Alumno
 CodTexto12
 Volver
+CodTexto30
+Espa&ntilde;ol
+CodTexto31
+Gallego
+CodTexto32
+Ing&eacute;s
+CodTexto33
+Alem&aacute;n
 #
 # CodPag 9 || alumno/perfil.php
 #
@@ -316,6 +392,14 @@ CodTexto15
 Nombre actual
 CodTexto16
 Apellidos actuales
+CodTexto30
+Espa&ntilde;ol
+CodTexto31
+Gallego
+CodTexto32
+Ing&eacute;s
+CodTexto33
+Alem&aacute;n
 #
 # CodPag 10 || alumno/Portfolio.php
 #
@@ -352,6 +436,14 @@ CodTexto15
 Publicar
 CodTexto16
 Guardar
+CodTexto30
+Espa&ntilde;ol
+CodTexto31
+Gallego
+CodTexto32
+Ing&eacute;s
+CodTexto33
+Alem&aacute;n
 #
 # CodPag 11 || alumno/preinscripción.php
 #
@@ -384,6 +476,14 @@ CodTexto13
 Curso
 CodTexto14
 Preinscribirse
+CodTexto30
+Espa&ntilde;ol
+CodTexto31
+Gallego
+CodTexto32
+Ing&eacute;s
+CodTexto33
+Alem&aacute;n
 #
 # CodPag 12 || profesor/asignatura.php
 #
@@ -424,6 +524,14 @@ CodTexto17
 Alumnos inscritos
 CodTexto18
 Asignatura
+CodTexto30
+Espa&ntilde;ol
+CodTexto31
+Gallego
+CodTexto32
+Ing&eacute;s
+CodTexto33
+Alem&aacute;n
 #
 # CodPag 13 || profesor/entrega.php
 #
@@ -452,6 +560,14 @@ CodTexto11
 Observaciones
 CodTexto12
 Volver
+CodTexto30
+Espa&ntilde;ol
+CodTexto31
+Gallego
+CodTexto32
+Ing&eacute;s
+CodTexto33
+Alem&aacute;n
 #
 # CodPag 14 || profesor/listaAsignaturas.php
 #
@@ -468,6 +584,14 @@ CodTexto5
 Asignaturas
 CodTexto6
 Lista de asignaturas
+CodTexto30
+Espa&ntilde;ol
+CodTexto31
+Gallego
+CodTexto32
+Ing&eacute;s
+CodTexto33
+Alem&aacute;n
 #
 # CodPag 15 || profesor/perfil.php
 #
@@ -502,6 +626,14 @@ CodTexto15
 Nombre actual
 CodTexto16
 Apellidos actuales
+CodTexto30
+Espa&ntilde;ol
+CodTexto31
+Gallego
+CodTexto32
+Ing&eacute;s
+CodTexto33
+Alem&aacute;n
 #
 # CodPag 16 || profesor/trabajo.php
 #
@@ -540,6 +672,24 @@ CodTexto16
 Crear Trabajo
 CodTexto17
 Crear
+CodTexto18
+Nombre
+CodTexto19
+Observaciones
+CodTexto20
+Calificaci&oacute;n
+CodTexto21
+Introduce t&iacute;tulo
+CodTexto22
+Introduce descripci&oacute;n
+CodTexto30
+Espa&ntilde;ol
+CodTexto31
+Gallego
+CodTexto32
+Ing&eacute;s
+CodTexto33
+Alem&aacute;n
 #
 #
 #

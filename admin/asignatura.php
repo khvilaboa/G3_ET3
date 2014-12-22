@@ -105,7 +105,7 @@ $textos = idioma(1, $_SESSION['idioma']);
 
                                                 <input type="hidden" name="elemento" value="asignatura"/>
                                                 <input type="hidden" name="asignatura" value="<?php echo $asignatura->getCodigo() ?>"/>
-												<a href="../controller/controladorAdmin.php?accion=Borrar&elemento=asignatura&asignatura=<?php echo $asignatura->getCodigo();?>" name="acciona" class="btn ex-button">Borrar</a>
+												<a href="../controller/controladorAdmin.php?accion=Borrar&elemento=asignatura&asignatura=<?php echo $asignatura->getCodigo();?>" name="acciona" class="btn ex-button"><?php echo $textos[20]; //Borrar?></a>
                                                 <input type="submit" class="btn ex-button" value="<?php echo $textos[10]; //Modificar ?>"/>
                                                 <input type="hidden" name="accion" class="btn ex-button" value="Modificar"/>
 

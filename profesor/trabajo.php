@@ -139,10 +139,10 @@ $codAsig = $_GET['ca'];
 								<table class="table table-striped table-bordered table-hover">
 									<thead>
 										<tr>
-											<th>Nombre</th>   <!-- [!MUL] -->
-											<th>Usuario</th>   <!-- [!MUL] -->
-											<th>Observaciones</th>   <!-- [!MUL] -->
-											<th>Calificaci&oacute;n</th>   <!-- [!MUL] -->
+											<th><?php echo $textos[18];//Nombre?></th>   <!-- [!MUL] -->
+											<th><?php echo $textos[12];//Usuario?></th>   <!-- [!MUL] -->
+											<th><?php echo $textos[19];//Observaciones?></th>   <!-- [!MUL] -->
+											<th><?php echo $textos[20];//Calificaci&oacute;n?></th>   <!-- [!MUL] -->
 										</tr>
 									</thead>
 									<tbody>
@@ -180,14 +180,14 @@ $codAsig = $_GET['ca'];
 								  <div class="form-group">
 									 <label for="title" class="col-lg-2 control-label"><?php echo $textos[7];//T&iacute;tulo?></label>
 										<div class="col-lg-10">
-										   <input type="text" class="form-control" name="title" placeholder="Introduce t&iacute;tulo">
+										   <input type="text" class="form-control" name="title" placeholder="<?php echo $textos[21];//Introduce t&iacute;tulo?>">
 										</div>
 								  </div>
 							   
 								  <div class="form-group">
 									 <label for="desc" class="col-lg-2 control-label"><?php echo $textos[8];//Descripci&oacute;n?></label>
 										<div class="col-lg-10">
-										   <input type="text" class="form-control" name="desc" placeholder="Introduce descripci&oacute;n">
+										   <input type="text" class="form-control" name="desc" placeholder="<?php echo $textos[22];//Introduce descripci&oacute;n?>">
 										</div>
 								  </div>
 								  

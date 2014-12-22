@@ -192,7 +192,7 @@
 					<!-- Page Heading -->
 					<div class="row">
 						<div class="col-lg-12">
-							<h1 class="page-header"> <?php echo $textos[6];//Crear/Modificar Usuario?> </h1>							
+							<h1 class="page-header"> <?php echo $textos[21];//Modificar Usuario?> </h1>							
 									<form id="registerform" method="post" class="form-horizontal" role="form" action="../controller/controladorAdmin.php">
 										<div class="form-group" id="div-name">
 											<label class="col-sm-2 control-label "><?php echo $textos[7];//Nombre:?></label>
@@ -268,7 +268,7 @@
 				<!-- Page Heading -->
 					<div class="row">
 						<div class="col-lg-12">
-							<h1 class="page-header"> <?php echo $textos[6];//Crear/Modificar Usuario?> </h1>							
+							<h1 class="page-header"> <?php echo $textos[6];//Crear usuario?> </h1>							
 								<form id="registerform" method="post" class="form-horizontal" role="form" action="../controller/controladorAdmin.php">
 									<div class="form-group" id="div-name">
 										<label class="col-sm-2 control-label "><?php echo $textos[7];//Nombre:?></label>
