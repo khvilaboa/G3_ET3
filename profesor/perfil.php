@@ -6,9 +6,11 @@ session_start();
 include('../MultiLanguage/FuncionIdioma.php');
 include('../nav.php');
 
+
+
 //$_SESSION['idioma']='ENG';
 
-$textos = idioma(9, $_SESSION['idioma']);
+$textos = idioma(15, $_SESSION['idioma']);
 ?>
 <html lang="en">
     <head>
@@ -85,9 +87,9 @@ $textos = idioma(9, $_SESSION['idioma']);
                     <div class="row">
                         <div class="col-lg-12">
 
-                            <h1 class="page-header ex-title"> <?php echo $textos[7]; //Perfil ?> </h1>
+                            <h1 class="page-header ex-title"> <?php echo $textos[6]; //Perfil ?> </h1>
                             <div class="panel panel-default">
-                                <div class="panel-heading ex-panel-header"><?php echo $textos[8]; //Gesti&oacute;n de perfil ?></div>
+                                <div class="panel-heading ex-panel-header"><?php echo $textos[7]; //Gesti&oacute;n de perfil ?></div>
                                 <div class="panel-body">
                                     <form id="perfilform" METHOD="POST" ACTION="../controller/controllerPerfil.php" class="form-horizontal" role="form">
                                         <?php
@@ -102,23 +104,23 @@ $textos = idioma(9, $_SESSION['idioma']);
                                         $row = mysql_fetch_array($resultado);
                                         ?>
                                         <div class="form-group">
-                                            <label for="passwdAct" class="col-lg-2 control-label"><?php echo $textos[9]; //Contrase&ntilde;a actual ?></label>
+                                            <label for="passwdAct" class="col-lg-2 control-label"><?php echo $textos[8]; //Contrase&ntilde;a actual ?></label>
                                             <div class="col-lg-10">
-                                                <input type="password" name="actualPassword" onKeyUp="validar()" class="form-control" id="passwdAct" value="" placeholder="<?php echo $textos[9]; //Contrase&ntilde;a actual ?>">
+                                                <input type="password" name="actualPassword" onKeyUp="validar()" class="form-control" id="passwdAct" value="" placeholder="<?php echo $textos[8]; //Contrase&ntilde;a actual ?>">
                                             </div>
                                         </div>
 
                                         <div class="form-group">
-                                            <label for="passwdNew" class="col-lg-2 control-label"><?php echo $textos[10]; //Nueva contrase&ntilde;a ?></label>
+                                            <label for="passwdNew" class="col-lg-2 control-label"><?php echo $textos[9]; //Nueva contrase&ntilde;a ?></label>
                                             <div class="col-lg-10">
-                                                <input type = "password" name = "newPassword" onKeyUp="validar()" class = "form-control" id = "passwdNew" value="" placeholder = "<?php echo $textos[10]; //Nueva contrase&ntilde;a ?>">
+                                                <input type = "password" name = "newPassword" onKeyUp="validar()" class = "form-control" id = "passwdNew" value="" placeholder = "<?php echo $textos[9]; //Nueva contrase&ntilde;a ?>">
                                             </div>
                                         </div>
 
                                         <div class="form-group">
-                                            <label for="passwdRep" class="col-lg-2 control-label"><?php echo $textos[12]; //Repetir contrase&ntilde;a ?></label>
+                                            <label for="passwdRep" class="col-lg-2 control-label"><?php echo $textos[10]; //Repetir contrase&ntilde;a ?></label>
                                             <div class="col-lg-10">
-                                                <input type="password" name="repeatPassword" onKeyUp="validar()" class="form-control" id="passwdRep" value="" placeholder="<?php echo $textos[12]; //Repetir contrase&ntilde;a ?>">
+                                                <input type="password" name="repeatPassword" onKeyUp="validar()" class="form-control" id="passwdRep" value="" placeholder="<?php echo $textos[10]; //Repetir contrase&ntilde;a ?>">
                                             </div>
                                         </div>
 
