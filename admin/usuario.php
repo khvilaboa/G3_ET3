@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<script language="JavaScript" src="../md5.js" type="text/javascript"></script> 
 <?php
 	session_start();
 	include_once "../clases/Usuario_class.php";
@@ -41,6 +42,125 @@
 
 </head>
 
+<script type="text/javascript">
+
+        function validateMail() {
+            var regexp = /[\w-\.]{3,}@([\w-]{2,}\.)*([\w-]{2,}\.)[\w-]{2,4}/;
+            var email = document.getElementById("register-username").value;
+
+            //Comprobaciones de "email", no se puede registrar nadie sin email, ademas el formato del email debe ser valido
+            if (regexp.test(email) == 0) {
+                $("#div-username").removeClass("has-success");
+                $("#div-username").addClass("has-error");
+                $.notify("<?php echo $textos[10];//El email no es válido?>", "error");
+				
+				return false;
+            }
+            else {
+                $("#div-username").removeClass("has-error");
+                $("#div-username").addClass("has-success");
+				
+				return true;
+            }
+        }
+
+        function validateName() {
+            var name = document.getElementById("register-name").value;
+
+            //Comprobaciones de "nombre", no se puede registrar nadie sin nombre.
+            if (name.length == 0) {
+                $("#div-name").removeClass("has-success");
+                $("#div-name").addClass("has-error");
+                $.notify("<?php echo $textos[11];//El campo nombre no puede estar vacío?>", "error");
+				
+				return false;
+            }
+            else {
+                $("#div-name").removeClass("has-error");
+                $("#div-name").addClass("has-success");
+				
+				return true;
+            }
+        }
+
+        function validateSurName() {
+            var surName = document.getElementById("register-surname").value;
+
+            //Comprobaciones de "apellido", no se puede registrar nadie sin nombre.
+            if (surName.length == 0) {
+                $("#div-surname").removeClass("has-success");
+                $("#div-surname").addClass("has-error");
+                $.notify("<?php echo $textos[12];//El campo apellido no puede estar vacío?>", "error");
+				
+				return false;
+            }
+            else {
+                $("#div-surname").removeClass("has-error");
+                $("#div-surname").addClass("has-success");
+				
+				return true;
+            }
+        }
+
+        function validateDNI() {
+            valor = document.getElementById("register-dni").value;
+            var letras = ['T', 'R', 'W', 'A', 'G', 'M', 'Y', 'F', 'P', 'D', 'X', 'B', 'N', 'J', 'Z', 'S', 'Q', 'V', 'H', 'L', 'C', 'K', 'E', 'T'];
+
+            if ((!(/^\d{8}[A-Z]$/.test(valor))) || (valor.charAt(8) != letras[(valor.substring(0, 8)) % 23])) {
+                $("#div-DNI").removeClass("has-success");
+                $("#div-DNI").addClass("has-error");
+                $.notify("<?php echo $textos[13];//Introduzca un DNI válido?>", "error");
+				
+				return false;
+            }
+            else {
+                $("#div-DNI").removeClass("has-error");
+                $("#div-DNI").addClass("has-success");
+				
+				return true;
+            }
+        }
+
+        function validatePassword() {
+            //var cont = /(?!^[0-9]*$)(?!^[a-zA-Z]*$)^([a-zA-Z0-9]{6,15})$/;
+			var cont = /(?=.*\d)(?=.*[a-z]){6,15}/;
+            var password = document.getElementById("register-password").value;
+           
+			
+			if(password.length == 0 ) return false;
+			
+            if ((cont.test(password) == 0) || (password.length < 6) || (password.length > 15) ) {
+
+                $("#div-password").removeClass("has-success");
+                $("#div-password").addClass("has-error");
+            
+                $.notify("<?php echo $textos[14];//Las contraseñas no coinciden ,deben tener un número ,una letra y entre 6 y 15 caracteres?>", "error");
+				
+				return false;
+            }
+            else {
+                $("#div-password").removeClass("has-error");
+                $("#div-password").addClass("has-success");
+               
+				
+							
+				return true;
+            }
+        }
+
+		function validate() {
+			if(validateMail() && validateName() && validateSurName() && validateDNI() && validatePassword()) {
+				document.forms["registerform"].elements["register-password"].value = (hex_md5(document.forms["registerform"].elements["register-password"].value));
+			
+				document.forms['registerform'].submit();
+			}
+		}
+		
+       
+		
+		
+
+    </script>
 <body>
 
     <div id="wrapper">
@@ -73,35 +193,35 @@
 					<div class="row">
 						<div class="col-lg-12">
 							<h1 class="page-header"> <?php echo $textos[6];//Crear/Modificar Usuario?> </h1>							
-									<form method="post" class="form-horizontal" role="form" action="../controller/controladorAdmin.php">
-										<div class="form-group">
+									<form id="registerform" method="post" class="form-horizontal" role="form" action="../controller/controladorAdmin.php">
+										<div class="form-group" id="div-name">
 											<label class="col-sm-2 control-label "><?php echo $textos[7];//Nombre:?></label>
 											<div class="col-sm-10">
-												<input type="text" name="nombre" value="<?php echo $usuario->getNombre();?>" class="form-control">
+												<input type="text" id="register-name" name="nombre" value="<?php echo $usuario->getNombre();?>" class="form-control" onblur="validateName()">
 											</div>
 										</div>
-										<div class="form-group">
+										<div class="form-group" id="div-surname">
 											<label class="col-sm-2 control-label"><?php echo $textos[8];//Apellidos:?></label>
 											<div class="col-sm-10">
-												<input type="text" name="apellidos" value="<?php echo $usuario->getApellido();?>"class="form-control">
+												<input type="text" id="register-surname" name="apellidos" value="<?php echo $usuario->getApellido();?>"class="form-control" onblur="validateSurName()">
 											</div>
 										</div>
-										<div class="form-group">
+										<div class="form-group" id="div-DNI">
 											<label class="col-sm-2 control-label">Dni:</label>
 											<div class="col-sm-10">
-												<input type="text" name="dni" value="<?php echo $usuario->getDni();?>" class="form-control">
+												<input type="text" id="register-dni" name="dni" value="<?php echo $usuario->getDni();?>" class="form-control" onblur="validateDNI()">
 											</div>
 										</div>
-										<div class="form-group">
+										<div class="form-group" id="div-username">
 											<label class="col-sm-2 control-label">E-mail:</label>
 											<div class="col-sm-10">
-												<input readonly type="text" name="email" value="<?php echo $usuario->getEmail();?>" class="form-control">
+												<input readonly type="text" id="register-username" name="email" value="<?php echo $usuario->getEmail();?>" class="form-control">
 											</div>
 										</div>
-										<div class="form-group">
+										<div class="form-group" id="div-password">
 											<label class="col-sm-2 control-label"><?php echo $textos[9];//Nueva Contrase&nacute;a:?></label>
 											<div class="col-sm-10">
-												<input type="password" name="pass" value="<?php echo $usuario->getPassword();?>" class="form-control">
+												<input type="password" id="register-password" name="pass" onblur="validatePassword()" value="" class="form-control">
 											</div>
 										</div>
 										<div class="form-group">
@@ -121,7 +241,7 @@
 										<input type="hidden" name="elemento" value="usuario"/>
 										<input type="hidden" name="usuario" value="<?php echo $usuario->getDni()?>"/>
 										<?php if($usuario->getTipo()!="Administrador") echo '<a href="../controller/controladorAdmin.php?accion=Borrar&elemento=usuario&usuario=' . $usuario->getEmail() . '" name="acciona" class="btn ex-button">' . $textos[13] /*Borrar*/ . '</a>';?>
-										<input type="submit" class="btn ex-button" value="<?php echo $textos[14];//Modificar?>"/>
+										<input onclick="validate()" class="btn ex-button" value="<?php echo $textos[14];//Modificar?>"/>
 										<input type="hidden" name="accion" class="btn ex-button" value="Modificar"/>
 										
 
@@ -149,35 +269,35 @@
 					<div class="row">
 						<div class="col-lg-12">
 							<h1 class="page-header"> <?php echo $textos[6];//Crear/Modificar Usuario?> </h1>							
-								<form method="post" class="form-horizontal" role="form" action="../controller/controladorAdmin.php">
-									<div class="form-group">
+								<form id="registerform" method="post" class="form-horizontal" role="form" action="../controller/controladorAdmin.php">
+									<div class="form-group" id="div-name">
 										<label class="col-sm-2 control-label "><?php echo $textos[7];//Nombre:?></label>
 										<div class="col-sm-10">
-											<input type="text" name="nombre" class="form-control">
+											<input type="text" id="register-name" name="nombre" class="form-control" onblur="validateName()">
 										</div>
 									</div>
-									<div class="form-group">
+									<div class="form-group" id="div-surname">
 										<label class="col-sm-2 control-label"><?php echo $textos[8];//Apellidos:?></label>
 										<div class="col-sm-10">
-											<input type="text" name="apellidos" class="form-control">
+											<input type="text" name="apellidos" id="register-surname" class="form-control" onblur="validateSurName()">
 										</div>
 									</div>
-									<div class="form-group">
+									<div class="form-group" id="div-DNI">
 										<label class="col-sm-2 control-label">Dni:</label>
 										<div class="col-sm-10">
-											<input type="text" name="dni" class="form-control">
+											<input type="text" id="register-dni" name="dni" class="form-control" onblur="validateDNI()">
 										</div>
 									</div>
-									<div class="form-group">
+									<div class="form-group" id="div-username">
 										<label class="col-sm-2 control-label">E-mail:</label>
 										<div class="col-sm-10">
-											<input type="text" name="email" class="form-control">
+											<input type="text" id="register-username" name="email" class="form-control" onblur="validateMail()">
 										</div>
 									</div>
-									<div class="form-group">
+									<div class="form-group" id="div-password">
 										<label class="col-sm-2 control-label"><?php echo $textos[9];//Nueva Contrase&nacute;a:?></label>
 										<div class="col-sm-10">
-											<input type="password" name="pass" class="form-control">
+											<input type="password" id="register-password"  name="pass" class="form-control" onblur="validatePassword()">
 										</div>
 									</div>
 									<div class="form-group">
@@ -194,7 +314,7 @@
 									
 									
 									<input type="hidden" name="elemento" value="usuario"/>
-									<input type="submit" class="btn ex-button" value="<?php echo $textos[15];//Crear?>"/>
+									<input onclick="validate()" class="btn ex-button" value="<?php echo $textos[15];//Crear?>"/>
 									<input type="hidden" name="accion" class="btn ex-button" value="Crear"/>
 									
 
@@ -239,6 +359,8 @@
 
     <!-- Bootstrap Core JavaScript -->
     <script src="../js/bootstrap.min.js"></script>
+	<!-- notify -->
+    <script src="../js/notify.js"></script>
 
 </body>
 
