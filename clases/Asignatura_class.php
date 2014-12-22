@@ -187,8 +187,8 @@ class asignatura {
     }
 
     public static function verAsigProf($email) {
-        $sql = "SELECT DISTINCT asignatura.`codAsignatura`, `nomAsignatura` FROM `asignatura`, proimparteasi, usuario WHERE proimparteasi.codAsignatura = asignatura.codAsignatura 
-			AND proimparteasi.emailUsuario = \"" . $email . "\"";
+        $sql = "SELECT DISTINCT Asignatura.`codAsignatura`, `nomAsignatura` FROM `Asignatura`, ProImparteAsi, Usuario WHERE ProImparteAsi.codAsignatura = Asignatura.codAsignatura 
+			AND ProImparteAsi.emailUsuario = \"" . $email . "\"";
         $resultado = mysql_query($sql);
         echo mysql_error();
         while ($row = mysql_fetch_array($resultado)) {
@@ -254,21 +254,21 @@ class asignatura {
 
     function consultarConProfesor() {
         $sql = "select distinct A.codAsignatura, nomAsignatura, gradoAsignatura, cursoAsignatura, GROUP_CONCAT(nombreUsuario) as profesores
-		from Asignatura A, Proimparteasi P ,Usuario U where P.codAsignatura=A.codAsignatura and P.emailUsuario=U.emailUsuario GROUP BY A.codAsignatura";
+		from Asignatura A, ProImparteAsi P ,Usuario U where P.codAsignatura=A.codAsignatura and P.emailUsuario=U.emailUsuario GROUP BY A.codAsignatura";
         $resultado = mysql_query($sql);
         return $resultado;
     }
 
     function consultarSinProfesor() {
-        $sql = "select A.codAsignatura, nomAsignatura, gradoAsignatura, cursoAsignatura from Asignatura A where (A.codAsignatura not in (select codAsignatura from Proimparteasi))";
+        $sql = "select A.codAsignatura, nomAsignatura, gradoAsignatura, cursoAsignatura from Asignatura A where (A.codAsignatura not in (select codAsignatura from ProImparteAsi))";
         $resultado = mysql_query($sql);
         return $resultado;
     }
 
     public static function verTrabajos($codAsig) {
         echo mysql_error();
-        $sql = "SELECT codTrabajo, codAsignatura, nombreTrabajo, fechaLimiteTrabajo FROM trabajo 
-		WHERE codAsignatura = (SELECT codAsignatura FROM asignatura WHERE codAsignatura = '" . $codAsig . "')";
+        $sql = "SELECT codTrabajo, codAsignatura, nombreTrabajo, fechaLimiteTrabajo FROM Trabajo 
+		WHERE codAsignatura = (SELECT codAsignatura FROM Asignatura WHERE codAsignatura = '" . $codAsig . "')";
         $resultado = mysql_query($sql);
         echo mysql_error();
         return $resultado;
