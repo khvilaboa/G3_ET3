@@ -24,10 +24,10 @@ USE `ET3`;
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `aluentregatra`
+-- Estructura de tabla para la tabla `AluEntregaTra`
 --
 
-CREATE TABLE IF NOT EXISTS `aluentregatra` (
+CREATE TABLE IF NOT EXISTS `AluEntregaTra` (
   `emailUsuario` varchar(40) NOT NULL,
   `codAsignatura` varchar(40) NOT NULL,
   `codTrabajo` varchar(40) NOT NULL,
@@ -39,19 +39,19 @@ CREATE TABLE IF NOT EXISTS `aluentregatra` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Volcado de datos para la tabla `aluentregatra`
+-- Volcado de datos para la tabla `AluEntregaTra`
 --
 
-INSERT INTO `aluentregatra` (`emailUsuario`, `codAsignatura`, `codTrabajo`, `fechaEntrega`, `observaciones`, `titulo`, `calificacion`, `portfolio`) VALUES
+INSERT INTO `AluEntregaTra` (`emailUsuario`, `codAsignatura`, `codTrabajo`, `fechaEntrega`, `observaciones`, `titulo`, `calificacion`, `portfolio`) VALUES
 ('asd@asd.com', 'CDAIng3', 'CDAIng3TrabajoFinal', '2014-12-15', 'nono mumal', 'MiTrabajoFinal', '3', 'F');
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `aluinscritoasi`
+-- Estructura de tabla para la tabla `AluInscritoAsi`
 --
 
-CREATE TABLE IF NOT EXISTS `aluinscritoasi` (
+CREATE TABLE IF NOT EXISTS `AluInscritoAsi` (
   `emailUsuario` varchar(40) NOT NULL,
   `codAsignatura` varchar(40) NOT NULL,
   `anhoInscrito` date NOT NULL,
@@ -59,20 +59,20 @@ CREATE TABLE IF NOT EXISTS `aluinscritoasi` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Volcado de datos para la tabla `aluinscritoasi`
+-- Volcado de datos para la tabla `AluInscritoAsi`
 --
 
-INSERT INTO `aluinscritoasi` (`emailUsuario`, `codAsignatura`, `anhoInscrito`, `aceptado`) VALUES
+INSERT INTO `AluInscritoAsi` (`emailUsuario`, `codAsignatura`, `anhoInscrito`, `aceptado`) VALUES
 ('asd@asd.com', 'CDAIng3', '2014-12-21', 'F'),
 ('asd@asd.com', 'IUIng3', '2014-12-21', 'T');
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `asignatura`
+-- Estructura de tabla para la tabla `Asignatura`
 --
 
-CREATE TABLE IF NOT EXISTS `asignatura` (
+CREATE TABLE IF NOT EXISTS `Asignatura` (
   `codAsignatura` varchar(40) NOT NULL,
   `nomAsignatura` varchar(40) NOT NULL,
   `gradoAsignatura` varchar(40) NOT NULL,
@@ -80,20 +80,20 @@ CREATE TABLE IF NOT EXISTS `asignatura` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Volcado de datos para la tabla `asignatura`
+-- Volcado de datos para la tabla `Asignatura`
 --
 
-INSERT INTO `asignatura` (`codAsignatura`, `nomAsignatura`, `gradoAsignatura`, `cursoAsignatura`) VALUES
+INSERT INTO `Asignatura` (`codAsignatura`, `nomAsignatura`, `gradoAsignatura`, `cursoAsignatura`) VALUES
 ('CDAIng3', 'CDA', 'Ingenieria Informatica', 3),
 ('IUIng3', 'IU', 'Ingenieria Informatica', 3);
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `proimparteasi`
+-- Estructura de tabla para la tabla `ProImparteAsi`
 --
 
-CREATE TABLE IF NOT EXISTS `proimparteasi` (
+CREATE TABLE IF NOT EXISTS `ProImparteAsi` (
   `emailUsuario` varchar(40) NOT NULL,
   `codAsignatura` varchar(40) NOT NULL,
   `anhoImparte` date NOT NULL
@@ -102,10 +102,10 @@ CREATE TABLE IF NOT EXISTS `proimparteasi` (
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `trabajo`
+-- Estructura de tabla para la tabla `Trabajo`
 --
 
-CREATE TABLE IF NOT EXISTS `trabajo` (
+CREATE TABLE IF NOT EXISTS `Trabajo` (
   `codTrabajo` varchar(40) NOT NULL,
   `codAsignatura` varchar(40) NOT NULL,
   `nombreTrabajo` varchar(40) NOT NULL,
@@ -114,20 +114,20 @@ CREATE TABLE IF NOT EXISTS `trabajo` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Volcado de datos para la tabla `trabajo`
+-- Volcado de datos para la tabla `Trabajo`
 --
 
-INSERT INTO `trabajo` (`codTrabajo`, `codAsignatura`, `nombreTrabajo`, `fechaLimiteTrabajo`, `descripcionTrabajo`) VALUES
+INSERT INTO `Trabajo` (`codTrabajo`, `codAsignatura`, `nombreTrabajo`, `fechaLimiteTrabajo`, `descripcionTrabajo`) VALUES
 ('CDAIng3TrabajoFinal', 'CDAIng3', 'TrabajoFinal', '2014-12-31', 'asdasdnono'),
 ('IUIng3ET3', 'IUIng3', 'ET3', '2014-12-31', 'asdasdsisi');
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `usuario`
+-- Estructura de tabla para la tabla `Usuario`
 --
 
-CREATE TABLE IF NOT EXISTS `usuario` (
+CREATE TABLE IF NOT EXISTS `Usuario` (
   `emailUsuario` varchar(40) NOT NULL,
   `nombreUsuario` varchar(40) NOT NULL,
   `apellidoUsuario` varchar(40) NOT NULL,
@@ -140,10 +140,10 @@ CREATE TABLE IF NOT EXISTS `usuario` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Volcado de datos para la tabla `usuario`
+-- Volcado de datos para la tabla `Usuario`
 --
 
-INSERT INTO `usuario` (`emailUsuario`, `nombreUsuario`, `apellidoUsuario`, `passwordUsuario`, `correccionesUsuario`, `publicoUsuario`, `idiomaUsuario`, `tipoUsuario`, `dniUsuario`) VALUES
+INSERT INTO `Usuario` (`emailUsuario`, `nombreUsuario`, `apellidoUsuario`, `passwordUsuario`, `correccionesUsuario`, `publicoUsuario`, `idiomaUsuario`, `tipoUsuario`, `dniUsuario`) VALUES
 ('admin@admin.com', 'admin', 'admin', 'Admin1.', 'F', 'F', 'ESP', 'Administrador', '11111111X'),
 ('asd@asd.com', 'asd', 'asd', 'asd123', 'T', 'T', 'ESP', 'Alumno', '44655485L'),
 ('prof@prof.com', 'prof', 'asd', 'asd123', 'F', 'F', 'ESP', 'Profesor', 'asd');
@@ -153,39 +153,39 @@ INSERT INTO `usuario` (`emailUsuario`, `nombreUsuario`, `apellidoUsuario`, `pass
 --
 
 --
--- Indices de la tabla `aluentregatra`
+-- Indices de la tabla `AluEntregaTra`
 --
-ALTER TABLE `aluentregatra`
+ALTER TABLE `AluEntregaTra`
  ADD PRIMARY KEY (`emailUsuario`,`codAsignatura`,`codTrabajo`), ADD KEY `codAsignatura` (`codAsignatura`), ADD KEY `codTrabajo` (`codTrabajo`), ADD KEY `AluEntregaTra_ibfk_2` (`codTrabajo`,`codAsignatura`);
 
 --
--- Indices de la tabla `aluinscritoasi`
+-- Indices de la tabla `AluInscritoAsi`
 --
-ALTER TABLE `aluinscritoasi`
+ALTER TABLE `AluInscritoAsi`
  ADD PRIMARY KEY (`emailUsuario`,`codAsignatura`,`anhoInscrito`), ADD KEY `codAsignatura` (`codAsignatura`);
 
 --
--- Indices de la tabla `asignatura`
+-- Indices de la tabla `Asignatura`
 --
-ALTER TABLE `asignatura`
+ALTER TABLE `Asignatura`
  ADD PRIMARY KEY (`codAsignatura`);
 
 --
--- Indices de la tabla `proimparteasi`
+-- Indices de la tabla `ProImparteAsi`
 --
-ALTER TABLE `proimparteasi`
+ALTER TABLE `ProImparteAsi`
  ADD PRIMARY KEY (`emailUsuario`,`codAsignatura`,`anhoImparte`), ADD KEY `codAsignatura` (`codAsignatura`);
 
 --
--- Indices de la tabla `trabajo`
+-- Indices de la tabla `Trabajo`
 --
-ALTER TABLE `trabajo`
+ALTER TABLE `Trabajo`
  ADD PRIMARY KEY (`codTrabajo`,`codAsignatura`), ADD KEY `codAsignatura` (`codAsignatura`);
 
 --
--- Indices de la tabla `usuario`
+-- Indices de la tabla `Usuario`
 --
-ALTER TABLE `usuario`
+ALTER TABLE `Usuario`
  ADD PRIMARY KEY (`emailUsuario`), ADD UNIQUE KEY `dniUsuario` (`dniUsuario`);
 
 --
@@ -193,31 +193,31 @@ ALTER TABLE `usuario`
 --
 
 --
--- Filtros para la tabla `aluentregatra`
+-- Filtros para la tabla `AluEntregaTra`
 --
-ALTER TABLE `aluentregatra`
-ADD CONSTRAINT `AluEntregaTra_ibfk_1` FOREIGN KEY (`emailUsuario`) REFERENCES `usuario` (`emailUsuario`) ON DELETE CASCADE ON UPDATE CASCADE,
-ADD CONSTRAINT `AluEntregaTra_ibfk_2` FOREIGN KEY (`codTrabajo`, `codAsignatura`) REFERENCES `trabajo` (`codTrabajo`, `codAsignatura`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE `AluEntregaTra`
+ADD CONSTRAINT `AluEntregaTra_ibfk_1` FOREIGN KEY (`emailUsuario`) REFERENCES `Usuario` (`emailUsuario`) ON DELETE CASCADE ON UPDATE CASCADE,
+ADD CONSTRAINT `AluEntregaTra_ibfk_2` FOREIGN KEY (`codTrabajo`, `codAsignatura`) REFERENCES `Trabajo` (`codTrabajo`, `codAsignatura`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Filtros para la tabla `aluinscritoasi`
+-- Filtros para la tabla `AluInscritoAsi`
 --
-ALTER TABLE `aluinscritoasi`
-ADD CONSTRAINT `AluInscritoAsi_ibfk_1` FOREIGN KEY (`emailUsuario`) REFERENCES `usuario` (`emailUsuario`) ON DELETE CASCADE ON UPDATE CASCADE,
-ADD CONSTRAINT `AluInscritoAsi_ibfk_2` FOREIGN KEY (`codAsignatura`) REFERENCES `asignatura` (`codAsignatura`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE `AluInscritoAsi`
+ADD CONSTRAINT `AluInscritoAsi_ibfk_1` FOREIGN KEY (`emailUsuario`) REFERENCES `Usuario` (`emailUsuario`) ON DELETE CASCADE ON UPDATE CASCADE,
+ADD CONSTRAINT `AluInscritoAsi_ibfk_2` FOREIGN KEY (`codAsignatura`) REFERENCES `Asignatura` (`codAsignatura`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Filtros para la tabla `proimparteasi`
+-- Filtros para la tabla `ProImparteAsi`
 --
-ALTER TABLE `proimparteasi`
-ADD CONSTRAINT `ProImparteAsi_ibfk_1` FOREIGN KEY (`emailUsuario`) REFERENCES `usuario` (`emailUsuario`) ON DELETE CASCADE ON UPDATE CASCADE,
-ADD CONSTRAINT `ProImparteAsi_ibfk_2` FOREIGN KEY (`codAsignatura`) REFERENCES `asignatura` (`codAsignatura`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE `ProImparteAsi`
+ADD CONSTRAINT `ProImparteAsi_ibfk_1` FOREIGN KEY (`emailUsuario`) REFERENCES `Usuario` (`emailUsuario`) ON DELETE CASCADE ON UPDATE CASCADE,
+ADD CONSTRAINT `ProImparteAsi_ibfk_2` FOREIGN KEY (`codAsignatura`) REFERENCES `Asignatura` (`codAsignatura`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Filtros para la tabla `trabajo`
+-- Filtros para la tabla `Trabajo`
 --
-ALTER TABLE `trabajo`
-ADD CONSTRAINT `Trabajo_ibfk_1` FOREIGN KEY (`codAsignatura`) REFERENCES `asignatura` (`codAsignatura`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE `Trabajo`
+ADD CONSTRAINT `Trabajo_ibfk_1` FOREIGN KEY (`codAsignatura`) REFERENCES `Asignatura` (`codAsignatura`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
