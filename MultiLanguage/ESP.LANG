@@ -142,6 +142,17 @@ CodTexto14
 Modificar
 CodTexto15
 Crear
+CodTexto16
+El email no es válido
+CodTexto17
+El campo nombre no puede estar vacío
+CodTexto18
+El campo apellido no puede estar vacío
+CodTexto19
+Introduzca un DNI válido
+CodTexto20
+La contraseña debe tener un número ,una letra y entre 6 y 15 caracteres
+
 #
 # CodPag 5 || Registro.php
 #

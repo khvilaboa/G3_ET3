@@ -52,7 +52,7 @@
             if (regexp.test(email) == 0) {
                 $("#div-username").removeClass("has-success");
                 $("#div-username").addClass("has-error");
-                $.notify("<?php echo $textos[10];//El email no es válido?>", "error");
+                $.notify("<?php echo $textos[16];//El email no es válido?>", "error");
 				
 				return false;
             }
@@ -62,7 +62,7 @@
 				
 				return true;
             }
-        }
+        } 
 
         function validateName() {
             var name = document.getElementById("register-name").value;
@@ -71,7 +71,7 @@
             if (name.length == 0) {
                 $("#div-name").removeClass("has-success");
                 $("#div-name").addClass("has-error");
-                $.notify("<?php echo $textos[11];//El campo nombre no puede estar vacío?>", "error");
+                $.notify("<?php echo $textos[17];//El campo nombre no puede estar vacío?>", "error");
 				
 				return false;
             }
@@ -90,7 +90,7 @@
             if (surName.length == 0) {
                 $("#div-surname").removeClass("has-success");
                 $("#div-surname").addClass("has-error");
-                $.notify("<?php echo $textos[12];//El campo apellido no puede estar vacío?>", "error");
+                $.notify("<?php echo $textos[18];//El campo apellido no puede estar vacío?>", "error");
 				
 				return false;
             }
@@ -109,7 +109,7 @@
             if ((!(/^\d{8}[A-Z]$/.test(valor))) || (valor.charAt(8) != letras[(valor.substring(0, 8)) % 23])) {
                 $("#div-DNI").removeClass("has-success");
                 $("#div-DNI").addClass("has-error");
-                $.notify("<?php echo $textos[13];//Introduzca un DNI válido?>", "error");
+                $.notify("<?php echo $textos[19];//Introduzca un DNI válido?>", "error");
 				
 				return false;
             }
@@ -134,7 +134,7 @@
                 $("#div-password").removeClass("has-success");
                 $("#div-password").addClass("has-error");
             
-                $.notify("<?php echo $textos[14];//Las contraseñas no coinciden ,deben tener un número ,una letra y entre 6 y 15 caracteres?>", "error");
+                $.notify("<?php echo $textos[20];//La contraseña debe tener un número ,una letra y entre 6 y 15 caracteres?>", "error");
 				
 				return false;
             }

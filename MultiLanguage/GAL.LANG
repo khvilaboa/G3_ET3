@@ -140,6 +140,17 @@ CodTexto14
 Modificar
 CodTexto15
 Crear
+CodTexto16
+O email non é válido
+CodTexto17
+O campo do nome non pode atoparse baleiro
+CodTexto18
+O campo do apelido non pode atoparse baleiro
+CodTexto19
+Inserte un DNI válido
+CodTexto20
+O contrasinal debe ter un número ,unha letra e debe ter entre 6 y 15 caracteres
+
 #
 # CodPag 5 || Registro.php
 #
@@ -173,7 +184,7 @@ Inserte un DNI válido
 CodTexto14
 Os contrasinais non coinciden ,deben ter un número ,unha letra e debe ter entre 6 y 15 caracteres
 CodTexto15
-Las contraseñas deben tener un número ,una letra e debe ter entre 6 y 15 caracteres
+As contraseñas deben tener un número ,una letra e debe ter entre 6 y 15 caracteres
 #
 # CodPag 6 || alumno/entrega.php
 #
