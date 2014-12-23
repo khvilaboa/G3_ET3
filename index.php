@@ -30,6 +30,9 @@ $textos = idioma(0, $_SESSION['idioma']);
         <!-- Custom Fonts -->
         <link href="font-awesome-4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
+		<!-- jQuery -->
+		<script src="js/jquery.js"></script>
+	
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
         <!--[if lt IE 9]>
@@ -37,42 +40,51 @@ $textos = idioma(0, $_SESSION['idioma']);
             <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
         <![endif]-->
 
-    </head>
-    <script type="text/javascript">
+		<script type="text/javascript">
+			$(document).ready(function(){
+				$('#loginform input').keydown(function(e) {
+					if (e.keyCode == 13) {
+						entrar();
+					}
+				});
+			});
 
-        function rememberPassword() {
-            //Comprobaciones de "email", no se puede registrar nadie sin email, ademas el formato del email debe ser valido
-            if (document.getElementById("login-remember").checked == true) {
-                $.notify("<?php echo $textos[8]; //¿Está seguro de que desea recordar su contraseña? ?>", "warn");
-            }
-        }
+			function rememberPassword() {
+				//Comprobaciones de "email", no se puede registrar nadie sin email, ademas el formato del email debe ser valido
+				if (document.getElementById("login-remember").checked == true) {
+					$.notify("<?php echo $textos[8]; //¿Está seguro de que desea recordar su contraseña? ?>", "warn");
+				}
+			}
 
-        function validar() {
+			function validar() {
 
-            var regexp = /[\w-\.]{3,}@([\w-]{2,}\.)*([\w-]{2,}\.)[\w-]{2,4}/;
-            var email = document.getElementById("login-username").value;
-            var password = document.getElementById("login-password").value;
-            var boton_aceptar = document.getElementById("btn-login");
+				var regexp = /[\w-\.]{3,}@([\w-]{2,}\.)*([\w-]{2,}\.)[\w-]{2,4}/;
+				var email = document.getElementById("login-username").value;
+				var password = document.getElementById("login-password").value;
+				var boton_aceptar = document.getElementById("btn-login");
 
-            //Comprobaciones de "email", no se puede registrar nadie sin email, ademas el formato del email debe ser valido
-            if ((regexp.test(email) != 0) && (password.length >= 6) && (password.length < 15)) {
-                boton_aceptar.removeAttribute("disabled", "disabled");
-            }
-            else {
-                boton_aceptar.setAttribute("disabled", "disabled");
-            }
+				//Comprobaciones de "email", no se puede registrar nadie sin email, ademas el formato del email debe ser valido
+				if ((regexp.test(email) != 0) && (password.length >= 6) && (password.length < 15)) {
+					boton_aceptar.removeAttribute("disabled", "disabled");
+				}
+				else {
+					boton_aceptar.setAttribute("disabled", "disabled");
+				}
 
-        }
-		
-		function entrar(){
-			document.forms["loginform"].elements["login-password"].value = (hex_md5(document.forms["loginform"].elements["login-password"].value));
+			}
 			
-		document.forms["loginform"].submit();
-		
-		
-		
-		}
-    </script>
+			function entrar(){
+				var boton_aceptar = document.getElementById("btn-login");
+				
+				if (boton_aceptar.getAttribute("disabled")!="disabled") {
+				document.forms["loginform"].elements["login-password"].value = (hex_md5(document.forms["loginform"].elements["login-password"].value));
+				
+				document.forms["loginform"].submit();
+				}
+			}
+		</script>
+    </head>
+    
     <body>
 
         <div id="page-wrapper" style="background-color:#222">
@@ -161,8 +173,7 @@ $textos = idioma(0, $_SESSION['idioma']);
     </div>
     <!-- /#wrapper -->
 
-    <!-- jQuery -->
-    <script src="js/jquery.js"></script>
+    
 
     <!-- Bootstrap Core JavaScript -->
     <script src="js/bootstrap.min.js"></script>
