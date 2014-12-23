@@ -205,16 +205,16 @@ $codAsig = $_REQUEST['codAsig'];
                                     <li class="list-group-item">
 
 										<div class="form-group">
-										<label for="filterText" class="col-md-1 control-label"><?php echo $textos[8]; //Filtro:?> </label>
+										<label for="filterText" class="col-md-1 control-label"><?php echo $textos[13]; //Filtro:?> </label>
 											<div class="col-md-5">
-												<input type="text" id="filtro" class="form-control" name="texto" placeholder="<?php echo $textos[8]; //Filtro:?>">
+												<input type="text" id="filtro" class="form-control" name="texto" placeholder="<?php echo $textos[13]; //Filtro:?>">
 											</div>
 
 										<div class="col-md-3">
 										<select id="campo" name="campo" class="form-control">
-											<option  selected value="nombreUsuario"><?php echo $textos[7]; //Nombre?></option>
+											<option  selected value="nombreUsuario"><?php echo $textos[12]; //Nombre?></option>
 											<option value="dniUsuario">Dni</option>
-											<option value="apellidoUsuario"><?php echo $textos[10]; //Apellidos?></option>
+											<option value="apellidoUsuario"><?php echo $textos[15]; //Apellidos?></option>
 										</select>
 
 										</div>
