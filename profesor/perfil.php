@@ -34,6 +34,12 @@ $textos = idioma(15, $_SESSION['idioma']);
 
         <!-- Custom Fonts -->
         <link href="../font-awesome-4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+		
+		<!-- jQuery -->
+		<script src="../js/jquery.js"></script>
+	
+		<!-- notify -->
+		<script src="../js/notify.js"></script>
 
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -54,7 +60,7 @@ $textos = idioma(15, $_SESSION['idioma']);
 
 
             //Comprobaciones de "email", no se puede registrar nadie sin email, ademas el formato del email debe ser valido
-            if (((oldPassword.length >= 6) && (oldPassword.length < 15)) && ((newPassword.length >= 6) && (newPassword.length < 15)) && ((passwordRepeat.length >= 6) && (passwordRepeat.length < 15)) && (newPassword == passwordRepeat)) {
+            if (((oldPassword.length >= 6) && (oldPassword.length < 15)) && ((newPassword.length==0) || (newPassword.length >= 6) && (newPassword.length < 15)) && ((passwordRepeat.length==0) || (passwordRepeat.length >= 6) && (passwordRepeat.length < 15)) && (newPassword == passwordRepeat)) {
                 boton_aceptar.removeAttribute("disabled", "disabled");
             }
             else {
@@ -67,13 +73,22 @@ $textos = idioma(15, $_SESSION['idioma']);
 			document.forms["perfilform"].elements["passwdAct"].value = (hex_md5(document.forms["perfilform"].elements["passwdAct"].value));
 			document.forms["perfilform"].elements["passwdNew"].value = (hex_md5(document.forms["perfilform"].elements["passwdNew"].value));
 			
-		document.forms["perfilform"].submit();
-		
-		
-		
+			document.forms["perfilform"].submit();
 		}
+		
+		function showMsg() {
+			msg = "<?php echo (isset($_GET['msg'])?$_GET['msg']:''); ?>";
+			
+			if(msg == "bpass") {
+				$.notify("La contraseña especificada es incorrecta", "warn");
+			} else if(msg == "mod"){
+				$.notify("Los datos se han guardado correctamente", "success");
+			} 
+		}
+		
     </script>
-    <body>
+	
+    <body onload="showMsg();">
 
         <div id="wrapper">
 
@@ -165,8 +180,7 @@ $textos = idioma(15, $_SESSION['idioma']);
     </div>
     <!-- /#wrapper -->
 
-    <!-- jQuery -->
-    <script src="../js/jquery.js"></script>
+    
 
     <!-- Bootstrap Core JavaScript -->
     <script src="../js/bootstrap.min.js"></script>

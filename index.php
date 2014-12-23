@@ -32,6 +32,9 @@ $textos = idioma(0, $_SESSION['idioma']);
 
 		<!-- jQuery -->
 		<script src="js/jquery.js"></script>
+		
+		<!-- notify -->
+		<script src="../js/notify.js"></script>
 	
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -82,10 +85,18 @@ $textos = idioma(0, $_SESSION['idioma']);
 				document.forms["loginform"].submit();
 				}
 			}
+			
+			function showMsg() {
+				msg = "<?php echo (isset($_GET['msg'])?$_GET['msg']:''); ?>";
+				
+				if(msg == "nouser") {
+					$.notify("Usuario o contraseña incorrectos!!", "warn");
+				}
+			}
 		</script>
     </head>
     
-    <body>
+    <body onload="showMsg();">
 
         <div id="page-wrapper" style="background-color:#222">
 

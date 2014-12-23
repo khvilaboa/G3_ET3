@@ -1,30 +1,31 @@
-<? session_start()?>
 <?php
-
+session_start();
 include_once "../clases/Usuario_class.php";
 
 $link = Conectarse();
 $email = $_SESSION['userLogin'];
+$tipo = $_SESSION['userTipo'];
 
-$sql = "Select * from Usuario where emailUsuario='" . $email . "'";
-$resultado = mysql_query($sql);
-$row = mysql_fetch_array($resultado);
+$user = new usuario($email, '', '', '', '', '');
+$user->Rellenar();
 
-$nombre = $_POST["name"];
-$apellidos = $_POST["surname"];
-$dni = $row['dniUsuario'];
-$password = $_POST["newPassword"];
-$oldpassword = $_POST["actualPassword"];
-$tipo = $row['tipoUsuario'];
-
-$user = new usuario($email, $nombre, $password, $apellidos, $dni, $tipo);
-if($_SESSION['userPass'] == $oldpassword)
-    $user->modificar();
-else{
-	if($tipo == 'Alumno')
-    header("Location:../alumno/perfil.php");
-	else
-    header("Location:../profesor/perfil.php");
+if($_POST["actualPassword"] == $user->getPassword()) {
+	$user->setNombre($_POST["name"]);
+	$user->setApellido($_POST["surname"]);
+	if($_POST["newPassword"]!=md5('')) $user->setPassword($_POST["newPassword"]);
+	$user->modificar();
 	
+	if($tipo == 'Alumno') {
+		header("Location:../alumno/perfil.php?msg=mod");
+	} else {
+		header("Location:../profesor/perfil.php?msg=mod");
 	}
+} else {
+	if($tipo == 'Alumno') {
+		header("Location:../alumno/perfil.php?msg=bpass");
+	} else {
+		header("Location:../profesor/perfil.php?msg=bpass");
+	}
+}
+
 ?>

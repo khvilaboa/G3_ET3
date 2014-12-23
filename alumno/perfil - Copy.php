@@ -6,11 +6,9 @@ session_start();
 include('../MultiLanguage/FuncionIdioma.php');
 include('../nav.php');
 
-
-
 //$_SESSION['idioma']='ENG';
 
-$textos = idioma(15, $_SESSION['idioma']);
+$textos = idioma(9, $_SESSION['idioma']);
 ?>
 <html lang="en">
     <head>
@@ -34,12 +32,6 @@ $textos = idioma(15, $_SESSION['idioma']);
 
         <!-- Custom Fonts -->
         <link href="../font-awesome-4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-		
-		<!-- jQuery -->
-		<script src="../js/jquery.js"></script>
-	
-		<!-- notify -->
-		<script src="../js/notify.js"></script>
 
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -60,7 +52,7 @@ $textos = idioma(15, $_SESSION['idioma']);
 
 
             //Comprobaciones de "email", no se puede registrar nadie sin email, ademas el formato del email debe ser valido
-            if (((oldPassword.length >= 6) && (oldPassword.length < 15)) && ((newPassword.length==0) || (newPassword.length >= 6) && (newPassword.length < 15)) && ((passwordRepeat.length==0) || (passwordRepeat.length >= 6) && (passwordRepeat.length < 15)) && (newPassword == passwordRepeat)) {
+            if (((oldPassword.length >= 6) && (oldPassword.length < 15)) && ((newPassword.length >= 6) && (newPassword.length < 15)) && ((passwordRepeat.length >= 6) && (passwordRepeat.length < 15)) && (newPassword == passwordRepeat)) {
                 boton_aceptar.removeAttribute("disabled", "disabled");
             }
             else {
@@ -73,22 +65,13 @@ $textos = idioma(15, $_SESSION['idioma']);
 			document.forms["perfilform"].elements["passwdAct"].value = (hex_md5(document.forms["perfilform"].elements["passwdAct"].value));
 			document.forms["perfilform"].elements["passwdNew"].value = (hex_md5(document.forms["perfilform"].elements["passwdNew"].value));
 			
-			document.forms["perfilform"].submit();
-		}
+		document.forms["perfilform"].submit();
 		
-		function showMsg() {
-			msg = "<?php echo (isset($_GET['msg'])?$_GET['msg']:''); ?>";
-			
-			if(msg == "bpass") {
-				$.notify("La contraseña especificada es incorrecta", "warn");
-			} else if(msg == "mod"){
-				$.notify("Los datos se han modificado correctamente", "success");
-			} 
-		}
 		
+		
+		}
     </script>
-	
-    <body onload="showMsg();">
+    <body>
 
         <div id="wrapper">
 
@@ -102,9 +85,9 @@ $textos = idioma(15, $_SESSION['idioma']);
                     <div class="row">
                         <div class="col-lg-12">
 
-                            <h1 class="page-header ex-title"> <?php echo $textos[6]; //Perfil ?> </h1>
+                            <h1 class="page-header ex-title"> <?php echo $textos[7]; //Perfil ?> </h1>
                             <div class="panel panel-default">
-                                <div class="panel-heading ex-panel-header"><?php echo $textos[7]; //Gesti&oacute;n de perfil ?></div>
+                                <div class="panel-heading ex-panel-header"><?php echo $textos[8]; //Gesti&oacute;n de perfil ?></div>
                                 <div class="panel-body">
                                     <form id="perfilform" METHOD="POST" ACTION="../controller/controllerPerfil.php" class="form-horizontal" role="form">
                                         <?php
@@ -119,23 +102,23 @@ $textos = idioma(15, $_SESSION['idioma']);
                                         $row = mysql_fetch_array($resultado);
                                         ?>
                                         <div class="form-group">
-                                            <label for="passwdAct" class="col-lg-2 control-label"><?php echo $textos[8]; //Contrase&ntilde;a actual ?></label>
+                                            <label for="passwdAct" class="col-lg-2 control-label"><?php echo $textos[9]; //Contrase&ntilde;a actual ?></label>
                                             <div class="col-lg-10">
-                                                <input type="password" name="actualPassword" onKeyUp="validar()" class="form-control" id="passwdAct" value="" placeholder="<?php echo $textos[8]; //Contrase&ntilde;a actual ?>">
+                                                <input type="password" name="actualPassword" onKeyUp="validar()" class="form-control" id="passwdAct" value="" placeholder="<?php echo $textos[9]; //Contrase&ntilde;a actual ?>">
                                             </div>
                                         </div>
 
                                         <div class="form-group">
-                                            <label for="passwdNew" class="col-lg-2 control-label"><?php echo $textos[9]; //Nueva contrase&ntilde;a ?></label>
+                                            <label for="passwdNew" class="col-lg-2 control-label"><?php echo $textos[10]; //Nueva contrase&ntilde;a ?></label>
                                             <div class="col-lg-10">
-                                                <input type = "password" name = "newPassword" onKeyUp="validar()" class = "form-control" id = "passwdNew" value="" placeholder = "<?php echo $textos[9]; //Nueva contrase&ntilde;a ?>">
+                                                <input type = "password" name = "newPassword" onKeyUp="validar()" class = "form-control" id = "passwdNew" value="" placeholder = "<?php echo $textos[10]; //Nueva contrase&ntilde;a ?>">
                                             </div>
                                         </div>
 
                                         <div class="form-group">
-                                            <label for="passwdRep" class="col-lg-2 control-label"><?php echo $textos[10]; //Repetir contrase&ntilde;a ?></label>
+                                            <label for="passwdRep" class="col-lg-2 control-label"><?php echo $textos[12]; //Repetir contrase&ntilde;a ?></label>
                                             <div class="col-lg-10">
-                                                <input type="password" name="repeatPassword" onKeyUp="validar()" class="form-control" id="passwdRep" value="" placeholder="<?php echo $textos[10]; //Repetir contrase&ntilde;a ?>">
+                                                <input type="password" name="repeatPassword" onKeyUp="validar()" class="form-control" id="passwdRep" value="" placeholder="<?php echo $textos[12]; //Repetir contrase&ntilde;a ?>">
                                             </div>
                                         </div>
 
@@ -180,7 +163,8 @@ $textos = idioma(15, $_SESSION['idioma']);
     </div>
     <!-- /#wrapper -->
 
-    
+    <!-- jQuery -->
+    <script src="../js/jquery.js"></script>
 
     <!-- Bootstrap Core JavaScript -->
     <script src="../js/bootstrap.min.js"></script>

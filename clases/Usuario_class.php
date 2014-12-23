@@ -138,6 +138,8 @@ class usuario {
         $link = Conectarse();
         $sql = "select * from Usuario where emailUsuario = '" . $email . "'";
         $resultado = mysql_query($sql);
+		
+		echo $sql;
 
         $row = mysql_fetch_array($resultado);
         if ($row["passwordUsuario"] == $pass) {
@@ -157,14 +159,8 @@ class usuario {
                 header("Location:../admin/listaAsignaturas.php");
             }
         } else {
-            header("Location:../index.php");
+            header("Location:../index.php?msg=nouser");
         }
-
-
-        echo "Usuario no existente en la base de datos";
-
-
-        return $resultado;
     }
 
     //Presenta en pantalla los datos que se le pasan en un recordset
@@ -201,12 +197,6 @@ class usuario {
             mysql_query($sql);
 			$_SESSION['userName'] = $this->nombre;
 			$_SESSION['userPass'] = $this->pass;
-            if ($this->TipoUser == 'Alumno') {
-                header("Location:../alumno/listaAsignaturas.php");
-            }
-            if ($this->TipoUser == 'Profesor') {
-                header("Location:../profesor/listaAsignaturas.php");
-            }
         } else
             echo "<br>No existe un usuario con ese email<br>";
     }
