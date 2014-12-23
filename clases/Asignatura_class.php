@@ -213,37 +213,46 @@ class asignatura {
         }
     }
 	
-	public static function verProf($codAsig, $text = '', $campo = '') {
-        $sql = "SELECT dniUsuario, nombreUsuario, apellidoUsuario, emailUsuario FROM usuario WHERE tipoUsuario='Profesor'";
+	public static function verProfNoImp($codAsig, $text = '', $campo = '') {
+        $sql = "SELECT dniUsuario, nombreUsuario, apellidoUsuario, emailUsuario FROM Usuario WHERE tipoUsuario = 'Profesor' 
+		AND NOT emailUsuario IN (SELECT u.emailUsuario FROM Usuario u, ProImparteAsi p, Asignatura a WHERE u.emailUsuario=p.emailUsuario 
+		AND p.codAsignatura=a.codAsignatura AND a.codAsignatura = \"" . $codAsig . "\")";
 
         if ($text != '' && $campo != '')
             $sql .= " and " . $campo . " LIKE '%" . $text . "%'";
 
         $resultado = mysql_query($sql);
-
+		
 		$contPS = 0;
         while ($row = mysql_fetch_array($resultado)) {
             echo "<tr><td>" . $row['dniUsuario'] . "</td>";
             echo "<td>" . $row['apellidoUsuario'] . ", " . $row['nombreUsuario'] . "</td>";
             echo "<td><input type='checkbox' name='emailU" . $contPS . "' value='" . $row['emailUsuario'] . "'></td></tr>";
+			$contPS+=1;
         }
+		
+		echo "<input type=\"hidden\" name=\"contP\" value=\"" . $contPS . "\"/>";
     }
 	
 	public static function verProfImp($codAsig, $text = '', $campo = '') {
-        $sql = "SELECT dniUsuario, nombreUsuario, apellidoUsuario, usuario.emailUsuario FROM usuario, asignatura, aluinscritoasi  
-			WHERE usuario.emailUsuario=aluinscritoasi.emailUsuario AND asignatura.codAsignatura=aluinscritoasi.codAsignatura 
-			AND aluinscritoasi.aceptado='F' AND asignatura.codAsignatura='" . $codAsig . "'";
+        $sql = "SELECT dniUsuario, nombreUsuario, apellidoUsuario, emailUsuario FROM Usuario WHERE tipoUsuario = 'Profesor' 
+		AND emailUsuario IN (SELECT u.emailUsuario FROM Usuario u, ProImparteAsi p, Asignatura a WHERE u.emailUsuario=p.emailUsuario 
+		AND p.codAsignatura=a.codAsignatura AND a.codAsignatura = \"" . $codAsig . "\")";
 
         if ($text != '' && $campo != '')
-            $sql .= " and usuario." . $campo . " LIKE '%" . $text . "%'";
+            $sql .= " and " . $campo . " LIKE '%" . $text . "%'";
 
         $resultado = mysql_query($sql);
-
+		
+		$contPS = 0;
         while ($row = mysql_fetch_array($resultado)) {
             echo "<tr><td>" . $row['dniUsuario'] . "</td>";
             echo "<td>" . $row['apellidoUsuario'] . ", " . $row['nombreUsuario'] . "</td>";
-            echo "<td><input type='checkbox' name='aluPreIns[]' value='" . $row['emailUsuario'] . "'></td></tr>";
+            echo "<td><input type='checkbox' name='emailU" . $contPS . "' value='" . $row['emailUsuario'] . "'></td></tr>";
+			$contPS+=1;
         }
+		
+		echo "<input type=\"hidden\" name=\"contPS\" value=\"" . $contPS . "\"/>";
     }
 
     /* public static function verAluPreinsFil($asig,$text,$campo) {

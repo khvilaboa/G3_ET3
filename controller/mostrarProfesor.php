@@ -7,6 +7,6 @@
 	$campo = $_REQUEST['campo'];
 	$text = $_REQUEST['text'];
 	
-	echo asignatura::verProf($ca, $text, $campo);
+	echo asignatura::verProfNoImp($ca, $text, $campo);
 	
 ?>

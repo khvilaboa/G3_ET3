@@ -8,6 +8,7 @@ include('../nav.php');
 // La siguiente linea se descomenta para hacer prueba sin pasar por login, una vez que este inicializada debe comentarse otra vez
 //$_SESSION['idioma']='ENG';
 $textos = idioma(1, $_SESSION['idioma']);
+$codAsig = $_REQUEST['codAsig'];
 ?>
 
 <html lang="en">
@@ -40,6 +41,25 @@ $textos = idioma(1, $_SESSION['idioma']);
             <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
             <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
         <![endif]-->
+		
+		<!-- jQuery -->
+		<script src="../js/jquery.js"></script>
+		
+		<script>
+			$(document).ready(function(){
+				$("#buscar").click(function(){
+					con = document.getElementById("prof");
+					ca = "<?php echo $codAsig;?>";
+					text = document.getElementById("filtro").value;
+					campo = document.getElementById("campo");
+					campo = campo.options[campo.selectedIndex].value;
+					
+					$.get("../controller/mostrarProfesor.php?text=" + text + "&campo=" + campo + "&ca=" + ca,function(data){
+						con.innerHTML = data;
+					});
+				}); 
+			});
+		</script>
 
     </head>
 
@@ -133,25 +153,15 @@ $textos = idioma(1, $_SESSION['idioma']);
                                                                     <th>	</th>
                                                                 </tr>
                                                             </thead>
+															<tbody id="prof">
 
-    <?php
-    $contP = 0;
-    while ($row = mysql_fetch_array($usuarioN)) {
-        echo"<tbody";
-        echo "<tr>";
-        echo "<td>" . $row['dniUsuario'] . "</td>";
-        echo "<td>" . $row['nombreUsuario'] . "</td>";
-        echo "<td><input type='checkbox' name='emailU" . $contP++ . "' value='" . $row['emailUsuario'] . "'/><br><br></td>";
-        echo "</tr>";
-
-        echo"</tbody>";
-    }
-    ?>
+														<?php asignatura::verProfNoImp($codAsig); ?>
+														</tbody>
                                                         </table>
                                                 </div>
                                             </div>
                                             <div class="col-md-1 text-center">
-                                                <input type="hidden" name="contP" value="<?php echo $contP; ?>"/>
+
                                                 <input type="hidden" name="elemento" value="asignatura"/>
                                                 <input type="hidden" name="anho" value="<?php echo $asignatura->getCurso(); ?>"/>
                                                 <input type="hidden" name="asignatura" value="<?php echo $asignatura->getCodigo(); ?>"/>
@@ -178,24 +188,11 @@ $textos = idioma(1, $_SESSION['idioma']);
                                                                 <th>	</th>
                                                             </tr>
                                                         </thead>
-
-    <?php
-    $contPS = 0;
-    while ($row = mysql_fetch_array($usuarioS)) {
-        echo"<tbody";
-        echo "<tr>";
-        echo "<td>" . $row['dniUsuario'] . "</td>";
-        echo "<td>" . $row['nombreUsuario'] . "</td>";
-        echo "<td><input type='checkbox' name='emailU" . $contPS++ . "' value='" . $row['emailUsuario'] . "'/><br><br></td>";
-        echo "</tr>";
-
-        echo"</tbody>";
-    }
-    ?>
+														<tbody id="profimp">
+													<?php asignatura::verProfImp($codAsig); ?>
+													</tbody>
                                                     </table>
 
-
-                                                    <input type="hidden" name="contPS" value="<?php echo $contPS; ?>"/>
                                                     <input type="hidden" name="elemento" value="asignatura"/>
                                                     <input type="hidden" name="asignatura" value="<?php echo $asignatura->getCodigo(); ?>"/>
 
@@ -207,24 +204,27 @@ $textos = idioma(1, $_SESSION['idioma']);
 
                                     <li class="list-group-item">
 
-                                        <div class="form-group">
-                                            <label for="filterText" class="col-md-1 control-label"><?php echo $textos[13]; //Filtro: ?> </label>
-                                            <div class="col-md-7">
-                                                <input type="name" class="form-control" id="filterText" placeholder="<?php echo $textos[14]; //Filtro de b&uacute;squeda ?>">
-                                            </div>
+										<div class="form-group">
+										<label for="filterText" class="col-md-1 control-label"><?php echo $textos[8]; //Filtro:?> </label>
+											<div class="col-md-5">
+												<input type="text" id="filtro" class="form-control" name="texto" placeholder="<?php echo $textos[8]; //Filtro:?>">
+											</div>
 
-                                            <div class="col-md-3">
-                                                <select name="ad" class="form-control">
-                                                    <option selected> ---</option>
-                                                    <option value="1.htm"><?php echo $textos[12]; //Nombre ?></option>
-                                                    <option value="2.htm">Dni</option>
-                                                    <option value="3.htm"><?php echo $textos[15]; //Apellidos ?></option>
-                                                </select>
+										<div class="col-md-3">
+										<select id="campo" name="campo" class="form-control">
+											<option  selected value="nombreUsuario"><?php echo $textos[7]; //Nombre?></option>
+											<option value="dniUsuario">Dni</option>
+											<option value="apellidoUsuario"><?php echo $textos[10]; //Apellidos?></option>
+										</select>
 
-                                            </div>
-                                        </div>
-                                        <br>
-                                    </li>
+										</div>
+										<div class="col-md-2">
+										  <button class='btn btn-default btn-lg' id="buscar"><span class="glyphicon glyphicon-search"></span></button>
+										</div>
+										
+										</div>
+										<br>
+									</li>
 
                                 </div>
 
@@ -288,92 +288,6 @@ if (!isset($_GET['codAsig'])) {
                                             </form>
                                         </div></div>		
 
-                                    <div class="panel panel-default">
-                                        <div class="panel-heading ex-panel-header"><?php echo $textos[11]; //Profesores de la asignatura ?></div>
-
-                                        <li class="list-group-item">
-                                            <div class="row">
-                                                <div class="col-md-5">
-                                                    <div class="table-responsive">
-                                                        <form method="post" class="form-horizontal" role="form" action="../controller/controladorAdmin.php">	
-                                                            <table class="table table-striped table-bordered table-hover table-condensed ">
-                                                                <thead>
-                                                                    <tr>
-                                                                        <th>DNI</th>
-                                                                        <th><?php echo $textos[12]; //Nombre ?></th>
-                                                                        <th>	</th>
-                                                                    </tr>
-                                                                </thead>
-
-    <?php
-    while ($row = mysql_fetch_array($usuario)) {
-        echo "<tbody ";
-        echo "<tr>";
-        echo "<td>" . $row['dniUsuario'] . "</td>";
-        echo "<td>" . $row['nombreUsuario'] . "</td>";
-        echo "<td><input type='checkbox' name='selection' value='selection'>  <br><br></td>	";
-        echo "</tr>";
-        echo "</tbody>";
-    }
-    ?>
-
-                                                            </table>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-1 text-center">
-                                                    <a href="#" class="btn ex-button"> > </a> 	
-                                                    </form>
-
-
-                                                    <form method="post" class="form-horizontal" role="form" action="../controller/controladorAdmin.php">	
-                                                        <a href="#" class="btn ex-button"> < </a><br>
-                                                        </div>
-
-                                                        <div class="col-md-5">
-                                                            <div class="table-responsive">
-                                                                <table class="table table-striped table-bordered table-hover table-condensed ">
-                                                                    <thead>
-                                                                        <tr>
-                                                                            <th>DNI</th>
-                                                                            <th><?php echo $textos[12]; //Nombre ?></th>
-                                                                            <th>	</th>
-                                                                        </tr>
-                                                                    </thead>
-
-
-
-                                                                </table>
-                                                                </form>
-                                                            </div>
-                                                        </div>
-                                                        </li>
-
-                                                        <li class="list-group-item">
-
-                                                            <div class="form-group">
-                                                                <label for="filterText" class="col-md-1 control-label"><?php echo $textos[13]; //Filtro: ?></label>
-                                                                <div class="col-md-7">
-                                                                    <input type="name" class="form-control" id="filterText" placeholder="<?php echo $textos[14]; //Filtro de b&uacute;squeda ?>">
-                                                                </div>
-
-                                                                <div class="col-md-3">
-                                                                    <select name="ad" class="form-control">
-                                                                        <option selected> ---</option>
-                                                                        <option value="1.htm"><?php echo $textos[12]; //Nombre ?></option>
-                                                                        <option value="2.htm">Dni</option>
-                                                                        <option value="3.htm"><?php echo $textos[15]; //Apellidos ?></option>
-                                                                    </select>
-
-                                                                </div>
-                                                            </div>
-                                                            <br>
-                                                        </li>
-
-                                                </div>
-
-
-
-                                            </div>
 
                                             <div class="pull-right">
                                                 <a href="listaAsignaturas.php" class="btn ex-button"><?php echo $textos[16]; //Volver ?></a>  							
@@ -396,9 +310,6 @@ if (!isset($_GET['codAsig'])) {
 
                 </div>
                 <!-- /#wrapper -->
-
-                <!-- jQuery -->
-                <script src="../js/jquery.js"></script>
 
                 <!-- Bootstrap Core JavaScript -->
                 <script src="../js/bootstrap.min.js"></script>
