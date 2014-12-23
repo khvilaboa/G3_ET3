@@ -173,19 +173,8 @@
 				
 				<?php 
 				if(isset($_GET['emailU'])){
-					$usuario = new usuario('','','','','','');
-					$sql = "select * from Usuario where emailUsuario='".$_GET['emailU']."'";
-					$resultado=mysql_query($sql);
-					while($row = mysql_fetch_array($resultado)){
-		
-						$usuario->setEmail($row['emailUsuario']);
-						$usuario->setNombre($row['nombreUsuario']);
-						$usuario->setPassword($row['passwordUsuario']);
-						$usuario->setApellido($row['apellidoUsuario']);
-						$usuario->setDni($row['dniUsuario']);
-						$usuario->setTipo($row['tipoUsuario']);
-									
-					}				
+					$usuario = new usuario($_GET['emailU'],'','','','','');
+					$usuario->Rellenar();
 				?>
 				
 				
@@ -227,7 +216,7 @@
 										<div class="form-group">
 											<label class="col-sm-2 control-label"><?php echo $textos[10];//Tipo:?></label>
 											<div class="col-sm-10">
-												<select class="form-control" name="tipo"  <?php if($usuario->getTipo()=="Administrador") echo "disabled"?>>
+												<select class="form-control" name="tipo" disabled>
 												<?php if($usuario->getTipo()=="Administrador") echo '<option value="Administrador">Administrador</option>'?>
 												<option value="Alumno" <?php if($usuario->getTipo()=="Alumno") echo " selected";?>><?php echo $textos[11];//Alumno?></option>
 												<option value="Profesor" <?php if($usuario->getTipo()=="Profesor") echo " selected";?>><?php echo $textos[12];//Profesor?></option>
