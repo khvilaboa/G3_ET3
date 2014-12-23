@@ -212,6 +212,39 @@ class asignatura {
             echo "<td><input type='checkbox' name='aluPreIns[]' value='" . $row['emailUsuario'] . "'></td></tr>";
         }
     }
+	
+	public static function verProf($codAsig, $text = '', $campo = '') {
+        $sql = "SELECT dniUsuario, nombreUsuario, apellidoUsuario, emailUsuario FROM usuario WHERE tipoUsuario='Profesor'";
+
+        if ($text != '' && $campo != '')
+            $sql .= " and " . $campo . " LIKE '%" . $text . "%'";
+
+        $resultado = mysql_query($sql);
+
+		$contPS = 0;
+        while ($row = mysql_fetch_array($resultado)) {
+            echo "<tr><td>" . $row['dniUsuario'] . "</td>";
+            echo "<td>" . $row['apellidoUsuario'] . ", " . $row['nombreUsuario'] . "</td>";
+            echo "<td><input type='checkbox' name='emailU" . $contPS . "' value='" . $row['emailUsuario'] . "'></td></tr>";
+        }
+    }
+	
+	public static function verProfImp($codAsig, $text = '', $campo = '') {
+        $sql = "SELECT dniUsuario, nombreUsuario, apellidoUsuario, usuario.emailUsuario FROM usuario, asignatura, aluinscritoasi  
+			WHERE usuario.emailUsuario=aluinscritoasi.emailUsuario AND asignatura.codAsignatura=aluinscritoasi.codAsignatura 
+			AND aluinscritoasi.aceptado='F' AND asignatura.codAsignatura='" . $codAsig . "'";
+
+        if ($text != '' && $campo != '')
+            $sql .= " and usuario." . $campo . " LIKE '%" . $text . "%'";
+
+        $resultado = mysql_query($sql);
+
+        while ($row = mysql_fetch_array($resultado)) {
+            echo "<tr><td>" . $row['dniUsuario'] . "</td>";
+            echo "<td>" . $row['apellidoUsuario'] . ", " . $row['nombreUsuario'] . "</td>";
+            echo "<td><input type='checkbox' name='aluPreIns[]' value='" . $row['emailUsuario'] . "'></td></tr>";
+        }
+    }
 
     /* public static function verAluPreinsFil($asig,$text,$campo) {
       $sql = "SELECT dniUsuario, nombreUsuario, apellidoUsuario FROM usuario, asignatura, aluinscritoasi
