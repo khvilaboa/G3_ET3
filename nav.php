@@ -11,7 +11,7 @@ function showNav($textos) {
 						<span class=\"icon-bar\"></span>
 						<span class=\"icon-bar\"></span>
 					</button> 
-					<a class=\"navbar-brand\" href=\"listaAsignaturas.php\">ESEIXesti&oacute;n - " . (($_SESSION['userTipo']=="Alumno")?$textos[11]:(($_SESSION['userTipo']=="Profesor")?$textos[2]:?$textos[22]))/* Alumno/Profesor/Administrador */ . "</a>
+					<a class=\"navbar-brand\" href=\"listaAsignaturas.php\">ESEIXesti&oacute;n - " . (($_SESSION['userTipo']=="Alumno")?$textos[11]:(($_SESSION['userTipo']=="Profesor")?$textos[2]:$textos[22]))/* Alumno/Profesor/Administrador */ . "</a>
 				</div>
 				<!-- Top Menu Items -->
 				<ul class=\"nav navbar-right top-nav\">
