@@ -72,7 +72,7 @@ $textos = idioma(10, $_SESSION['idioma']);
                     <!-- Page Heading -->
                     <div class="row">
                         <div class="col-lg-12">
-                            <h1 class="page-header ex-title"> Portfolio </h1>
+                            <h1 class="page-header ex-title"><?php echo $textos[6]; // Portfolio?>  </h1>
                             <div class="panel panel-default">
 
                                 <div class="panel-heading ex-panel-header" style="background:rgba(1,0,0,1);color:#999"><?php echo $textos[7]; ?></div> <!--Lista de trabajos-->
@@ -121,7 +121,7 @@ $textos = idioma(10, $_SESSION['idioma']);
                                             ?>
                                             <p>URL: <?php echo "<a id=\"cosaPaCopiar\" href=\"../portfolio.php?" . $login . "\">Enlace</a>"; ?></p><br>
                                             <div class="pull-left">
-                                                <a id="copy-button" class="btn ex-button" href="#" data-clipboard-text="<?php echo $_SERVER['SERVER_ADDR'].$_SERVER['PHP_SELF']."/portfolio.php?" . $login; ?>">Copiame</a><!-- Guardar -->
+                                                <a id="copy-button" class="btn ex-button" href="#" data-clipboard-text="<?php echo $_SERVER['SERVER_ADDR'].$_SERVER['PHP_SELF']."/portfolio.php?" . $login; ?>"><?php echo $textos[17]; //Copiame?></a><!-- Guardar -->
 
                                             </div>
 
