@@ -38,7 +38,7 @@ if (isset($_REQUEST['accion'])) {
                 case "usuario":
                     $usuario = new usuario($_REQUEST['email'], $_REQUEST['nombre'], $_REQUEST['pass'], $_REQUEST['apellidos'], $_REQUEST['dni'], $_REQUEST['tipo']);
                     $usuario->modificar();
-                    $usuario->modificarTipoUsuario($_REQUEST['tipo']);
+                    
                     header("Location: ../admin/listaUsuarios.php");
                     break;
 
@@ -46,7 +46,7 @@ if (isset($_REQUEST['accion'])) {
                 case "asignatura":
 
                     $asignatura = new asignatura("", "", "", "");
-                    $sql = "select * from asignatura where codAsignatura='" . $_REQUEST['asignatura'] . "'";
+                    $sql = "select * from Asignatura where codAsignatura='" . $_REQUEST['asignatura'] . "'";
                     $resultado = mysql_query($sql);
                     while ($row = mysql_fetch_array($resultado)) {
 
@@ -60,13 +60,13 @@ if (isset($_REQUEST['accion'])) {
                     header("Location: ../admin/asignatura.php?codAsig=" . $_REQUEST['asignatura'] . "");
 
                     break;
-            }
+            
 
-        default:
-            //header("Location: ../admin/listaAsignaturas.php");
+					default:
+					header("Location: ../admin/listaAsignaturas.php");
 
-            break;
-
+					break;
+			}
             break;
 
         case 'Crear':
@@ -106,7 +106,7 @@ if (isset($_REQUEST['accion'])) {
                 if (isset($_REQUEST['emailU' . $i])) {
                     $emailU = $_REQUEST['emailU' . $i];
                     $anho = "" . $_REQUEST['anho'] . "-01-01";
-                    $sql = "INSERT INTO Proimparteasi (emailUsuario,codAsignatura,anhoImparte) VALUES ('" . $emailU . "','" . $_REQUEST['asignatura'] . "','" . $anho . "')";
+                    $sql = "INSERT INTO ProImparteAsi (emailUsuario,codAsignatura,anhoImparte) VALUES ('" . $emailU . "','" . $_REQUEST['asignatura'] . "','" . $anho . "')";
                     $resultado = mysql_query($sql);
                 }
             }
@@ -120,7 +120,7 @@ if (isset($_REQUEST['accion'])) {
             for ($i = 0; $i < $contPS; $i++) {
                 if (isset($_REQUEST['emailU' . $i])) {
                     $emailU = $_REQUEST['emailU' . $i];
-                    $sql = "DELETE FROM Proimparteasi WHERE emailUsuario='" . $emailU . "' and codAsignatura='" . $_REQUEST['asignatura'] . "'";
+                    $sql = "DELETE FROM ProImparteAsi WHERE emailUsuario='" . $emailU . "' and codAsignatura='" . $_REQUEST['asignatura'] . "'";
                     $resultado = mysql_query($sql);
                     echo "j";
                 }
