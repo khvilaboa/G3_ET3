@@ -251,7 +251,7 @@ class usuario {
             $sql = "select * from Asignatura where codAsignatura = '" . $codAsig . "'";
             $resultado = mysql_query($sql);
             if (mysql_num_rows($resultado) == 1) {
-                $sql = " UPDATE `aluinscritoasi` SET aceptado='T' WHERE emailUsuario = '" . $this->email . "' AND codAsignatura = '" . $codAsig . "'";
+                $sql = " UPDATE `AluInscritoAsi` SET aceptado='T' WHERE emailUsuario = '" . $this->email . "' AND codAsignatura = '" . $codAsig . "'";
                 mysql_query($sql);
             } else
                 echo "<br>No existe la asignatura<br>";
@@ -264,7 +264,7 @@ class usuario {
         $sql = "select * from Asignatura where codAsignatura = '" . $codAsig . "'";
         $resultado = mysql_query($sql);
         if (mysql_num_rows($resultado) == 1) {
-            $sql = " UPDATE `aluinscritoasi` SET aceptado='F' WHERE emailUsuario = '" . $this->email . "' AND codAsignatura = '" . $codAsig . "'";
+            $sql = " UPDATE `AluInscritoAsi` SET aceptado='F' WHERE emailUsuario = '" . $this->email . "' AND codAsignatura = '" . $codAsig . "'";
             mysql_query($sql);
         } 
     }

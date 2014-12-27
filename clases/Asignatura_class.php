@@ -197,9 +197,9 @@ class asignatura {
     }
 
     public static function verAluPreins($codAsig, $text = '', $campo = '') {
-        $sql = "SELECT dniUsuario, nombreUsuario, apellidoUsuario, usuario.emailUsuario FROM usuario, asignatura, aluinscritoasi  
-			WHERE usuario.emailUsuario=aluinscritoasi.emailUsuario AND asignatura.codAsignatura=aluinscritoasi.codAsignatura 
-			AND aluinscritoasi.aceptado='F' AND asignatura.codAsignatura='" . $codAsig . "'";
+        $sql = "SELECT dniUsuario, nombreUsuario, apellidoUsuario, Usuario.emailUsuario FROM Usuario, Asignatura, AluInscritoAsi  
+			WHERE Usuario.emailUsuario=AluInscritoAsi.emailUsuario AND Asignatura.codAsignatura=AluInscritoAsi.codAsignatura 
+			AND AluInscritoAsi.aceptado='F' AND Asignatura.codAsignatura='" . $codAsig . "'";
 
         if ($text != '' && $campo != '')
             $sql .= " and " . $campo . " LIKE '%" . $text . "%'";
@@ -278,9 +278,9 @@ class asignatura {
       } */
 
     public static function verAluIns($codAsig, $text = '', $campo = '') {
-        $sql = "SELECT dniUsuario, nombreUsuario, apellidoUsuario, usuario.emailUsuario FROM usuario, asignatura, aluinscritoasi  
-				WHERE usuario.emailUsuario=aluinscritoasi.emailUsuario AND asignatura.codAsignatura=aluinscritoasi.codAsignatura 
-				AND aluinscritoasi.aceptado='T' AND asignatura.codAsignatura='" . $codAsig . "'";
+        $sql = "SELECT dniUsuario, nombreUsuario, apellidoUsuario, Usuario.emailUsuario FROM Usuario, Asignatura, AluInscritoAsi  
+				WHERE Usuario.emailUsuario=AluInscritoAsi.emailUsuario AND Asignatura.codAsignatura=AluInscritoAsi.codAsignatura 
+				AND AluInscritoAsi.aceptado='T' AND Asignatura.codAsignatura='" . $codAsig . "'";
 
         if (!empty($text) && !empty($campo))
             $sql += " and " . $campo . " LIKE '%" . $text . "%'";

@@ -152,7 +152,7 @@ class trabajo {
 
     public static function verEntregas($asig, $trab) {
         $sql = "SELECT titulo, emailUsuario, observaciones, calificacion, codTrabajo, codAsignatura 
-		FROM `aluentregatra` 
+		FROM `AluEntregaTra` 
 		WHERE `codAsignatura`='" . $asig . "' AND codTrabajo='" . $trab . "'";
         $resultado = mysql_query($sql);
         echo mysql_error();
