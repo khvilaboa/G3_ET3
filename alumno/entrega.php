@@ -3,6 +3,7 @@
 session_start();
 include('../MultiLanguage/FuncionIdioma.php');
 include('../clases/Trabajo_class.php');
+include('../clases/Entrega_class.php');
 include('../clases/Asignatura_class.php');
 include('../nav.php');
 
@@ -15,6 +16,10 @@ $codTrab = $_REQUEST['ct'];
 
 $ent = new trabajo($codTrab, $codAsig, '', '', '');
 $ent->Rellenar();
+
+$user = $_SESSION['userLogin'];
+$entregable = new entrega($codAsig,$codTrab,$user,'','','','','');
+$entregable->Rellenar();
 
 $asig = new asignatura('', '', -1, $codAsig);
 $asig->Rellenar();
@@ -122,10 +127,9 @@ $asig->Rellenar();
                                     <div class="panel-heading ex-panel-header"><?php echo $textos[14]; //Correcci&oacute;n ?></div>
 
                                     <ul class="list-group">
-                                        <li class="list-group-item"><b><?php echo $textos[15]; //Nota: ?></b> 9</li>
-                                        <li class="list-group-item"><b><?php echo $textos[16]; //Observaci&oacute;n: ?></b> Comentarios del profesor que corrige la entrega</li>
+                                        <li class="list-group-item"><b><?php echo $textos[15]; //Nota: ?></b><?php echo $entregable->getCalificacion(); ?></li>
+                                        <li class="list-group-item"><b><?php echo $textos[16]; //Observaci&oacute;n: ?></b><?php echo $entregable->getObservacion(); ?></li>
                                     </ul>
-
                                 </div>
 
                             <?php } ?>

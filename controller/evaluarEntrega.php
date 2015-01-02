@@ -11,9 +11,9 @@
 	$ent = new entrega($codAsig, $codTrab, $email, '', '', '', '', '');
 	$ent->Rellenar();
 	
-	$sql = "UPDATE `aluentregatra` SET `observaciones` = '".$_GET['observaciones']."', `calificacion` = '".$_GET['nota']."' 
-	WHERE `aluentregatra`.`emailUsuario` = '".$email."' AND `aluentregatra`.`codAsignatura` = '".$codAsig."' 
-	AND `aluentregatra`.`codTrabajo` = '".$codTrab."';";
+	$sql = "UPDATE `AluEntregaTra` SET `observaciones` = '".$_GET['observaciones']."', `calificacion` = '".$_GET['nota']."' 
+	WHERE `AluEntregaTra`.`emailUsuario` = '".$email."' AND `AluEntregaTra`.`codAsignatura` = '".$codAsig."' 
+	AND `AluEntregaTra`.`codTrabajo` = '".$codTrab."';";
 	
 	$resultado = mysql_query($sql);
 	echo mysql_error();

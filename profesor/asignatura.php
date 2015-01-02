@@ -57,7 +57,7 @@
 		$(document).ready(function(){
 			$("#buscar").click(function(){
 				con = document.getElementById("alupreins");
-				ca = document.getElementById("ca").value;
+				ca = "<?php echo $codAsig;?>";
 				text = document.getElementById("filtro").value;
 				campo = document.getElementById("campo");
 				campo = campo.options[campo.selectedIndex].value;
@@ -112,6 +112,7 @@
 							<div class="row">
 							<div class="col-md-5">
 							<div class="table-responsive">
+							<FORM method="GET" ACTION="../controller/inscribirAlumno.php">
 							<table class="table table-striped table-bordered table-hover table-condensed">
 								<thead>
 									<tr> 
@@ -124,7 +125,7 @@
 									</tr>
 								</thead>
 								<tbody id="alupreins">
-									<FORM method="GET" ACTION="../controller/inscribirAlumno.php">
+									
 									<?php asignatura::verAluPreins($codAsig); ?>
 								</tbody>
 							</table>
