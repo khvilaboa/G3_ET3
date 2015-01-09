@@ -29,8 +29,8 @@ USE `ET3`;
 
 CREATE TABLE IF NOT EXISTS `AluEntregaTra` (
   `emailUsuario` varchar(40) NOT NULL,
-  `codAsignatura` varchar(40) NOT NULL,
-  `codTrabajo` varchar(40) NOT NULL,
+  `codAsignatura` varchar(80) NOT NULL,
+  `codTrabajo` varchar(80) NOT NULL,
   `fechaEntrega` date NOT NULL,
   `observaciones` varchar(256) DEFAULT NULL,
   `titulo` varchar(40) NOT NULL,
@@ -42,9 +42,6 @@ CREATE TABLE IF NOT EXISTS `AluEntregaTra` (
 -- Volcado de datos para la tabla `AluEntregaTra`
 --
 
-INSERT INTO `AluEntregaTra` (`emailUsuario`, `codAsignatura`, `codTrabajo`, `fechaEntrega`, `observaciones`, `titulo`, `calificacion`, `portfolio`) VALUES
-('asd@asd.com', 'CDAIng3', 'CDAIng3TrabajoFinal', '2014-12-15', 'nono mumal', 'MiTrabajoFinal', '3', 'F');
-
 -- --------------------------------------------------------
 
 --
@@ -53,7 +50,7 @@ INSERT INTO `AluEntregaTra` (`emailUsuario`, `codAsignatura`, `codTrabajo`, `fec
 
 CREATE TABLE IF NOT EXISTS `AluInscritoAsi` (
   `emailUsuario` varchar(40) NOT NULL,
-  `codAsignatura` varchar(40) NOT NULL,
+  `codAsignatura` varchar(80) NOT NULL,
   `anhoInscrito` int(1) NOT NULL,
   `aceptado` enum('T','F') NOT NULL DEFAULT 'F'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -61,10 +58,6 @@ CREATE TABLE IF NOT EXISTS `AluInscritoAsi` (
 --
 -- Volcado de datos para la tabla `AluInscritoAsi`
 --
-
-INSERT INTO `AluInscritoAsi` (`emailUsuario`, `codAsignatura`, `anhoInscrito`, `aceptado`) VALUES
-('asd@asd.com', 'CDAIng3', '2014-12-21', 'F'),
-('asd@asd.com', 'IUIng3', '2014-12-21', 'T');
 
 -- --------------------------------------------------------
 
@@ -83,10 +76,6 @@ CREATE TABLE IF NOT EXISTS `Asignatura` (
 -- Volcado de datos para la tabla `Asignatura`
 --
 
-INSERT INTO `Asignatura` (`codAsignatura`, `nomAsignatura`, `gradoAsignatura`, `cursoAsignatura`) VALUES
-('CDAIng3', 'CDA', 'Ingenieria Informatica', 3),
-('IUIng3', 'IU', 'Ingenieria Informatica', 3);
-
 -- --------------------------------------------------------
 
 --
@@ -95,7 +84,7 @@ INSERT INTO `Asignatura` (`codAsignatura`, `nomAsignatura`, `gradoAsignatura`, `
 
 CREATE TABLE IF NOT EXISTS `ProImparteAsi` (
   `emailUsuario` varchar(40) NOT NULL,
-  `codAsignatura` varchar(40) NOT NULL,
+  `codAsignatura` varchar(80) NOT NULL,
   `anhoImparte` int(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -106,7 +95,7 @@ CREATE TABLE IF NOT EXISTS `ProImparteAsi` (
 --
 
 CREATE TABLE IF NOT EXISTS `Trabajo` (
-  `codTrabajo` varchar(40) NOT NULL,
+  `codTrabajo` varchar(80) NOT NULL,
   `codAsignatura` varchar(80) NOT NULL,
   `nombreTrabajo` varchar(40) NOT NULL,
   `fechaLimiteTrabajo` date NOT NULL,
@@ -116,10 +105,6 @@ CREATE TABLE IF NOT EXISTS `Trabajo` (
 --
 -- Volcado de datos para la tabla `Trabajo`
 --
-
-INSERT INTO `Trabajo` (`codTrabajo`, `codAsignatura`, `nombreTrabajo`, `fechaLimiteTrabajo`, `descripcionTrabajo`) VALUES
-('CDAIng3TrabajoFinal', 'CDAIng3', 'TrabajoFinal', '2014-12-31', 'asdasdnono'),
-('IUIng3ET3', 'IUIng3', 'ET3', '2014-12-31', 'asdasdsisi');
 
 -- --------------------------------------------------------
 

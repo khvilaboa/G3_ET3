@@ -83,7 +83,7 @@ $resultado = trabajo::ConsultarUsuarioPublico($email);
                             </div>
 
                             <div class="panel-body">
-
+								<?php if($usuario->getPublico()=='T') {?>
                                 <div class="table-responsive">
                                     <table class="table table-striped table-bordered table-hover">
                                         <thead>
@@ -98,7 +98,6 @@ $resultado = trabajo::ConsultarUsuarioPublico($email);
                                             </tr>
                                         </thead>
                                         <tbody>
-                                        <form id="portfolio-form"class="form-horizontal" method="post" action="../controller/controllerPortfolio.php" role="form">
                                             <?php
                                            
                                             while ($row = mysql_fetch_array($resultado)) {
@@ -117,10 +116,12 @@ $resultado = trabajo::ConsultarUsuarioPublico($email);
 
                                             echo "<tbody>";
                                             echo "</table>";
-                                            echo "</div>";
-                                            echo "</div>";
 											?>
-                                        </form>
+										</div>
+										<?php } else { ?>
+										<br>El portfolio de este usuario no está disponible
+										<?php } ?>
+										</div>
                                         <br><br>
                                         </div>
                                 </div>

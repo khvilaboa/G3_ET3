@@ -12,6 +12,7 @@ class usuario {
     //Define el tipo de usuario (Profesor, etc)
     var $TipoUser;
 	var $correciones;
+	var $publico;
 
     //Constructor de la clase
     //parametros: el dni, el nombre y los apellidos
@@ -57,6 +58,10 @@ class usuario {
 	
 	function getCorreciones() {
         return $this->correciones;
+    }
+	
+	function getPublico() {
+        return $this->publico;
     }
 
     //setters
@@ -120,6 +125,7 @@ class usuario {
 			$this->dni = $row['dniUsuario'];
 			$this->TipoUser = $row['tipoUsuario'];
 			$this->correciones = $row['correccionesUsuario'];
+			$this->publico = $row['publicoUsuario'];
         }
     }
 

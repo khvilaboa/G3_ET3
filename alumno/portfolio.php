@@ -102,7 +102,7 @@ $textos = idioma(10, $_SESSION['idioma']);
                                                 $descripcion = mysql_fetch_array($resultado2);
                                                 echo "<tr>";
                                                 echo "<td><input " . (($row['portfolio'] == 'F') ? '' : 'checked') . " type=\"checkbox\" name=\"publico[]\" value='" . $row['codAsignatura'] . " " . $row['codTrabajo'] . "'></td>";
-                                                echo "<td><a href= ../uploads/" . $row['codAsignatura'] . "/" . $row['codTrabajo'] . "/" . $login . '~' . $row['titulo'] . ">" . str_replace("_"," ",substr($row['titulo'],strrpos($row['titulo'],"~")+1)) . "</a></td>";
+                                                echo "<td><a href= ../uploads/" . $row['codAsignatura'] . "/" . $row['codTrabajo'] . "/" . $row['titulo'] . ">" . str_replace("_"," ",substr($row['titulo'],strrpos($row['titulo'],"~")+1)) . "</a></td>";
                                                 echo "<td>" . $descripcion['descripcionTrabajo'] . "</td>";
                                                 echo "<td>" . $row['calificacion'] . "</td>";
                                                 echo "<td>" . $row['observaciones'] . "</td>";
@@ -121,7 +121,7 @@ $textos = idioma(10, $_SESSION['idioma']);
                                             ?>
                                             <p>URL: <?php echo "<a id=\"cosaPaCopiar\" href=\"./portfolioPublico.php?u=" . $login . "\">Enlace</a>"; ?></p><br>
                                             <div class="pull-left">
-                                                <a id="copy-button" class="btn ex-button" href="#" data-clipboard-text="<?php echo $_SERVER['SERVER_ADDR'].$_SERVER['PHP_SELF']."/portfolio.php?" . $login; ?>"><?php echo $textos[17]; //Copiame?></a><!-- Guardar -->
+                                                <a id="copy-button" class="btn ex-button" href="#" data-clipboard-text="<?php echo $_SERVER['SERVER_ADDR'].$_SERVER['PHP_SELF']."/portfolioPublico.php?u=" . $login; ?>"><?php echo $textos[17]; //Copiame?></a><!-- Guardar -->
 
                                             </div>
 
