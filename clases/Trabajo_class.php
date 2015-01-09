@@ -80,7 +80,8 @@ class trabajo {
             if (mysql_num_rows($resultado) == 0) {
                 $sql = "INSERT INTO Trabajo (codTrabajo,codAsignatura,nombreTrabajo,fechaLimiteTrabajo,descripcionTrabajo) VALUES ('" . $this->codTrab . "','" . $this->codAsig . "','" . $this->titulo . "','" . $this->fechaFinal . "','" . $this->descripcion . "');";
                 mysql_query($sql);
-				mkdir("../uploads/" . substr($this->codTrab,0,-strlen($this->codTrab)) . "/" . $this->codTrab);
+				echo "../uploads/" . substr($this->codTrab,0,strlen($this->codTrab)-strlen($this->titulo)) . "/" . $this->codTrab;
+				mkdir("../uploads/" . substr($this->codTrab,0,strlen($this->codTrab)-strlen($this->titulo)) . "/" . $this->codTrab);
             } else {
                 echo "<br> El trabajo con código: " . $this->codTrab . " ya existe <br>";
             }
@@ -112,6 +113,12 @@ class trabajo {
 
     public static function ConsultarUsuario($usuario) {
         $sql = "SELECT * FROM AluEntregaTra Where `emailUsuario` = '" . $usuario . "'";
+        $resultado = mysql_query($sql);
+        return $resultado;
+    }
+	
+	public static function ConsultarUsuarioPublico($usuario) {
+        $sql = "SELECT * FROM AluEntregaTra Where `emailUsuario` = '" . $usuario . "' AND portfolio='T'";
         $resultado = mysql_query($sql);
         return $resultado;
     }

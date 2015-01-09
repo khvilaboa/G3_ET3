@@ -2,13 +2,21 @@
 <?php
 session_start();
 include('../MultiLanguage/FuncionIdioma.php');
-include('../nav.php');
 include ('../conexion.php');
 include('../clases/Trabajo_class.php');
 include('../clases/Usuario_class.php');
 //$_SESSION['idioma']='ENG';
 
 $textos = idioma(10, $_SESSION['idioma']);
+
+$email = $_GET['u'];
+
+$link = Conectarse();
+
+$usuario = new usuario($email,'','','','','');
+$usuario->Rellenar();
+
+$resultado = trabajo::ConsultarUsuarioPublico($email);
 ?>
 <html lang="en">
 
@@ -25,8 +33,7 @@ $textos = idioma(10, $_SESSION['idioma']);
         <!-- Bootstrap Core CSS -->
         <link href="../css/bootstrap.min.css" rel="stylesheet">
 
-        <!-- Custom CSS -->
-        <link href="../css/sb-admin.css" rel="stylesheet">
+
 
         <!-- EseiXestion Style -->
         <link href="../css/ex.css" rel="stylesheet" type="text/css">
@@ -59,53 +66,52 @@ $textos = idioma(10, $_SESSION['idioma']);
         </script>-->
     </head>
 
-    <body>
+    <body style="background-color:#222">
 
         <div id="wrapper">
-
-            <?php showNav($textos); ?>
 
             <div id="page-wrapper">
 
                 <div class="container-fluid">
-
+					<br><br>
                     <!-- Page Heading -->
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <h1 class="page-header ex-title"><?php echo $textos[6]; // Portfolio?>  </h1>
-                            <div class="panel panel-default">
+                    <div class="row centered-form">
+                    <div class="col-xs-12 col-sm-8 col-sm-offset-2">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h3 class="panel-title"><strong>Portfolio</strong></h3>
+                            </div>
 
-                                <div class="panel-heading ex-panel-header" style="background:rgba(1,0,0,1);color:#999"><?php echo $textos[7]; ?></div> <!--Lista de trabajos-->
+                            <div class="panel-body">
+
                                 <div class="table-responsive">
                                     <table class="table table-striped table-bordered table-hover">
                                         <thead>
                                             <tr>
-                                                <th><?php echo $textos[8]; ?></th> <!--P&uacute;blico-->
+                                                
                                                 <th><?php echo $textos[9]; ?></th> <!--T&iacute;tulo-->
                                                 <th><?php echo $textos[10]; ?></th> <!--Entrega-->
+												<?php if($usuario->getCorreciones()=='T') {?>
                                                 <th><?php echo $textos[12]; ?></th> <!--Nota-->
                                                 <th><?php echo $textos[13]; ?></th> <!--Comentarios-->
+												<?php } ?>
                                             </tr>
                                         </thead>
                                         <tbody>
                                         <form id="portfolio-form"class="form-horizontal" method="post" action="../controller/controllerPortfolio.php" role="form">
                                             <?php
-                                            $link = Conectarse();
-                                            $login = $_SESSION['userLogin'];
-
-
-
-                                            $resultado = trabajo::ConsultarUsuario($login);
-
+                                           
                                             while ($row = mysql_fetch_array($resultado)) {
                                                 $resultado2 = trabajo::Consultar($row['codTrabajo'], $row['codAsignatura']);
                                                 $descripcion = mysql_fetch_array($resultado2);
                                                 echo "<tr>";
-                                                echo "<td><input " . (($row['portfolio'] == 'F') ? '' : 'checked') . " type=\"checkbox\" name=\"publico[]\" value='" . $row['codAsignatura'] . " " . $row['codTrabajo'] . "'></td>";
-                                                echo "<td><a href= ../uploads/" . $row['codAsignatura'] . "/" . $row['codTrabajo'] . "/" . $login . '~' . $row['titulo'] . ">" . str_replace("_"," ",substr($row['titulo'],strrpos($row['titulo'],"~")+1)) . "</a></td>";
+                                                
+                                                echo "<td><a href= ../uploads/" . $row['codAsignatura'] . "/" . $row['codTrabajo'] . "/" . $row['titulo'] . ">" . str_replace("_"," ",substr($row['titulo'],strrpos($row['titulo'],"~")+1)) . "</a></td>";
                                                 echo "<td>" . $descripcion['descripcionTrabajo'] . "</td>";
-                                                echo "<td>" . $row['calificacion'] . "</td>";
-                                                echo "<td>" . $row['observaciones'] . "</td>";
+                                                if($usuario->getCorreciones()=='T') {
+													echo "<td>" . $row['calificacion'] . "</td>";
+													echo "<td>" . $row['observaciones'] . "</td>";
+												}
                                                 echo "</tr>";
                                             }
 
@@ -113,21 +119,7 @@ $textos = idioma(10, $_SESSION['idioma']);
                                             echo "</table>";
                                             echo "</div>";
                                             echo "</div>";
-
-                                            $resultado = usuario::consultarP($login);
-                                            $row = mysql_fetch_array($resultado);
-                                            echo "<input " . (($row['correccionesUsuario'] == 'F') ? '' : 'checked') . " name = \"notas\" type=\"checkbox\" name=\"notas\"> " . $textos[14] . "<br><br>"; //Mostrar notas;
-                                            echo "<input " . (($row['publicoUsuario'] == 'F') ? '' : 'checked') . " name=\"publicarUrl\" type=\"checkbox\" name=\"notas\"> " . $textos[15] . "<br><br>"; //Publicar;
-                                            ?>
-                                            <p>URL: <?php echo "<a id=\"cosaPaCopiar\" href=\"./portfolioPublico.php?u=" . $login . "\">Enlace</a>"; ?></p><br>
-                                            <div class="pull-left">
-                                                <a id="copy-button" class="btn ex-button" href="#" data-clipboard-text="<?php echo $_SERVER['SERVER_ADDR'].$_SERVER['PHP_SELF']."/portfolio.php?" . $login; ?>"><?php echo $textos[17]; //Copiame?></a><!-- Guardar -->
-
-                                            </div>
-
-                                            <div class="pull-right" id="btn-save">
-                                                <a onclick="document.forms['portfolio-form'].submit()" class="btn ex-button"><?php echo $textos[16]; ?></a>  <!-- Guardar -->
-                                            </div>
+											?>
                                         </form>
                                         <br><br>
                                         </div>
@@ -140,7 +132,7 @@ $textos = idioma(10, $_SESSION['idioma']);
                         </div>
                         <!-- /#page-wrapper -->
 
-                    </div>
+                    </div></div></div>
                     <!-- /#wrapper -->
 
                     <!-- jQuery -->

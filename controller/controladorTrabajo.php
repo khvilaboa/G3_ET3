@@ -23,7 +23,7 @@ if($_GET['ct'] == 'Crear'){
 	$trabajo->insertar();
 	echo mysql_error();
 	
-	header("Location: ../profesor/asignatura.php?ca=" . $codA . "&msg=creado");
+	//header("Location: ../profesor/asignatura.php?ca=" . $codA . "&msg=creado");
 }else{
 	$codT = $_GET['ct'];
 	$trabajo = new trabajo ($codT,$codA,$titulo,$desc,$fecha);

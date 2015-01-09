@@ -73,7 +73,7 @@ INSERT INTO `AluInscritoAsi` (`emailUsuario`, `codAsignatura`, `anhoInscrito`, `
 --
 
 CREATE TABLE IF NOT EXISTS `Asignatura` (
-  `codAsignatura` varchar(40) NOT NULL,
+  `codAsignatura` varchar(80) NOT NULL,
   `nomAsignatura` varchar(40) NOT NULL,
   `gradoAsignatura` varchar(40) NOT NULL,
   `cursoAsignatura` int(1) NOT NULL
@@ -107,7 +107,7 @@ CREATE TABLE IF NOT EXISTS `ProImparteAsi` (
 
 CREATE TABLE IF NOT EXISTS `Trabajo` (
   `codTrabajo` varchar(40) NOT NULL,
-  `codAsignatura` varchar(40) NOT NULL,
+  `codAsignatura` varchar(80) NOT NULL,
   `nombreTrabajo` varchar(40) NOT NULL,
   `fechaLimiteTrabajo` date NOT NULL,
   `descripcionTrabajo` varchar(256) NOT NULL
