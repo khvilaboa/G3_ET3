@@ -54,7 +54,7 @@ INSERT INTO `AluEntregaTra` (`emailUsuario`, `codAsignatura`, `codTrabajo`, `fec
 CREATE TABLE IF NOT EXISTS `AluInscritoAsi` (
   `emailUsuario` varchar(40) NOT NULL,
   `codAsignatura` varchar(40) NOT NULL,
-  `anhoInscrito` date NOT NULL,
+  `anhoInscrito` int(1) NOT NULL,
   `aceptado` enum('T','F') NOT NULL DEFAULT 'F'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -96,7 +96,7 @@ INSERT INTO `Asignatura` (`codAsignatura`, `nomAsignatura`, `gradoAsignatura`, `
 CREATE TABLE IF NOT EXISTS `ProImparteAsi` (
   `emailUsuario` varchar(40) NOT NULL,
   `codAsignatura` varchar(40) NOT NULL,
-  `anhoImparte` date NOT NULL
+  `anhoImparte` int(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
