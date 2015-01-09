@@ -85,7 +85,7 @@ class asignatura {
                 mysql_query($sql);
                 echo "<br> El " . $this->codAsig . " se ha insertado<br>";
                 mkdir("../uploads/" . $this->nombre . substr($this->getGrado(), 0, 3) . $this->getCurso());
-                $this->setCodigo($this->nombre . substr($this->getGrado(), 0, 3) . $this->getCurso());
+                $this->setCodigo(str_replace(" ", "_", $this->nombre) . substr($this->getGrado(), 0, 3) . $this->getCurso());
             } else {
                 echo "<br> El código de asignatura " . $this->codAsig . " no es válido: <br>";
             }
