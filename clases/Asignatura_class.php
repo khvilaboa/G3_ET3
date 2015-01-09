@@ -81,10 +81,10 @@ class asignatura {
             //Si no existe una asignatura con nuestro código, insertamos.
             if (mysql_num_rows($resultado) == 0) {
 
-                $sql = "INSERT INTO Asignatura (codAsignatura, nomAsignatura, gradoAsignatura, cursoAsignatura) VALUES ('" . $this->nombre . substr($this->getGrado(), 0, 3) . $this->getCurso() . "','" . $this->nombre . "','" . $this->grado . "','" . $this->curso . "')";
+                $sql = "INSERT INTO Asignatura (codAsignatura, nomAsignatura, gradoAsignatura, cursoAsignatura) VALUES ('" . str_replace(" ", "_", $this->nombre) . substr($this->getGrado(), 0, 3) . $this->getCurso() . "','" . $this->nombre . "','" . $this->grado . "','" . $this->curso . "')";
                 mysql_query($sql);
                 echo "<br> El " . $this->codAsig . " se ha insertado<br>";
-                mkdir("../uploads/" . $this->nombre . substr($this->getGrado(), 0, 3) . $this->getCurso());
+                mkdir("../uploads/" . str_replace(" ", "_", $this->nombre) . substr($this->getGrado(), 0, 3) . $this->getCurso());
                 $this->setCodigo(str_replace(" ", "_", $this->nombre) . substr($this->getGrado(), 0, 3) . $this->getCurso());
             } else {
                 echo "<br> El código de asignatura " . $this->codAsig . " no es válido: <br>";

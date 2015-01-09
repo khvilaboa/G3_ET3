@@ -85,6 +85,7 @@ $codAsig = $_REQUEST['codAsig'];
                             $asignatura->setCurso($row['cursoAsignatura']);
                             $asignatura->setCodigo($row['codAsignatura']);
                         }
+						
                         $sqlUN = "SELECT * FROM usuario U where U.tipoUsuario='profesor' and U.emailUsuario not in (select emailUsuario from proimparteasi P where P.codAsignatura='" . $asignatura->getCodigo() . "') group by U.emailUsuario";
                         $usuarioN = mysql_query($sqlUN);
 

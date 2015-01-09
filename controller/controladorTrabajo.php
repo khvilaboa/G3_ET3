@@ -17,7 +17,7 @@ Conectarse();
 if($_GET['ct'] == 'Crear'){ 
 	$asig = new asignatura('','','',$codA);
 	$asig->Rellenar();
-	$codTrab = $asig->getNombre() . substr($asig->getGrado(),0,3) . $asig->getCurso() . $titulo;
+	$codTrab = str_replace(" ", "_", $asig->getNombre()) . substr($asig->getGrado(),0,3) . $asig->getCurso() . str_replace(" ", "_", $titulo);
 
 	$trabajo = new trabajo ($codTrab,$codA,$titulo,$desc,$fecha);
 	$trabajo->insertar();

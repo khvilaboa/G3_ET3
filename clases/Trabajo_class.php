@@ -80,6 +80,7 @@ class trabajo {
             if (mysql_num_rows($resultado) == 0) {
                 $sql = "INSERT INTO Trabajo (codTrabajo,codAsignatura,nombreTrabajo,fechaLimiteTrabajo,descripcionTrabajo) VALUES ('" . $this->codTrab . "','" . $this->codAsig . "','" . $this->titulo . "','" . $this->fechaFinal . "','" . $this->descripcion . "');";
                 mysql_query($sql);
+				mkdir("../uploads/" . substr($this->codTrab,0,-strlen($this->codTrab)) . "/" . $this->codTrab);
             } else {
                 echo "<br> El trabajo con código: " . $this->codTrab . " ya existe <br>";
             }

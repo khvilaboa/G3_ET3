@@ -9,7 +9,7 @@ Conectarse();
 //$_SESSION['idioma']='ESP';
 $textos = idioma(16,$_SESSION['idioma']);
 
-$codTrab = $_GET['ct'];
+if(isset($_GET['ct'])) $codTrab = $_GET['ct'];
 $codAsig = $_GET['ca'];
 ?>
 
@@ -113,7 +113,7 @@ $codAsig = $_GET['ca'];
 
 												$myCalendar = new tc_calendar("date5", true, false);
 												$myCalendar->setIcon("calendar/images/iconCalendar.gif");
-												$myCalendar->setDate(date('d'), date('m'), date('Y'));
+												$myCalendar->setDate(date('d', strtotime($trabajo->getFechaFinal())), date('m', strtotime($trabajo->getFechaFinal())), date('Y', strtotime($trabajo->getFechaFinal())));
 												$myCalendar->setPath("calendar/");
 												$myCalendar->setYearInterval(2000, 2100);
 												$myCalendar->dateAllow('2000-01-01', '2100-01-01');
