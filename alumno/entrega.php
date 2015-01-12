@@ -109,8 +109,10 @@ $asig->Rellenar();
 												
 												<br>
 												<input type="file" id="browse" name="uploadFile" style="display: none" onChange="Handlechange();"/>
-												<input type="text" id="filename" readonly="true"/>
-												<input type="button" value="<?php echo $textos[18]; //Adjuntar un archivo ?>" id="fakeBrowse" onclick="HandleBrowseClick();"/><br>
+												<input type="text" id="filename" readonly="true"/> 
+												<input type="button" value="<?php echo $textos[18]; //Adjuntar un archivo ?>" id="fakeBrowse" onclick="HandleBrowseClick();"/>
+												<?php if(!empty($entregable->getTitulo())) echo " <a href=\"../uploads/" . $entregable->getCodAsignatura() . "/" . $entregable->getCodTrabajo(). "/" . $entregable->getTitulo() . "\">".str_replace("_"," ",substr($entregable->getTitulo(),strrpos($entregable->getTitulo(),"~")+1))."</a>"; ?>
+												<br>
 												<!--El siguiente comentario es el código funcional, y el script de arriba con los tres inputs pertenece a la posible implementación con el cambio de idiomas,
 												pero no sube los archivos, devuelve un error de index indefinido en uploadFile-->
 												<!--<input type="file"  name="uploadFile"><br>-->

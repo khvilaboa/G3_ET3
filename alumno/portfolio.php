@@ -9,6 +9,8 @@ include('../clases/Usuario_class.php');
 //$_SESSION['idioma']='ENG';
 
 $textos = idioma(10, $_SESSION['idioma']);
+$login = $_SESSION['userLogin'];
+$path = "http://".($_SERVER['SERVER_ADDR']=="::1"?"localhost":$_SERVER['SERVER_ADDR']).substr($_SERVER['PHP_SELF'],0,strrpos($_SERVER['PHP_SELF'],"/"))."/portfolioPublico.php?u=" . $login;
 ?>
 <html lang="en">
 
@@ -91,7 +93,7 @@ $textos = idioma(10, $_SESSION['idioma']);
                                         <form id="portfolio-form"class="form-horizontal" method="post" action="../controller/controllerPortfolio.php" role="form">
                                             <?php
                                             $link = Conectarse();
-                                            $login = $_SESSION['userLogin'];
+                                            
 
 
 
@@ -119,9 +121,9 @@ $textos = idioma(10, $_SESSION['idioma']);
                                             echo "<input " . (($row['correccionesUsuario'] == 'F') ? '' : 'checked') . " name = \"notas\" type=\"checkbox\" name=\"notas\"> " . $textos[14] . "<br><br>"; //Mostrar notas;
                                             echo "<input " . (($row['publicoUsuario'] == 'F') ? '' : 'checked') . " name=\"publicarUrl\" type=\"checkbox\" name=\"notas\"> " . $textos[15] . "<br><br>"; //Publicar;
                                             ?>
-                                            <p>URL: <?php echo "<a id=\"cosaPaCopiar\" href=\"./portfolioPublico.php?u=" . $login . "\">Enlace</a>"; ?></p><br>
+                                            <p>URL: <?php echo "<a id=\"cosaPaCopiar\" href=\"" . $path . "\">Enlace</a>"; ?></p><br>
                                             <div class="pull-left">
-                                                <a id="copy-button" class="btn ex-button" href="#" data-clipboard-text="<?php echo $_SERVER['SERVER_ADDR'].$_SERVER['PHP_SELF']."/portfolioPublico.php?u=" . $login; ?>"><?php echo $textos[17]; //Copiame?></a><!-- Guardar -->
+                                                <a id="copy-button" class="btn ex-button" href="#" data-clipboard-text="<?php echo $path; ?>"><?php echo $textos[17]; //Copiame?></a><!-- Guardar -->
 
                                             </div>
 
