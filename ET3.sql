@@ -34,7 +34,7 @@ CREATE TABLE IF NOT EXISTS `AluEntregaTra` (
   `fechaEntrega` date NOT NULL,
   `observaciones` varchar(256) DEFAULT NULL,
   `titulo` varchar(80) NOT NULL,
-  `calificacion` decimal(4,0) DEFAULT NULL,
+  `calificacion` float DEFAULT NULL,
   `portfolio` enum('T','F') NOT NULL DEFAULT 'F'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 

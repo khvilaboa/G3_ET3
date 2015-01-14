@@ -34,6 +34,6 @@ echo '<pre>';
 if (move_uploaded_file($_FILES['uploadFile']['tmp_name'], $uploadfile)) {
     $ent = new entrega($codAsig, $codTrab, $email, date("Y-m-d"), null, $uploadname, NULL, 'F');
     $ent->Insertar();
-    //header("Location:../alumno/listaAsignaturas.php");
+    header("Location:../alumno/listaAsignaturas.php");
 }
 ?>
