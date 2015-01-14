@@ -3,6 +3,10 @@
 
 <?php
 session_start();
+
+include('../seg.php');
+comprobarUsuario('Alumno');
+
 include('../MultiLanguage/FuncionIdioma.php');
 include('../nav.php');
 

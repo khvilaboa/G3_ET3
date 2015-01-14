@@ -1,5 +1,9 @@
 <?php
 session_start();
+
+include('../seg.php');
+comprobarUsuario('Profesor');
+
 include_once('../conexion.php');
 include_once('../clases/Entrega_class.php');
 include('../nav.php');

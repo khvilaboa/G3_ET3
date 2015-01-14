@@ -1,6 +1,9 @@
 <?php
 	session_start();  
 	
+	include('../seg.php');
+	comprobarUsuario('Profesor');
+	
 	include_once "../clases/Asignatura_class.php";
 	include('../nav.php');
 	include('../MultiLanguage/FuncionIdioma.php');

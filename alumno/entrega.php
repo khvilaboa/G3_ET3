@@ -1,6 +1,10 @@
 <!DOCTYPE html>
 <?php
 session_start();
+
+include('../seg.php');
+comprobarUsuario('Alumno');
+
 include('../MultiLanguage/FuncionIdioma.php');
 include('../clases/Trabajo_class.php');
 include('../clases/Entrega_class.php');

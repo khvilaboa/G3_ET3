@@ -1,10 +1,14 @@
 <?php
 echo $_SESSION['userPass'];
 
+session_start();
+include('../seg.php');
+comprobarUsuario('Profesor');
+
 include_once('../conexion.php');
 
 include ('../clases/Usuario_class.php');
-session_start();
+
 
 $passAct=$_GET['passwdAct'];
 $passNew=$_GET['passwdNew'];
