@@ -2,6 +2,10 @@
 <script language="JavaScript" src="../md5.js" type="text/javascript"></script> 
 <?php
 	session_start();
+	
+	include('../seg.php');
+	comprobarUsuario('Administrador');
+	
 	include_once "../clases/Usuario_class.php";
 	include('../MultiLanguage/FuncionIdioma.php');
 	include('../nav.php');

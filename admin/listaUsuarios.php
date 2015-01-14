@@ -1,6 +1,10 @@
 <!DOCTYPE html>
 <?php
 	session_start();
+	
+	include('../seg.php');
+	comprobarUsuario('Administrador');
+
 	include_once "../clases/Usuario_class.php";
 	include('../MultiLanguage/FuncionIdioma.php');
 	include('../nav.php');
