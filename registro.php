@@ -220,10 +220,14 @@ $textos = idioma(5,$_SESSION['idioma']);
                                         <div class="col-md-12">
 
                                             <div class="pull-left">
-                                                <a id="btn-login" href="index.php" class="btn btn-success"><?php echo $textos[3];//Cancelar?> </a>
+												<a href="MultiLanguage/CambioIdioma.php?idioma=ESP"><img src="icons/Spain.png"></a>
+												<a href="MultiLanguage/CambioIdioma.php?idioma=GAL"><img src="icons/Galicia.png"></a>
+												<a href="MultiLanguage/CambioIdioma.php?idioma=ENG"><img src="icons/EEUU.png"></a>
+												<a href="MultiLanguage/CambioIdioma.php?idioma=DEU"><img src="icons/Germany.png"></a>
                                             </div>
 
                                             <div class="pull-right">
+												<a id="btn-login" href="index.php" class="btn btn-success"><?php echo $textos[3];//Cancelar?> </a>
                                                 <a id="btn-login" onclick="validate()" class="btn btn-success"><?php echo $textos[4];//Registrarse?>  </a>
                                             </div>
                                         </div>
@@ -236,17 +240,6 @@ $textos = idioma(5,$_SESSION['idioma']);
                                         </div>
                                     </div>    
                                 </form>
-<form action="../MultiLanguage/CambioIdioma.php" method="post"> 
-						</form>	
-					<form action="../MultiLanguage/CambioIdioma.php" method="post"> 				
-    <select name="idioma" onChange='this.form.submit()'>
-            <option value=""><?php echo $textos[1];//Seleccione su idioma?></option>
-            <option value="ENG">English</option>
-            <option value="ESP">Español</option>
-            <option value="GAL">Galego</option>
-			<option value="DEU">Deutsch</option>
-    </select>
-	</form>
                             </div>
                         </div>
                     </div>

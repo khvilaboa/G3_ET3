@@ -5,7 +5,7 @@
 session_start();
 include('./MultiLanguage/FuncionIdioma.php');
 
-$_SESSION['idioma'] = 'ENG';
+//$_SESSION['idioma'] = 'ENG';
 
 $textos = idioma(0, $_SESSION['idioma']);
 ?>
@@ -152,7 +152,14 @@ $textos = idioma(0, $_SESSION['idioma']);
                                                 <a href="registro.php" onClick="$('#loginbox').hide();
                                                         $('#signupbox').show()">
                                                        <?php echo $textos[6]; //Reg&iacute;strate aqu&iacute;?>
-                                                </a>
+												</a>	   
+												<div class="pull-right">
+													<a href="MultiLanguage/CambioIdioma.php?idioma=ESP"><img src="icons/Spain.png"></a>
+													<a href="MultiLanguage/CambioIdioma.php?idioma=GAL"><img src="icons/Galicia.png"></a>
+													<a href="MultiLanguage/CambioIdioma.php?idioma=ENG"><img src="icons/EEUU.png"></a>
+													<a href="MultiLanguage/CambioIdioma.php?idioma=DEU"><img src="icons/Germany.png"></a>
+												</div>
+                                                
                                             </div>
                                         </div>
                                     </div>    
