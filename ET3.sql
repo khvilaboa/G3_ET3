@@ -131,9 +131,9 @@ CREATE TABLE IF NOT EXISTS `Usuario` (
 --
 
 INSERT INTO `Usuario` (`emailUsuario`, `nombreUsuario`, `apellidoUsuario`, `passwordUsuario`, `correccionesUsuario`, `publicoUsuario`, `idiomaUsuario`, `tipoUsuario`, `dniUsuario`) VALUES
-('admin@admin.com', 'admin', 'admin', '530e6cc7d2affa1dc1b38a0716e12e97', 'F', 'F', 'ESP', 'Administrador', '11111111X'),
-('asd@asd.com', 'asd', 'asd', 'bfd59291e825b5f2bbf1eb76569f8fe7', 'T', 'T', 'ESP', 'Alumno', '44655485L'),
-('prof@prof.com', 'prof', 'asd', 'bfd59291e825b5f2bbf1eb76569f8fe7', 'F', 'F', 'ESP', 'Profesor', 'asd');
+('admin@admin.com', 'Administrador', 'Admin Admin', '530e6cc7d2affa1dc1b38a0716e12e97', 'F', 'F', 'ESP', 'Administrador', '11111111H'),
+('asd@asd.com', 'User', 'Torres Garrido', 'bfd59291e825b5f2bbf1eb76569f8fe7', 'T', 'T', 'ESP', 'Alumno', '44655485L'),
+('prof@prof.com', 'Prof', 'Ojea Martinez', 'bfd59291e825b5f2bbf1eb76569f8fe7', 'F', 'F', 'ESP', 'Profesor', '22222222J');
 
 --
 -- Índices para tablas volcadas

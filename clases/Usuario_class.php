@@ -13,6 +13,7 @@ class usuario {
     var $TipoUser;
 	var $correciones;
 	var $publico;
+	var $idiomaUsuario;
 
     //Constructor de la clase
     //parametros: el dni, el nombre y los apellidos
@@ -89,6 +90,10 @@ class usuario {
     function setTipo($tipo) {
         $this->TipoUser = $tipo;
     }
+	
+	function setIdioma($tipo) {
+        $this->idiomaUsuario = $tipo;
+    }
 
     //Metodo Insertar
 
@@ -126,6 +131,7 @@ class usuario {
 			$this->TipoUser = $row['tipoUsuario'];
 			$this->correciones = $row['correccionesUsuario'];
 			$this->publico = $row['publicoUsuario'];
+			$this->idiomaUsuario = $row['idiomaUsuario'];
         }
     }
 
@@ -160,6 +166,7 @@ class usuario {
             $_SESSION['userTipo'] = $row['tipoUsuario'];
 		    $_SESSION['userDni'] = $row['dniUsuario'];
 			$_SESSION['userPass'] = $row['passwordUsuario'];
+			$_SESSION['idioma'] = $row['idiomaUsuario'];
 
             if ($row["tipoUsuario"] == 'Alumno') {
                 header("Location:../alumno/listaAsignaturas.php");
@@ -205,10 +212,11 @@ class usuario {
         $sql = "select * from Usuario where emailUsuario = '" . $this->email . "'";
         $resultado = mysql_query($sql);
         if (mysql_num_rows($resultado) == 1) {
-            $sql = "UPDATE Usuario SET nombreUsuario= '" . $this->nombre . "',apellidoUsuario = '" . $this->apellidos . "',passwordUsuario = '" . $this->pass . "',dniUsuario = '" . $this->dni . "' WHERE emailUsuario = '" . $this->email . "'";
+            $sql = "UPDATE Usuario SET nombreUsuario= '" . $this->nombre . "',apellidoUsuario = '" . $this->apellidos . "',passwordUsuario = '" . $this->pass . "',dniUsuario = '" . $this->dni . "', idiomaUsuario = '" . $this->idiomaUsuario . "' WHERE emailUsuario = '" . $this->email . "'";
             mysql_query($sql);
 			$_SESSION['userName'] = $this->nombre;
 			$_SESSION['userPass'] = $this->pass;
+			$_SESSION['idiomaUsuario'] = $this->idiomaUsuario;
         } else
             echo "<br>No existe un usuario con ese email<br>";
     }

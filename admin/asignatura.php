@@ -12,7 +12,7 @@ include('../nav.php');
 // La siguiente linea se descomenta para hacer prueba sin pasar por login, una vez que este inicializada debe comentarse otra vez
 //$_SESSION['idioma']='ENG';
 $textos = idioma(1, $_SESSION['idioma']);
-$codAsig = $_REQUEST['codAsig'];
+if (isset($_REQUEST['codAsig'])) $codAsig = $_REQUEST['codAsig'];
 ?>
 
 <html lang="en">
