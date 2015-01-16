@@ -5,7 +5,7 @@
 session_start();
 include('./MultiLanguage/FuncionIdioma.php');
 
-//$_SESSION['idioma'] = 'ENG';
+if(empty($_SESSION['idioma'])) $_SESSION['idioma'] = 'ENG';
 
 $textos = idioma(0, $_SESSION['idioma']);
 ?>

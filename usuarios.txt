@@ -1,0 +1,10 @@
+Usuarios de la plataforma (formato usuario:contraseña):
+-------------------------------------------------------
+Administrador:
+admin@admin.com:Admin1.
+
+Profesores:
+prof@prof.com:asd123
+
+Usuarios:
+asd@asd.com:asd123
