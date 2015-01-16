@@ -42,9 +42,6 @@ CREATE TABLE IF NOT EXISTS `AluEntregaTra` (
 -- Volcado de datos para la tabla `AluEntregaTra`
 --
 
-INSERT INTO `aluentregatra` (`emailUsuario`, `codAsignatura`, `codTrabajo`, `fechaEntrega`, `observaciones`, `titulo`, `calificacion`, `portfolio`) VALUES
-('asd@asd.com', 'Centros_de_datosIng2014', 'Centros_de_datosIng2014Practica_1_-_Amazon_AWS', '2015-01-16', NULL, 'asd@asd.com~Amazon_Web_Services.pdf', NULL, 'F');
-
 -- --------------------------------------------------------
 
 --
@@ -61,11 +58,6 @@ CREATE TABLE IF NOT EXISTS `AluInscritoAsi` (
 --
 -- Volcado de datos para la tabla `AluInscritoAsi`
 --
-
-INSERT INTO `aluinscritoasi` (`emailUsuario`, `codAsignatura`, `anhoInscrito`, `aceptado`) VALUES
-('asd2@asd2.com', 'Bases_de_datos_IIIng2014', 2015, 'T'),
-('asd@asd.com', 'Bases_de_datos_IIIng2014', 2015, 'F'),
-('asd@asd.com', 'Centros_de_datosIng2014', 2015, 'T');
 
 -- --------------------------------------------------------
 
@@ -84,10 +76,6 @@ CREATE TABLE IF NOT EXISTS `Asignatura` (
 -- Volcado de datos para la tabla `Asignatura`
 --
 
-INSERT INTO `asignatura` (`codAsignatura`, `nomAsignatura`, `gradoAsignatura`, `cursoAsignatura`) VALUES
-('Bases_de_datos_IIIng2014', 'Bases de datos II', 'Ingenieria Informatica', 2014),
-('Centros_de_datosIng2014', 'Centros de datos', 'Ingenieria Informatica', 2014);
-
 -- --------------------------------------------------------
 
 --
@@ -99,15 +87,6 @@ CREATE TABLE IF NOT EXISTS `ProImparteAsi` (
   `codAsignatura` varchar(80) NOT NULL,
   `anhoImparte` int(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Volcado de datos para la tabla `proimparteasi`
---
-
-INSERT INTO `proimparteasi` (`emailUsuario`, `codAsignatura`, `anhoImparte`) VALUES
-('prof@prof.com', 'Bases_de_datos_IIIng2014', 2014),
-('prof@prof.com', 'Centros_de_datosIng2014', 2014);
-
 
 -- --------------------------------------------------------
 
@@ -126,12 +105,6 @@ CREATE TABLE IF NOT EXISTS `Trabajo` (
 --
 -- Volcado de datos para la tabla `Trabajo`
 --
-
-INSERT INTO `trabajo` (`codTrabajo`, `codAsignatura`, `nombreTrabajo`, `fechaLimiteTrabajo`, `descripcionTrabajo`) VALUES
-('Bases_de_datos_IIIng2014Practica_1', 'Bases_de_datos_IIIng2014', 'Practica 1', '2015-01-19', 'Modelo ER'),
-('Bases_de_datos_IIIng2014Practica_2', 'Bases_de_datos_IIIng2014', 'Practica 2', '2015-04-22', 'PL-SQL'),
-('Centros_de_datosIng2014Practica_1_-_Amazon_AWS', 'Centros_de_datosIng2014', 'Practica 1 - Amazon AWS', '2015-01-22', '');
-
 
 -- --------------------------------------------------------
 
@@ -157,10 +130,9 @@ CREATE TABLE IF NOT EXISTS `Usuario` (
 -- Contraseña de los demas --> bfd59291e825b5f2bbf1eb76569f8fe7
 --
 
-INSERT INTO `usuario` (`emailUsuario`, `nombreUsuario`, `apellidoUsuario`, `passwordUsuario`, `correccionesUsuario`, `publicoUsuario`, `idiomaUsuario`, `tipoUsuario`, `dniUsuario`) VALUES
+INSERT INTO `Usuario` (`emailUsuario`, `nombreUsuario`, `apellidoUsuario`, `passwordUsuario`, `correccionesUsuario`, `publicoUsuario`, `idiomaUsuario`, `tipoUsuario`, `dniUsuario`) VALUES
 ('admin@admin.com', 'Administrador', 'Admin Admin', '530e6cc7d2affa1dc1b38a0716e12e97', 'F', 'F', 'ESP', 'Administrador', '11111111H'),
-('asd2@asd2.com', 'User1', 'Perez Suarez', 'bfd59291e825b5f2bbf1eb76569f8fe7', 'F', 'F', 'ESP', 'Alumno', '35251598G'),
-('asd@asd.com', 'User2', 'Torres Garrido', 'bfd59291e825b5f2bbf1eb76569f8fe7', 'T', 'T', 'ESP', 'Alumno', '44655485L'),
+('asd@asd.com', 'User', 'Torres Garrido', 'bfd59291e825b5f2bbf1eb76569f8fe7', 'T', 'T', 'ESP', 'Alumno', '44655485L'),
 ('prof@prof.com', 'Prof', 'Ojea Martinez', 'bfd59291e825b5f2bbf1eb76569f8fe7', 'F', 'F', 'ESP', 'Profesor', '22222222J');
 
 --
